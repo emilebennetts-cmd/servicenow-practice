@@ -1,0 +1,42 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "serialNumber": "urn:uuid:b2ce0ad1-37df-4f5c-8c27-740874fdc257",
+  "metadata": {
+    "timestamp": "2026-09-27T16:26:27.749Z",
+    "tools": {
+      "components": [
+        {
+          "type": "library",
+          "name": "sdk-build-plugins",
+          "group": "@servicenow",
+          "version": "0.0.1",
+          "author": "ServiceNow"
+        }
+      ]
+    },
+    "component": {
+      "type": "application",
+      "name": "diagnostic-workbench-2",
+      "version": "0.0.1",
+      "bom-ref": "pkg:servicenow/diagnostic-workbench-2@0.0.1?sys_scope_id=7691f128fe834e1d8e6217d71bbfffa4",
+      "description": "ServiceNow Diagnostic Workbench 2 - duplicate of the in-instance Diagnostic Workbench with assessment-pack extensions",
+      "licenses": [
+        {
+          "license": {
+            "name": "UNLICENSED"
+          }
+        }
+      ],
+      "purl": "pkg:servicenow/diagnostic-workbench-2@0.0.1?sys_scope_id=7691f128fe834e1d8e6217d71bbfffa4"
+    }
+  },
+  "components": [],
+  "dependencies": [
+    {
+      "ref": "pkg:servicenow/diagnostic-workbench-2@0.0.1?sys_scope_id=7691f128fe834e1d8e6217d71bbfffa4"
+    }
+  ]
+}

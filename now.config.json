@@ -1,0 +1,6 @@
+{
+    "scope": "x_bahs_dw2",
+    "scopeId": "7691f128fe834e1d8e6217d71bbfffa4",
+    "name": "ServiceNow Diagnostic Workbench 2",
+    "tsconfigPath": "./src/server/tsconfig.json"
+}

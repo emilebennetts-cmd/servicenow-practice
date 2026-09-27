@@ -1,0 +1,20 @@
+{
+    "name": "diagnostic-workbench-2",
+    "version": "0.0.1",
+    "description": "ServiceNow Diagnostic Workbench 2 - duplicate of the in-instance Diagnostic Workbench with assessment-pack extensions",
+    "license": "UNLICENSED",
+    "imports": {
+        "#now:*": "./@types/servicenow/fluent/*/index.js"
+    },
+    "scripts": {
+        "build": "node tools/gen-client.mjs && node tools/gen-server-runners.mjs && now-sdk build",
+        "deploy": "now-sdk install",
+        "transform": "now-sdk transform",
+        "types": "now-sdk dependencies"
+    },
+    "devDependencies": {
+        "@servicenow/sdk": "4.11.2",
+        "@servicenow/glide": "27.0.5",
+        "typescript": "5.5.4"
+    }
+}

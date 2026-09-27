@@ -1,0 +1,1816 @@
+{
+ "scripts": [
+  {
+   "id": "ITSM-INC-001",
+   "title": "ITSM-INC-001_incident_health.js",
+   "file": "./toolkit-package/toolkit/client-neutral-master/ITSM-INC-001_incident_health.js",
+   "stage": 13,
+   "kind": "extract",
+   "safety": "Read-only",
+   "sourceUrl": "",
+   "repositoryUrl": "",
+   "module": "ITSM",
+   "description": "Measures incident volumes, assignment coverage, ageing, priority mix and duplicate signatures so incident-process findings rest on aggregates, not anecdotes.",
+   "why": "Measures incident volumes, assignment coverage, ageing, priority mix and duplicate signatures so incident-process findings rest on aggregates, not anecdotes.",
+   "runContext": "System Definition > Scripts - Background · scope Global",
+   "expectedOutput": "One DIAG envelope (JSON) between DIAG_ENVELOPE_BEGIN/END markers in the output",
+   "parser": "DIAG envelope (auto-analysed by the rule engine)",
+   "mapsTo": [
+    "ITSM",
+    "Findings",
+    "Evidence Explorer",
+    "Assessment",
+    "Main report"
+   ],
+   "sourceState": "Client-neutral master repository item",
+   "licensing": "Uses only base-platform tables where the relevant product is installed; a missing product table is reported as Not Applicable, never an error. Appropriate admin/script execution access required.",
+   "requiresConfiguration": false,
+   "configurationStatus": "READY_FOR_REVIEW",
+   "sourceLineageTitle": "Workbench 2 module pack",
+   "functionalPrefix": "ITSM-INC",
+   "sourceText": "/*\nITSM-INC-001 - Incident health (READ ONLY)\n================================================================================\nModule   : ITSM  ·  Category: Incident\nPurpose  : Measures incident volumes, assignment coverage, ageing, priority mix and duplicate signatures so incident-process findings rest on aggregates, not anecdotes.\n\nSafety   : Read-only. Aggregate counts, ratios and configuration metadata only.\n           No consumer record content is read or exported. Every table access\n           is guarded - a missing table becomes a note and the affected\n           metrics report -1 (treated as Not Applicable by the Workbench).\nRun from : System Definition > Scripts - Background · scope Global\nOutput   : One JSON envelope between DIAG_ENVELOPE_BEGIN / DIAG_ENVELOPE_END.\n           Paste the complete output into the Workbench via Load Result.\n*/\n(function () {\n    var envelope = {\n        collector: 'ITSM_INC_001',\n        version: '1.0',\n        instance: gs.getProperty('instance_name'),\n        captured_at: new GlideDateTime().getValue(),\n        module: 'ITSM',\n        category: 'Incident',\n        schema_version: '1.0',\n        read_only: true,\n        classification: 'Internal',\n        contains_pii: false,\n        record_count: 0,\n        metrics: {},\n        results: [],\n        entities: [],\n        relationships: [],\n        notes: []\n    };\n\n    function tableAvailable(tableName) {\n        try { return new GlideRecord(tableName).isValid(); } catch (availabilityError) { return false; }\n    }\n\n    function countRecords(tableName, encodedQuery) {\n        if (!tableAvailable(tableName)) {\n            envelope.notes.push(tableName + ' is not available on this instance.');\n            return -1;\n        }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.query();\n        return aggregateQuery.next() ? parseInt(aggregateQuery.getAggregate('COUNT'), 10) : 0;\n    }\n\n    // Groups are capped and sorted in JS - no orderByAggregate / addHaving,\n    // which vary across releases.\n    function groupCounts(tableName, fieldName, encodedQuery, cap) {\n        var groups = [];\n        if (!tableAvailable(tableName)) { return groups; }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.groupBy(fieldName);\n        aggregateQuery.query();\n        var iterations = 0;\n        var hardCap = cap || 400;\n        while (aggregateQuery.next()) {\n            iterations++;\n            if (iterations > hardCap) {\n                envelope.notes.push(tableName + '.' + fieldName + ' grouping capped at ' + hardCap + ' groups.');\n                break;\n            }\n            groups.push({\n                value: String(aggregateQuery.getDisplayValue(fieldName) || '(empty)').substring(0, 80),\n                count: parseInt(aggregateQuery.getAggregate('COUNT'), 10)\n            });\n        }\n        groups.sort(function (left, right) { return right.count - left.count; });\n        return groups;\n    }\n\n    function topGroups(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var limit = Math.min(groups.length, topN || 15);\n        for (var index = 0; index < limit; index++) {\n            envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n        }\n        return groups;\n    }\n\n    function duplicateClusters(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var clusterCount = 0;\n        var recordCount = 0;\n        var emitted = 0;\n        for (var index = 0; index < groups.length; index++) {\n            if (groups[index].count > 1) {\n                clusterCount++;\n                recordCount += groups[index].count;\n                if (emitted < (topN || 10)) {\n                    envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n                    emitted++;\n                }\n            }\n        }\n        return { clusters: clusterCount, records: recordCount };\n    }\n\n    function ratio(part, whole) {\n        if (part < 0 || whole <= 0) { return part < 0 ? -1 : 0; }\n        return Math.round(part * 1000 / whole) / 10;\n    }\n\n    function collect() {\n        var incidentTotal = countRecords('incident', '');\n        var incidentOpen = countRecords('incident', 'active=true');\n        envelope.metrics.total = incidentTotal;\n        envelope.metrics.open = incidentOpen;\n        envelope.metrics.new_last_30d = countRecords('incident', 'sys_created_on>=javascript:gs.daysAgoStart(30)');\n        envelope.metrics.resolved_last_30d = countRecords('incident', 'resolved_at>=javascript:gs.daysAgoStart(30)');\n        envelope.metrics.open_unassigned = countRecords('incident', 'active=true^assigned_toISEMPTY');\n        envelope.metrics.open_unassigned_ratio = ratio(envelope.metrics.open_unassigned, incidentOpen);\n        envelope.metrics.open_aging_30d = countRecords('incident', 'active=true^sys_created_on<javascript:gs.daysAgoStart(30)');\n        envelope.metrics.open_aging_ratio = ratio(envelope.metrics.open_aging_30d, incidentOpen);\n        envelope.metrics.open_p1 = countRecords('incident', 'active=true^priority=1');\n        topGroups('state_breakdown', 'incident', 'state', 'active=true', 12);\n        topGroups('priority_breakdown', 'incident', 'priority', 'active=true', 6);\n        var duplicateSignature = duplicateClusters('duplicate_short_description', 'incident',\n            'short_description', 'active=true', 10);\n        envelope.metrics.duplicate_sd_clusters = duplicateSignature.clusters;\n        envelope.metrics.duplicate_sd_records = duplicateSignature.records;\n    }\n\n    try {\n        collect();\n    } catch (collectError) {\n        envelope.notes.push('Collector error: ' + collectError);\n    }\n    envelope.record_count = envelope.results.length;\n    gs.info('DIAG_ENVELOPE_BEGIN');\n    gs.info(JSON.stringify(envelope));\n    gs.info('DIAG_ENVELOPE_END');\n})();\n",
+   "envelope": true,
+   "classification": "Internal"
+  },
+  {
+   "id": "ITSM-SLA-001",
+   "title": "ITSM-SLA-001_sla_health.js",
+   "file": "./toolkit-package/toolkit/client-neutral-master/ITSM-SLA-001_sla_health.js",
+   "stage": 13,
+   "kind": "extract",
+   "safety": "Read-only",
+   "sourceUrl": "",
+   "repositoryUrl": "",
+   "module": "ITSM",
+   "description": "Verifies SLA definitions, attachment to new incidents, breach ratios and retroactive settings - the standard first pass for \"SLA not attaching / not progressing\".",
+   "why": "Verifies SLA definitions, attachment to new incidents, breach ratios and retroactive settings - the standard first pass for \"SLA not attaching / not progressing\".",
+   "runContext": "System Definition > Scripts - Background · scope Global",
+   "expectedOutput": "One DIAG envelope (JSON) between DIAG_ENVELOPE_BEGIN/END markers in the output",
+   "parser": "DIAG envelope (auto-analysed by the rule engine)",
+   "mapsTo": [
+    "ITSM",
+    "Findings",
+    "Evidence Explorer",
+    "Assessment",
+    "Main report"
+   ],
+   "sourceState": "Client-neutral master repository item",
+   "licensing": "Uses only base-platform tables where the relevant product is installed; a missing product table is reported as Not Applicable, never an error. Appropriate admin/script execution access required.",
+   "requiresConfiguration": false,
+   "configurationStatus": "READY_FOR_REVIEW",
+   "sourceLineageTitle": "Workbench 2 module pack",
+   "functionalPrefix": "ITSM-SLA",
+   "sourceText": "/*\nITSM-SLA-001 - SLA health (READ ONLY)\n================================================================================\nModule   : ITSM  ·  Category: SLA\nPurpose  : Verifies SLA definitions, attachment to new incidents, breach ratios and retroactive settings - the standard first pass for \"SLA not attaching / not progressing\".\n\nSafety   : Read-only. Aggregate counts, ratios and configuration metadata only.\n           No consumer record content is read or exported. Every table access\n           is guarded - a missing table becomes a note and the affected\n           metrics report -1 (treated as Not Applicable by the Workbench).\nRun from : System Definition > Scripts - Background · scope Global\nOutput   : One JSON envelope between DIAG_ENVELOPE_BEGIN / DIAG_ENVELOPE_END.\n           Paste the complete output into the Workbench via Load Result.\n*/\n(function () {\n    var envelope = {\n        collector: 'ITSM_SLA_001',\n        version: '1.0',\n        instance: gs.getProperty('instance_name'),\n        captured_at: new GlideDateTime().getValue(),\n        module: 'ITSM',\n        category: 'SLA',\n        schema_version: '1.0',\n        read_only: true,\n        classification: 'Internal',\n        contains_pii: false,\n        record_count: 0,\n        metrics: {},\n        results: [],\n        entities: [],\n        relationships: [],\n        notes: []\n    };\n\n    function tableAvailable(tableName) {\n        try { return new GlideRecord(tableName).isValid(); } catch (availabilityError) { return false; }\n    }\n\n    function countRecords(tableName, encodedQuery) {\n        if (!tableAvailable(tableName)) {\n            envelope.notes.push(tableName + ' is not available on this instance.');\n            return -1;\n        }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.query();\n        return aggregateQuery.next() ? parseInt(aggregateQuery.getAggregate('COUNT'), 10) : 0;\n    }\n\n    // Groups are capped and sorted in JS - no orderByAggregate / addHaving,\n    // which vary across releases.\n    function groupCounts(tableName, fieldName, encodedQuery, cap) {\n        var groups = [];\n        if (!tableAvailable(tableName)) { return groups; }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.groupBy(fieldName);\n        aggregateQuery.query();\n        var iterations = 0;\n        var hardCap = cap || 400;\n        while (aggregateQuery.next()) {\n            iterations++;\n            if (iterations > hardCap) {\n                envelope.notes.push(tableName + '.' + fieldName + ' grouping capped at ' + hardCap + ' groups.');\n                break;\n            }\n            groups.push({\n                value: String(aggregateQuery.getDisplayValue(fieldName) || '(empty)').substring(0, 80),\n                count: parseInt(aggregateQuery.getAggregate('COUNT'), 10)\n            });\n        }\n        groups.sort(function (left, right) { return right.count - left.count; });\n        return groups;\n    }\n\n    function topGroups(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var limit = Math.min(groups.length, topN || 15);\n        for (var index = 0; index < limit; index++) {\n            envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n        }\n        return groups;\n    }\n\n    function duplicateClusters(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var clusterCount = 0;\n        var recordCount = 0;\n        var emitted = 0;\n        for (var index = 0; index < groups.length; index++) {\n            if (groups[index].count > 1) {\n                clusterCount++;\n                recordCount += groups[index].count;\n                if (emitted < (topN || 10)) {\n                    envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n                    emitted++;\n                }\n            }\n        }\n        return { clusters: clusterCount, records: recordCount };\n    }\n\n    function ratio(part, whole) {\n        if (part < 0 || whole <= 0) { return part < 0 ? -1 : 0; }\n        return Math.round(part * 1000 / whole) / 10;\n    }\n\n    function collect() {\n        envelope.metrics.definitions_total = countRecords('contract_sla', '');\n        envelope.metrics.definitions_active = countRecords('contract_sla', 'active=true');\n        envelope.metrics.definitions_retroactive = countRecords('contract_sla', 'active=true^retroactive=true');\n        envelope.metrics.task_sla_total = countRecords('task_sla', '');\n        envelope.metrics.task_sla_active = countRecords('task_sla', 'active=true');\n        envelope.metrics.task_sla_breached = countRecords('task_sla', 'has_breached=true');\n        envelope.metrics.breached_ratio = ratio(envelope.metrics.task_sla_breached, envelope.metrics.task_sla_total);\n        envelope.metrics.breached_open = countRecords('task_sla', 'has_breached=true^active=true');\n        var incidentsLast30 = countRecords('incident', 'sys_created_on>=javascript:gs.daysAgoStart(30)');\n        var incidentsWithSlaLast30 = countRecords('task_sla',\n            'sys_created_on>=javascript:gs.daysAgoStart(30)^task.sys_class_name=incident');\n        envelope.metrics.incidents_last_30d = incidentsLast30;\n        envelope.metrics.incident_slas_last_30d = incidentsWithSlaLast30;\n        envelope.metrics.attach_ratio = ratio(incidentsWithSlaLast30, incidentsLast30);\n        topGroups('definition_breakdown', 'task_sla', 'sla', 'active=true', 10);\n        topGroups('stage_breakdown', 'task_sla', 'stage', 'active=true', 8);\n    }\n\n    try {\n        collect();\n    } catch (collectError) {\n        envelope.notes.push('Collector error: ' + collectError);\n    }\n    envelope.record_count = envelope.results.length;\n    gs.info('DIAG_ENVELOPE_BEGIN');\n    gs.info(JSON.stringify(envelope));\n    gs.info('DIAG_ENVELOPE_END');\n})();\n",
+   "envelope": true,
+   "classification": "Internal"
+  },
+  {
+   "id": "ITSM-CHG-001",
+   "title": "ITSM-CHG-001_change_health.js",
+   "file": "./toolkit-package/toolkit/client-neutral-master/ITSM-CHG-001_change_health.js",
+   "stage": 13,
+   "kind": "extract",
+   "safety": "Read-only",
+   "sourceUrl": "",
+   "repositoryUrl": "",
+   "module": "ITSM",
+   "description": "Reviews change state flow, risk completion, emergency ratio and stalled approvals.",
+   "why": "Reviews change state flow, risk completion, emergency ratio and stalled approvals.",
+   "runContext": "System Definition > Scripts - Background · scope Global",
+   "expectedOutput": "One DIAG envelope (JSON) between DIAG_ENVELOPE_BEGIN/END markers in the output",
+   "parser": "DIAG envelope (auto-analysed by the rule engine)",
+   "mapsTo": [
+    "ITSM",
+    "Findings",
+    "Evidence Explorer",
+    "Assessment",
+    "Main report"
+   ],
+   "sourceState": "Client-neutral master repository item",
+   "licensing": "Uses only base-platform tables where the relevant product is installed; a missing product table is reported as Not Applicable, never an error. Appropriate admin/script execution access required.",
+   "requiresConfiguration": false,
+   "configurationStatus": "READY_FOR_REVIEW",
+   "sourceLineageTitle": "Workbench 2 module pack",
+   "functionalPrefix": "ITSM-CHG",
+   "sourceText": "/*\nITSM-CHG-001 - Change health (READ ONLY)\n================================================================================\nModule   : ITSM  ·  Category: Change\nPurpose  : Reviews change state flow, risk completion, emergency ratio and stalled approvals.\n\nSafety   : Read-only. Aggregate counts, ratios and configuration metadata only.\n           No consumer record content is read or exported. Every table access\n           is guarded - a missing table becomes a note and the affected\n           metrics report -1 (treated as Not Applicable by the Workbench).\nRun from : System Definition > Scripts - Background · scope Global\nOutput   : One JSON envelope between DIAG_ENVELOPE_BEGIN / DIAG_ENVELOPE_END.\n           Paste the complete output into the Workbench via Load Result.\n*/\n(function () {\n    var envelope = {\n        collector: 'ITSM_CHG_001',\n        version: '1.0',\n        instance: gs.getProperty('instance_name'),\n        captured_at: new GlideDateTime().getValue(),\n        module: 'ITSM',\n        category: 'Change',\n        schema_version: '1.0',\n        read_only: true,\n        classification: 'Internal',\n        contains_pii: false,\n        record_count: 0,\n        metrics: {},\n        results: [],\n        entities: [],\n        relationships: [],\n        notes: []\n    };\n\n    function tableAvailable(tableName) {\n        try { return new GlideRecord(tableName).isValid(); } catch (availabilityError) { return false; }\n    }\n\n    function countRecords(tableName, encodedQuery) {\n        if (!tableAvailable(tableName)) {\n            envelope.notes.push(tableName + ' is not available on this instance.');\n            return -1;\n        }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.query();\n        return aggregateQuery.next() ? parseInt(aggregateQuery.getAggregate('COUNT'), 10) : 0;\n    }\n\n    // Groups are capped and sorted in JS - no orderByAggregate / addHaving,\n    // which vary across releases.\n    function groupCounts(tableName, fieldName, encodedQuery, cap) {\n        var groups = [];\n        if (!tableAvailable(tableName)) { return groups; }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.groupBy(fieldName);\n        aggregateQuery.query();\n        var iterations = 0;\n        var hardCap = cap || 400;\n        while (aggregateQuery.next()) {\n            iterations++;\n            if (iterations > hardCap) {\n                envelope.notes.push(tableName + '.' + fieldName + ' grouping capped at ' + hardCap + ' groups.');\n                break;\n            }\n            groups.push({\n                value: String(aggregateQuery.getDisplayValue(fieldName) || '(empty)').substring(0, 80),\n                count: parseInt(aggregateQuery.getAggregate('COUNT'), 10)\n            });\n        }\n        groups.sort(function (left, right) { return right.count - left.count; });\n        return groups;\n    }\n\n    function topGroups(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var limit = Math.min(groups.length, topN || 15);\n        for (var index = 0; index < limit; index++) {\n            envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n        }\n        return groups;\n    }\n\n    function duplicateClusters(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var clusterCount = 0;\n        var recordCount = 0;\n        var emitted = 0;\n        for (var index = 0; index < groups.length; index++) {\n            if (groups[index].count > 1) {\n                clusterCount++;\n                recordCount += groups[index].count;\n                if (emitted < (topN || 10)) {\n                    envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n                    emitted++;\n                }\n            }\n        }\n        return { clusters: clusterCount, records: recordCount };\n    }\n\n    function ratio(part, whole) {\n        if (part < 0 || whole <= 0) { return part < 0 ? -1 : 0; }\n        return Math.round(part * 1000 / whole) / 10;\n    }\n\n    function collect() {\n        var changeTotal = countRecords('change_request', '');\n        var changeOpen = countRecords('change_request', 'active=true');\n        envelope.metrics.total = changeTotal;\n        envelope.metrics.open = changeOpen;\n        envelope.metrics.last_90d = countRecords('change_request', 'sys_created_on>=javascript:gs.daysAgoStart(90)');\n        envelope.metrics.emergency_last_90d = countRecords('change_request',\n            'sys_created_on>=javascript:gs.daysAgoStart(90)^type=emergency');\n        envelope.metrics.emergency_ratio = ratio(envelope.metrics.emergency_last_90d, envelope.metrics.last_90d);\n        envelope.metrics.risk_empty_open = countRecords('change_request', 'active=true^riskISEMPTY');\n        envelope.metrics.approvals_pending_7d = countRecords('sysapproval_approver',\n            'state=requested^sys_created_on<javascript:gs.daysAgoStart(7)^sysapproval.sys_class_name=change_request');\n        topGroups('state_breakdown', 'change_request', 'state', 'active=true', 12);\n        topGroups('type_breakdown', 'change_request', 'type', 'sys_created_on>=javascript:gs.daysAgoStart(90)', 6);\n    }\n\n    try {\n        collect();\n    } catch (collectError) {\n        envelope.notes.push('Collector error: ' + collectError);\n    }\n    envelope.record_count = envelope.results.length;\n    gs.info('DIAG_ENVELOPE_BEGIN');\n    gs.info(JSON.stringify(envelope));\n    gs.info('DIAG_ENVELOPE_END');\n})();\n",
+   "envelope": true,
+   "classification": "Internal"
+  },
+  {
+   "id": "ITSM-REQ-001",
+   "title": "ITSM-REQ-001_request_and_catalog_health.js",
+   "file": "./toolkit-package/toolkit/client-neutral-master/ITSM-REQ-001_request_and_catalog_health.js",
+   "stage": 13,
+   "kind": "extract",
+   "safety": "Read-only",
+   "sourceUrl": "",
+   "repositoryUrl": "",
+   "module": "ITSM",
+   "description": "Checks catalog items for missing fulfilment processes and measures the request-to-RITM chain, stuck items and unassigned catalog tasks - the standard first pass for \"requests are not generating RITMs\".",
+   "why": "Checks catalog items for missing fulfilment processes and measures the request-to-RITM chain, stuck items and unassigned catalog tasks - the standard first pass for \"requests are not generating RITMs\".",
+   "runContext": "System Definition > Scripts - Background · scope Global",
+   "expectedOutput": "One DIAG envelope (JSON) between DIAG_ENVELOPE_BEGIN/END markers in the output",
+   "parser": "DIAG envelope (auto-analysed by the rule engine)",
+   "mapsTo": [
+    "ITSM",
+    "Findings",
+    "Evidence Explorer",
+    "Assessment",
+    "Main report"
+   ],
+   "sourceState": "Client-neutral master repository item",
+   "licensing": "Uses only base-platform tables where the relevant product is installed; a missing product table is reported as Not Applicable, never an error. Appropriate admin/script execution access required.",
+   "requiresConfiguration": false,
+   "configurationStatus": "READY_FOR_REVIEW",
+   "sourceLineageTitle": "Workbench 2 module pack",
+   "functionalPrefix": "ITSM-REQ",
+   "sourceText": "/*\nITSM-REQ-001 - Request and catalog health (READ ONLY)\n================================================================================\nModule   : ITSM  ·  Category: Request / Catalog\nPurpose  : Checks catalog items for missing fulfilment processes and measures the request-to-RITM chain, stuck items and unassigned catalog tasks - the standard first pass for \"requests are not generating RITMs\".\n\nSafety   : Read-only. Aggregate counts, ratios and configuration metadata only.\n           No consumer record content is read or exported. Every table access\n           is guarded - a missing table becomes a note and the affected\n           metrics report -1 (treated as Not Applicable by the Workbench).\nRun from : System Definition > Scripts - Background · scope Global\nOutput   : One JSON envelope between DIAG_ENVELOPE_BEGIN / DIAG_ENVELOPE_END.\n           Paste the complete output into the Workbench via Load Result.\n*/\n(function () {\n    var envelope = {\n        collector: 'ITSM_REQ_001',\n        version: '1.0',\n        instance: gs.getProperty('instance_name'),\n        captured_at: new GlideDateTime().getValue(),\n        module: 'ITSM',\n        category: 'Request / Catalog',\n        schema_version: '1.0',\n        read_only: true,\n        classification: 'Internal',\n        contains_pii: false,\n        record_count: 0,\n        metrics: {},\n        results: [],\n        entities: [],\n        relationships: [],\n        notes: []\n    };\n\n    function tableAvailable(tableName) {\n        try { return new GlideRecord(tableName).isValid(); } catch (availabilityError) { return false; }\n    }\n\n    function countRecords(tableName, encodedQuery) {\n        if (!tableAvailable(tableName)) {\n            envelope.notes.push(tableName + ' is not available on this instance.');\n            return -1;\n        }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.query();\n        return aggregateQuery.next() ? parseInt(aggregateQuery.getAggregate('COUNT'), 10) : 0;\n    }\n\n    // Groups are capped and sorted in JS - no orderByAggregate / addHaving,\n    // which vary across releases.\n    function groupCounts(tableName, fieldName, encodedQuery, cap) {\n        var groups = [];\n        if (!tableAvailable(tableName)) { return groups; }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.groupBy(fieldName);\n        aggregateQuery.query();\n        var iterations = 0;\n        var hardCap = cap || 400;\n        while (aggregateQuery.next()) {\n            iterations++;\n            if (iterations > hardCap) {\n                envelope.notes.push(tableName + '.' + fieldName + ' grouping capped at ' + hardCap + ' groups.');\n                break;\n            }\n            groups.push({\n                value: String(aggregateQuery.getDisplayValue(fieldName) || '(empty)').substring(0, 80),\n                count: parseInt(aggregateQuery.getAggregate('COUNT'), 10)\n            });\n        }\n        groups.sort(function (left, right) { return right.count - left.count; });\n        return groups;\n    }\n\n    function topGroups(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var limit = Math.min(groups.length, topN || 15);\n        for (var index = 0; index < limit; index++) {\n            envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n        }\n        return groups;\n    }\n\n    function duplicateClusters(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var clusterCount = 0;\n        var recordCount = 0;\n        var emitted = 0;\n        for (var index = 0; index < groups.length; index++) {\n            if (groups[index].count > 1) {\n                clusterCount++;\n                recordCount += groups[index].count;\n                if (emitted < (topN || 10)) {\n                    envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n                    emitted++;\n                }\n            }\n        }\n        return { clusters: clusterCount, records: recordCount };\n    }\n\n    function ratio(part, whole) {\n        if (part < 0 || whole <= 0) { return part < 0 ? -1 : 0; }\n        return Math.round(part * 1000 / whole) / 10;\n    }\n\n    function collect() {\n        envelope.metrics.items_total = countRecords('sc_cat_item', '');\n        envelope.metrics.items_active = countRecords('sc_cat_item', 'active=true');\n        var itemProbe = tableAvailable('sc_cat_item') ? new GlideRecord('sc_cat_item') : null;\n        var noFulfilmentQuery = 'active=true^workflowISEMPTY';\n        if (itemProbe && itemProbe.isValidField('flow_designer_flow')) {\n            noFulfilmentQuery += '^flow_designer_flowISEMPTY';\n        } else {\n            envelope.notes.push('flow_designer_flow field not present on sc_cat_item; fulfilment check covers workflow only.');\n        }\n        envelope.metrics.items_active_no_fulfillment = countRecords('sc_cat_item', noFulfilmentQuery);\n        envelope.metrics.req_last_30d = countRecords('sc_request', 'sys_created_on>=javascript:gs.daysAgoStart(30)');\n        envelope.metrics.ritm_last_30d = countRecords('sc_req_item', 'sys_created_on>=javascript:gs.daysAgoStart(30)');\n        envelope.metrics.ritm_per_req_ratio = ratio(envelope.metrics.ritm_last_30d, envelope.metrics.req_last_30d);\n        envelope.metrics.ritm_open = countRecords('sc_req_item', 'active=true');\n        envelope.metrics.ritm_open_aging_30d = countRecords('sc_req_item',\n            'active=true^sys_created_on<javascript:gs.daysAgoStart(30)');\n        envelope.metrics.ritm_aging_ratio = ratio(envelope.metrics.ritm_open_aging_30d, envelope.metrics.ritm_open);\n        envelope.metrics.sctask_open_unassigned = countRecords('sc_task', 'active=true^assigned_toISEMPTY');\n        topGroups('ritm_state_breakdown', 'sc_req_item', 'state', 'active=true', 10);\n        topGroups('top_items_last_30d', 'sc_req_item', 'cat_item', 'sys_created_on>=javascript:gs.daysAgoStart(30)', 10);\n    }\n\n    try {\n        collect();\n    } catch (collectError) {\n        envelope.notes.push('Collector error: ' + collectError);\n    }\n    envelope.record_count = envelope.results.length;\n    gs.info('DIAG_ENVELOPE_BEGIN');\n    gs.info(JSON.stringify(envelope));\n    gs.info('DIAG_ENVELOPE_END');\n})();\n",
+   "envelope": true,
+   "classification": "Internal"
+  },
+  {
+   "id": "ITSM-PRB-001",
+   "title": "ITSM-PRB-001_problem_health.js",
+   "file": "./toolkit-package/toolkit/client-neutral-master/ITSM-PRB-001_problem_health.js",
+   "stage": 13,
+   "kind": "extract",
+   "safety": "Read-only",
+   "sourceUrl": "",
+   "repositoryUrl": "",
+   "module": "ITSM",
+   "description": "Measures problem volumes, assignment, known errors and long-running open problems.",
+   "why": "Measures problem volumes, assignment, known errors and long-running open problems.",
+   "runContext": "System Definition > Scripts - Background · scope Global",
+   "expectedOutput": "One DIAG envelope (JSON) between DIAG_ENVELOPE_BEGIN/END markers in the output",
+   "parser": "DIAG envelope (auto-analysed by the rule engine)",
+   "mapsTo": [
+    "ITSM",
+    "Findings",
+    "Evidence Explorer",
+    "Assessment",
+    "Main report"
+   ],
+   "sourceState": "Client-neutral master repository item",
+   "licensing": "Uses only base-platform tables where the relevant product is installed; a missing product table is reported as Not Applicable, never an error. Appropriate admin/script execution access required.",
+   "requiresConfiguration": false,
+   "configurationStatus": "READY_FOR_REVIEW",
+   "sourceLineageTitle": "Workbench 2 module pack",
+   "functionalPrefix": "ITSM-PRB",
+   "sourceText": "/*\nITSM-PRB-001 - Problem health (READ ONLY)\n================================================================================\nModule   : ITSM  ·  Category: Problem\nPurpose  : Measures problem volumes, assignment, known errors and long-running open problems.\n\nSafety   : Read-only. Aggregate counts, ratios and configuration metadata only.\n           No consumer record content is read or exported. Every table access\n           is guarded - a missing table becomes a note and the affected\n           metrics report -1 (treated as Not Applicable by the Workbench).\nRun from : System Definition > Scripts - Background · scope Global\nOutput   : One JSON envelope between DIAG_ENVELOPE_BEGIN / DIAG_ENVELOPE_END.\n           Paste the complete output into the Workbench via Load Result.\n*/\n(function () {\n    var envelope = {\n        collector: 'ITSM_PRB_001',\n        version: '1.0',\n        instance: gs.getProperty('instance_name'),\n        captured_at: new GlideDateTime().getValue(),\n        module: 'ITSM',\n        category: 'Problem',\n        schema_version: '1.0',\n        read_only: true,\n        classification: 'Internal',\n        contains_pii: false,\n        record_count: 0,\n        metrics: {},\n        results: [],\n        entities: [],\n        relationships: [],\n        notes: []\n    };\n\n    function tableAvailable(tableName) {\n        try { return new GlideRecord(tableName).isValid(); } catch (availabilityError) { return false; }\n    }\n\n    function countRecords(tableName, encodedQuery) {\n        if (!tableAvailable(tableName)) {\n            envelope.notes.push(tableName + ' is not available on this instance.');\n            return -1;\n        }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.query();\n        return aggregateQuery.next() ? parseInt(aggregateQuery.getAggregate('COUNT'), 10) : 0;\n    }\n\n    // Groups are capped and sorted in JS - no orderByAggregate / addHaving,\n    // which vary across releases.\n    function groupCounts(tableName, fieldName, encodedQuery, cap) {\n        var groups = [];\n        if (!tableAvailable(tableName)) { return groups; }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.groupBy(fieldName);\n        aggregateQuery.query();\n        var iterations = 0;\n        var hardCap = cap || 400;\n        while (aggregateQuery.next()) {\n            iterations++;\n            if (iterations > hardCap) {\n                envelope.notes.push(tableName + '.' + fieldName + ' grouping capped at ' + hardCap + ' groups.');\n                break;\n            }\n            groups.push({\n                value: String(aggregateQuery.getDisplayValue(fieldName) || '(empty)').substring(0, 80),\n                count: parseInt(aggregateQuery.getAggregate('COUNT'), 10)\n            });\n        }\n        groups.sort(function (left, right) { return right.count - left.count; });\n        return groups;\n    }\n\n    function topGroups(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var limit = Math.min(groups.length, topN || 15);\n        for (var index = 0; index < limit; index++) {\n            envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n        }\n        return groups;\n    }\n\n    function duplicateClusters(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var clusterCount = 0;\n        var recordCount = 0;\n        var emitted = 0;\n        for (var index = 0; index < groups.length; index++) {\n            if (groups[index].count > 1) {\n                clusterCount++;\n                recordCount += groups[index].count;\n                if (emitted < (topN || 10)) {\n                    envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n                    emitted++;\n                }\n            }\n        }\n        return { clusters: clusterCount, records: recordCount };\n    }\n\n    function ratio(part, whole) {\n        if (part < 0 || whole <= 0) { return part < 0 ? -1 : 0; }\n        return Math.round(part * 1000 / whole) / 10;\n    }\n\n    function collect() {\n        var problemTotal = countRecords('problem', '');\n        var problemOpen = countRecords('problem', 'active=true');\n        envelope.metrics.total = problemTotal;\n        envelope.metrics.open = problemOpen;\n        envelope.metrics.open_unassigned = countRecords('problem', 'active=true^assigned_toISEMPTY');\n        envelope.metrics.open_unassigned_ratio = ratio(envelope.metrics.open_unassigned, problemOpen);\n        envelope.metrics.known_errors = countRecords('problem', 'active=true^known_error=true');\n        envelope.metrics.open_aging_90d = countRecords('problem', 'active=true^sys_created_on<javascript:gs.daysAgoStart(90)');\n        envelope.metrics.open_aging_ratio = ratio(envelope.metrics.open_aging_90d, problemOpen);\n        topGroups('state_breakdown', 'problem', 'state', 'active=true', 10);\n    }\n\n    try {\n        collect();\n    } catch (collectError) {\n        envelope.notes.push('Collector error: ' + collectError);\n    }\n    envelope.record_count = envelope.results.length;\n    gs.info('DIAG_ENVELOPE_BEGIN');\n    gs.info(JSON.stringify(envelope));\n    gs.info('DIAG_ENVELOPE_END');\n})();\n",
+   "envelope": true,
+   "classification": "Internal"
+  },
+  {
+   "id": "CMDB-INV-001",
+   "title": "CMDB-INV-001_ci_class_inventory.js",
+   "file": "./toolkit-package/toolkit/client-neutral-master/CMDB-INV-001_ci_class_inventory.js",
+   "stage": 13,
+   "kind": "extract",
+   "safety": "Read-only",
+   "sourceUrl": "",
+   "repositoryUrl": "",
+   "module": "CMDB & CSDM",
+   "description": "Baselines the CI population by class, operational status and base-class misuse - the denominator every other CMDB diagnostic needs.",
+   "why": "Baselines the CI population by class, operational status and base-class misuse - the denominator every other CMDB diagnostic needs.",
+   "runContext": "System Definition > Scripts - Background · scope Global",
+   "expectedOutput": "One DIAG envelope (JSON) between DIAG_ENVELOPE_BEGIN/END markers in the output",
+   "parser": "DIAG envelope (auto-analysed by the rule engine)",
+   "mapsTo": [
+    "CMDB & CSDM",
+    "Findings",
+    "Evidence Explorer",
+    "Assessment",
+    "Main report"
+   ],
+   "sourceState": "Client-neutral master repository item",
+   "licensing": "Uses only base-platform tables where the relevant product is installed; a missing product table is reported as Not Applicable, never an error. Appropriate admin/script execution access required.",
+   "requiresConfiguration": false,
+   "configurationStatus": "READY_FOR_REVIEW",
+   "sourceLineageTitle": "Workbench 2 module pack",
+   "functionalPrefix": "CMDB-INV",
+   "sourceText": "/*\nCMDB-INV-001 - CI class inventory (READ ONLY)\n================================================================================\nModule   : CMDB & CSDM  ·  Category: Inventory\nPurpose  : Baselines the CI population by class, operational status and base-class misuse - the denominator every other CMDB diagnostic needs.\n\nSafety   : Read-only. Aggregate counts, ratios and configuration metadata only.\n           No consumer record content is read or exported. Every table access\n           is guarded - a missing table becomes a note and the affected\n           metrics report -1 (treated as Not Applicable by the Workbench).\nRun from : System Definition > Scripts - Background · scope Global\nOutput   : One JSON envelope between DIAG_ENVELOPE_BEGIN / DIAG_ENVELOPE_END.\n           Paste the complete output into the Workbench via Load Result.\n*/\n(function () {\n    var envelope = {\n        collector: 'CMDB_INV_001',\n        version: '1.0',\n        instance: gs.getProperty('instance_name'),\n        captured_at: new GlideDateTime().getValue(),\n        module: 'CMDB & CSDM',\n        category: 'Inventory',\n        schema_version: '1.0',\n        read_only: true,\n        classification: 'Internal',\n        contains_pii: false,\n        record_count: 0,\n        metrics: {},\n        results: [],\n        entities: [],\n        relationships: [],\n        notes: []\n    };\n\n    function tableAvailable(tableName) {\n        try { return new GlideRecord(tableName).isValid(); } catch (availabilityError) { return false; }\n    }\n\n    function countRecords(tableName, encodedQuery) {\n        if (!tableAvailable(tableName)) {\n            envelope.notes.push(tableName + ' is not available on this instance.');\n            return -1;\n        }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.query();\n        return aggregateQuery.next() ? parseInt(aggregateQuery.getAggregate('COUNT'), 10) : 0;\n    }\n\n    // Groups are capped and sorted in JS - no orderByAggregate / addHaving,\n    // which vary across releases.\n    function groupCounts(tableName, fieldName, encodedQuery, cap) {\n        var groups = [];\n        if (!tableAvailable(tableName)) { return groups; }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.groupBy(fieldName);\n        aggregateQuery.query();\n        var iterations = 0;\n        var hardCap = cap || 400;\n        while (aggregateQuery.next()) {\n            iterations++;\n            if (iterations > hardCap) {\n                envelope.notes.push(tableName + '.' + fieldName + ' grouping capped at ' + hardCap + ' groups.');\n                break;\n            }\n            groups.push({\n                value: String(aggregateQuery.getDisplayValue(fieldName) || '(empty)').substring(0, 80),\n                count: parseInt(aggregateQuery.getAggregate('COUNT'), 10)\n            });\n        }\n        groups.sort(function (left, right) { return right.count - left.count; });\n        return groups;\n    }\n\n    function topGroups(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var limit = Math.min(groups.length, topN || 15);\n        for (var index = 0; index < limit; index++) {\n            envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n        }\n        return groups;\n    }\n\n    function duplicateClusters(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var clusterCount = 0;\n        var recordCount = 0;\n        var emitted = 0;\n        for (var index = 0; index < groups.length; index++) {\n            if (groups[index].count > 1) {\n                clusterCount++;\n                recordCount += groups[index].count;\n                if (emitted < (topN || 10)) {\n                    envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n                    emitted++;\n                }\n            }\n        }\n        return { clusters: clusterCount, records: recordCount };\n    }\n\n    function ratio(part, whole) {\n        if (part < 0 || whole <= 0) { return part < 0 ? -1 : 0; }\n        return Math.round(part * 1000 / whole) / 10;\n    }\n\n    function collect() {\n        var ciTotal = countRecords('cmdb_ci', '');\n        envelope.metrics.total = ciTotal;\n        envelope.metrics.operational = countRecords('cmdb_ci', 'operational_status=1');\n        envelope.metrics.name_empty = countRecords('cmdb_ci', 'nameISEMPTY');\n        envelope.metrics.base_class_records = countRecords('cmdb_ci', 'sys_class_name=cmdb_ci');\n        envelope.metrics.base_class_ratio = ratio(envelope.metrics.base_class_records, ciTotal);\n        topGroups('class_breakdown', 'cmdb_ci', 'sys_class_name', '', 30);\n        topGroups('install_status_breakdown', 'cmdb_ci', 'install_status', '', 10);\n    }\n\n    try {\n        collect();\n    } catch (collectError) {\n        envelope.notes.push('Collector error: ' + collectError);\n    }\n    envelope.record_count = envelope.results.length;\n    gs.info('DIAG_ENVELOPE_BEGIN');\n    gs.info(JSON.stringify(envelope));\n    gs.info('DIAG_ENVELOPE_END');\n})();\n",
+   "envelope": true,
+   "classification": "Internal"
+  },
+  {
+   "id": "CMDB-DUP-001",
+   "title": "CMDB-DUP-001_duplicate_ci_analysis.js",
+   "file": "./toolkit-package/toolkit/client-neutral-master/CMDB-DUP-001_duplicate_ci_analysis.js",
+   "stage": 13,
+   "kind": "extract",
+   "safety": "Read-only",
+   "sourceUrl": "",
+   "repositoryUrl": "",
+   "module": "CMDB & CSDM",
+   "description": "Quantifies duplicate server names and duplicate hardware serial numbers - the standard signature of identification-rule and multi-source problems.",
+   "why": "Quantifies duplicate server names and duplicate hardware serial numbers - the standard signature of identification-rule and multi-source problems.",
+   "runContext": "System Definition > Scripts - Background · scope Global",
+   "expectedOutput": "One DIAG envelope (JSON) between DIAG_ENVELOPE_BEGIN/END markers in the output",
+   "parser": "DIAG envelope (auto-analysed by the rule engine)",
+   "mapsTo": [
+    "CMDB & CSDM",
+    "Findings",
+    "Evidence Explorer",
+    "Assessment",
+    "Main report"
+   ],
+   "sourceState": "Client-neutral master repository item",
+   "licensing": "Uses only base-platform tables where the relevant product is installed; a missing product table is reported as Not Applicable, never an error. Appropriate admin/script execution access required.",
+   "requiresConfiguration": false,
+   "configurationStatus": "READY_FOR_REVIEW",
+   "sourceLineageTitle": "Workbench 2 module pack",
+   "functionalPrefix": "CMDB-DUP",
+   "sourceText": "/*\nCMDB-DUP-001 - Duplicate CI analysis (READ ONLY)\n================================================================================\nModule   : CMDB & CSDM  ·  Category: Data Quality\nPurpose  : Quantifies duplicate server names and duplicate hardware serial numbers - the standard signature of identification-rule and multi-source problems.\n\nSafety   : Read-only. Aggregate counts, ratios and configuration metadata only.\n           No consumer record content is read or exported. Every table access\n           is guarded - a missing table becomes a note and the affected\n           metrics report -1 (treated as Not Applicable by the Workbench).\nRun from : System Definition > Scripts - Background · scope Global\nOutput   : One JSON envelope between DIAG_ENVELOPE_BEGIN / DIAG_ENVELOPE_END.\n           Paste the complete output into the Workbench via Load Result.\n*/\n(function () {\n    var envelope = {\n        collector: 'CMDB_DUP_001',\n        version: '1.0',\n        instance: gs.getProperty('instance_name'),\n        captured_at: new GlideDateTime().getValue(),\n        module: 'CMDB & CSDM',\n        category: 'Data Quality',\n        schema_version: '1.0',\n        read_only: true,\n        classification: 'Internal',\n        contains_pii: false,\n        record_count: 0,\n        metrics: {},\n        results: [],\n        entities: [],\n        relationships: [],\n        notes: []\n    };\n\n    function tableAvailable(tableName) {\n        try { return new GlideRecord(tableName).isValid(); } catch (availabilityError) { return false; }\n    }\n\n    function countRecords(tableName, encodedQuery) {\n        if (!tableAvailable(tableName)) {\n            envelope.notes.push(tableName + ' is not available on this instance.');\n            return -1;\n        }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.query();\n        return aggregateQuery.next() ? parseInt(aggregateQuery.getAggregate('COUNT'), 10) : 0;\n    }\n\n    // Groups are capped and sorted in JS - no orderByAggregate / addHaving,\n    // which vary across releases.\n    function groupCounts(tableName, fieldName, encodedQuery, cap) {\n        var groups = [];\n        if (!tableAvailable(tableName)) { return groups; }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.groupBy(fieldName);\n        aggregateQuery.query();\n        var iterations = 0;\n        var hardCap = cap || 400;\n        while (aggregateQuery.next()) {\n            iterations++;\n            if (iterations > hardCap) {\n                envelope.notes.push(tableName + '.' + fieldName + ' grouping capped at ' + hardCap + ' groups.');\n                break;\n            }\n            groups.push({\n                value: String(aggregateQuery.getDisplayValue(fieldName) || '(empty)').substring(0, 80),\n                count: parseInt(aggregateQuery.getAggregate('COUNT'), 10)\n            });\n        }\n        groups.sort(function (left, right) { return right.count - left.count; });\n        return groups;\n    }\n\n    function topGroups(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var limit = Math.min(groups.length, topN || 15);\n        for (var index = 0; index < limit; index++) {\n            envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n        }\n        return groups;\n    }\n\n    function duplicateClusters(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var clusterCount = 0;\n        var recordCount = 0;\n        var emitted = 0;\n        for (var index = 0; index < groups.length; index++) {\n            if (groups[index].count > 1) {\n                clusterCount++;\n                recordCount += groups[index].count;\n                if (emitted < (topN || 10)) {\n                    envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n                    emitted++;\n                }\n            }\n        }\n        return { clusters: clusterCount, records: recordCount };\n    }\n\n    function ratio(part, whole) {\n        if (part < 0 || whole <= 0) { return part < 0 ? -1 : 0; }\n        return Math.round(part * 1000 / whole) / 10;\n    }\n\n    function collect() {\n        var serverTotal = countRecords('cmdb_ci_server', '');\n        envelope.metrics.srv_total = serverTotal;\n        var serverDuplicates = duplicateClusters('server_name_duplicates', 'cmdb_ci_server', 'name', '', 10);\n        envelope.metrics.srv_name_dup_clusters = serverDuplicates.clusters;\n        envelope.metrics.srv_name_dup_records = serverDuplicates.records;\n        envelope.metrics.srv_name_dup_ratio = ratio(serverDuplicates.records, serverTotal);\n        var hardwareTotal = countRecords('cmdb_ci_hardware', 'serial_numberISNOTEMPTY');\n        envelope.metrics.hw_serial_populated = hardwareTotal;\n        var serialDuplicates = duplicateClusters('hardware_serial_duplicates', 'cmdb_ci_hardware',\n            'serial_number', 'serial_numberISNOTEMPTY', 10);\n        envelope.metrics.hw_serial_dup_clusters = serialDuplicates.clusters;\n        envelope.metrics.hw_serial_dup_records = serialDuplicates.records;\n        envelope.metrics.hw_serial_dup_ratio = ratio(serialDuplicates.records, hardwareTotal);\n    }\n\n    try {\n        collect();\n    } catch (collectError) {\n        envelope.notes.push('Collector error: ' + collectError);\n    }\n    envelope.record_count = envelope.results.length;\n    gs.info('DIAG_ENVELOPE_BEGIN');\n    gs.info(JSON.stringify(envelope));\n    gs.info('DIAG_ENVELOPE_END');\n})();\n",
+   "envelope": true,
+   "classification": "Internal"
+  },
+  {
+   "id": "CMDB-REL-001",
+   "title": "CMDB-REL-001_relationship_health.js",
+   "file": "./toolkit-package/toolkit/client-neutral-master/CMDB-REL-001_relationship_health.js",
+   "stage": 13,
+   "kind": "extract",
+   "safety": "Read-only",
+   "sourceUrl": "",
+   "repositoryUrl": "",
+   "module": "CMDB & CSDM",
+   "description": "Measures orphaned, self-referencing and duplicated CI relationships.",
+   "why": "Measures orphaned, self-referencing and duplicated CI relationships.",
+   "runContext": "System Definition > Scripts - Background · scope Global",
+   "expectedOutput": "One DIAG envelope (JSON) between DIAG_ENVELOPE_BEGIN/END markers in the output",
+   "parser": "DIAG envelope (auto-analysed by the rule engine)",
+   "mapsTo": [
+    "CMDB & CSDM",
+    "Findings",
+    "Evidence Explorer",
+    "Assessment",
+    "Main report"
+   ],
+   "sourceState": "Client-neutral master repository item",
+   "licensing": "Uses only base-platform tables where the relevant product is installed; a missing product table is reported as Not Applicable, never an error. Appropriate admin/script execution access required.",
+   "requiresConfiguration": false,
+   "configurationStatus": "READY_FOR_REVIEW",
+   "sourceLineageTitle": "Workbench 2 module pack",
+   "functionalPrefix": "CMDB-REL",
+   "sourceText": "/*\nCMDB-REL-001 - Relationship health (READ ONLY)\n================================================================================\nModule   : CMDB & CSDM  ·  Category: Relationships\nPurpose  : Measures orphaned, self-referencing and duplicated CI relationships.\n\nSafety   : Read-only. Aggregate counts, ratios and configuration metadata only.\n           No consumer record content is read or exported. Every table access\n           is guarded - a missing table becomes a note and the affected\n           metrics report -1 (treated as Not Applicable by the Workbench).\nRun from : System Definition > Scripts - Background · scope Global\nOutput   : One JSON envelope between DIAG_ENVELOPE_BEGIN / DIAG_ENVELOPE_END.\n           Paste the complete output into the Workbench via Load Result.\n*/\n(function () {\n    var envelope = {\n        collector: 'CMDB_REL_001',\n        version: '1.0',\n        instance: gs.getProperty('instance_name'),\n        captured_at: new GlideDateTime().getValue(),\n        module: 'CMDB & CSDM',\n        category: 'Relationships',\n        schema_version: '1.0',\n        read_only: true,\n        classification: 'Internal',\n        contains_pii: false,\n        record_count: 0,\n        metrics: {},\n        results: [],\n        entities: [],\n        relationships: [],\n        notes: []\n    };\n\n    function tableAvailable(tableName) {\n        try { return new GlideRecord(tableName).isValid(); } catch (availabilityError) { return false; }\n    }\n\n    function countRecords(tableName, encodedQuery) {\n        if (!tableAvailable(tableName)) {\n            envelope.notes.push(tableName + ' is not available on this instance.');\n            return -1;\n        }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.query();\n        return aggregateQuery.next() ? parseInt(aggregateQuery.getAggregate('COUNT'), 10) : 0;\n    }\n\n    // Groups are capped and sorted in JS - no orderByAggregate / addHaving,\n    // which vary across releases.\n    function groupCounts(tableName, fieldName, encodedQuery, cap) {\n        var groups = [];\n        if (!tableAvailable(tableName)) { return groups; }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.groupBy(fieldName);\n        aggregateQuery.query();\n        var iterations = 0;\n        var hardCap = cap || 400;\n        while (aggregateQuery.next()) {\n            iterations++;\n            if (iterations > hardCap) {\n                envelope.notes.push(tableName + '.' + fieldName + ' grouping capped at ' + hardCap + ' groups.');\n                break;\n            }\n            groups.push({\n                value: String(aggregateQuery.getDisplayValue(fieldName) || '(empty)').substring(0, 80),\n                count: parseInt(aggregateQuery.getAggregate('COUNT'), 10)\n            });\n        }\n        groups.sort(function (left, right) { return right.count - left.count; });\n        return groups;\n    }\n\n    function topGroups(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var limit = Math.min(groups.length, topN || 15);\n        for (var index = 0; index < limit; index++) {\n            envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n        }\n        return groups;\n    }\n\n    function duplicateClusters(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var clusterCount = 0;\n        var recordCount = 0;\n        var emitted = 0;\n        for (var index = 0; index < groups.length; index++) {\n            if (groups[index].count > 1) {\n                clusterCount++;\n                recordCount += groups[index].count;\n                if (emitted < (topN || 10)) {\n                    envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n                    emitted++;\n                }\n            }\n        }\n        return { clusters: clusterCount, records: recordCount };\n    }\n\n    function ratio(part, whole) {\n        if (part < 0 || whole <= 0) { return part < 0 ? -1 : 0; }\n        return Math.round(part * 1000 / whole) / 10;\n    }\n\n    function collect() {\n        var relationshipTotal = countRecords('cmdb_rel_ci', '');\n        envelope.metrics.rel_total = relationshipTotal;\n        envelope.metrics.rel_orphan_parent = countRecords('cmdb_rel_ci', 'parentISEMPTY');\n        envelope.metrics.rel_orphan_child = countRecords('cmdb_rel_ci', 'childISEMPTY');\n        envelope.metrics.rel_orphans = (envelope.metrics.rel_orphan_parent < 0 ? 0 : envelope.metrics.rel_orphan_parent)\n            + (envelope.metrics.rel_orphan_child < 0 ? 0 : envelope.metrics.rel_orphan_child);\n        topGroups('relationship_type_breakdown', 'cmdb_rel_ci', 'type', '', 15);\n    }\n\n    try {\n        collect();\n    } catch (collectError) {\n        envelope.notes.push('Collector error: ' + collectError);\n    }\n    envelope.record_count = envelope.results.length;\n    gs.info('DIAG_ENVELOPE_BEGIN');\n    gs.info(JSON.stringify(envelope));\n    gs.info('DIAG_ENVELOPE_END');\n})();\n",
+   "envelope": true,
+   "classification": "Internal"
+  },
+  {
+   "id": "CMDB-IRE-001",
+   "title": "CMDB-IRE-001_identification_and_reconciliation_health.js",
+   "file": "./toolkit-package/toolkit/client-neutral-master/CMDB-IRE-001_identification_and_reconciliation_health.js",
+   "stage": 13,
+   "kind": "extract",
+   "safety": "Read-only",
+   "sourceUrl": "",
+   "repositoryUrl": "",
+   "module": "CMDB & CSDM",
+   "description": "Extracts the identification-rule and reconciliation configuration position plus open de-duplication tasks.",
+   "why": "Extracts the identification-rule and reconciliation configuration position plus open de-duplication tasks.",
+   "runContext": "System Definition > Scripts - Background · scope Global",
+   "expectedOutput": "One DIAG envelope (JSON) between DIAG_ENVELOPE_BEGIN/END markers in the output",
+   "parser": "DIAG envelope (auto-analysed by the rule engine)",
+   "mapsTo": [
+    "CMDB & CSDM",
+    "Findings",
+    "Evidence Explorer",
+    "Assessment",
+    "Main report"
+   ],
+   "sourceState": "Client-neutral master repository item",
+   "licensing": "Uses only base-platform tables where the relevant product is installed; a missing product table is reported as Not Applicable, never an error. Appropriate admin/script execution access required.",
+   "requiresConfiguration": false,
+   "configurationStatus": "READY_FOR_REVIEW",
+   "sourceLineageTitle": "Workbench 2 module pack",
+   "functionalPrefix": "CMDB-IRE",
+   "sourceText": "/*\nCMDB-IRE-001 - Identification and reconciliation health (READ ONLY)\n================================================================================\nModule   : CMDB & CSDM  ·  Category: IRE\nPurpose  : Extracts the identification-rule and reconciliation configuration position plus open de-duplication tasks.\n\nSafety   : Read-only. Aggregate counts, ratios and configuration metadata only.\n           No consumer record content is read or exported. Every table access\n           is guarded - a missing table becomes a note and the affected\n           metrics report -1 (treated as Not Applicable by the Workbench).\nRun from : System Definition > Scripts - Background · scope Global\nOutput   : One JSON envelope between DIAG_ENVELOPE_BEGIN / DIAG_ENVELOPE_END.\n           Paste the complete output into the Workbench via Load Result.\n*/\n(function () {\n    var envelope = {\n        collector: 'CMDB_IRE_001',\n        version: '1.0',\n        instance: gs.getProperty('instance_name'),\n        captured_at: new GlideDateTime().getValue(),\n        module: 'CMDB & CSDM',\n        category: 'IRE',\n        schema_version: '1.0',\n        read_only: true,\n        classification: 'Internal',\n        contains_pii: false,\n        record_count: 0,\n        metrics: {},\n        results: [],\n        entities: [],\n        relationships: [],\n        notes: []\n    };\n\n    function tableAvailable(tableName) {\n        try { return new GlideRecord(tableName).isValid(); } catch (availabilityError) { return false; }\n    }\n\n    function countRecords(tableName, encodedQuery) {\n        if (!tableAvailable(tableName)) {\n            envelope.notes.push(tableName + ' is not available on this instance.');\n            return -1;\n        }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.query();\n        return aggregateQuery.next() ? parseInt(aggregateQuery.getAggregate('COUNT'), 10) : 0;\n    }\n\n    // Groups are capped and sorted in JS - no orderByAggregate / addHaving,\n    // which vary across releases.\n    function groupCounts(tableName, fieldName, encodedQuery, cap) {\n        var groups = [];\n        if (!tableAvailable(tableName)) { return groups; }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.groupBy(fieldName);\n        aggregateQuery.query();\n        var iterations = 0;\n        var hardCap = cap || 400;\n        while (aggregateQuery.next()) {\n            iterations++;\n            if (iterations > hardCap) {\n                envelope.notes.push(tableName + '.' + fieldName + ' grouping capped at ' + hardCap + ' groups.');\n                break;\n            }\n            groups.push({\n                value: String(aggregateQuery.getDisplayValue(fieldName) || '(empty)').substring(0, 80),\n                count: parseInt(aggregateQuery.getAggregate('COUNT'), 10)\n            });\n        }\n        groups.sort(function (left, right) { return right.count - left.count; });\n        return groups;\n    }\n\n    function topGroups(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var limit = Math.min(groups.length, topN || 15);\n        for (var index = 0; index < limit; index++) {\n            envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n        }\n        return groups;\n    }\n\n    function duplicateClusters(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var clusterCount = 0;\n        var recordCount = 0;\n        var emitted = 0;\n        for (var index = 0; index < groups.length; index++) {\n            if (groups[index].count > 1) {\n                clusterCount++;\n                recordCount += groups[index].count;\n                if (emitted < (topN || 10)) {\n                    envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n                    emitted++;\n                }\n            }\n        }\n        return { clusters: clusterCount, records: recordCount };\n    }\n\n    function ratio(part, whole) {\n        if (part < 0 || whole <= 0) { return part < 0 ? -1 : 0; }\n        return Math.round(part * 1000 / whole) / 10;\n    }\n\n    function collect() {\n        envelope.metrics.identifiers_total = countRecords('cmdb_identifier', '');\n        envelope.metrics.identifiers_active = countRecords('cmdb_identifier', 'active=true');\n        envelope.metrics.reconciliation_definitions = countRecords('cmdb_reconciliation_definition', '');\n        envelope.metrics.dedup_tasks_open = countRecords('reconcile_duplicate_task', 'stateNOT IN3,4,7');\n        if (envelope.metrics.dedup_tasks_open < 0) {\n            envelope.metrics.dedup_tasks_open = countRecords('cmdb_duplicate_candidate', '');\n        }\n        topGroups('identifier_breakdown', 'cmdb_identifier', 'applies_to', 'active=true', 15);\n    }\n\n    try {\n        collect();\n    } catch (collectError) {\n        envelope.notes.push('Collector error: ' + collectError);\n    }\n    envelope.record_count = envelope.results.length;\n    gs.info('DIAG_ENVELOPE_BEGIN');\n    gs.info(JSON.stringify(envelope));\n    gs.info('DIAG_ENVELOPE_END');\n})();\n",
+   "envelope": true,
+   "classification": "Internal"
+  },
+  {
+   "id": "CMDB-STL-001",
+   "title": "CMDB-STL-001_stale_ci_and_lifecycle_health.js",
+   "file": "./toolkit-package/toolkit/client-neutral-master/CMDB-STL-001_stale_ci_and_lifecycle_health.js",
+   "stage": 13,
+   "kind": "extract",
+   "safety": "Read-only",
+   "sourceUrl": "",
+   "repositoryUrl": "",
+   "module": "CMDB & CSDM",
+   "description": "Measures discovery freshness, ownership and lifecycle consistency on server CIs.",
+   "why": "Measures discovery freshness, ownership and lifecycle consistency on server CIs.",
+   "runContext": "System Definition > Scripts - Background · scope Global",
+   "expectedOutput": "One DIAG envelope (JSON) between DIAG_ENVELOPE_BEGIN/END markers in the output",
+   "parser": "DIAG envelope (auto-analysed by the rule engine)",
+   "mapsTo": [
+    "CMDB & CSDM",
+    "Findings",
+    "Evidence Explorer",
+    "Assessment",
+    "Main report"
+   ],
+   "sourceState": "Client-neutral master repository item",
+   "licensing": "Uses only base-platform tables where the relevant product is installed; a missing product table is reported as Not Applicable, never an error. Appropriate admin/script execution access required.",
+   "requiresConfiguration": false,
+   "configurationStatus": "READY_FOR_REVIEW",
+   "sourceLineageTitle": "Workbench 2 module pack",
+   "functionalPrefix": "CMDB-STL",
+   "sourceText": "/*\nCMDB-STL-001 - Stale CI and lifecycle health (READ ONLY)\n================================================================================\nModule   : CMDB & CSDM  ·  Category: Lifecycle\nPurpose  : Measures discovery freshness, ownership and lifecycle consistency on server CIs.\n\nSafety   : Read-only. Aggregate counts, ratios and configuration metadata only.\n           No consumer record content is read or exported. Every table access\n           is guarded - a missing table becomes a note and the affected\n           metrics report -1 (treated as Not Applicable by the Workbench).\nRun from : System Definition > Scripts - Background · scope Global\nOutput   : One JSON envelope between DIAG_ENVELOPE_BEGIN / DIAG_ENVELOPE_END.\n           Paste the complete output into the Workbench via Load Result.\n*/\n(function () {\n    var envelope = {\n        collector: 'CMDB_STL_001',\n        version: '1.0',\n        instance: gs.getProperty('instance_name'),\n        captured_at: new GlideDateTime().getValue(),\n        module: 'CMDB & CSDM',\n        category: 'Lifecycle',\n        schema_version: '1.0',\n        read_only: true,\n        classification: 'Internal',\n        contains_pii: false,\n        record_count: 0,\n        metrics: {},\n        results: [],\n        entities: [],\n        relationships: [],\n        notes: []\n    };\n\n    function tableAvailable(tableName) {\n        try { return new GlideRecord(tableName).isValid(); } catch (availabilityError) { return false; }\n    }\n\n    function countRecords(tableName, encodedQuery) {\n        if (!tableAvailable(tableName)) {\n            envelope.notes.push(tableName + ' is not available on this instance.');\n            return -1;\n        }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.query();\n        return aggregateQuery.next() ? parseInt(aggregateQuery.getAggregate('COUNT'), 10) : 0;\n    }\n\n    // Groups are capped and sorted in JS - no orderByAggregate / addHaving,\n    // which vary across releases.\n    function groupCounts(tableName, fieldName, encodedQuery, cap) {\n        var groups = [];\n        if (!tableAvailable(tableName)) { return groups; }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.groupBy(fieldName);\n        aggregateQuery.query();\n        var iterations = 0;\n        var hardCap = cap || 400;\n        while (aggregateQuery.next()) {\n            iterations++;\n            if (iterations > hardCap) {\n                envelope.notes.push(tableName + '.' + fieldName + ' grouping capped at ' + hardCap + ' groups.');\n                break;\n            }\n            groups.push({\n                value: String(aggregateQuery.getDisplayValue(fieldName) || '(empty)').substring(0, 80),\n                count: parseInt(aggregateQuery.getAggregate('COUNT'), 10)\n            });\n        }\n        groups.sort(function (left, right) { return right.count - left.count; });\n        return groups;\n    }\n\n    function topGroups(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var limit = Math.min(groups.length, topN || 15);\n        for (var index = 0; index < limit; index++) {\n            envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n        }\n        return groups;\n    }\n\n    function duplicateClusters(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var clusterCount = 0;\n        var recordCount = 0;\n        var emitted = 0;\n        for (var index = 0; index < groups.length; index++) {\n            if (groups[index].count > 1) {\n                clusterCount++;\n                recordCount += groups[index].count;\n                if (emitted < (topN || 10)) {\n                    envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n                    emitted++;\n                }\n            }\n        }\n        return { clusters: clusterCount, records: recordCount };\n    }\n\n    function ratio(part, whole) {\n        if (part < 0 || whole <= 0) { return part < 0 ? -1 : 0; }\n        return Math.round(part * 1000 / whole) / 10;\n    }\n\n    function collect() {\n        var serverTotal = countRecords('cmdb_ci_server', '');\n        envelope.metrics.srv_total = serverTotal;\n        envelope.metrics.srv_stale_30d = countRecords('cmdb_ci_server',\n            'last_discovered<javascript:gs.daysAgoStart(30)^ORlast_discoveredISEMPTY');\n        envelope.metrics.srv_stale_ratio = ratio(envelope.metrics.srv_stale_30d, serverTotal);\n        envelope.metrics.srv_no_support_group = countRecords('cmdb_ci_server', 'support_groupISEMPTY');\n        envelope.metrics.srv_no_owner = countRecords('cmdb_ci_server', 'owned_byISEMPTY');\n        envelope.metrics.srv_no_owner_ratio = ratio(envelope.metrics.srv_no_owner, serverTotal);\n        envelope.metrics.retired_but_operational = countRecords('cmdb_ci_server',\n            'install_status=7^operational_status=1');\n        topGroups('operational_status_breakdown', 'cmdb_ci_server', 'operational_status', '', 8);\n    }\n\n    try {\n        collect();\n    } catch (collectError) {\n        envelope.notes.push('Collector error: ' + collectError);\n    }\n    envelope.record_count = envelope.results.length;\n    gs.info('DIAG_ENVELOPE_BEGIN');\n    gs.info(JSON.stringify(envelope));\n    gs.info('DIAG_ENVELOPE_END');\n})();\n",
+   "envelope": true,
+   "classification": "Internal"
+  },
+  {
+   "id": "CMDB-CSDM-001",
+   "title": "CMDB-CSDM-001_csdm_alignment.js",
+   "file": "./toolkit-package/toolkit/client-neutral-master/CMDB-CSDM-001_csdm_alignment.js",
+   "stage": 13,
+   "kind": "extract",
+   "safety": "Read-only",
+   "sourceUrl": "",
+   "repositoryUrl": "",
+   "module": "CMDB & CSDM",
+   "description": "Baselines the CSDM population - business applications, application services, technical services and offerings - and emits the service entities and edges for the relationship map.",
+   "why": "Baselines the CSDM population - business applications, application services, technical services and offerings - and emits the service entities and edges for the relationship map.",
+   "runContext": "System Definition > Scripts - Background · scope Global",
+   "expectedOutput": "One DIAG envelope (JSON) between DIAG_ENVELOPE_BEGIN/END markers in the output",
+   "parser": "DIAG envelope (auto-analysed by the rule engine)",
+   "mapsTo": [
+    "CMDB & CSDM",
+    "Findings",
+    "Evidence Explorer",
+    "Assessment",
+    "Main report"
+   ],
+   "sourceState": "Client-neutral master repository item",
+   "licensing": "Uses only base-platform tables where the relevant product is installed; a missing product table is reported as Not Applicable, never an error. Appropriate admin/script execution access required.",
+   "requiresConfiguration": false,
+   "configurationStatus": "READY_FOR_REVIEW",
+   "sourceLineageTitle": "Workbench 2 module pack",
+   "functionalPrefix": "CMDB-CSDM",
+   "sourceText": "/*\nCMDB-CSDM-001 - CSDM alignment (READ ONLY)\n================================================================================\nModule   : CMDB & CSDM  ·  Category: CSDM\nPurpose  : Baselines the CSDM population - business applications, application services, technical services and offerings - and emits the service entities and edges for the relationship map.\n\nSafety   : Read-only. Aggregate counts, ratios and configuration metadata only.\n           No consumer record content is read or exported. Every table access\n           is guarded - a missing table becomes a note and the affected\n           metrics report -1 (treated as Not Applicable by the Workbench).\nRun from : System Definition > Scripts - Background · scope Global\nOutput   : One JSON envelope between DIAG_ENVELOPE_BEGIN / DIAG_ENVELOPE_END.\n           Paste the complete output into the Workbench via Load Result.\n*/\n(function () {\n    var envelope = {\n        collector: 'CMDB_CSDM_001',\n        version: '1.0',\n        instance: gs.getProperty('instance_name'),\n        captured_at: new GlideDateTime().getValue(),\n        module: 'CMDB & CSDM',\n        category: 'CSDM',\n        schema_version: '1.0',\n        read_only: true,\n        classification: 'Internal',\n        contains_pii: false,\n        record_count: 0,\n        metrics: {},\n        results: [],\n        entities: [],\n        relationships: [],\n        notes: []\n    };\n\n    function tableAvailable(tableName) {\n        try { return new GlideRecord(tableName).isValid(); } catch (availabilityError) { return false; }\n    }\n\n    function countRecords(tableName, encodedQuery) {\n        if (!tableAvailable(tableName)) {\n            envelope.notes.push(tableName + ' is not available on this instance.');\n            return -1;\n        }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.query();\n        return aggregateQuery.next() ? parseInt(aggregateQuery.getAggregate('COUNT'), 10) : 0;\n    }\n\n    // Groups are capped and sorted in JS - no orderByAggregate / addHaving,\n    // which vary across releases.\n    function groupCounts(tableName, fieldName, encodedQuery, cap) {\n        var groups = [];\n        if (!tableAvailable(tableName)) { return groups; }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.groupBy(fieldName);\n        aggregateQuery.query();\n        var iterations = 0;\n        var hardCap = cap || 400;\n        while (aggregateQuery.next()) {\n            iterations++;\n            if (iterations > hardCap) {\n                envelope.notes.push(tableName + '.' + fieldName + ' grouping capped at ' + hardCap + ' groups.');\n                break;\n            }\n            groups.push({\n                value: String(aggregateQuery.getDisplayValue(fieldName) || '(empty)').substring(0, 80),\n                count: parseInt(aggregateQuery.getAggregate('COUNT'), 10)\n            });\n        }\n        groups.sort(function (left, right) { return right.count - left.count; });\n        return groups;\n    }\n\n    function topGroups(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var limit = Math.min(groups.length, topN || 15);\n        for (var index = 0; index < limit; index++) {\n            envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n        }\n        return groups;\n    }\n\n    function duplicateClusters(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var clusterCount = 0;\n        var recordCount = 0;\n        var emitted = 0;\n        for (var index = 0; index < groups.length; index++) {\n            if (groups[index].count > 1) {\n                clusterCount++;\n                recordCount += groups[index].count;\n                if (emitted < (topN || 10)) {\n                    envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n                    emitted++;\n                }\n            }\n        }\n        return { clusters: clusterCount, records: recordCount };\n    }\n\n    function ratio(part, whole) {\n        if (part < 0 || whole <= 0) { return part < 0 ? -1 : 0; }\n        return Math.round(part * 1000 / whole) / 10;\n    }\n\n    function collect() {\n        envelope.metrics.business_apps = countRecords('cmdb_ci_business_app', '');\n        var appServiceCount = countRecords('cmdb_ci_service_auto', '');\n        if (appServiceCount < 0) { appServiceCount = countRecords('cmdb_ci_service_discovered', ''); }\n        envelope.metrics.app_services = appServiceCount;\n        envelope.metrics.tech_services = countRecords('cmdb_ci_service', '');\n        envelope.metrics.service_offerings = countRecords('service_offering', '');\n        if (tableAvailable('cmdb_ci_business_app')) {\n            var businessAppRecord = new GlideRecord('cmdb_ci_business_app');\n            businessAppRecord.orderByDesc('sys_updated_on');\n            businessAppRecord.setLimit(20);\n            businessAppRecord.query();\n            while (businessAppRecord.next()) {\n                envelope.entities.push({ type: 'Business Application',\n                    name: String(businessAppRecord.getValue('name') || '').substring(0, 80),\n                    key: String(businessAppRecord.getUniqueValue()) });\n            }\n        }\n        if (tableAvailable('cmdb_rel_ci')) {\n            var relationshipRecord = new GlideRecord('cmdb_rel_ci');\n            relationshipRecord.addEncodedQuery('parent.sys_class_name=cmdb_ci_business_app');\n            relationshipRecord.setLimit(25);\n            relationshipRecord.query();\n            while (relationshipRecord.next()) {\n                envelope.relationships.push({\n                    parent: String(relationshipRecord.parent.getDisplayValue()).substring(0, 80),\n                    parent_type: 'Business Application',\n                    child: String(relationshipRecord.child.getDisplayValue()).substring(0, 80),\n                    child_type: String(relationshipRecord.child.sys_class_name.getDisplayValue()).substring(0, 60),\n                    rel_type: String(relationshipRecord.type.getDisplayValue()).substring(0, 60)\n                });\n            }\n        }\n    }\n\n    try {\n        collect();\n    } catch (collectError) {\n        envelope.notes.push('Collector error: ' + collectError);\n    }\n    envelope.record_count = envelope.results.length;\n    gs.info('DIAG_ENVELOPE_BEGIN');\n    gs.info(JSON.stringify(envelope));\n    gs.info('DIAG_ENVELOPE_END');\n})();\n",
+   "envelope": true,
+   "classification": "Internal"
+  },
+  {
+   "id": "ITOM-DSC-001",
+   "title": "ITOM-DSC-001_discovery_and_mid_health.js",
+   "file": "./toolkit-package/toolkit/client-neutral-master/ITOM-DSC-001_discovery_and_mid_health.js",
+   "stage": 13,
+   "kind": "extract",
+   "safety": "Read-only",
+   "sourceUrl": "",
+   "repositoryUrl": "",
+   "module": "ITOM & Discovery",
+   "description": "Checks MID Server availability, discovery schedule outcomes and ECC queue error volumes.",
+   "why": "Checks MID Server availability, discovery schedule outcomes and ECC queue error volumes.",
+   "runContext": "System Definition > Scripts - Background · scope Global",
+   "expectedOutput": "One DIAG envelope (JSON) between DIAG_ENVELOPE_BEGIN/END markers in the output",
+   "parser": "DIAG envelope (auto-analysed by the rule engine)",
+   "mapsTo": [
+    "ITOM & Discovery",
+    "Findings",
+    "Evidence Explorer",
+    "Assessment",
+    "Main report"
+   ],
+   "sourceState": "Client-neutral master repository item",
+   "licensing": "Uses only base-platform tables where the relevant product is installed; a missing product table is reported as Not Applicable, never an error. Appropriate admin/script execution access required.",
+   "requiresConfiguration": false,
+   "configurationStatus": "READY_FOR_REVIEW",
+   "sourceLineageTitle": "Workbench 2 module pack",
+   "functionalPrefix": "ITOM-DSC",
+   "sourceText": "/*\nITOM-DSC-001 - Discovery and MID health (READ ONLY)\n================================================================================\nModule   : ITOM & Discovery  ·  Category: Discovery\nPurpose  : Checks MID Server availability, discovery schedule outcomes and ECC queue error volumes.\n\nSafety   : Read-only. Aggregate counts, ratios and configuration metadata only.\n           No consumer record content is read or exported. Every table access\n           is guarded - a missing table becomes a note and the affected\n           metrics report -1 (treated as Not Applicable by the Workbench).\nRun from : System Definition > Scripts - Background · scope Global\nOutput   : One JSON envelope between DIAG_ENVELOPE_BEGIN / DIAG_ENVELOPE_END.\n           Paste the complete output into the Workbench via Load Result.\n*/\n(function () {\n    var envelope = {\n        collector: 'ITOM_DSC_001',\n        version: '1.0',\n        instance: gs.getProperty('instance_name'),\n        captured_at: new GlideDateTime().getValue(),\n        module: 'ITOM & Discovery',\n        category: 'Discovery',\n        schema_version: '1.0',\n        read_only: true,\n        classification: 'Internal',\n        contains_pii: false,\n        record_count: 0,\n        metrics: {},\n        results: [],\n        entities: [],\n        relationships: [],\n        notes: []\n    };\n\n    function tableAvailable(tableName) {\n        try { return new GlideRecord(tableName).isValid(); } catch (availabilityError) { return false; }\n    }\n\n    function countRecords(tableName, encodedQuery) {\n        if (!tableAvailable(tableName)) {\n            envelope.notes.push(tableName + ' is not available on this instance.');\n            return -1;\n        }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.query();\n        return aggregateQuery.next() ? parseInt(aggregateQuery.getAggregate('COUNT'), 10) : 0;\n    }\n\n    // Groups are capped and sorted in JS - no orderByAggregate / addHaving,\n    // which vary across releases.\n    function groupCounts(tableName, fieldName, encodedQuery, cap) {\n        var groups = [];\n        if (!tableAvailable(tableName)) { return groups; }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.groupBy(fieldName);\n        aggregateQuery.query();\n        var iterations = 0;\n        var hardCap = cap || 400;\n        while (aggregateQuery.next()) {\n            iterations++;\n            if (iterations > hardCap) {\n                envelope.notes.push(tableName + '.' + fieldName + ' grouping capped at ' + hardCap + ' groups.');\n                break;\n            }\n            groups.push({\n                value: String(aggregateQuery.getDisplayValue(fieldName) || '(empty)').substring(0, 80),\n                count: parseInt(aggregateQuery.getAggregate('COUNT'), 10)\n            });\n        }\n        groups.sort(function (left, right) { return right.count - left.count; });\n        return groups;\n    }\n\n    function topGroups(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var limit = Math.min(groups.length, topN || 15);\n        for (var index = 0; index < limit; index++) {\n            envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n        }\n        return groups;\n    }\n\n    function duplicateClusters(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var clusterCount = 0;\n        var recordCount = 0;\n        var emitted = 0;\n        for (var index = 0; index < groups.length; index++) {\n            if (groups[index].count > 1) {\n                clusterCount++;\n                recordCount += groups[index].count;\n                if (emitted < (topN || 10)) {\n                    envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n                    emitted++;\n                }\n            }\n        }\n        return { clusters: clusterCount, records: recordCount };\n    }\n\n    function ratio(part, whole) {\n        if (part < 0 || whole <= 0) { return part < 0 ? -1 : 0; }\n        return Math.round(part * 1000 / whole) / 10;\n    }\n\n    function collect() {\n        envelope.metrics.mid_total = countRecords('ecc_agent', '');\n        envelope.metrics.mid_up = countRecords('ecc_agent', 'status=Up');\n        envelope.metrics.mid_down = countRecords('ecc_agent', 'status!=Up');\n        if (envelope.metrics.mid_total === 0) { envelope.metrics.mid_down = 0; }\n        envelope.metrics.discovery_schedules_active = countRecords('discovery_schedule', 'active=true');\n        envelope.metrics.discovery_runs_30d = countRecords('discovery_status', 'sys_created_on>=javascript:gs.daysAgoStart(30)');\n        envelope.metrics.ecc_errors_7d = countRecords('ecc_queue', 'queue=input^state=error^sys_created_on>=javascript:gs.daysAgoStart(7)');\n        topGroups('discovery_state_breakdown', 'discovery_status', 'state', 'sys_created_on>=javascript:gs.daysAgoStart(30)', 8);\n    }\n\n    try {\n        collect();\n    } catch (collectError) {\n        envelope.notes.push('Collector error: ' + collectError);\n    }\n    envelope.record_count = envelope.results.length;\n    gs.info('DIAG_ENVELOPE_BEGIN');\n    gs.info(JSON.stringify(envelope));\n    gs.info('DIAG_ENVELOPE_END');\n})();\n",
+   "envelope": true,
+   "classification": "Internal"
+  },
+  {
+   "id": "SECOPS-VR-001",
+   "title": "SECOPS-VR-001_vulnerability_response_health.js",
+   "file": "./toolkit-package/toolkit/client-neutral-master/SECOPS-VR-001_vulnerability_response_health.js",
+   "stage": 13,
+   "kind": "extract",
+   "safety": "Read-only",
+   "sourceUrl": "",
+   "repositoryUrl": "",
+   "module": "Security Operations",
+   "description": "Measures vulnerable-item volumes, CI match rate and staleness - the CMDB dependency made visible.",
+   "why": "Measures vulnerable-item volumes, CI match rate and staleness - the CMDB dependency made visible.",
+   "runContext": "System Definition > Scripts - Background · scope Global",
+   "expectedOutput": "One DIAG envelope (JSON) between DIAG_ENVELOPE_BEGIN/END markers in the output",
+   "parser": "DIAG envelope (auto-analysed by the rule engine)",
+   "mapsTo": [
+    "Security Operations",
+    "Findings",
+    "Evidence Explorer",
+    "Assessment",
+    "Main report"
+   ],
+   "sourceState": "Client-neutral master repository item",
+   "licensing": "Uses only base-platform tables where the relevant product is installed; a missing product table is reported as Not Applicable, never an error. Appropriate admin/script execution access required.",
+   "requiresConfiguration": false,
+   "configurationStatus": "READY_FOR_REVIEW",
+   "sourceLineageTitle": "Workbench 2 module pack",
+   "functionalPrefix": "SECOPS-VR",
+   "sourceText": "/*\nSECOPS-VR-001 - Vulnerability response health (READ ONLY)\n================================================================================\nModule   : Security Operations  ·  Category: Vulnerability Response\nPurpose  : Measures vulnerable-item volumes, CI match rate and staleness - the CMDB dependency made visible.\n\nSafety   : Read-only. Aggregate counts, ratios and configuration metadata only.\n           No consumer record content is read or exported. Every table access\n           is guarded - a missing table becomes a note and the affected\n           metrics report -1 (treated as Not Applicable by the Workbench).\nRun from : System Definition > Scripts - Background · scope Global\nOutput   : One JSON envelope between DIAG_ENVELOPE_BEGIN / DIAG_ENVELOPE_END.\n           Paste the complete output into the Workbench via Load Result.\n*/\n(function () {\n    var envelope = {\n        collector: 'SECOPS_VR_001',\n        version: '1.0',\n        instance: gs.getProperty('instance_name'),\n        captured_at: new GlideDateTime().getValue(),\n        module: 'Security Operations',\n        category: 'Vulnerability Response',\n        schema_version: '1.0',\n        read_only: true,\n        classification: 'Internal',\n        contains_pii: false,\n        record_count: 0,\n        metrics: {},\n        results: [],\n        entities: [],\n        relationships: [],\n        notes: []\n    };\n\n    function tableAvailable(tableName) {\n        try { return new GlideRecord(tableName).isValid(); } catch (availabilityError) { return false; }\n    }\n\n    function countRecords(tableName, encodedQuery) {\n        if (!tableAvailable(tableName)) {\n            envelope.notes.push(tableName + ' is not available on this instance.');\n            return -1;\n        }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.query();\n        return aggregateQuery.next() ? parseInt(aggregateQuery.getAggregate('COUNT'), 10) : 0;\n    }\n\n    // Groups are capped and sorted in JS - no orderByAggregate / addHaving,\n    // which vary across releases.\n    function groupCounts(tableName, fieldName, encodedQuery, cap) {\n        var groups = [];\n        if (!tableAvailable(tableName)) { return groups; }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.groupBy(fieldName);\n        aggregateQuery.query();\n        var iterations = 0;\n        var hardCap = cap || 400;\n        while (aggregateQuery.next()) {\n            iterations++;\n            if (iterations > hardCap) {\n                envelope.notes.push(tableName + '.' + fieldName + ' grouping capped at ' + hardCap + ' groups.');\n                break;\n            }\n            groups.push({\n                value: String(aggregateQuery.getDisplayValue(fieldName) || '(empty)').substring(0, 80),\n                count: parseInt(aggregateQuery.getAggregate('COUNT'), 10)\n            });\n        }\n        groups.sort(function (left, right) { return right.count - left.count; });\n        return groups;\n    }\n\n    function topGroups(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var limit = Math.min(groups.length, topN || 15);\n        for (var index = 0; index < limit; index++) {\n            envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n        }\n        return groups;\n    }\n\n    function duplicateClusters(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var clusterCount = 0;\n        var recordCount = 0;\n        var emitted = 0;\n        for (var index = 0; index < groups.length; index++) {\n            if (groups[index].count > 1) {\n                clusterCount++;\n                recordCount += groups[index].count;\n                if (emitted < (topN || 10)) {\n                    envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n                    emitted++;\n                }\n            }\n        }\n        return { clusters: clusterCount, records: recordCount };\n    }\n\n    function ratio(part, whole) {\n        if (part < 0 || whole <= 0) { return part < 0 ? -1 : 0; }\n        return Math.round(part * 1000 / whole) / 10;\n    }\n\n    function collect() {\n        var vulnerableItemTotal = countRecords('sn_vul_vulnerable_item', '');\n        envelope.metrics.vi_total = vulnerableItemTotal;\n        envelope.metrics.vi_open = countRecords('sn_vul_vulnerable_item', 'active=true');\n        envelope.metrics.vi_unmatched = countRecords('sn_vul_vulnerable_item', 'cmdb_ciISEMPTY');\n        envelope.metrics.vi_unmatched_ratio = ratio(envelope.metrics.vi_unmatched, vulnerableItemTotal);\n        envelope.metrics.vi_stale_90d = countRecords('sn_vul_vulnerable_item',\n            'active=true^sys_updated_on<javascript:gs.daysAgoStart(90)');\n        envelope.metrics.vi_stale_ratio = ratio(envelope.metrics.vi_stale_90d, envelope.metrics.vi_open);\n        topGroups('state_breakdown', 'sn_vul_vulnerable_item', 'state', '', 10);\n    }\n\n    try {\n        collect();\n    } catch (collectError) {\n        envelope.notes.push('Collector error: ' + collectError);\n    }\n    envelope.record_count = envelope.results.length;\n    gs.info('DIAG_ENVELOPE_BEGIN');\n    gs.info(JSON.stringify(envelope));\n    gs.info('DIAG_ENVELOPE_END');\n})();\n",
+   "envelope": true,
+   "classification": "Internal"
+  },
+  {
+   "id": "SECOPS-SIR-001",
+   "title": "SECOPS-SIR-001_security_incident_health.js",
+   "file": "./toolkit-package/toolkit/client-neutral-master/SECOPS-SIR-001_security_incident_health.js",
+   "stage": 13,
+   "kind": "extract",
+   "safety": "Read-only",
+   "sourceUrl": "",
+   "repositoryUrl": "",
+   "module": "Security Operations",
+   "description": "Measures security incident volumes, assignment and ageing (aggregate only).",
+   "why": "Measures security incident volumes, assignment and ageing (aggregate only).",
+   "runContext": "System Definition > Scripts - Background · scope Global",
+   "expectedOutput": "One DIAG envelope (JSON) between DIAG_ENVELOPE_BEGIN/END markers in the output",
+   "parser": "DIAG envelope (auto-analysed by the rule engine)",
+   "mapsTo": [
+    "Security Operations",
+    "Findings",
+    "Evidence Explorer",
+    "Assessment",
+    "Main report"
+   ],
+   "sourceState": "Client-neutral master repository item",
+   "licensing": "Uses only base-platform tables where the relevant product is installed; a missing product table is reported as Not Applicable, never an error. Appropriate admin/script execution access required.",
+   "requiresConfiguration": false,
+   "configurationStatus": "READY_FOR_REVIEW",
+   "sourceLineageTitle": "Workbench 2 module pack",
+   "functionalPrefix": "SECOPS-SIR",
+   "sourceText": "/*\nSECOPS-SIR-001 - Security incident health (READ ONLY)\n================================================================================\nModule   : Security Operations  ·  Category: Security Incident Response\nPurpose  : Measures security incident volumes, assignment and ageing (aggregate only).\n\nSafety   : Read-only. Aggregate counts, ratios and configuration metadata only.\n           No consumer record content is read or exported. Every table access\n           is guarded - a missing table becomes a note and the affected\n           metrics report -1 (treated as Not Applicable by the Workbench).\nRun from : System Definition > Scripts - Background · scope Global\nOutput   : One JSON envelope between DIAG_ENVELOPE_BEGIN / DIAG_ENVELOPE_END.\n           Paste the complete output into the Workbench via Load Result.\n*/\n(function () {\n    var envelope = {\n        collector: 'SECOPS_SIR_001',\n        version: '1.0',\n        instance: gs.getProperty('instance_name'),\n        captured_at: new GlideDateTime().getValue(),\n        module: 'Security Operations',\n        category: 'Security Incident Response',\n        schema_version: '1.0',\n        read_only: true,\n        classification: 'Confidential',\n        contains_pii: false,\n        record_count: 0,\n        metrics: {},\n        results: [],\n        entities: [],\n        relationships: [],\n        notes: []\n    };\n\n    function tableAvailable(tableName) {\n        try { return new GlideRecord(tableName).isValid(); } catch (availabilityError) { return false; }\n    }\n\n    function countRecords(tableName, encodedQuery) {\n        if (!tableAvailable(tableName)) {\n            envelope.notes.push(tableName + ' is not available on this instance.');\n            return -1;\n        }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.query();\n        return aggregateQuery.next() ? parseInt(aggregateQuery.getAggregate('COUNT'), 10) : 0;\n    }\n\n    // Groups are capped and sorted in JS - no orderByAggregate / addHaving,\n    // which vary across releases.\n    function groupCounts(tableName, fieldName, encodedQuery, cap) {\n        var groups = [];\n        if (!tableAvailable(tableName)) { return groups; }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.groupBy(fieldName);\n        aggregateQuery.query();\n        var iterations = 0;\n        var hardCap = cap || 400;\n        while (aggregateQuery.next()) {\n            iterations++;\n            if (iterations > hardCap) {\n                envelope.notes.push(tableName + '.' + fieldName + ' grouping capped at ' + hardCap + ' groups.');\n                break;\n            }\n            groups.push({\n                value: String(aggregateQuery.getDisplayValue(fieldName) || '(empty)').substring(0, 80),\n                count: parseInt(aggregateQuery.getAggregate('COUNT'), 10)\n            });\n        }\n        groups.sort(function (left, right) { return right.count - left.count; });\n        return groups;\n    }\n\n    function topGroups(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var limit = Math.min(groups.length, topN || 15);\n        for (var index = 0; index < limit; index++) {\n            envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n        }\n        return groups;\n    }\n\n    function duplicateClusters(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var clusterCount = 0;\n        var recordCount = 0;\n        var emitted = 0;\n        for (var index = 0; index < groups.length; index++) {\n            if (groups[index].count > 1) {\n                clusterCount++;\n                recordCount += groups[index].count;\n                if (emitted < (topN || 10)) {\n                    envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n                    emitted++;\n                }\n            }\n        }\n        return { clusters: clusterCount, records: recordCount };\n    }\n\n    function ratio(part, whole) {\n        if (part < 0 || whole <= 0) { return part < 0 ? -1 : 0; }\n        return Math.round(part * 1000 / whole) / 10;\n    }\n\n    function collect() {\n        var securityIncidentTotal = countRecords('sn_si_incident', '');\n        envelope.metrics.total = securityIncidentTotal;\n        envelope.metrics.open = countRecords('sn_si_incident', 'active=true');\n        envelope.metrics.open_unassigned = countRecords('sn_si_incident', 'active=true^assigned_toISEMPTY');\n        envelope.metrics.open_unassigned_ratio = ratio(envelope.metrics.open_unassigned, envelope.metrics.open);\n        envelope.metrics.open_aging_30d = countRecords('sn_si_incident',\n            'active=true^sys_created_on<javascript:gs.daysAgoStart(30)');\n        topGroups('state_breakdown', 'sn_si_incident', 'state', 'active=true', 10);\n    }\n\n    try {\n        collect();\n    } catch (collectError) {\n        envelope.notes.push('Collector error: ' + collectError);\n    }\n    envelope.record_count = envelope.results.length;\n    gs.info('DIAG_ENVELOPE_BEGIN');\n    gs.info(JSON.stringify(envelope));\n    gs.info('DIAG_ENVELOPE_END');\n})();\n",
+   "envelope": true,
+   "classification": "Confidential"
+  },
+  {
+   "id": "IRM-GRC-001",
+   "title": "IRM-GRC-001_irm___grc_health.js",
+   "file": "./toolkit-package/toolkit/client-neutral-master/IRM-GRC-001_irm___grc_health.js",
+   "stage": 13,
+   "kind": "extract",
+   "safety": "Read-only",
+   "sourceUrl": "",
+   "repositoryUrl": "",
+   "module": "IRM & Risk",
+   "description": "Baselines entities, profiles, risks, controls, indicators and issues, and measures orphaned GRC relationships along the Entity → Profile → Risk → Control chain.",
+   "why": "Baselines entities, profiles, risks, controls, indicators and issues, and measures orphaned GRC relationships along the Entity → Profile → Risk → Control chain.",
+   "runContext": "System Definition > Scripts - Background · scope Global",
+   "expectedOutput": "One DIAG envelope (JSON) between DIAG_ENVELOPE_BEGIN/END markers in the output",
+   "parser": "DIAG envelope (auto-analysed by the rule engine)",
+   "mapsTo": [
+    "IRM & Risk",
+    "Findings",
+    "Evidence Explorer",
+    "Assessment",
+    "Main report"
+   ],
+   "sourceState": "Client-neutral master repository item",
+   "licensing": "Uses only base-platform tables where the relevant product is installed; a missing product table is reported as Not Applicable, never an error. Appropriate admin/script execution access required.",
+   "requiresConfiguration": false,
+   "configurationStatus": "READY_FOR_REVIEW",
+   "sourceLineageTitle": "Workbench 2 module pack",
+   "functionalPrefix": "IRM-GRC",
+   "sourceText": "/*\nIRM-GRC-001 - IRM / GRC health (READ ONLY)\n================================================================================\nModule   : IRM & Risk  ·  Category: GRC\nPurpose  : Baselines entities, profiles, risks, controls, indicators and issues, and measures orphaned GRC relationships along the Entity → Profile → Risk → Control chain.\n\nSafety   : Read-only. Aggregate counts, ratios and configuration metadata only.\n           No consumer record content is read or exported. Every table access\n           is guarded - a missing table becomes a note and the affected\n           metrics report -1 (treated as Not Applicable by the Workbench).\nRun from : System Definition > Scripts - Background · scope Global\nOutput   : One JSON envelope between DIAG_ENVELOPE_BEGIN / DIAG_ENVELOPE_END.\n           Paste the complete output into the Workbench via Load Result.\n*/\n(function () {\n    var envelope = {\n        collector: 'IRM_GRC_001',\n        version: '1.0',\n        instance: gs.getProperty('instance_name'),\n        captured_at: new GlideDateTime().getValue(),\n        module: 'IRM & Risk',\n        category: 'GRC',\n        schema_version: '1.0',\n        read_only: true,\n        classification: 'Confidential',\n        contains_pii: false,\n        record_count: 0,\n        metrics: {},\n        results: [],\n        entities: [],\n        relationships: [],\n        notes: []\n    };\n\n    function tableAvailable(tableName) {\n        try { return new GlideRecord(tableName).isValid(); } catch (availabilityError) { return false; }\n    }\n\n    function countRecords(tableName, encodedQuery) {\n        if (!tableAvailable(tableName)) {\n            envelope.notes.push(tableName + ' is not available on this instance.');\n            return -1;\n        }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.query();\n        return aggregateQuery.next() ? parseInt(aggregateQuery.getAggregate('COUNT'), 10) : 0;\n    }\n\n    // Groups are capped and sorted in JS - no orderByAggregate / addHaving,\n    // which vary across releases.\n    function groupCounts(tableName, fieldName, encodedQuery, cap) {\n        var groups = [];\n        if (!tableAvailable(tableName)) { return groups; }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.groupBy(fieldName);\n        aggregateQuery.query();\n        var iterations = 0;\n        var hardCap = cap || 400;\n        while (aggregateQuery.next()) {\n            iterations++;\n            if (iterations > hardCap) {\n                envelope.notes.push(tableName + '.' + fieldName + ' grouping capped at ' + hardCap + ' groups.');\n                break;\n            }\n            groups.push({\n                value: String(aggregateQuery.getDisplayValue(fieldName) || '(empty)').substring(0, 80),\n                count: parseInt(aggregateQuery.getAggregate('COUNT'), 10)\n            });\n        }\n        groups.sort(function (left, right) { return right.count - left.count; });\n        return groups;\n    }\n\n    function topGroups(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var limit = Math.min(groups.length, topN || 15);\n        for (var index = 0; index < limit; index++) {\n            envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n        }\n        return groups;\n    }\n\n    function duplicateClusters(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var clusterCount = 0;\n        var recordCount = 0;\n        var emitted = 0;\n        for (var index = 0; index < groups.length; index++) {\n            if (groups[index].count > 1) {\n                clusterCount++;\n                recordCount += groups[index].count;\n                if (emitted < (topN || 10)) {\n                    envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n                    emitted++;\n                }\n            }\n        }\n        return { clusters: clusterCount, records: recordCount };\n    }\n\n    function ratio(part, whole) {\n        if (part < 0 || whole <= 0) { return part < 0 ? -1 : 0; }\n        return Math.round(part * 1000 / whole) / 10;\n    }\n\n    function collect() {\n        envelope.metrics.profiles = countRecords('sn_grc_profile', '');\n        envelope.metrics.profile_types = countRecords('sn_grc_profile_type', '');\n        envelope.metrics.risks = countRecords('sn_risk_risk', '');\n        envelope.metrics.risks_no_profile = countRecords('sn_risk_risk', 'profileISEMPTY');\n        envelope.metrics.controls = countRecords('sn_compliance_control', '');\n        envelope.metrics.controls_no_profile = countRecords('sn_compliance_control', 'profileISEMPTY');\n        envelope.metrics.policies = countRecords('sn_compliance_policy', '');\n        envelope.metrics.indicators_active = countRecords('sn_grc_indicator', 'active=true');\n        envelope.metrics.issues_open = countRecords('sn_grc_issue', 'active=true');\n        envelope.metrics.issues_open_aging_90d = countRecords('sn_grc_issue',\n            'active=true^sys_created_on<javascript:gs.daysAgoStart(90)');\n        topGroups('risk_state_breakdown', 'sn_risk_risk', 'state', '', 8);\n        topGroups('control_state_breakdown', 'sn_compliance_control', 'state', '', 8);\n    }\n\n    try {\n        collect();\n    } catch (collectError) {\n        envelope.notes.push('Collector error: ' + collectError);\n    }\n    envelope.record_count = envelope.results.length;\n    gs.info('DIAG_ENVELOPE_BEGIN');\n    gs.info(JSON.stringify(envelope));\n    gs.info('DIAG_ENVELOPE_END');\n})();\n",
+   "envelope": true,
+   "classification": "Confidential"
+  },
+  {
+   "id": "CSM-CS-001",
+   "title": "CSM-CS-001_customer_service_health.js",
+   "file": "./toolkit-package/toolkit/client-neutral-master/CSM-CS-001_customer_service_health.js",
+   "stage": 13,
+   "kind": "extract",
+   "safety": "Read-only",
+   "sourceUrl": "",
+   "repositoryUrl": "",
+   "module": "Customer Service",
+   "description": "Baselines accounts, contacts and case flow using aggregates only - no case content is read.",
+   "why": "Baselines accounts, contacts and case flow using aggregates only - no case content is read.",
+   "runContext": "System Definition > Scripts - Background · scope Global",
+   "expectedOutput": "One DIAG envelope (JSON) between DIAG_ENVELOPE_BEGIN/END markers in the output",
+   "parser": "DIAG envelope (auto-analysed by the rule engine)",
+   "mapsTo": [
+    "Customer Service",
+    "Findings",
+    "Evidence Explorer",
+    "Assessment",
+    "Main report"
+   ],
+   "sourceState": "Client-neutral master repository item",
+   "licensing": "Uses only base-platform tables where the relevant product is installed; a missing product table is reported as Not Applicable, never an error. Appropriate admin/script execution access required.",
+   "requiresConfiguration": false,
+   "configurationStatus": "READY_FOR_REVIEW",
+   "sourceLineageTitle": "Workbench 2 module pack",
+   "functionalPrefix": "CSM-CS",
+   "sourceText": "/*\nCSM-CS-001 - Customer service health (READ ONLY)\n================================================================================\nModule   : Customer Service  ·  Category: CSM\nPurpose  : Baselines accounts, contacts and case flow using aggregates only - no case content is read.\n\nSafety   : Read-only. Aggregate counts, ratios and configuration metadata only.\n           No consumer record content is read or exported. Every table access\n           is guarded - a missing table becomes a note and the affected\n           metrics report -1 (treated as Not Applicable by the Workbench).\nRun from : System Definition > Scripts - Background · scope Global\nOutput   : One JSON envelope between DIAG_ENVELOPE_BEGIN / DIAG_ENVELOPE_END.\n           Paste the complete output into the Workbench via Load Result.\n*/\n(function () {\n    var envelope = {\n        collector: 'CSM_CS_001',\n        version: '1.0',\n        instance: gs.getProperty('instance_name'),\n        captured_at: new GlideDateTime().getValue(),\n        module: 'Customer Service',\n        category: 'CSM',\n        schema_version: '1.0',\n        read_only: true,\n        classification: 'Confidential',\n        contains_pii: false,\n        record_count: 0,\n        metrics: {},\n        results: [],\n        entities: [],\n        relationships: [],\n        notes: []\n    };\n\n    function tableAvailable(tableName) {\n        try { return new GlideRecord(tableName).isValid(); } catch (availabilityError) { return false; }\n    }\n\n    function countRecords(tableName, encodedQuery) {\n        if (!tableAvailable(tableName)) {\n            envelope.notes.push(tableName + ' is not available on this instance.');\n            return -1;\n        }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.query();\n        return aggregateQuery.next() ? parseInt(aggregateQuery.getAggregate('COUNT'), 10) : 0;\n    }\n\n    // Groups are capped and sorted in JS - no orderByAggregate / addHaving,\n    // which vary across releases.\n    function groupCounts(tableName, fieldName, encodedQuery, cap) {\n        var groups = [];\n        if (!tableAvailable(tableName)) { return groups; }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.groupBy(fieldName);\n        aggregateQuery.query();\n        var iterations = 0;\n        var hardCap = cap || 400;\n        while (aggregateQuery.next()) {\n            iterations++;\n            if (iterations > hardCap) {\n                envelope.notes.push(tableName + '.' + fieldName + ' grouping capped at ' + hardCap + ' groups.');\n                break;\n            }\n            groups.push({\n                value: String(aggregateQuery.getDisplayValue(fieldName) || '(empty)').substring(0, 80),\n                count: parseInt(aggregateQuery.getAggregate('COUNT'), 10)\n            });\n        }\n        groups.sort(function (left, right) { return right.count - left.count; });\n        return groups;\n    }\n\n    function topGroups(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var limit = Math.min(groups.length, topN || 15);\n        for (var index = 0; index < limit; index++) {\n            envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n        }\n        return groups;\n    }\n\n    function duplicateClusters(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var clusterCount = 0;\n        var recordCount = 0;\n        var emitted = 0;\n        for (var index = 0; index < groups.length; index++) {\n            if (groups[index].count > 1) {\n                clusterCount++;\n                recordCount += groups[index].count;\n                if (emitted < (topN || 10)) {\n                    envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n                    emitted++;\n                }\n            }\n        }\n        return { clusters: clusterCount, records: recordCount };\n    }\n\n    function ratio(part, whole) {\n        if (part < 0 || whole <= 0) { return part < 0 ? -1 : 0; }\n        return Math.round(part * 1000 / whole) / 10;\n    }\n\n    function collect() {\n        envelope.metrics.accounts = countRecords('customer_account', '');\n        envelope.metrics.contacts = countRecords('customer_contact', '');\n        var caseTotal = countRecords('sn_customerservice_case', '');\n        envelope.metrics.cases_total = caseTotal;\n        envelope.metrics.cases_open = countRecords('sn_customerservice_case', 'active=true');\n        envelope.metrics.cases_open_unassigned = countRecords('sn_customerservice_case', 'active=true^assigned_toISEMPTY');\n        envelope.metrics.cases_unassigned_ratio = ratio(envelope.metrics.cases_open_unassigned, envelope.metrics.cases_open);\n        envelope.metrics.cases_open_aging_30d = countRecords('sn_customerservice_case',\n            'active=true^sys_created_on<javascript:gs.daysAgoStart(30)');\n        envelope.metrics.cases_aging_ratio = ratio(envelope.metrics.cases_open_aging_30d, envelope.metrics.cases_open);\n        topGroups('case_state_breakdown', 'sn_customerservice_case', 'state', 'active=true', 10);\n    }\n\n    try {\n        collect();\n    } catch (collectError) {\n        envelope.notes.push('Collector error: ' + collectError);\n    }\n    envelope.record_count = envelope.results.length;\n    gs.info('DIAG_ENVELOPE_BEGIN');\n    gs.info(JSON.stringify(envelope));\n    gs.info('DIAG_ENVELOPE_END');\n})();\n",
+   "envelope": true,
+   "classification": "Confidential"
+  },
+  {
+   "id": "HRSD-HR-001",
+   "title": "HRSD-HR-001_hr_service_delivery_health.js",
+   "file": "./toolkit-package/toolkit/client-neutral-master/HRSD-HR-001_hr_service_delivery_health.js",
+   "stage": 13,
+   "kind": "extract",
+   "safety": "Read-only",
+   "sourceUrl": "",
+   "repositoryUrl": "",
+   "module": "HR Service Delivery",
+   "description": "Baselines HR profiles and case flow using aggregate counts by COE only. Deliberately reads no HR case content - metadata and aggregates only.",
+   "why": "Baselines HR profiles and case flow using aggregate counts by COE only. Deliberately reads no HR case content - metadata and aggregates only.",
+   "runContext": "System Definition > Scripts - Background · scope Global",
+   "expectedOutput": "One DIAG envelope (JSON) between DIAG_ENVELOPE_BEGIN/END markers in the output",
+   "parser": "DIAG envelope (auto-analysed by the rule engine)",
+   "mapsTo": [
+    "HR Service Delivery",
+    "Findings",
+    "Evidence Explorer",
+    "Assessment",
+    "Main report"
+   ],
+   "sourceState": "Client-neutral master repository item",
+   "licensing": "Uses only base-platform tables where the relevant product is installed; a missing product table is reported as Not Applicable, never an error. Appropriate admin/script execution access required.",
+   "requiresConfiguration": false,
+   "configurationStatus": "READY_FOR_REVIEW",
+   "sourceLineageTitle": "Workbench 2 module pack",
+   "functionalPrefix": "HRSD-HR",
+   "sourceText": "/*\nHRSD-HR-001 - HR service delivery health (READ ONLY)\n================================================================================\nModule   : HR Service Delivery  ·  Category: HRSD\nPurpose  : Baselines HR profiles and case flow using aggregate counts by COE only. Deliberately reads no HR case content - metadata and aggregates only.\n\nSafety   : Read-only. Aggregate counts, ratios and configuration metadata only.\n           No consumer record content is read or exported. Every table access\n           is guarded - a missing table becomes a note and the affected\n           metrics report -1 (treated as Not Applicable by the Workbench).\nRun from : System Definition > Scripts - Background · scope Global\nOutput   : One JSON envelope between DIAG_ENVELOPE_BEGIN / DIAG_ENVELOPE_END.\n           Paste the complete output into the Workbench via Load Result.\n*/\n(function () {\n    var envelope = {\n        collector: 'HRSD_HR_001',\n        version: '1.0',\n        instance: gs.getProperty('instance_name'),\n        captured_at: new GlideDateTime().getValue(),\n        module: 'HR Service Delivery',\n        category: 'HRSD',\n        schema_version: '1.0',\n        read_only: true,\n        classification: 'Confidential',\n        contains_pii: false,\n        record_count: 0,\n        metrics: {},\n        results: [],\n        entities: [],\n        relationships: [],\n        notes: []\n    };\n\n    function tableAvailable(tableName) {\n        try { return new GlideRecord(tableName).isValid(); } catch (availabilityError) { return false; }\n    }\n\n    function countRecords(tableName, encodedQuery) {\n        if (!tableAvailable(tableName)) {\n            envelope.notes.push(tableName + ' is not available on this instance.');\n            return -1;\n        }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.query();\n        return aggregateQuery.next() ? parseInt(aggregateQuery.getAggregate('COUNT'), 10) : 0;\n    }\n\n    // Groups are capped and sorted in JS - no orderByAggregate / addHaving,\n    // which vary across releases.\n    function groupCounts(tableName, fieldName, encodedQuery, cap) {\n        var groups = [];\n        if (!tableAvailable(tableName)) { return groups; }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.groupBy(fieldName);\n        aggregateQuery.query();\n        var iterations = 0;\n        var hardCap = cap || 400;\n        while (aggregateQuery.next()) {\n            iterations++;\n            if (iterations > hardCap) {\n                envelope.notes.push(tableName + '.' + fieldName + ' grouping capped at ' + hardCap + ' groups.');\n                break;\n            }\n            groups.push({\n                value: String(aggregateQuery.getDisplayValue(fieldName) || '(empty)').substring(0, 80),\n                count: parseInt(aggregateQuery.getAggregate('COUNT'), 10)\n            });\n        }\n        groups.sort(function (left, right) { return right.count - left.count; });\n        return groups;\n    }\n\n    function topGroups(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var limit = Math.min(groups.length, topN || 15);\n        for (var index = 0; index < limit; index++) {\n            envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n        }\n        return groups;\n    }\n\n    function duplicateClusters(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var clusterCount = 0;\n        var recordCount = 0;\n        var emitted = 0;\n        for (var index = 0; index < groups.length; index++) {\n            if (groups[index].count > 1) {\n                clusterCount++;\n                recordCount += groups[index].count;\n                if (emitted < (topN || 10)) {\n                    envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n                    emitted++;\n                }\n            }\n        }\n        return { clusters: clusterCount, records: recordCount };\n    }\n\n    function ratio(part, whole) {\n        if (part < 0 || whole <= 0) { return part < 0 ? -1 : 0; }\n        return Math.round(part * 1000 / whole) / 10;\n    }\n\n    function collect() {\n        envelope.metrics.hr_profiles = countRecords('sn_hr_core_profile', '');\n        envelope.metrics.active_users = countRecords('sys_user', 'active=true');\n        envelope.metrics.profile_coverage_ratio = ratio(envelope.metrics.hr_profiles, envelope.metrics.active_users);\n        var hrCaseTotal = countRecords('sn_hr_core_case', '');\n        envelope.metrics.cases_total = hrCaseTotal;\n        envelope.metrics.cases_open = countRecords('sn_hr_core_case', 'active=true');\n        envelope.metrics.cases_open_aging_30d = countRecords('sn_hr_core_case',\n            'active=true^sys_created_on<javascript:gs.daysAgoStart(30)');\n        envelope.metrics.cases_aging_ratio = ratio(envelope.metrics.cases_open_aging_30d, envelope.metrics.cases_open);\n        topGroups('coe_breakdown', 'sn_hr_core_case', 'sys_class_name', 'active=true', 12);\n        envelope.notes.push('HRSD evidence is aggregate-only by design: no case subjects, descriptions or person data are read.');\n    }\n\n    try {\n        collect();\n    } catch (collectError) {\n        envelope.notes.push('Collector error: ' + collectError);\n    }\n    envelope.record_count = envelope.results.length;\n    gs.info('DIAG_ENVELOPE_BEGIN');\n    gs.info(JSON.stringify(envelope));\n    gs.info('DIAG_ENVELOPE_END');\n})();\n",
+   "envelope": true,
+   "classification": "Confidential"
+  },
+  {
+   "id": "ITAM-AM-001",
+   "title": "ITAM-AM-001_asset_management_health.js",
+   "file": "./toolkit-package/toolkit/client-neutral-master/ITAM-AM-001_asset_management_health.js",
+   "stage": 13,
+   "kind": "extract",
+   "safety": "Read-only",
+   "sourceUrl": "",
+   "repositoryUrl": "",
+   "module": "Asset Management",
+   "description": "Measures asset population, asset-to-CI linkage and model completeness.",
+   "why": "Measures asset population, asset-to-CI linkage and model completeness.",
+   "runContext": "System Definition > Scripts - Background · scope Global",
+   "expectedOutput": "One DIAG envelope (JSON) between DIAG_ENVELOPE_BEGIN/END markers in the output",
+   "parser": "DIAG envelope (auto-analysed by the rule engine)",
+   "mapsTo": [
+    "Asset Management",
+    "Findings",
+    "Evidence Explorer",
+    "Assessment",
+    "Main report"
+   ],
+   "sourceState": "Client-neutral master repository item",
+   "licensing": "Uses only base-platform tables where the relevant product is installed; a missing product table is reported as Not Applicable, never an error. Appropriate admin/script execution access required.",
+   "requiresConfiguration": false,
+   "configurationStatus": "READY_FOR_REVIEW",
+   "sourceLineageTitle": "Workbench 2 module pack",
+   "functionalPrefix": "ITAM-AM",
+   "sourceText": "/*\nITAM-AM-001 - Asset management health (READ ONLY)\n================================================================================\nModule   : Asset Management  ·  Category: ITAM\nPurpose  : Measures asset population, asset-to-CI linkage and model completeness.\n\nSafety   : Read-only. Aggregate counts, ratios and configuration metadata only.\n           No consumer record content is read or exported. Every table access\n           is guarded - a missing table becomes a note and the affected\n           metrics report -1 (treated as Not Applicable by the Workbench).\nRun from : System Definition > Scripts - Background · scope Global\nOutput   : One JSON envelope between DIAG_ENVELOPE_BEGIN / DIAG_ENVELOPE_END.\n           Paste the complete output into the Workbench via Load Result.\n*/\n(function () {\n    var envelope = {\n        collector: 'ITAM_AM_001',\n        version: '1.0',\n        instance: gs.getProperty('instance_name'),\n        captured_at: new GlideDateTime().getValue(),\n        module: 'Asset Management',\n        category: 'ITAM',\n        schema_version: '1.0',\n        read_only: true,\n        classification: 'Internal',\n        contains_pii: false,\n        record_count: 0,\n        metrics: {},\n        results: [],\n        entities: [],\n        relationships: [],\n        notes: []\n    };\n\n    function tableAvailable(tableName) {\n        try { return new GlideRecord(tableName).isValid(); } catch (availabilityError) { return false; }\n    }\n\n    function countRecords(tableName, encodedQuery) {\n        if (!tableAvailable(tableName)) {\n            envelope.notes.push(tableName + ' is not available on this instance.');\n            return -1;\n        }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.query();\n        return aggregateQuery.next() ? parseInt(aggregateQuery.getAggregate('COUNT'), 10) : 0;\n    }\n\n    // Groups are capped and sorted in JS - no orderByAggregate / addHaving,\n    // which vary across releases.\n    function groupCounts(tableName, fieldName, encodedQuery, cap) {\n        var groups = [];\n        if (!tableAvailable(tableName)) { return groups; }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.groupBy(fieldName);\n        aggregateQuery.query();\n        var iterations = 0;\n        var hardCap = cap || 400;\n        while (aggregateQuery.next()) {\n            iterations++;\n            if (iterations > hardCap) {\n                envelope.notes.push(tableName + '.' + fieldName + ' grouping capped at ' + hardCap + ' groups.');\n                break;\n            }\n            groups.push({\n                value: String(aggregateQuery.getDisplayValue(fieldName) || '(empty)').substring(0, 80),\n                count: parseInt(aggregateQuery.getAggregate('COUNT'), 10)\n            });\n        }\n        groups.sort(function (left, right) { return right.count - left.count; });\n        return groups;\n    }\n\n    function topGroups(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var limit = Math.min(groups.length, topN || 15);\n        for (var index = 0; index < limit; index++) {\n            envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n        }\n        return groups;\n    }\n\n    function duplicateClusters(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var clusterCount = 0;\n        var recordCount = 0;\n        var emitted = 0;\n        for (var index = 0; index < groups.length; index++) {\n            if (groups[index].count > 1) {\n                clusterCount++;\n                recordCount += groups[index].count;\n                if (emitted < (topN || 10)) {\n                    envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n                    emitted++;\n                }\n            }\n        }\n        return { clusters: clusterCount, records: recordCount };\n    }\n\n    function ratio(part, whole) {\n        if (part < 0 || whole <= 0) { return part < 0 ? -1 : 0; }\n        return Math.round(part * 1000 / whole) / 10;\n    }\n\n    function collect() {\n        envelope.metrics.assets_total = countRecords('alm_asset', '');\n        var hardwareAssetTotal = countRecords('alm_hardware', '');\n        envelope.metrics.hw_assets = hardwareAssetTotal;\n        envelope.metrics.hw_no_ci = countRecords('alm_hardware', 'ciISEMPTY');\n        envelope.metrics.hw_no_ci_ratio = ratio(envelope.metrics.hw_no_ci, hardwareAssetTotal);\n        envelope.metrics.assets_no_model = countRecords('alm_asset', 'modelISEMPTY');\n        topGroups('asset_class_breakdown', 'alm_asset', 'sys_class_name', '', 12);\n        topGroups('hardware_state_breakdown', 'alm_hardware', 'install_status', '', 10);\n    }\n\n    try {\n        collect();\n    } catch (collectError) {\n        envelope.notes.push('Collector error: ' + collectError);\n    }\n    envelope.record_count = envelope.results.length;\n    gs.info('DIAG_ENVELOPE_BEGIN');\n    gs.info(JSON.stringify(envelope));\n    gs.info('DIAG_ENVELOPE_END');\n})();\n",
+   "envelope": true,
+   "classification": "Internal"
+  },
+  {
+   "id": "INT-INT-001",
+   "title": "INT-INT-001_integration_health.js",
+   "file": "./toolkit-package/toolkit/client-neutral-master/INT-INT-001_integration_health.js",
+   "stage": 13,
+   "kind": "extract",
+   "safety": "Read-only",
+   "sourceUrl": "",
+   "repositoryUrl": "",
+   "module": "Integrations",
+   "description": "Baselines REST message configuration, outbound HTTP failures and import-set outcomes.",
+   "why": "Baselines REST message configuration, outbound HTTP failures and import-set outcomes.",
+   "runContext": "System Definition > Scripts - Background · scope Global",
+   "expectedOutput": "One DIAG envelope (JSON) between DIAG_ENVELOPE_BEGIN/END markers in the output",
+   "parser": "DIAG envelope (auto-analysed by the rule engine)",
+   "mapsTo": [
+    "Integrations",
+    "Findings",
+    "Evidence Explorer",
+    "Assessment",
+    "Main report"
+   ],
+   "sourceState": "Client-neutral master repository item",
+   "licensing": "Uses only base-platform tables where the relevant product is installed; a missing product table is reported as Not Applicable, never an error. Appropriate admin/script execution access required.",
+   "requiresConfiguration": false,
+   "configurationStatus": "READY_FOR_REVIEW",
+   "sourceLineageTitle": "Workbench 2 module pack",
+   "functionalPrefix": "INT-INT",
+   "sourceText": "/*\nINT-INT-001 - Integration health (READ ONLY)\n================================================================================\nModule   : Integrations  ·  Category: Integrations\nPurpose  : Baselines REST message configuration, outbound HTTP failures and import-set outcomes.\n\nSafety   : Read-only. Aggregate counts, ratios and configuration metadata only.\n           No consumer record content is read or exported. Every table access\n           is guarded - a missing table becomes a note and the affected\n           metrics report -1 (treated as Not Applicable by the Workbench).\nRun from : System Definition > Scripts - Background · scope Global\nOutput   : One JSON envelope between DIAG_ENVELOPE_BEGIN / DIAG_ENVELOPE_END.\n           Paste the complete output into the Workbench via Load Result.\n*/\n(function () {\n    var envelope = {\n        collector: 'INT_INT_001',\n        version: '1.0',\n        instance: gs.getProperty('instance_name'),\n        captured_at: new GlideDateTime().getValue(),\n        module: 'Integrations',\n        category: 'Integrations',\n        schema_version: '1.0',\n        read_only: true,\n        classification: 'Internal',\n        contains_pii: false,\n        record_count: 0,\n        metrics: {},\n        results: [],\n        entities: [],\n        relationships: [],\n        notes: []\n    };\n\n    function tableAvailable(tableName) {\n        try { return new GlideRecord(tableName).isValid(); } catch (availabilityError) { return false; }\n    }\n\n    function countRecords(tableName, encodedQuery) {\n        if (!tableAvailable(tableName)) {\n            envelope.notes.push(tableName + ' is not available on this instance.');\n            return -1;\n        }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.query();\n        return aggregateQuery.next() ? parseInt(aggregateQuery.getAggregate('COUNT'), 10) : 0;\n    }\n\n    // Groups are capped and sorted in JS - no orderByAggregate / addHaving,\n    // which vary across releases.\n    function groupCounts(tableName, fieldName, encodedQuery, cap) {\n        var groups = [];\n        if (!tableAvailable(tableName)) { return groups; }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.groupBy(fieldName);\n        aggregateQuery.query();\n        var iterations = 0;\n        var hardCap = cap || 400;\n        while (aggregateQuery.next()) {\n            iterations++;\n            if (iterations > hardCap) {\n                envelope.notes.push(tableName + '.' + fieldName + ' grouping capped at ' + hardCap + ' groups.');\n                break;\n            }\n            groups.push({\n                value: String(aggregateQuery.getDisplayValue(fieldName) || '(empty)').substring(0, 80),\n                count: parseInt(aggregateQuery.getAggregate('COUNT'), 10)\n            });\n        }\n        groups.sort(function (left, right) { return right.count - left.count; });\n        return groups;\n    }\n\n    function topGroups(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var limit = Math.min(groups.length, topN || 15);\n        for (var index = 0; index < limit; index++) {\n            envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n        }\n        return groups;\n    }\n\n    function duplicateClusters(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var clusterCount = 0;\n        var recordCount = 0;\n        var emitted = 0;\n        for (var index = 0; index < groups.length; index++) {\n            if (groups[index].count > 1) {\n                clusterCount++;\n                recordCount += groups[index].count;\n                if (emitted < (topN || 10)) {\n                    envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n                    emitted++;\n                }\n            }\n        }\n        return { clusters: clusterCount, records: recordCount };\n    }\n\n    function ratio(part, whole) {\n        if (part < 0 || whole <= 0) { return part < 0 ? -1 : 0; }\n        return Math.round(part * 1000 / whole) / 10;\n    }\n\n    function collect() {\n        envelope.metrics.rest_messages = countRecords('sys_rest_message', '');\n        var outboundLogAvailable = tableAvailable('sys_outbound_http_log');\n        if (outboundLogAvailable) {\n            var outboundProbe = new GlideRecord('sys_outbound_http_log');\n            var statusField = outboundProbe.isValidField('http_status') ? 'http_status' :\n                (outboundProbe.isValidField('status') ? 'status' : '');\n            if (statusField) {\n                envelope.metrics.outbound_errors_7d = countRecords('sys_outbound_http_log',\n                    statusField + '>=400^sys_created_on>=javascript:gs.daysAgoStart(7)');\n            } else {\n                envelope.metrics.outbound_errors_7d = -1;\n                envelope.notes.push('No status field resolved on sys_outbound_http_log.');\n            }\n        } else {\n            envelope.metrics.outbound_errors_7d = -1;\n        }\n        envelope.metrics.scheduled_imports_active = countRecords('scheduled_import_set', 'active=true');\n        envelope.metrics.import_sets_7d = countRecords('sys_import_set', 'sys_created_on>=javascript:gs.daysAgoStart(7)');\n        envelope.metrics.import_rows_error_7d = countRecords('sys_import_set_row',\n            'sys_import_state=error^sys_created_on>=javascript:gs.daysAgoStart(7)');\n        topGroups('import_state_breakdown', 'sys_import_set', 'state', 'sys_created_on>=javascript:gs.daysAgoStart(7)', 8);\n    }\n\n    try {\n        collect();\n    } catch (collectError) {\n        envelope.notes.push('Collector error: ' + collectError);\n    }\n    envelope.record_count = envelope.results.length;\n    gs.info('DIAG_ENVELOPE_BEGIN');\n    gs.info(JSON.stringify(envelope));\n    gs.info('DIAG_ENVELOPE_END');\n})();\n",
+   "envelope": true,
+   "classification": "Internal"
+  },
+  {
+   "id": "PLAT-FLW-001",
+   "title": "PLAT-FLW-001_flow_execution_health.js",
+   "file": "./toolkit-package/toolkit/client-neutral-master/PLAT-FLW-001_flow_execution_health.js",
+   "stage": 13,
+   "kind": "extract",
+   "safety": "Read-only",
+   "sourceUrl": "",
+   "repositoryUrl": "",
+   "module": "Platform Flows",
+   "description": "Measures Flow Designer execution outcomes over the last 7 days.",
+   "why": "Measures Flow Designer execution outcomes over the last 7 days.",
+   "runContext": "System Definition > Scripts - Background · scope Global",
+   "expectedOutput": "One DIAG envelope (JSON) between DIAG_ENVELOPE_BEGIN/END markers in the output",
+   "parser": "DIAG envelope (auto-analysed by the rule engine)",
+   "mapsTo": [
+    "Platform Flows",
+    "Findings",
+    "Evidence Explorer",
+    "Assessment",
+    "Main report"
+   ],
+   "sourceState": "Client-neutral master repository item",
+   "licensing": "Uses only base-platform tables where the relevant product is installed; a missing product table is reported as Not Applicable, never an error. Appropriate admin/script execution access required.",
+   "requiresConfiguration": false,
+   "configurationStatus": "READY_FOR_REVIEW",
+   "sourceLineageTitle": "Workbench 2 module pack",
+   "functionalPrefix": "PLAT-FLW",
+   "sourceText": "/*\nPLAT-FLW-001 - Flow execution health (READ ONLY)\n================================================================================\nModule   : Platform Flows  ·  Category: Flow Designer\nPurpose  : Measures Flow Designer execution outcomes over the last 7 days.\n\nSafety   : Read-only. Aggregate counts, ratios and configuration metadata only.\n           No consumer record content is read or exported. Every table access\n           is guarded - a missing table becomes a note and the affected\n           metrics report -1 (treated as Not Applicable by the Workbench).\nRun from : System Definition > Scripts - Background · scope Global\nOutput   : One JSON envelope between DIAG_ENVELOPE_BEGIN / DIAG_ENVELOPE_END.\n           Paste the complete output into the Workbench via Load Result.\n*/\n(function () {\n    var envelope = {\n        collector: 'PLAT_FLW_001',\n        version: '1.0',\n        instance: gs.getProperty('instance_name'),\n        captured_at: new GlideDateTime().getValue(),\n        module: 'Platform Flows',\n        category: 'Flow Designer',\n        schema_version: '1.0',\n        read_only: true,\n        classification: 'Internal',\n        contains_pii: false,\n        record_count: 0,\n        metrics: {},\n        results: [],\n        entities: [],\n        relationships: [],\n        notes: []\n    };\n\n    function tableAvailable(tableName) {\n        try { return new GlideRecord(tableName).isValid(); } catch (availabilityError) { return false; }\n    }\n\n    function countRecords(tableName, encodedQuery) {\n        if (!tableAvailable(tableName)) {\n            envelope.notes.push(tableName + ' is not available on this instance.');\n            return -1;\n        }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.query();\n        return aggregateQuery.next() ? parseInt(aggregateQuery.getAggregate('COUNT'), 10) : 0;\n    }\n\n    // Groups are capped and sorted in JS - no orderByAggregate / addHaving,\n    // which vary across releases.\n    function groupCounts(tableName, fieldName, encodedQuery, cap) {\n        var groups = [];\n        if (!tableAvailable(tableName)) { return groups; }\n        var aggregateQuery = new GlideAggregate(tableName);\n        if (encodedQuery) { aggregateQuery.addEncodedQuery(encodedQuery); }\n        aggregateQuery.addAggregate('COUNT');\n        aggregateQuery.groupBy(fieldName);\n        aggregateQuery.query();\n        var iterations = 0;\n        var hardCap = cap || 400;\n        while (aggregateQuery.next()) {\n            iterations++;\n            if (iterations > hardCap) {\n                envelope.notes.push(tableName + '.' + fieldName + ' grouping capped at ' + hardCap + ' groups.');\n                break;\n            }\n            groups.push({\n                value: String(aggregateQuery.getDisplayValue(fieldName) || '(empty)').substring(0, 80),\n                count: parseInt(aggregateQuery.getAggregate('COUNT'), 10)\n            });\n        }\n        groups.sort(function (left, right) { return right.count - left.count; });\n        return groups;\n    }\n\n    function topGroups(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var limit = Math.min(groups.length, topN || 15);\n        for (var index = 0; index < limit; index++) {\n            envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n        }\n        return groups;\n    }\n\n    function duplicateClusters(kind, tableName, fieldName, encodedQuery, topN) {\n        var groups = groupCounts(tableName, fieldName, encodedQuery);\n        var clusterCount = 0;\n        var recordCount = 0;\n        var emitted = 0;\n        for (var index = 0; index < groups.length; index++) {\n            if (groups[index].count > 1) {\n                clusterCount++;\n                recordCount += groups[index].count;\n                if (emitted < (topN || 10)) {\n                    envelope.results.push({ kind: kind, field: fieldName, value: groups[index].value, count: groups[index].count });\n                    emitted++;\n                }\n            }\n        }\n        return { clusters: clusterCount, records: recordCount };\n    }\n\n    function ratio(part, whole) {\n        if (part < 0 || whole <= 0) { return part < 0 ? -1 : 0; }\n        return Math.round(part * 1000 / whole) / 10;\n    }\n\n    function collect() {\n        var flowContextAvailable = tableAvailable('sys_flow_context');\n        if (!flowContextAvailable) {\n            envelope.metrics.flow_runs_7d = -1;\n            envelope.metrics.flow_errors_7d = -1;\n            envelope.metrics.flow_error_ratio = -1;\n            envelope.notes.push('sys_flow_context is not readable on this instance.');\n        } else {\n            envelope.metrics.flow_runs_7d = countRecords('sys_flow_context', 'sys_created_on>=javascript:gs.daysAgoStart(7)');\n            envelope.metrics.flow_errors_7d = countRecords('sys_flow_context',\n                'sys_created_on>=javascript:gs.daysAgoStart(7)^state=ERROR');\n            envelope.metrics.flow_error_ratio = ratio(envelope.metrics.flow_errors_7d, envelope.metrics.flow_runs_7d);\n            topGroups('flow_state_breakdown', 'sys_flow_context', 'state', 'sys_created_on>=javascript:gs.daysAgoStart(7)', 8);\n        }\n    }\n\n    try {\n        collect();\n    } catch (collectError) {\n        envelope.notes.push('Collector error: ' + collectError);\n    }\n    envelope.record_count = envelope.results.length;\n    gs.info('DIAG_ENVELOPE_BEGIN');\n    gs.info(JSON.stringify(envelope));\n    gs.info('DIAG_ENVELOPE_END');\n})();\n",
+   "envelope": true,
+   "classification": "Internal"
+  }
+ ],
+ "rules": [
+  {
+   "metric": "open_unassigned_ratio",
+   "op": ">",
+   "threshold": 10,
+   "severity": "Warning",
+   "title": "Open incidents without an assignee",
+   "causes": [
+    "Assignment rules not matching",
+    "Assignment groups without members",
+    "Integration-created incidents bypassing assignment"
+   ],
+   "recommendation": "Review assignment rules and group membership for the affected categories; sample the unassigned population by category and source.",
+   "solutionType": "Configuration",
+   "complexity": "Medium",
+   "collector": "ITSM-INC-001",
+   "module": "ITSM",
+   "id": "ITSM-INC-001/open_unassigned_ratio"
+  },
+  {
+   "metric": "open_aging_ratio",
+   "op": ">",
+   "threshold": 20,
+   "severity": "Warning",
+   "title": "Significant open-incident ageing beyond 30 days",
+   "causes": [
+    "Stalled state model",
+    "Unmonitored queues",
+    "SLA schedule or escalation gaps"
+   ],
+   "recommendation": "Review the aged population by assignment group and state; confirm escalation notifications and SLA visibility.",
+   "solutionType": "Process",
+   "complexity": "Medium",
+   "collector": "ITSM-INC-001",
+   "module": "ITSM",
+   "id": "ITSM-INC-001/open_aging_ratio"
+  },
+  {
+   "metric": "duplicate_sd_records",
+   "op": ">",
+   "threshold": 50,
+   "severity": "Warning",
+   "title": "Duplicate incident signatures detected",
+   "causes": [
+    "Event/alert integration re-raising incidents",
+    "No duplicate-detection on intake",
+    "Monitoring storms"
+   ],
+   "recommendation": "Review the top duplicate short-description clusters; add correlation or de-duplication on the creating integration.",
+   "solutionType": "Integration",
+   "complexity": "Medium",
+   "collector": "ITSM-INC-001",
+   "module": "ITSM",
+   "id": "ITSM-INC-001/duplicate_sd_records"
+  },
+  {
+   "metric": "definitions_active",
+   "op": "==",
+   "threshold": 0,
+   "severity": "Critical",
+   "title": "No active SLA definitions",
+   "causes": [
+    "Definitions deactivated",
+    "SLA plugin/config never completed"
+   ],
+   "recommendation": "Confirm whether SLAs are in scope; if so, activate or create the required contract_sla definitions.",
+   "solutionType": "Configuration",
+   "complexity": "Small",
+   "collector": "ITSM-SLA-001",
+   "module": "ITSM",
+   "id": "ITSM-SLA-001/definitions_active"
+  },
+  {
+   "metric": "attach_ratio",
+   "op": "<",
+   "threshold": 50,
+   "severity": "Error",
+   "title": "SLAs are not attaching to a large share of new incidents",
+   "causes": [
+    "Start conditions not matching",
+    "Wrong task table on the definition",
+    "Schedule or timezone mismatch",
+    "SLA engine business rules disabled"
+   ],
+   "recommendation": "Validate definition active flags, start conditions, task table, schedule and retroactive settings against a sample of recent incidents without task_sla records.",
+   "solutionType": "Configuration",
+   "complexity": "Medium",
+   "collector": "ITSM-SLA-001",
+   "module": "ITSM",
+   "id": "ITSM-SLA-001/attach_ratio"
+  },
+  {
+   "metric": "breached_ratio",
+   "op": ">",
+   "threshold": 30,
+   "severity": "Warning",
+   "title": "High SLA breach ratio",
+   "causes": [
+    "Unachievable targets",
+    "Queues without monitoring",
+    "Pause conditions not configured"
+   ],
+   "recommendation": "Review breach distribution by definition; confirm targets, schedules and pause conditions with the process owner.",
+   "solutionType": "Process",
+   "complexity": "Medium",
+   "collector": "ITSM-SLA-001",
+   "module": "ITSM",
+   "id": "ITSM-SLA-001/breached_ratio"
+  },
+  {
+   "metric": "risk_empty_open",
+   "op": ">",
+   "threshold": 0,
+   "severity": "Warning",
+   "title": "Open changes without a risk assessment",
+   "causes": [
+    "Risk assessment not mandatory in the change model",
+    "Legacy records predating risk configuration"
+   ],
+   "recommendation": "Confirm the change models enforce risk calculation before authorisation; review the affected population.",
+   "solutionType": "Configuration",
+   "complexity": "Small",
+   "collector": "ITSM-CHG-001",
+   "module": "ITSM",
+   "id": "ITSM-CHG-001/risk_empty_open"
+  },
+  {
+   "metric": "approvals_pending_7d",
+   "op": ">",
+   "threshold": 10,
+   "severity": "Warning",
+   "title": "Change approvals pending for more than 7 days",
+   "causes": [
+    "Approvers no longer valid",
+    "No approval reminders/escalation",
+    "Delegation not configured"
+   ],
+   "recommendation": "Review pending approvals by approver; add reminder notifications and delegation rules.",
+   "solutionType": "Process",
+   "complexity": "Small",
+   "collector": "ITSM-CHG-001",
+   "module": "ITSM",
+   "id": "ITSM-CHG-001/approvals_pending_7d"
+  },
+  {
+   "metric": "emergency_ratio",
+   "op": ">",
+   "threshold": 20,
+   "severity": "Warning",
+   "title": "High emergency change ratio",
+   "causes": [
+    "Normal change lead time too slow",
+    "Emergency route used for convenience"
+   ],
+   "recommendation": "Review emergency change justifications; consider standard change candidates and lead-time improvements.",
+   "solutionType": "Process",
+   "complexity": "Medium",
+   "collector": "ITSM-CHG-001",
+   "module": "ITSM",
+   "id": "ITSM-CHG-001/emergency_ratio"
+  },
+  {
+   "metric": "items_active_no_fulfillment",
+   "op": ">",
+   "threshold": 0,
+   "severity": "Error",
+   "title": "Active catalog items without a fulfilment process",
+   "causes": [
+    "Item created without flow/workflow attached",
+    "Fulfilment flow deactivated or deleted",
+    "Items migrated without their delivery process"
+   ],
+   "recommendation": "Attach a Flow Designer flow or workflow to each affected item, or retire items that are no longer offered.",
+   "solutionType": "Configuration",
+   "complexity": "Medium",
+   "collector": "ITSM-REQ-001",
+   "module": "ITSM",
+   "id": "ITSM-REQ-001/items_active_no_fulfillment"
+  },
+  {
+   "metric": "ritm_per_req_ratio",
+   "op": "<",
+   "threshold": 80,
+   "severity": "Warning",
+   "title": "Requests may not be generating requested items",
+   "causes": [
+    "Cart/submission errors",
+    "Order guide rule conditions failing",
+    "Custom request creation path bypassing sc_req_item"
+   ],
+   "recommendation": "Sample recent sc_request records without RITMs; review order guides, cart client scripts and any custom request creation integrations.",
+   "solutionType": "Configuration",
+   "complexity": "Medium",
+   "collector": "ITSM-REQ-001",
+   "module": "ITSM",
+   "id": "ITSM-REQ-001/ritm_per_req_ratio"
+  },
+  {
+   "metric": "ritm_aging_ratio",
+   "op": ">",
+   "threshold": 25,
+   "severity": "Warning",
+   "title": "Requested items ageing beyond 30 days",
+   "causes": [
+    "Stuck approvals",
+    "Fulfilment tasks unassigned",
+    "Flows waiting on unreachable steps"
+   ],
+   "recommendation": "Cross-reference with pending approvals and unassigned catalog tasks; review stuck flow contexts for the top items.",
+   "solutionType": "Process",
+   "complexity": "Medium",
+   "collector": "ITSM-REQ-001",
+   "module": "ITSM",
+   "id": "ITSM-REQ-001/ritm_aging_ratio"
+  },
+  {
+   "metric": "open_unassigned_ratio",
+   "op": ">",
+   "threshold": 20,
+   "severity": "Warning",
+   "title": "Open problems without an assignee",
+   "causes": [
+    "No problem management ownership model",
+    "Problems raised from incident without triage"
+   ],
+   "recommendation": "Establish a problem intake and ownership model; review the unassigned population.",
+   "solutionType": "Process",
+   "complexity": "Small",
+   "collector": "ITSM-PRB-001",
+   "module": "ITSM",
+   "id": "ITSM-PRB-001/open_unassigned_ratio"
+  },
+  {
+   "metric": "open_aging_ratio",
+   "op": ">",
+   "threshold": 40,
+   "severity": "Warning",
+   "title": "Problems open beyond 90 days",
+   "causes": [
+    "No root-cause workflow discipline",
+    "Known errors never closed against fixes"
+   ],
+   "recommendation": "Review aged problems for closure or conversion to known errors with workarounds documented.",
+   "solutionType": "Process",
+   "complexity": "Small",
+   "collector": "ITSM-PRB-001",
+   "module": "ITSM",
+   "id": "ITSM-PRB-001/open_aging_ratio"
+  },
+  {
+   "metric": "base_class_records",
+   "op": ">",
+   "threshold": 0,
+   "severity": "Warning",
+   "title": "CIs stored on the cmdb_ci base class",
+   "causes": [
+    "Imports without class mapping",
+    "Manual creation from the base table",
+    "Integration default class"
+   ],
+   "recommendation": "Identify the creation source of base-class CIs and reclassify them; correct the creating import/integration.",
+   "solutionType": "Data remediation",
+   "complexity": "Medium",
+   "collector": "CMDB-INV-001",
+   "module": "CMDB & CSDM",
+   "id": "CMDB-INV-001/base_class_records"
+  },
+  {
+   "metric": "name_empty",
+   "op": ">",
+   "threshold": 0,
+   "severity": "Warning",
+   "title": "CIs without a name",
+   "causes": [
+    "Identification on other keys with name never populated",
+    "Failed transform mappings"
+   ],
+   "recommendation": "Trace the creation path of unnamed CIs and correct the mapping; consider a data-certification rule for name.",
+   "solutionType": "Data remediation",
+   "complexity": "Small",
+   "collector": "CMDB-INV-001",
+   "module": "CMDB & CSDM",
+   "id": "CMDB-INV-001/name_empty"
+  },
+  {
+   "metric": "srv_name_dup_ratio",
+   "op": ">",
+   "threshold": 5,
+   "severity": "Error",
+   "title": "High duplicate server CI ratio",
+   "causes": [
+    "Identification rules with incomplete identifiers",
+    "Multiple discovery/import sources without reconciliation",
+    "Manual CI creation alongside discovery"
+   ],
+   "recommendation": "Review server identification rules and datasource precedence; profile the duplicate clusters by creation source before any merge.",
+   "solutionType": "Configuration",
+   "complexity": "Large",
+   "collector": "CMDB-DUP-001",
+   "module": "CMDB & CSDM",
+   "id": "CMDB-DUP-001/srv_name_dup_ratio"
+  },
+  {
+   "metric": "hw_serial_dup_ratio",
+   "op": ">",
+   "threshold": 5,
+   "severity": "Warning",
+   "title": "Duplicate hardware serial numbers",
+   "causes": [
+    "Placeholder serials from imports",
+    "Asset and discovery sources colliding"
+   ],
+   "recommendation": "Profile the duplicate serial clusters; placeholder values need a data-entry fix, two-record clusters need per-pair review.",
+   "solutionType": "Data remediation",
+   "complexity": "Medium",
+   "collector": "CMDB-DUP-001",
+   "module": "CMDB & CSDM",
+   "id": "CMDB-DUP-001/hw_serial_dup_ratio"
+  },
+  {
+   "metric": "rel_orphans",
+   "op": ">",
+   "threshold": 0,
+   "severity": "Warning",
+   "title": "Orphaned CI relationships",
+   "causes": [
+    "CIs deleted without cascading relationship cleanup",
+    "Imports creating relationships against missing CIs"
+   ],
+   "recommendation": "Report and remove relationships whose parent or child no longer resolves; correct the deleting/creating process.",
+   "solutionType": "Data remediation",
+   "complexity": "Small",
+   "collector": "CMDB-REL-001",
+   "module": "CMDB & CSDM",
+   "id": "CMDB-REL-001/rel_orphans"
+  },
+  {
+   "metric": "identifiers_active",
+   "op": "==",
+   "threshold": 0,
+   "severity": "Critical",
+   "title": "No active CI identification rules",
+   "causes": [
+    "IRE never configured",
+    "Rules deactivated during troubleshooting"
+   ],
+   "recommendation": "Configure identification rules for the classes in use before any data-quality remediation - without them every source creates its own CIs.",
+   "solutionType": "Configuration",
+   "complexity": "Medium",
+   "collector": "CMDB-IRE-001",
+   "module": "CMDB & CSDM",
+   "id": "CMDB-IRE-001/identifiers_active"
+  },
+  {
+   "metric": "dedup_tasks_open",
+   "op": ">",
+   "threshold": 100,
+   "severity": "Warning",
+   "title": "Large open de-duplication backlog",
+   "causes": [
+    "Duplicate detection running without a remediation owner"
+   ],
+   "recommendation": "Assign ownership of the de-duplication queue; process clusters by class starting with the largest.",
+   "solutionType": "Data remediation",
+   "complexity": "Medium",
+   "collector": "CMDB-IRE-001",
+   "module": "CMDB & CSDM",
+   "id": "CMDB-IRE-001/dedup_tasks_open"
+  },
+  {
+   "metric": "srv_stale_ratio",
+   "op": ">",
+   "threshold": 30,
+   "severity": "Warning",
+   "title": "Server CIs not refreshed by discovery in 30 days",
+   "causes": [
+    "Discovery schedules not covering all ranges",
+    "MID Server outages",
+    "CIs created by import and never discovered"
+   ],
+   "recommendation": "Cross-reference with discovery health; decide a staleness policy and lifecycle rule for undiscovered CIs.",
+   "solutionType": "Process",
+   "complexity": "Medium",
+   "collector": "CMDB-STL-001",
+   "module": "CMDB & CSDM",
+   "id": "CMDB-STL-001/srv_stale_ratio"
+  },
+  {
+   "metric": "srv_no_owner_ratio",
+   "op": ">",
+   "threshold": 50,
+   "severity": "Warning",
+   "title": "Server CIs without an owner",
+   "causes": [
+    "Ownership never modelled",
+    "Imports without ownership mapping"
+   ],
+   "recommendation": "Agree the ownership model (owned_by / support_group) and backfill from an authoritative source.",
+   "solutionType": "Governance",
+   "complexity": "Medium",
+   "collector": "CMDB-STL-001",
+   "module": "CMDB & CSDM",
+   "id": "CMDB-STL-001/srv_no_owner_ratio"
+  },
+  {
+   "metric": "retired_but_operational",
+   "op": ">",
+   "threshold": 0,
+   "severity": "Warning",
+   "title": "Retired CIs still marked operational",
+   "causes": [
+    "Lifecycle fields updated independently"
+   ],
+   "recommendation": "Correct the inconsistent pairs and align the retirement process to set both fields.",
+   "solutionType": "Data remediation",
+   "complexity": "Small",
+   "collector": "CMDB-STL-001",
+   "module": "CMDB & CSDM",
+   "id": "CMDB-STL-001/retired_but_operational"
+  },
+  {
+   "metric": "business_apps",
+   "op": "==",
+   "threshold": 0,
+   "severity": "Info",
+   "title": "CSDM not started - no business applications modelled",
+   "causes": [
+    "CSDM adoption not yet begun"
+   ],
+   "recommendation": "If service-aligned reporting is an objective, begin CSDM Crawl: model the top business applications first.",
+   "solutionType": "Architecture",
+   "complexity": "Large",
+   "collector": "CMDB-CSDM-001",
+   "module": "CMDB & CSDM",
+   "id": "CMDB-CSDM-001/business_apps"
+  },
+  {
+   "metric": "app_services",
+   "op": "==",
+   "threshold": 0,
+   "severity": "Warning",
+   "requires": {
+    "metric": "business_apps",
+    "op": ">",
+    "threshold": 0
+   },
+   "title": "Business applications exist but no application services are modelled",
+   "causes": [
+    "CSDM stopped at the Crawl stage",
+    "Service Mapping not deployed"
+   ],
+   "recommendation": "Model application services for the top business applications so incidents, changes and vulnerabilities can be tied to services.",
+   "solutionType": "Architecture",
+   "complexity": "Large",
+   "collector": "CMDB-CSDM-001",
+   "module": "CMDB & CSDM",
+   "id": "CMDB-CSDM-001/app_services"
+  },
+  {
+   "metric": "mid_down",
+   "op": ">",
+   "threshold": 0,
+   "severity": "Error",
+   "title": "MID Servers down or not validated",
+   "causes": [
+    "Service stopped on the host",
+    "Credential/keystore expiry",
+    "Network path changes"
+   ],
+   "recommendation": "Restore each affected MID Server; every discovery, integration and orchestration path through it is degraded meanwhile.",
+   "solutionType": "Configuration",
+   "complexity": "Small",
+   "collector": "ITOM-DSC-001",
+   "module": "ITOM & Discovery",
+   "id": "ITOM-DSC-001/mid_down"
+  },
+  {
+   "metric": "ecc_errors_7d",
+   "op": ">",
+   "threshold": 100,
+   "severity": "Warning",
+   "title": "High ECC queue error volume",
+   "causes": [
+    "Failing probes/patterns",
+    "Credential failures",
+    "Unreachable targets"
+   ],
+   "recommendation": "Group the errored ecc_queue records by agent and topic to isolate the failing integration or discovery pattern.",
+   "solutionType": "Configuration",
+   "complexity": "Medium",
+   "collector": "ITOM-DSC-001",
+   "module": "ITOM & Discovery",
+   "id": "ITOM-DSC-001/ecc_errors_7d"
+  },
+  {
+   "metric": "vi_unmatched_ratio",
+   "op": ">",
+   "threshold": 10,
+   "severity": "Error",
+   "title": "Vulnerable items not matching CIs",
+   "causes": [
+    "CMDB duplicates and identification inconsistency",
+    "Scanner asset fields not aligned to CI identifiers",
+    "Discovery coverage gaps"
+   ],
+   "recommendation": "Correlate with CMDB duplicate and IRE findings; align scanner-to-CI matching rules with the CMDB identification strategy.",
+   "solutionType": "Configuration",
+   "complexity": "Large",
+   "collector": "SECOPS-VR-001",
+   "module": "Security Operations",
+   "id": "SECOPS-VR-001/vi_unmatched_ratio"
+  },
+  {
+   "metric": "vi_stale_ratio",
+   "op": ">",
+   "threshold": 30,
+   "severity": "Warning",
+   "title": "Stale open vulnerable items",
+   "causes": [
+    "Scanner imports not running",
+    "Closed-loop reconciliation disabled"
+   ],
+   "recommendation": "Verify scanner integration schedules and the re-open/close logic on repeat detections.",
+   "solutionType": "Integration",
+   "complexity": "Medium",
+   "collector": "SECOPS-VR-001",
+   "module": "Security Operations",
+   "id": "SECOPS-VR-001/vi_stale_ratio"
+  },
+  {
+   "metric": "open_unassigned_ratio",
+   "op": ">",
+   "threshold": 10,
+   "severity": "Warning",
+   "title": "Security incidents without an assignee",
+   "causes": [
+    "Alert ingestion creating incidents without assignment rules",
+    "Playbooks not assigning ownership"
+   ],
+   "recommendation": "Review SIR assignment rules and playbook task ownership for the affected categories.",
+   "solutionType": "Configuration",
+   "complexity": "Medium",
+   "collector": "SECOPS-SIR-001",
+   "module": "Security Operations",
+   "id": "SECOPS-SIR-001/open_unassigned_ratio"
+  },
+  {
+   "metric": "risks_no_profile",
+   "op": ">",
+   "threshold": 0,
+   "severity": "Warning",
+   "title": "Risks not linked to a profile",
+   "causes": [
+    "Risks created directly without entity scoping",
+    "Profile deleted after risk creation"
+   ],
+   "recommendation": "Re-link orphaned risks to profiles; without the Entity → Profile → Risk chain, scoring and roll-up are unreliable.",
+   "solutionType": "Data remediation",
+   "complexity": "Small",
+   "collector": "IRM-GRC-001",
+   "module": "IRM & Risk",
+   "id": "IRM-GRC-001/risks_no_profile"
+  },
+  {
+   "metric": "controls_no_profile",
+   "op": ">",
+   "threshold": 0,
+   "severity": "Warning",
+   "title": "Controls not linked to a profile",
+   "causes": [
+    "Controls created outside the entity model"
+   ],
+   "recommendation": "Re-link orphaned controls; verify attestation generation still covers them.",
+   "solutionType": "Data remediation",
+   "complexity": "Small",
+   "collector": "IRM-GRC-001",
+   "module": "IRM & Risk",
+   "id": "IRM-GRC-001/controls_no_profile"
+  },
+  {
+   "metric": "issues_open_aging_90d",
+   "op": ">",
+   "threshold": 10,
+   "severity": "Warning",
+   "title": "GRC issues open beyond 90 days",
+   "causes": [
+    "Remediation tasks without owners",
+    "No escalation on issue ageing"
+   ],
+   "recommendation": "Review aged issues with the risk/compliance owner; add ageing indicators.",
+   "solutionType": "Process",
+   "complexity": "Small",
+   "collector": "IRM-GRC-001",
+   "module": "IRM & Risk",
+   "id": "IRM-GRC-001/issues_open_aging_90d"
+  },
+  {
+   "metric": "cases_unassigned_ratio",
+   "op": ">",
+   "threshold": 10,
+   "severity": "Warning",
+   "title": "Open customer cases without an assignee",
+   "causes": [
+    "Routing/matching rules not covering all products or accounts"
+   ],
+   "recommendation": "Review case routing rules and agent group coverage for the affected case types.",
+   "solutionType": "Configuration",
+   "complexity": "Medium",
+   "collector": "CSM-CS-001",
+   "module": "Customer Service",
+   "id": "CSM-CS-001/cases_unassigned_ratio"
+  },
+  {
+   "metric": "cases_aging_ratio",
+   "op": ">",
+   "threshold": 25,
+   "severity": "Warning",
+   "title": "Customer cases ageing beyond 30 days",
+   "causes": [
+    "Entitlement/SLA coverage gaps",
+    "Escalation rules missing"
+   ],
+   "recommendation": "Cross-reference with SLA attachment; review the aged population by account and product.",
+   "solutionType": "Process",
+   "complexity": "Medium",
+   "collector": "CSM-CS-001",
+   "module": "Customer Service",
+   "id": "CSM-CS-001/cases_aging_ratio"
+  },
+  {
+   "metric": "cases_aging_ratio",
+   "op": ">",
+   "threshold": 25,
+   "severity": "Warning",
+   "title": "HR cases ageing beyond 30 days",
+   "causes": [
+    "COE assignment gaps",
+    "Lifecycle event activities stalling"
+   ],
+   "recommendation": "Review the aged population by COE (aggregate view); check HR service SLAs and activity-set progression.",
+   "solutionType": "Process",
+   "complexity": "Medium",
+   "collector": "HRSD-HR-001",
+   "module": "HR Service Delivery",
+   "id": "HRSD-HR-001/cases_aging_ratio"
+  },
+  {
+   "metric": "hw_no_ci_ratio",
+   "op": ">",
+   "threshold": 10,
+   "severity": "Warning",
+   "title": "Hardware assets not linked to CIs",
+   "causes": [
+    "Asset and CI created by different sources without reconciliation",
+    "Discovery not matching asset records"
+   ],
+   "recommendation": "Review the asset-CI reconciliation configuration; profile unlinked assets by source and state.",
+   "solutionType": "Configuration",
+   "complexity": "Medium",
+   "collector": "ITAM-AM-001",
+   "module": "Asset Management",
+   "id": "ITAM-AM-001/hw_no_ci_ratio"
+  },
+  {
+   "metric": "assets_no_model",
+   "op": ">",
+   "threshold": 0,
+   "severity": "Warning",
+   "title": "Assets without a model",
+   "causes": [
+    "Imports without model mapping",
+    "Free-text model data"
+   ],
+   "recommendation": "Backfill models from procurement data; enforce model on the intake paths.",
+   "solutionType": "Data remediation",
+   "complexity": "Medium",
+   "collector": "ITAM-AM-001",
+   "module": "Asset Management",
+   "id": "ITAM-AM-001/assets_no_model"
+  },
+  {
+   "metric": "outbound_errors_7d",
+   "op": ">",
+   "threshold": 50,
+   "severity": "Warning",
+   "title": "Outbound HTTP failures in the last 7 days",
+   "causes": [
+    "Endpoint/credential changes",
+    "Certificate expiry",
+    "Timeouts on slow targets"
+   ],
+   "recommendation": "Group the outbound log by host and status; renew credentials/certificates and add retry policies where appropriate.",
+   "solutionType": "Integration",
+   "complexity": "Medium",
+   "collector": "INT-INT-001",
+   "module": "Integrations",
+   "id": "INT-INT-001/outbound_errors_7d"
+  },
+  {
+   "metric": "import_rows_error_7d",
+   "op": ">",
+   "threshold": 0,
+   "severity": "Warning",
+   "title": "Import set rows failing transformation",
+   "causes": [
+    "Transform map field changes",
+    "Coalesce mismatches",
+    "Reference values missing"
+   ],
+   "recommendation": "Review the failing transform maps; the error distribution by import set names the broken feed.",
+   "solutionType": "Integration",
+   "complexity": "Medium",
+   "collector": "INT-INT-001",
+   "module": "Integrations",
+   "id": "INT-INT-001/import_rows_error_7d"
+  },
+  {
+   "metric": "flow_error_ratio",
+   "op": ">",
+   "threshold": 5,
+   "severity": "Warning",
+   "title": "Elevated Flow Designer error rate",
+   "causes": [
+    "Actions failing on integration steps",
+    "Records deleted mid-flow",
+    "Credential/connection alias failures"
+   ],
+   "recommendation": "Group errored contexts by flow; open the top failing flow executions and read the failing action.",
+   "solutionType": "Configuration",
+   "complexity": "Medium",
+   "collector": "PLAT-FLW-001",
+   "module": "Platform Flows",
+   "id": "PLAT-FLW-001/flow_error_ratio"
+  }
+ ],
+ "correlations": [
+  {
+   "id": "CORR-001",
+   "severity": "Critical",
+   "title": "CMDB identification quality is degrading Vulnerability Response matching",
+   "requires": [
+    {
+     "collector": "SECOPS-VR-001",
+     "metric": "vi_unmatched_ratio",
+     "op": ">",
+     "threshold": 10
+    },
+    {
+     "collector": "CMDB-DUP-001",
+     "metric": "srv_name_dup_ratio",
+     "op": ">",
+     "threshold": 5
+    }
+   ],
+   "detail": "Unmatched vulnerable items and duplicate server CIs are present together. Vulnerability-to-CI matching depends on the same identifiers that are duplicated in the CMDB, so these are one underlying data-quality problem, not two.",
+   "recommendation": "Treat CMDB identification remediation as the prerequisite: consolidate server identification rules and de-duplicate, then re-run vulnerability matching.",
+   "solutionType": "Architecture",
+   "complexity": "Large"
+  },
+  {
+   "id": "CORR-002",
+   "severity": "Error",
+   "title": "Discovery degradation is driving CMDB staleness",
+   "requires": [
+    {
+     "collector": "ITOM-DSC-001",
+     "metric": "mid_down",
+     "op": ">",
+     "threshold": 0
+    },
+    {
+     "collector": "CMDB-STL-001",
+     "metric": "srv_stale_ratio",
+     "op": ">",
+     "threshold": 30
+    }
+   ],
+   "detail": "MID Server availability problems coincide with a high stale-CI ratio. The staleness is a symptom; the collection outage is the cause to fix first.",
+   "recommendation": "Restore MID Server availability and re-run discovery before treating staleness as a data-quality problem.",
+   "solutionType": "Configuration",
+   "complexity": "Medium"
+  },
+  {
+   "id": "CORR-003",
+   "severity": "Error",
+   "title": "Catalog fulfilment chain is failing end to end",
+   "requires": [
+    {
+     "collector": "ITSM-REQ-001",
+     "metric": "items_active_no_fulfillment",
+     "op": ">",
+     "threshold": 0
+    },
+    {
+     "collector": "PLAT-FLW-001",
+     "metric": "flow_error_ratio",
+     "op": ">",
+     "threshold": 5
+    }
+   ],
+   "detail": "Catalog items without fulfilment processes and elevated flow errors are present together - requests are stalling both where no process exists and where the process fails.",
+   "recommendation": "Fix the failing flows for high-volume items first, then attach or retire the process-less items.",
+   "solutionType": "Configuration",
+   "complexity": "Medium"
+  },
+  {
+   "id": "CORR-004",
+   "severity": "Warning",
+   "title": "Asset-to-CI reconciliation degraded by identifier quality",
+   "requires": [
+    {
+     "collector": "ITAM-AM-001",
+     "metric": "hw_no_ci_ratio",
+     "op": ">",
+     "threshold": 10
+    },
+    {
+     "collector": "CMDB-DUP-001",
+     "metric": "hw_serial_dup_ratio",
+     "op": ">",
+     "threshold": 5
+    }
+   ],
+   "detail": "Hardware assets unlinked to CIs coincide with duplicated serial numbers - the reconciliation key itself is unreliable.",
+   "recommendation": "Clean serial-number quality first (placeholders vs true duplicates), then re-run asset-CI reconciliation.",
+   "solutionType": "Data remediation",
+   "complexity": "Large"
+  }
+ ],
+ "runbooks": [
+  {
+   "id": "RB-PLAT",
+   "title": "Platform Health Check",
+   "pack": "Platform",
+   "symptoms": [
+    "instance slow",
+    "platform health",
+    "performance",
+    "slow transactions",
+    "scheduled jobs",
+    "event queue",
+    "system health"
+   ],
+   "steps": [
+    "PERF-AUD-001",
+    "PERF-AUD-002",
+    "DATA-PROF-001",
+    "CODE-AUD-004",
+    "PLAT-FLW-001",
+    "INT-INT-001"
+   ],
+   "guidance": "Start with execution patterns and queue health, then table growth, static code risk, flow outcomes and integration failures."
+  },
+  {
+   "id": "RB-ITSM",
+   "title": "ITSM Health Check",
+   "pack": "ITSM",
+   "symptoms": [
+    "itsm health",
+    "service desk",
+    "ticket problems"
+   ],
+   "steps": [
+    "ITSM-INC-001",
+    "ITSM-SLA-001",
+    "ITSM-CHG-001",
+    "ITSM-REQ-001",
+    "ITSM-PRB-001"
+   ],
+   "guidance": "Run the five process baselines in order; each feeds the findings register independently."
+  },
+  {
+   "id": "RB-INC",
+   "title": "Incident Diagnostic",
+   "pack": "ITSM",
+   "symptoms": [
+    "incidents not creating",
+    "incident assignment",
+    "duplicate incidents",
+    "incident notifications",
+    "priority wrong"
+   ],
+   "steps": [
+    "ITSM-INC-001",
+    "ITSM-SLA-001"
+   ],
+   "guidance": "Baseline incident flow first; the duplicate-signature and assignment metrics usually isolate the symptom."
+  },
+  {
+   "id": "RB-SLA",
+   "title": "SLA Diagnostic",
+   "pack": "ITSM",
+   "symptoms": [
+    "sla not attaching",
+    "sla not progressing",
+    "sla breached",
+    "sla wrong time"
+   ],
+   "steps": [
+    "ITSM-SLA-001",
+    "ITSM-INC-001"
+   ],
+   "guidance": "Definition activity, attach ratio, stage distribution and breach ratio cover the four standard SLA failure modes."
+  },
+  {
+   "id": "RB-REQ",
+   "title": "Request Fulfilment Diagnostic",
+   "pack": "ITSM",
+   "symptoms": [
+    "requests not generating ritms",
+    "ritm not created",
+    "catalog item not working",
+    "stuck requests",
+    "catalog task unassigned"
+   ],
+   "steps": [
+    "ITSM-REQ-001",
+    "PLAT-FLW-001"
+   ],
+   "guidance": "The item-without-fulfilment and RITM-per-request metrics identify whether the failure is configuration or execution; flow errors show where execution breaks."
+  },
+  {
+   "id": "RB-CMDB",
+   "title": "CMDB Health Diagnostic",
+   "pack": "CMDB & CSDM",
+   "symptoms": [
+    "cmdb health",
+    "ci data quality",
+    "cmdb mess"
+   ],
+   "steps": [
+    "CMDB-INV-001",
+    "CMDB-DUP-001",
+    "CMDB-REL-001",
+    "CMDB-IRE-001",
+    "CMDB-STL-001",
+    "CMDB-CSDM-001"
+   ],
+   "guidance": "Inventory first (the denominators), then duplicates, relationships, the IRE layer, lifecycle and CSDM alignment."
+  },
+  {
+   "id": "RB-CI",
+   "title": "CI Diagnostic",
+   "pack": "CMDB & CSDM",
+   "symptoms": [
+    "duplicate servers",
+    "duplicate cis",
+    "ci wrong class",
+    "stale ci"
+   ],
+   "steps": [
+    "CMDB-DUP-001",
+    "CMDB-IRE-001",
+    "CMDB-STL-001"
+   ],
+   "guidance": "Duplicates, the identification rules that allowed them, and the freshness of the population."
+  },
+  {
+   "id": "RB-DISC",
+   "title": "Discovery Diagnostic",
+   "pack": "ITOM & Discovery",
+   "symptoms": [
+    "discovery not running",
+    "discovery creating duplicates",
+    "mid server down",
+    "ecc queue errors"
+   ],
+   "steps": [
+    "ITOM-DSC-001",
+    "CMDB-IRE-001",
+    "CMDB-DUP-001"
+   ],
+   "guidance": "MID and schedule health first; duplicates from discovery are usually identification-rule problems, not discovery problems."
+  },
+  {
+   "id": "RB-VR",
+   "title": "Vulnerability Response Diagnostic",
+   "pack": "Security Operations",
+   "symptoms": [
+    "vulnerabilities not matching cis",
+    "vulnerable items unmatched",
+    "stale vulnerabilities",
+    "scanner import"
+   ],
+   "steps": [
+    "SECOPS-VR-001",
+    "CMDB-DUP-001",
+    "CMDB-IRE-001"
+   ],
+   "guidance": "The match rate depends on CMDB identity quality - always run the CMDB pair alongside the VR baseline."
+  },
+  {
+   "id": "RB-SIR",
+   "title": "Security Incident Diagnostic",
+   "pack": "Security Operations",
+   "symptoms": [
+    "security incidents not creating",
+    "alert ingestion",
+    "sir assignment"
+   ],
+   "steps": [
+    "SECOPS-SIR-001",
+    "INT-INT-001"
+   ],
+   "guidance": "Baseline SIR flow, then the integration layer that feeds it."
+  },
+  {
+   "id": "RB-IRM",
+   "title": "IRM Health Diagnostic",
+   "pack": "IRM & Risk",
+   "symptoms": [
+    "risk assessment not generating",
+    "orphaned risks",
+    "controls not linked",
+    "grc issues aging",
+    "attestations"
+   ],
+   "steps": [
+    "IRM-GRC-001"
+   ],
+   "guidance": "The single baseline covers the Entity → Profile → Risk → Control chain and its orphans."
+  },
+  {
+   "id": "RB-CSM",
+   "title": "Customer Service Diagnostic",
+   "pack": "Customer Service",
+   "symptoms": [
+    "customer cases unassigned",
+    "case routing",
+    "entitlements",
+    "csm aging"
+   ],
+   "steps": [
+    "CSM-CS-001",
+    "ITSM-SLA-001"
+   ],
+   "guidance": "Case flow baseline plus SLA attachment - the two usual sources of CSM service failures."
+  },
+  {
+   "id": "RB-HRSD",
+   "title": "HR Service Delivery Diagnostic",
+   "pack": "HR Service Delivery",
+   "symptoms": [
+    "hr cases stuck",
+    "coe assignment",
+    "lifecycle events",
+    "hr profiles missing"
+   ],
+   "steps": [
+    "HRSD-HR-001"
+   ],
+   "guidance": "Aggregate-only HR baseline: profile coverage and case flow by COE. No case content is read."
+  },
+  {
+   "id": "RB-ITAM",
+   "title": "Asset Management Diagnostic",
+   "pack": "Asset Management",
+   "symptoms": [
+    "assets not linked to ci",
+    "asset reconciliation",
+    "missing models"
+   ],
+   "steps": [
+    "ITAM-AM-001",
+    "CMDB-DUP-001"
+   ],
+   "guidance": "Asset-CI linkage plus the serial-number quality that reconciliation depends on."
+  },
+  {
+   "id": "RB-INT",
+   "title": "Integration Diagnostic",
+   "pack": "Integrations",
+   "symptoms": [
+    "rest failures",
+    "integration errors",
+    "import failing",
+    "transform errors",
+    "outbound http"
+   ],
+   "steps": [
+    "INT-INT-001",
+    "ITOM-DSC-001"
+   ],
+   "guidance": "Outbound and import health, plus the MID layer many integrations run through."
+  }
+ ],
+ "packs": [
+  {
+   "id": "Platform",
+   "label": "Platform",
+   "collectors": [
+    "PERF-AUD-001",
+    "PERF-AUD-002",
+    "DATA-PROF-001",
+    "CODE-AUD-004",
+    "PLAT-FLW-001"
+   ]
+  },
+  {
+   "id": "ITSM",
+   "label": "ITSM",
+   "collectors": [
+    "ITSM-INC-001",
+    "ITSM-SLA-001",
+    "ITSM-CHG-001",
+    "ITSM-REQ-001",
+    "ITSM-PRB-001"
+   ]
+  },
+  {
+   "id": "CMDB & CSDM",
+   "label": "CMDB & CSDM",
+   "collectors": [
+    "CMDB-INV-001",
+    "CMDB-DUP-001",
+    "CMDB-REL-001",
+    "CMDB-IRE-001",
+    "CMDB-STL-001",
+    "CMDB-CSDM-001"
+   ]
+  },
+  {
+   "id": "ITOM & Discovery",
+   "label": "ITOM & Discovery",
+   "collectors": [
+    "ITOM-DSC-001"
+   ]
+  },
+  {
+   "id": "Security Operations",
+   "label": "Security Operations",
+   "collectors": [
+    "SECOPS-VR-001",
+    "SECOPS-SIR-001"
+   ]
+  },
+  {
+   "id": "IRM & Risk",
+   "label": "IRM & Risk",
+   "collectors": [
+    "IRM-GRC-001"
+   ]
+  },
+  {
+   "id": "Customer Service",
+   "label": "Customer Service",
+   "collectors": [
+    "CSM-CS-001"
+   ]
+  },
+  {
+   "id": "HR Service Delivery",
+   "label": "HR Service Delivery",
+   "collectors": [
+    "HRSD-HR-001"
+   ]
+  },
+  {
+   "id": "Asset Management",
+   "label": "Asset Management",
+   "collectors": [
+    "ITAM-AM-001"
+   ]
+  },
+  {
+   "id": "Integrations",
+   "label": "Integrations",
+   "collectors": [
+    "INT-INT-001"
+   ]
+  }
+ ]
+}
