@@ -2,3 +2,4 @@ node_modules/
 dist/
 target/
 tools/preview/out/
+.now/bom.json
