@@ -536,7 +536,7 @@ function createEmptyState() {
       id: uuid(),
       at: timestamp,
       action: "Assessment created",
-      detail: "Local-first draft created; no instance connection.",
+      detail: "Local-first draft created; automated evidence connection available to administrators.",
     }],
   };
 }
@@ -1479,7 +1479,7 @@ function renderShell() {
         <div class="side-foot">
           <div class="progress-label"><span>Overall progress</span><strong>${stats.stagePercent}%</strong></div>
           <div class="progress"><span style="width:${stats.stagePercent}%"></span></div>
-          <small>Saved locally · no instance connection</small>
+          <small>Automation connected · assessment saved locally</small>
         </div>
       </aside>
       <button class="nav-scrim" data-action="toggle-nav" aria-label="Close navigation"></button>
