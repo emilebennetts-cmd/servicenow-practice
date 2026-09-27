@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>365c030600cf4c37b9f845ee95c02719</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_365c030600cf4c37b9f845ee95c02719</sys_update_name>
+    <body>See CSM pattern.</body>
+    <data>{"type": "Data load / reference data", "cls": "Out of the box", "req": [0], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>e96633990a4b4bd0a7aa9de3d4f7fa00</pattern>
+    <seq>0</seq>
+    <share_key>cmp.csm.model</share_key>
+    <title>CSM foundation: accounts, sites, sold products</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

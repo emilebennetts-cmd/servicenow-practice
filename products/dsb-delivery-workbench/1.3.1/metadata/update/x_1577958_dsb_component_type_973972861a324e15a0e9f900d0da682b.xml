@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_component_type">
+  <x_1577958_dsb_component_type action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>973972861a324e15a0e9f900d0da682b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_component_type_973972861a324e15a0e9f900d0da682b</sys_update_name>
+    <base_hours>4</base_hours>
+    <build_order>15.5</build_order>
+    <build_phase>5. Data &amp; integration</build_phase>
+    <name>Integration spoke / connection</name>
+    <pvt_checks>Connection and credential alias configured for this environment (no secrets in update sets)
+Test action succeeds against the target test environment
+Failure is logged and alerted</pvt_checks>
+  </x_1577958_dsb_component_type>
+</record_update>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>c159619cf173437ab7c878c471469fc6</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_c159619cf173437ab7c878c471469fc6</sys_update_name>
+    <body>Train on 12+ months; threshold agreed; prediction logged; manual override kept.</body>
+    <data>{"type": "Assignment / matching rule", "cls": "Out of the box", "req": [5], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>0516e578c5dd4dfda26e406e0d0f601d</pattern>
+    <seq>7</seq>
+    <title>Predictive Intelligence classification solution (category, assignment group)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

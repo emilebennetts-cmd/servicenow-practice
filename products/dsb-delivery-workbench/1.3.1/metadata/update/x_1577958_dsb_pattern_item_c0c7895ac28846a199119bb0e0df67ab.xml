@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>c0c7895ac28846a199119bb0e0df67ab</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_c0c7895ac28846a199119bb0e0df67ab</sys_update_name>
+    <body>Given an entitlement import for a priority publisher, When it loads, Then each entitlement references a normalised software model, licence metric and contract</body>
+    <data>{"type": "Data", "moscow": "Must", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>f0c40ed7d7ac4c1a957aafe864f1f114</pattern>
+    <seq>4</seq>
+    <title>Software entitlements are recorded from contracts and purchase records</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

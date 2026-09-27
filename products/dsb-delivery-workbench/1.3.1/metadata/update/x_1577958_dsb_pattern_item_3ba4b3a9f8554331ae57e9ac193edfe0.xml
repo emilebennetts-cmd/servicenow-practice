@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>3ba4b3a9f8554331ae57e9ac193edfe0</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_3ba4b3a9f8554331ae57e9ac193edfe0</sys_update_name>
+    <body>Given repeated events with the same message key, When processed, Then one alert is updated rather than new alerts created
+Given alerts on CIs in the same application service within the time window, When correlation runs, Then they form one alert group</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>27017c1f692149c79a16726ca19e8c2b</pattern>
+    <seq>2</seq>
+    <title>Related alerts are de-duplicated and correlated into groups</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

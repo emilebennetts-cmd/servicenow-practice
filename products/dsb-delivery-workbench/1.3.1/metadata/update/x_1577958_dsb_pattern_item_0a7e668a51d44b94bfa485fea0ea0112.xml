@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>0a7e668a51d44b94bfa485fea0ea0112</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_0a7e668a51d44b94bfa485fea0ea0112</sys_update_name>
+    <body>Read-only aggregate checks (errors, queues, overdue jobs, integration errors); raises one incident per breached threshold per day.</body>
+    <data>{"type": "Scheduled job", "cls": "Customisation", "req": [2, 3], "justification": "Aggregates health signals from several system tables into actionable incidents; no single OOB job provides this. Read-only apart from incident creation.", "upgrade": "Low", "scope": "Application"}</data>
+    <kind>component</kind>
+    <pattern>8d97fa25f5114eb4b6ee61ef9fdc7882</pattern>
+    <seq>5</seq>
+    <title>Scheduled platform health check with threshold incidents</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

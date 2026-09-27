@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>b2b31d98385248ef9987ff0412c246a1</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_b2b31d98385248ef9987ff0412c246a1</sys_update_name>
+    <body>Update set: PLAT_Operations_&lt;client&gt;_v1
+  - Scoped app x_&lt;prefix&gt;_plat_ops: system properties (thresholds), scheduled script, script include
+  - Global: intake record producer, platform support group/offering (data), notifications, dashboards
+Data: platform support group, service offering, KB, clone profiles (per environment).</body>
+    <data>{"kind": "checklist", "purpose": "Operations tooling in a small scoped app so thresholds and the job are portable.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>8d97fa25f5114eb4b6ee61ef9fdc7882</pattern>
+    <seq>0</seq>
+    <title>Update set plan — platform operations</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

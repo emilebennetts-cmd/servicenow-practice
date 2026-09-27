@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<record_update table="sys_user_role_contains">
+  <sys_user_role_contains action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>10cf8b2a21014f4fbf81ffafd6f7c401</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_user_role_contains_10cf8b2a21014f4fbf81ffafd6f7c401</sys_update_name>
+    <contains name="x_1577958_dsb.architect">dd52a225e5b74cc2b0842eefaac51f6e</contains>
+    <role name="x_1577958_dsb.admin">70a8c5854d134c85afc7c13cf66a1459</role>
+    <sys_name>x_1577958_dsb.architect.x_1577958_dsb.admin</sys_name>
+  </sys_user_role_contains>
+</record_update>

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_section caption="Problem and scope" section_id="bfef2b95d44748bf87d265b2f9620580" sys_domain="global" table="x_1577958_dsb_engagement" view="">
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>problem</element>
+      <position>0</position>
+      <sys_id>fa0f12a781754412ae18fd3d467afd06</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Problem and scope" display_value="Problem and scope" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">bfef2b95d44748bf87d265b2f9620580</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>scope_in</element>
+      <position>1</position>
+      <sys_id>29b12a8b1a3443ab9e59bb7d63dffb30</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Problem and scope" display_value="Problem and scope" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">bfef2b95d44748bf87d265b2f9620580</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>scope_out</element>
+      <position>2</position>
+      <sys_id>d1f91edca6f649a4adcc26df0d858c94</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Problem and scope" display_value="Problem and scope" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">bfef2b95d44748bf87d265b2f9620580</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>constraints</element>
+      <position>3</position>
+      <sys_id>4302b9430f46408e95a5468f88696a1a</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Problem and scope" display_value="Problem and scope" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">bfef2b95d44748bf87d265b2f9620580</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>path_rationale</element>
+      <position>4</position>
+      <sys_id>db5b25ef8fa34cf193e6e1b959ba6da3</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Problem and scope" display_value="Problem and scope" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">bfef2b95d44748bf87d265b2f9620580</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <caption>Problem and scope</caption>
+      <header>false</header>
+      <name>x_1577958_dsb_engagement</name>
+      <roles/>
+      <sys_domain>global</sys_domain>
+      <sys_id>bfef2b95d44748bf87d265b2f9620580</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <title>false</title>
+      <view_name/>
+      <view name="NULL" display_value="Default view">Default view</view>
+    </sys_ui_section>
+  </sys_ui_section>
+</record_update>

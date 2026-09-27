@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>cac497de20404a2dbfcc3ca4c2c00c23</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_cac497de20404a2dbfcc3ca4c2c00c23</sys_update_name>
+    <body>// DSB IMPLEMENTATION hc-recall-match — READ ONLY.
+var MODEL = '';           // &lt;confirm&gt; cmdb_model sys_id
+var SERIALS = [];         // explicit serial list from the recall notice, or leave empty and use PREFIX
+var PREFIX = '';          // serial prefix if the notice gives a range
+var out = [];
+var a = new GlideRecord('alm_hardware'); a.addQuery('model', MODEL); a.addQuery('install_status', '!=', 7);
+if (SERIALS.length) a.addQuery('serial_number', 'IN', SERIALS.join(',')); else if (PREFIX) a.addQuery('serial_number', 'STARTSWITH', PREFIX);
+a.query();
+while (a.next()) out.push({asset_tag: a.getValue('asset_tag'), serial: a.getValue('serial_number'), location: a.getDisplayValue('location'), department: a.getDisplayValue('department')});
+gs.print('=== DSB-IMPL hc-recall-match ===\n' + JSON.stringify({count: out.length, devices: out}, null, 2));</body>
+    <data>{"kind": "script", "purpose": "Lists active assets of a model within a serial range for a recall notice.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>0e998cd6afca4efe958b07af4c028893</pattern>
+    <seq>0</seq>
+    <title>Recall match report (READ ONLY)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

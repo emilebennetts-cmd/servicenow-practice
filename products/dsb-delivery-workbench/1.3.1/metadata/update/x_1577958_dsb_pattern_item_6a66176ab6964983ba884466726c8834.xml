@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>6a66176ab6964983ba884466726c8834</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_6a66176ab6964983ba884466726c8834</sys_update_name>
+    <body>OOB incident states and priority matrix; categories reduced to an agreed two-level list.</body>
+    <data>{"type": "Assignment / matching rule", "cls": "Out of the box", "req": [0], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>3</seq>
+    <title>Incident configuration: categories, priority lookup, assignment rules, on-hold reasons</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>313604d2c0c24f479034e042f7d1dab9</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_313604d2c0c24f479034e042f7d1dab9</sys_update_name>
+    <body>Spoke connection and flow actions (credentials per environment)</body>
+    <data>{"key": "INT", "scope": "global / spoke scopes"}</data>
+    <kind>update_set</kind>
+    <pattern>8d626f620b62477fb3d9517346e13cf8</pattern>
+    <seq>1</seq>
+    <title>S2P_Integration_&lt;client&gt;_v1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

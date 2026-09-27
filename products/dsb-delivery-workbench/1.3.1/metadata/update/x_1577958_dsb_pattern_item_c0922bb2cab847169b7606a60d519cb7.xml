@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>c0922bb2cab847169b7606a60d519cb7</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_c0922bb2cab847169b7606a60d519cb7</sys_update_name>
+    <body>Catalogue items, variables, variable sets, categories
+Flow Designer flows and subflows (or an application scope if preferred)</body>
+    <data>{"key": "CAT", "scope": "global"}</data>
+    <kind>update_set</kind>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>2</seq>
+    <title>ITSM_Catalog_&lt;client&gt;_v1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>133eae21d5594ad79ac8db2dffcb508b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_133eae21d5594ad79ac8db2dffcb508b</sys_update_name>
+    <body>Binding and de-duplication</body>
+    <data>{"validate": "Sample payload per tool"}</data>
+    <kind>assumption</kind>
+    <pattern>27017c1f692149c79a16726ca19e8c2b</pattern>
+    <seq>0</seq>
+    <title>Monitoring tools can send or expose node name/FQDN and a stable message key</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

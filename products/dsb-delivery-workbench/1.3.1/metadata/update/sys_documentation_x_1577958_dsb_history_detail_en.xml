@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>583d943bc49e416183ff9ab14e948f02</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_history_detail_en</sys_update_name>
+    <element>detail</element>
+    <help/>
+    <hint/>
+    <label>Detail</label>
+    <language>en</language>
+    <name>x_1577958_dsb_history</name>
+    <plural>Details</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

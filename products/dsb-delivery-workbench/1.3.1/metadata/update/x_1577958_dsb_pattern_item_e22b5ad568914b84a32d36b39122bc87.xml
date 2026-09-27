@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>e22b5ad568914b84a32d36b39122bc87</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_e22b5ad568914b84a32d36b39122bc87</sys_update_name>
+    <body>Planning items, scenarios and funding.</body>
+    <data>{"type": "Workspace / portal page", "cls": "Out of the box", "req": [1, 7], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>009e981159a14b74a82d20a26b9752a8</pattern>
+    <seq>2</seq>
+    <title>Portfolio Planning Workspace / prioritisation views</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

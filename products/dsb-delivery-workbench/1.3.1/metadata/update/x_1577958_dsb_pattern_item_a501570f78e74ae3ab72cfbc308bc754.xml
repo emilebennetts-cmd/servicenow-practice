@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>a501570f78e74ae3ab72cfbc308bc754</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_a501570f78e74ae3ab72cfbc308bc754</sys_update_name>
+    <body>Encryption where licensed; ACLs otherwise.</body>
+    <data>{"type": "ACL", "cls": "Configuration", "req": [4], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>a828e5429bda4f57b75d7e4a3331f23f</pattern>
+    <seq>5</seq>
+    <title>Field encryption / field-level ACLs for sensitive data</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

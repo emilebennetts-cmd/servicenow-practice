@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_choice_set action="INSERT_OR_UPDATE" field="lifecycle_state" table="x_1577958_dsb_engagement" version="3" apply_defaults="true">
+    <sys_choice_set action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>5db1118373494a309c1516c82ea67789</sys_id>
+      <element>lifecycle_state</element>
+      <sys_update_name>sys_choice_x_1577958_dsb_engagement_lifecycle_state</sys_update_name>
+      <name>x_1577958_dsb_engagement</name>
+      <sys_class_name>sys_choice_set</sys_class_name>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_package display_value="x_1577958_dsb" source="17aff6423fa94ebabea0896ca9bb2ea3">17aff6423fa94ebabea0896ca9bb2ea3</sys_package>
+      <sys_name>lifecycle_state</sys_name>
+    </sys_choice_set>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>b83e674720774cdb886fcd7cb1c76180</sys_id>
+      <name>x_1577958_dsb_engagement</name>
+      <element>lifecycle_state</element>
+      <label>Draft</label>
+      <value>draft</value>
+      <sequence>10</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>4d2738f04b1c4647bd43aa2bbb3b7ec0</sys_id>
+      <name>x_1577958_dsb_engagement</name>
+      <element>lifecycle_state</element>
+      <label>Qualified (G0)</label>
+      <value>qualified</value>
+      <sequence>20</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>77ab18066b3345d7adc26650cb618260</sys_id>
+      <name>x_1577958_dsb_engagement</name>
+      <element>lifecycle_state</element>
+      <label>Requirements agreed (G1)</label>
+      <value>requirements_agreed</value>
+      <sequence>30</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>20ad9a191caa4295980faa79049651bf</sys_id>
+      <name>x_1577958_dsb_engagement</name>
+      <element>lifecycle_state</element>
+      <label>Design signed off (G2)</label>
+      <value>design_signed_off</value>
+      <sequence>40</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>233f53018d6b49efbcb15a92ef2bcb02</sys_id>
+      <name>x_1577958_dsb_engagement</name>
+      <element>lifecycle_state</element>
+      <label>Built and tested (G3)</label>
+      <value>built</value>
+      <sequence>50</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>6c72427b3f3e4a248afd4db2e2518c6f</sys_id>
+      <name>x_1577958_dsb_engagement</name>
+      <element>lifecycle_state</element>
+      <label>UAT accepted (G4)</label>
+      <value>uat_accepted</value>
+      <sequence>60</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>f929adea0e784e09bbb2f8236087d883</sys_id>
+      <name>x_1577958_dsb_engagement</name>
+      <element>lifecycle_state</element>
+      <label>Live - prod PVT passed (G5)</label>
+      <value>live</value>
+      <sequence>70</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>6ac6feebe5a044b7b3132db3ea3d2b02</sys_id>
+      <name>x_1577958_dsb_engagement</name>
+      <element>lifecycle_state</element>
+      <label>Handed over (G6)</label>
+      <value>handed_over</value>
+      <sequence>80</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>05f83671f9044c5bae84292e63f430c0</sys_id>
+      <name>x_1577958_dsb_engagement</name>
+      <element>lifecycle_state</element>
+      <label>Closed</label>
+      <value>closed</value>
+      <sequence>90</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+  </sys_choice_set>
+</record_update>

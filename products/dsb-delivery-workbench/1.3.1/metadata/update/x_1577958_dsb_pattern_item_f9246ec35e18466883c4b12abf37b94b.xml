@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>f9246ec35e18466883c4b12abf37b94b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_f9246ec35e18466883c4b12abf37b94b</sys_update_name>
+    <body>Discovery schedules and behaviours (credentials are NOT captured — recreate per environment)
+SGC connection configuration (per scope)
+IntegrationHub ETL transforms</body>
+    <data>{"key": "SRC", "scope": "global / connector scopes"}</data>
+    <kind>update_set</kind>
+    <pattern>031fd78c2b3742d38dc20450125b3992</pattern>
+    <seq>1</seq>
+    <title>CMDB_Sources_&lt;client&gt;_v1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

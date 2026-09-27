@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_component_type">
+  <x_1577958_dsb_component_type action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>20e97c740b1d409fb4693bfeefb77e2c</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_component_type_20e97c740b1d409fb4693bfeefb77e2c</sys_update_name>
+    <base_hours>4</base_hours>
+    <build_order>11</build_order>
+    <build_phase>4. Automation</build_phase>
+    <name>Flow / subflow</name>
+    <pvt_checks>Flow is active and triggers on the designed condition
+Each action completes; execution visible under Flow executions
+Error path tested (e.g. approval rejected, action failure)</pvt_checks>
+  </x_1577958_dsb_component_type>
+</record_update>

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_list table="x_1577958_dsb_gate" parent="" relationship="" sys_domain="global" view="">
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>315535dfd3544ce688c46206087faaad</sys_id>
+      <list_id display_value="x_1577958_dsb_gate" name="x_1577958_dsb_gate" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">8259bcde60924968af6f1ad12c210879</list_id>
+      <element>engagement</element>
+      <position>0</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>3a1c108e3aaf4d4aae04a7c5c47b58f2</sys_id>
+      <list_id display_value="x_1577958_dsb_gate" name="x_1577958_dsb_gate" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">8259bcde60924968af6f1ad12c210879</list_id>
+      <element>gate</element>
+      <position>1</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>dcc43a4675a84fa4a871eeab0cd21b08</sys_id>
+      <list_id display_value="x_1577958_dsb_gate" name="x_1577958_dsb_gate" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">8259bcde60924968af6f1ad12c210879</list_id>
+      <element>status</element>
+      <position>2</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>efc1c6adb054431792e3a1fbffc052c7</sys_id>
+      <list_id display_value="x_1577958_dsb_gate" name="x_1577958_dsb_gate" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">8259bcde60924968af6f1ad12c210879</list_id>
+      <element>approver_role</element>
+      <position>3</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>449fc37f846a422095fb0ca947c166c9</sys_id>
+      <list_id display_value="x_1577958_dsb_gate" name="x_1577958_dsb_gate" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">8259bcde60924968af6f1ad12c210879</list_id>
+      <element>approval_ref</element>
+      <position>4</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>91826262532c4259816664a1c2ecf79d</sys_id>
+      <list_id display_value="x_1577958_dsb_gate" name="x_1577958_dsb_gate" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">8259bcde60924968af6f1ad12c210879</list_id>
+      <element>decided_on</element>
+      <position>5</position>
+    </sys_ui_list_element>
+    <sys_ui_list action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>8259bcde60924968af6f1ad12c210879</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <view name="NULL">Default view</view>
+      <name>x_1577958_dsb_gate</name>
+      <sys_domain>global</sys_domain>
+    </sys_ui_list>
+  </sys_ui_list>
+</record_update>

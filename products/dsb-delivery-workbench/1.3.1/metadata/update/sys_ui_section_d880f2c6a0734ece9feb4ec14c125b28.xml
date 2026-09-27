@@ -1,0 +1,216 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_section caption="Details" section_id="d880f2c6a0734ece9feb4ec14c125b28" sys_domain="global" table="x_1577958_dsb_component" view="">
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.begin_split</element>
+      <position>0</position>
+      <sys_id>e7fa5398baeb42819e8e611f2867f3ad</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type>.begin_split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>number</element>
+      <position>1</position>
+      <sys_id>923792e07b114efc985aff578cfd61b5</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>engagement</element>
+      <position>2</position>
+      <sys_id>39462334e64048c39586cadaec883bab</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>name</element>
+      <position>3</position>
+      <sys_id>af79c375c77148fa8932d2746642055a</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>component_type</element>
+      <position>4</position>
+      <sys_id>5c7699af4c184fcaa6542bffd5819abd</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>build_class</element>
+      <position>5</position>
+      <sys_id>ecddd48035d841488c2764bb7b23248c</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>target_scope</element>
+      <position>6</position>
+      <sys_id>04a1a659bb774283a53a99594d0bc809</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>requirements</element>
+      <position>7</position>
+      <sys_id>49487d824f1b4cfea37e3b97f36387ae</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>upgrade_impact</element>
+      <position>8</position>
+      <sys_id>6fc0f33f42ec4972950666c53e2d450b</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>capture</element>
+      <position>9</position>
+      <sys_id>272087badbe3428ea268c71a97c00111</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.split</element>
+      <position>10</position>
+      <sys_id>5edd274a152142c593c86c6ebbcf481c</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type>.split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>update_set</element>
+      <position>11</position>
+      <sys_id>287fd0804971447696616f0f88ee0467</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>hours_override</element>
+      <position>12</position>
+      <sys_id>85499f45eb674256a557cb520f4b7cae</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>hours</element>
+      <position>13</position>
+      <sys_id>32c1c1a7ada54cf6a022229e82089f0c</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>build_status</element>
+      <position>14</position>
+      <sys_id>f5fea4cfc994419184378bfe7011bd41</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>review_ref</element>
+      <position>15</position>
+      <sys_id>1eb5133181f048efac3794c69d1fab87</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>pattern_key</element>
+      <position>16</position>
+      <sys_id>890828954d3a4027969161ba3eede324</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>share_key</element>
+      <position>17</position>
+      <sys_id>18f0a4ae257b48d18c8bde770f5dc5eb</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>seeded</element>
+      <position>18</position>
+      <sys_id>28920a1c3bc542beacd221f164a1b947</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.end_split</element>
+      <position>19</position>
+      <sys_id>9608be411804405380752be0b007064a</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type>.end_split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>description</element>
+      <position>20</position>
+      <sys_id>7e9b5d702d344c86a83cf6892c9eb80e</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>justification</element>
+      <position>21</position>
+      <sys_id>9096943efbd74fcbb20fe3a436a71116</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_component" sys_domain="global" view="Default view">d880f2c6a0734ece9feb4ec14c125b28</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <caption>Details</caption>
+      <header>false</header>
+      <name>x_1577958_dsb_component</name>
+      <roles/>
+      <sys_domain>global</sys_domain>
+      <sys_id>d880f2c6a0734ece9feb4ec14c125b28</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <title>false</title>
+      <view_name/>
+      <view name="NULL" display_value="Default view">Default view</view>
+    </sys_ui_section>
+  </sys_ui_section>
+</record_update>

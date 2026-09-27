@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_section caption="New scoped application" section_id="9a8deb34b80849c8aa7062424b156d0a" sys_domain="global" table="x_1577958_dsb_engagement" view="">
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.begin_split</element>
+      <position>0</position>
+      <sys_id>f63418aaae9c497992587bc020fd400d</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="New scoped application" display_value="New scoped application" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">9a8deb34b80849c8aa7062424b156d0a</sys_ui_section>
+      <sys_user/>
+      <type>.begin_split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>greenfield</element>
+      <position>1</position>
+      <sys_id>ab54bb341b1749ada7b970efe0391345</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="New scoped application" display_value="New scoped application" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">9a8deb34b80849c8aa7062424b156d0a</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>app_name</element>
+      <position>2</position>
+      <sys_id>bb23e3f72803407c9d8aa465d4abb6e7</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="New scoped application" display_value="New scoped application" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">9a8deb34b80849c8aa7062424b156d0a</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>app_scope</element>
+      <position>3</position>
+      <sys_id>38f0b43b88f143c7bbc2d99e0af6eab2</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="New scoped application" display_value="New scoped application" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">9a8deb34b80849c8aa7062424b156d0a</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.split</element>
+      <position>4</position>
+      <sys_id>e7dbcd67cb9a47a1b887c6f1b123fb21</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="New scoped application" display_value="New scoped application" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">9a8deb34b80849c8aa7062424b156d0a</sys_ui_section>
+      <sys_user/>
+      <type>.split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>main_table</element>
+      <position>5</position>
+      <sys_id>7b1a595b03d244ecb1f15285501c3e15</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="New scoped application" display_value="New scoped application" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">9a8deb34b80849c8aa7062424b156d0a</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>extends_task</element>
+      <position>6</position>
+      <sys_id>2432fe29de9745f18b8aaca024cc27db</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="New scoped application" display_value="New scoped application" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">9a8deb34b80849c8aa7062424b156d0a</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.end_split</element>
+      <position>7</position>
+      <sys_id>064a494353ab432f94d9d349ead611f8</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="New scoped application" display_value="New scoped application" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">9a8deb34b80849c8aa7062424b156d0a</sys_ui_section>
+      <sys_user/>
+      <type>.end_split</type>
+    </sys_ui_element>
+    <sys_ui_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <caption>New scoped application</caption>
+      <header>false</header>
+      <name>x_1577958_dsb_engagement</name>
+      <roles/>
+      <sys_domain>global</sys_domain>
+      <sys_id>9a8deb34b80849c8aa7062424b156d0a</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <title>false</title>
+      <view_name/>
+      <view name="NULL" display_value="Default view">Default view</view>
+    </sys_ui_section>
+  </sys_ui_section>
+</record_update>

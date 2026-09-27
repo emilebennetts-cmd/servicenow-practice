@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4d6294dafb5043d9befcb3e32dcdee7d</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_4d6294dafb5043d9befcb3e32dcdee7d</sys_update_name>
+    <body>Epics/stories/sprints linked to planning items; Jira spoke if teams stay in Jira.</body>
+    <data>{"type": "Integration (REST/SOAP)", "cls": "Out of the box", "req": [6], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>009e981159a14b74a82d20a26b9752a8</pattern>
+    <seq>8</seq>
+    <title>Enterprise Agile Planning (or Jira integration)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

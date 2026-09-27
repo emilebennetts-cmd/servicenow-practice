@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>c4e320d4880f4cbfb135e601961463f9</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_c4e320d4880f4cbfb135e601961463f9</sys_update_name>
+    <body>Scheduling rules and optimisation where licensed.</body>
+    <data>{"type": "Workspace / portal page", "cls": "Out of the box", "req": [1], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>5c6ec6aa57e140f986af5947553a8c3e</pattern>
+    <seq>3</seq>
+    <title>Dispatcher Workspace and auto-assignment / Dynamic Scheduling</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

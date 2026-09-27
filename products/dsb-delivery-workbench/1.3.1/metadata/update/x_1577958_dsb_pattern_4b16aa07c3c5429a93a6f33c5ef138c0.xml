@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern">
+  <x_1577958_dsb_pattern action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4b16aa07c3c5429a93a6f33c5ef138c0</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_4b16aa07c3c5429a93a6f33c5ef138c0</sys_update_name>
+    <active>true</active>
+    <exclude_terms>[{"re": "privacy impact", "flags": "i"}]</exclude_terms>
+    <indicative_cases>37</indicative_cases>
+    <key>irm-policy-compliance</key>
+    <library_version>1.5</library_version>
+    <licence_products>irm</licence_products>
+    <min_hits>2</min_hits>
+    <name>IRM / GRC policy, risk and compliance foundation</name>
+    <overview>Load the library once, scope entities well, then automate. (1) Agree frameworks in scope and import authority documents and citations (UCF where licensed) — never re-type regulations. (2) Model policies and policy statements and map them to citations; statements are what generate controls. (3) Design entity types with filters over existing platform data (business applications, business units, vendors) so entities and controls generate and stay current — owners come from those records. (4) Build a single risk framework (risk statements) and assessment methodology aligned to the client's matrix and appetite. (5) Operate: scheduled attestations, basic/script indicators on platform data (e.g. patching, access reviews), issues with due dates and escalations. (6) Add audit engagements and vendor risk only after the core is operating. (7) Report from the OOB workspaces. The IRM data model is used as-is; custom tables are not required.</overview>
+    <pain>Risk and control registers in spreadsheets with no single owner
+Audit evidence gathered manually for each request
+Controls not mapped to regulations, so coverage cannot be shown
+Issues from audits and control failures are not tracked to closure
+Duplicated assessments across teams (security, privacy, risk)</pain>
+    <phase>1</phase>
+    <requires/>
+    <strong_terms>[{"re": "\\bIRM\\b|\\bGRC\\b", "flags": "i"}, {"re": "risk register|compliance|regulat", "flags": "i"}]</strong_terms>
+    <summary>Risks, controls and compliance evidence live in spreadsheets and document libraries. Each audit or regulatory request (APRA CPS 230/234, ISO 27001, SOC 2, Essential Eight) triggers a scramble to find owners and evidence, control testing is inconsistent, and there is no line of sight from a policy to the controls that implement it and the issues raised against them. The pattern converges on the OOB IRM data model — authority documents and citations, policies and statements, entities, controls, risks, indicators and issues — loaded once, with attestation and automated control monitoring where platform data exists.</summary>
+    <triggers>[{"re": "\\bIRM\\b|\\bGRC\\b|integrated risk", "flags": "i"}, {"re": "risk (register|management|assessment)", "flags": "i"}, {"re": "compliance|regulat|audit", "flags": "i"}, {"re": "policy|control|attest", "flags": "i"}, {"re": "ISO ?27001|SOC ?2|\\bAPRA\\b|CPS ?2(30|34)|Essential Eight|\\bIRAP\\b|\\bSOX\\b|\\bNIST\\b", "flags": "i"}, {"re": "third.party|vendor risk", "flags": "i"}, {"re": "operational resilience|business continuity", "flags": "i"}]</triggers>
+    <verified>false</verified>
+  </x_1577958_dsb_pattern>
+</record_update>

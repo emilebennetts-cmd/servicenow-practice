@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>80fc72f1620e4aa0ba31bb6762aad91f</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_80fc72f1620e4aa0ba31bb6762aad91f</sys_update_name>
+    <body>Given a suspected breach, When assessed, Then the serious-harm assessment, decision, OAIC notification date (if any) and affected individual notifications are recorded within 30 days</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>a828e5429bda4f57b75d7e4a3331f23f</pattern>
+    <seq>3</seq>
+    <title>Data breaches are assessed for notifiability with a recorded decision</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

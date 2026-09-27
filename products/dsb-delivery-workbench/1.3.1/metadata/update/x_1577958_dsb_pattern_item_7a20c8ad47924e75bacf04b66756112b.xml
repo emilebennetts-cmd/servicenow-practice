@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>7a20c8ad47924e75bacf04b66756112b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_7a20c8ad47924e75bacf04b66756112b</sys_update_name>
+    <body>// DSB EVIDENCE cmdb.ire — READ ONLY.
+var DSB_NOTES = [];
+function dsbPrint(key, out){ if (DSB_NOTES.length) out.dsb_notes = DSB_NOTES; var LIM = 60000; var s = JSON.stringify(out, null, 1); if (s.length &gt; LIM) s = JSON.stringify(out); var cut = [], loops = 0; while (s.length &gt; LIM &amp;&amp; loops++ &lt; 60) { var bigK = null, bigL = 0; for (var k in out) { if (k === 'key' || k === 'dsb_truncated' || !out[k] || typeof out[k] !== 'object') continue; var l = JSON.stringify(out[k]).length; if (l &gt; bigL) { bigL = l; bigK = k; } } if (!bigK) break; var v = out[bigK]; if (Object.prototype.toString.call(v) === '[object Array]' &amp;&amp; v.length &gt; 10) { out[bigK] = v.slice(0, Math.floor(v.length / 2)); cut.push(bigK + ' kept ' + out[bigK].length + ' of ' + v.length); } else { out[bigK] = 'omitted: ' + bigL + ' characters'; cut.push(bigK + ' omitted'); } out.dsb_truncated = cut; s = JSON.stringify(out); } gs.print('=== DSB-EVIDENCE ' + key + ' ===\n' + s); }
+var out = {key:'cmdb.ire', identification_rules:[], reconciliation_definitions:[], notes:[]};
+var ir = new GlideRecord('cmdb_identifier'); ir.addQuery('active', true); ir.query();
+while (ir.next()) {
+  var rule = {applies_to: ir.getValue('applies_to'), name: ir.getValue('name'), independent: ir.getValue('independent'), entries: []};
+  var e = new GlideRecord('cmdb_identifier_entry'); e.addQuery('identifier', ir.getUniqueValue()); e.orderBy('order'); e.query();
+  while (e.next()) rule.entries.push({order: e.getValue('order'), attributes: e.getValue('attributes'), table: e.getValue('table'), active: e.getValue('active'), search_on_table: e.getValue('search_on_table')});
+  if (/computer|server|hardware|netgear|vm_instance/.test(rule.applies_to)) out.identification_rules.push(rule);
+}
+if (gs.tableExists('cmdb_reconciliation_definition')) {
+  var rd = new GlideRecord('cmdb_reconciliation_definition'); rd.query();
+  while (rd.next()) out.reconciliation_definitions.push({applies_to: rd.getValue('applies_to'), source: rd.getDisplayValue('discovery_source'), attributes: rd.getValue('attributes'), active: rd.getValue('active')});
+} else out.notes.push('cmdb_reconciliation_definition not found');
+function dupes(t, f){ var ga = new GlideAggregate(t); ga.addNotNullQuery(f); ga.addAggregate('COUNT'); ga.groupBy(f); ga.addHaving('COUNT', '&gt;', 1); ga.query(); var n = 0, sample = []; while (ga.next()) { n++; if (sample.length &lt; 10) sample.push(ga.getValue(f) + ' x' + ga.getAggregate('COUNT')); } return {duplicate_keys: n, sample: sample}; }
+out.duplicates_by_serial_computer = dupes('cmdb_ci_computer','serial_number');
+out.duplicates_by_name_computer = dupes('cmdb_ci_computer','name');
+if (gs.tableExists('reconcile_duplicate_task')) { var dt = new GlideAggregate('reconcile_duplicate_task'); dt.addAggregate('COUNT'); dt.groupBy('state'); dt.query(); out.duplicate_tasks_by_state = {}; while (dt.next()) out.duplicate_tasks_by_state[dt.getDisplayValue('state')] = parseInt(dt.getAggregate('COUNT'),10); }
+dsbPrint('cmdb.ire', out);</body>
+    <data>{"key": "cmdb.ire", "why": "Determines whether the IRE will merge or duplicate when a second source (or Tenable) presents an asset", "unblocks": "IRE and reconciliation design"}</data>
+    <kind>evidence_script</kind>
+    <pattern>9ad6efafe3d645c1bce9ff6b75af7152</pattern>
+    <seq>3</seq>
+    <title>Identification rules, reconciliation definitions and duplicate exposure</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

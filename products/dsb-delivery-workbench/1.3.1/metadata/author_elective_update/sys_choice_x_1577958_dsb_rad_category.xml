@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_choice_set action="INSERT_OR_UPDATE" field="category" table="x_1577958_dsb_rad" version="3" apply_defaults="true">
+    <sys_choice_set action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>119d8b9cb61b457b89399f01f2687d46</sys_id>
+      <element>category</element>
+      <sys_update_name>sys_choice_x_1577958_dsb_rad_category</sys_update_name>
+      <name>x_1577958_dsb_rad</name>
+      <sys_class_name>sys_choice_set</sys_class_name>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_package display_value="x_1577958_dsb" source="17aff6423fa94ebabea0896ca9bb2ea3">17aff6423fa94ebabea0896ca9bb2ea3</sys_package>
+      <sys_name>category</sys_name>
+    </sys_choice_set>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>01fcf90b046d4b1498649322cbd09a85</sys_id>
+      <name>x_1577958_dsb_rad</name>
+      <element>category</element>
+      <label>Delivery</label>
+      <value>delivery</value>
+      <sequence>1</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>6f88e9e6ae02496c85b2ba25541a2dba</sys_id>
+      <name>x_1577958_dsb_rad</name>
+      <element>category</element>
+      <label>Scope</label>
+      <value>scope</value>
+      <sequence>2</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>25f83da8d87748ec81cdf4c77b1dcabf</sys_id>
+      <name>x_1577958_dsb_rad</name>
+      <element>category</element>
+      <label>Licensing</label>
+      <value>licensing</value>
+      <sequence>3</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>29a4b2197dd44a3c9750541e4f602c08</sys_id>
+      <name>x_1577958_dsb_rad</name>
+      <element>category</element>
+      <label>Maintainability</label>
+      <value>maintainability</value>
+      <sequence>4</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>e13c104da85a495abd2da5e3664c75ed</sys_id>
+      <name>x_1577958_dsb_rad</name>
+      <element>category</element>
+      <label>Security</label>
+      <value>security</value>
+      <sequence>5</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>0ed63e261798444c9e87a34b85d7a90d</sys_id>
+      <name>x_1577958_dsb_rad</name>
+      <element>category</element>
+      <label>Data</label>
+      <value>data</value>
+      <sequence>6</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>54ebeb5a552c4a36b2c3b9565f23139f</sys_id>
+      <name>x_1577958_dsb_rad</name>
+      <element>category</element>
+      <label>Integration</label>
+      <value>integration</value>
+      <sequence>7</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>885c62101607449bb59ffd5d7cef1c0d</sys_id>
+      <name>x_1577958_dsb_rad</name>
+      <element>category</element>
+      <label>Quality</label>
+      <value>quality</value>
+      <sequence>8</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>2b6d2e7ca47d486d86cabf06deb084bc</sys_id>
+      <name>x_1577958_dsb_rad</name>
+      <element>category</element>
+      <label>Performance</label>
+      <value>performance</value>
+      <sequence>9</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>f28ce93758ac4bd9b803b60495d1beec</sys_id>
+      <name>x_1577958_dsb_rad</name>
+      <element>category</element>
+      <label>Adoption</label>
+      <value>adoption</value>
+      <sequence>10</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>7a930f9c60224aed81581aa5a4539d92</sys_id>
+      <name>x_1577958_dsb_rad</name>
+      <element>category</element>
+      <label>Client</label>
+      <value>client</value>
+      <sequence>11</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>639dd981a72c45b2863b17195cc3dcd6</sys_id>
+      <name>x_1577958_dsb_rad</name>
+      <element>category</element>
+      <label>Third party</label>
+      <value>third_party</value>
+      <sequence>12</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>b7ce36ded94748699d37cf1f9a3dcc75</sys_id>
+      <name>x_1577958_dsb_rad</name>
+      <element>category</element>
+      <label>Internal</label>
+      <value>internal</value>
+      <sequence>13</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>9a57347b100640ab819b14d4865e5d8d</sys_id>
+      <name>x_1577958_dsb_rad</name>
+      <element>category</element>
+      <label>Platform</label>
+      <value>platform</value>
+      <sequence>14</sequence>
+      <language>en</language>
+    </sys_choice>
+  </sys_choice_set>
+</record_update>

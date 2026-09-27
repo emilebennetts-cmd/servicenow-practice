@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>aceba81175f24395915c798602aed579</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_aceba81175f24395915c798602aed579</sys_update_name>
+    <body>Given an integration run fails or imports zero records, When the run completes, Then the platform team is notified within one hour</body>
+    <data>{"type": "Process", "moscow": "Should", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>9ad6efafe3d645c1bce9ff6b75af7152</pattern>
+    <seq>5</seq>
+    <title>Vulnerability ingestion runs are monitored with failure alerting</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

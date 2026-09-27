@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>70c72761d27a4627a1c1754452684127</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_70c72761d27a4627a1c1754452684127</sys_update_name>
+    <body>// DSB IMPLEMENTATION ire-identify — READ ONLY (identifyCI does not write).
+var payload = {
+  items: [{ className: 'cmdb_ci_linux_server', values: { name: 'example-host01', serial_number: 'SN-EXAMPLE-001', ip_address: '10.0.0.10' } }],
+  relations: []
+};
+var result = sn_cmdb.IdentificationEngine.identifyCI(JSON.stringify(payload));
+gs.print('=== DSB-IMPL ire-identify ===\n' + result);   // look at items[].operation and items[].sysId</body>
+    <data>{"kind": "script", "purpose": "Uses IdentificationEngineScriptableApi.identifyCI to show what the IRE WOULD do with a payload (insert, update, or no-op) without writing. Use before and after identification rule changes.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>031fd78c2b3742d38dc20450125b3992</pattern>
+    <seq>1</seq>
+    <title>IRE dry-run payload test (READ ONLY — identifyCI only)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

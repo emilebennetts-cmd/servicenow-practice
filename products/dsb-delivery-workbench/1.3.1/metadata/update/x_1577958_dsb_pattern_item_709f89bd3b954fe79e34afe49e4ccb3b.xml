@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>709f89bd3b954fe79e34afe49e4ccb3b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_709f89bd3b954fe79e34afe49e4ccb3b</sys_update_name>
+    <body>Device lookup by tag; ward location default.</body>
+    <data>{"type": "Catalog item / record producer", "cls": "Configuration", "req": [4], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>0e998cd6afca4efe958b07af4c028893</pattern>
+    <seq>5</seq>
+    <title>Clinician request channel (portal, QR tag)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

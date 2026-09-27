@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>edb4176c31ea4a2d9ed9faf1af936b81</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_edb4176c31ea4a2d9ed9faf1af936b81</sys_update_name>
+    <body>Given a business application in scope, When its record is opened, Then it relates to at least one application service which relates to its infrastructure CIs
+Given an incident is logged on a service offering, When the offering is opened, Then the parent business service and owner are shown</body>
+    <data>{"type": "Data", "moscow": "Must", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>031fd78c2b3742d38dc20450125b3992</pattern>
+    <seq>2</seq>
+    <title>The service model follows CSDM for business services, offerings, business applications and application services</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

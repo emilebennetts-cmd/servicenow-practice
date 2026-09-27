@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<record_update table="sys_security_acl">
+  <sys_security_acl action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>65ee76b753a6459eb5095e8abcfe5597</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_security_acl_65ee76b753a6459eb5095e8abcfe5597</sys_update_name>
+    <active>true</active>
+    <admin_overrides>true</admin_overrides>
+    <advanced>false</advanced>
+    <applies_to/>
+    <condition/>
+    <decision_type>allow</decision_type>
+    <description>Only DSB admins delete library records.</description>
+    <name>x_1577958_dsb_licence_product</name>
+    <operation display_value="delete">delete</operation>
+    <script/>
+    <security_attribute/>
+    <sys_name>x_1577958_dsb_licence_product</sys_name>
+    <type>record</type>
+  </sys_security_acl>
+</record_update>

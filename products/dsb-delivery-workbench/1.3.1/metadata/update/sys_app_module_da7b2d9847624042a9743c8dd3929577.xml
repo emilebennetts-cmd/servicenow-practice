@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<record_update table="sys_app_module">
+  <sys_app_module action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>da7b2d9847624042a9743c8dd3929577</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_app_module_da7b2d9847624042a9743c8dd3929577</sys_update_name>
+    <active>true</active>
+    <application>6c4d97ade7c84149b4e753583e0b9401</application>
+    <hint>Guided cockpit: gates, next best action, patterns, generators, Build Brief</hint>
+    <link_type>DIRECT</link_type>
+    <order>100</order>
+    <query>x_1577958_dsb_workbench.do</query>
+    <roles>x_1577958_dsb.user</roles>
+    <title>Workbench cockpit</title>
+  </sys_app_module>
+</record_update>

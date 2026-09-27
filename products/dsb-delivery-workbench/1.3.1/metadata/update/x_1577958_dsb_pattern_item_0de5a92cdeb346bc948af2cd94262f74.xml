@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>0de5a92cdeb346bc948af2cd94262f74</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_0de5a92cdeb346bc948af2cd94262f74</sys_update_name>
+    <body>1. Policy owner, legislation reference, statutory timeframe
+2. Form fields and evidence documents → record producer
+3. Eligibility rules → configurable rules/decision table
+4. Stages, assessment tasks, decision and approval authority
+5. Issued record: conditions, fees (if any), renewal
+6. Notifications and information-request pause
+7. Inspection checklist (if needed)
+8. Retention class and archive rule
+9. ATF: submission + eligibility
+10. Update set PS_&lt;servicetype&gt;_&lt;client&gt;_v1</body>
+    <data>{"kind": "checklist", "purpose": "Steps to digitise one licence/permit/grant type.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>628bf2891d554853993138856ccb4ef2</pattern>
+    <seq>0</seq>
+    <title>Service type onboarding checklist</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

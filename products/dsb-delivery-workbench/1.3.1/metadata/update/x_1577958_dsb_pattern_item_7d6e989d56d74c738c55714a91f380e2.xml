@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>7d6e989d56d74c738c55714a91f380e2</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_7d6e989d56d74c738c55714a91f380e2</sys_update_name>
+    <body>DSAR fulfilment</body>
+    <data>{"validate": "Business application owners (CSDM)"}</data>
+    <kind>assumption</kind>
+    <pattern>a828e5429bda4f57b75d7e4a3331f23f</pattern>
+    <seq>1</seq>
+    <title>System owners for personal information are identifiable</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

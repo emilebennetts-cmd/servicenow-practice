@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>90832572297f43d7b8d44a80be007d8b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_90832572297f43d7b8d44a80be007d8b</sys_update_name>
+    <body>Given an approved application, When decisioned, Then the licence/grant record is issued with conditions and a renewal or milestone date</body>
+    <data>{"type": "Process", "moscow": "Should", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>628bf2891d554853993138856ccb4ef2</pattern>
+    <seq>2</seq>
+    <title>Licences, permits or grants are issued, renewed and tracked</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

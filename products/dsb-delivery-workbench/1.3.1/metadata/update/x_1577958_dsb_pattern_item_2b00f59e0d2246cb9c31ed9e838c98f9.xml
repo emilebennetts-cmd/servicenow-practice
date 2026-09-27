@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>2b00f59e0d2246cb9c31ed9e838c98f9</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_2b00f59e0d2246cb9c31ed9e838c98f9</sys_update_name>
+    <body>// DSB IMPLEMENTATION hr-profile-gaps — READ ONLY. Counts only — no identifiers are printed.
+var FIELDS = ['employment_start_date','location','work_country'];   // &lt;confirm&gt; field names
+var base = 'user.active=true';
+var gaps = {active_users_with_employee_number: 0, without_profile: 0, profile_missing: {}, by_department_without_profile: {}};
+var ga = new GlideAggregate('sys_user'); ga.addActiveQuery(); ga.addNotNullQuery('employee_number'); ga.addAggregate('COUNT'); ga.query();
+gaps.active_users_with_employee_number = ga.next() ? parseInt(ga.getAggregate('COUNT'), 10) : 0;
+var pa = new GlideAggregate('sn_hr_core_profile'); pa.addEncodedQuery(base + '^user.employee_numberISNOTEMPTY'); pa.addAggregate('COUNT'); pa.query();
+gaps.without_profile = gaps.active_users_with_employee_number - (pa.next() ? parseInt(pa.getAggregate('COUNT'), 10) : 0);
+FIELDS.forEach(function(f){ var p = new GlideRecord('sn_hr_core_profile'); if (!p.isValidField(f)) { gaps.profile_missing[f] = 'field not found'; return; } var c = new GlideAggregate('sn_hr_core_profile'); c.addEncodedQuery(base + '^' + f + 'ISEMPTY'); c.addAggregate('COUNT'); c.query(); gaps.profile_missing[f] = c.next() ? parseInt(c.getAggregate('COUNT'), 10) : 0; });
+gs.print('=== DSB-IMPL hr-profile-gaps ===\n' + JSON.stringify(gaps, null, 2));</body>
+    <data>{"kind": "script", "purpose": "Counts active employees without an HR profile and profiles missing lifecycle-critical fields. No names or identifiers are printed.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>1</seq>
+    <title>HR profile gap report (READ ONLY)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

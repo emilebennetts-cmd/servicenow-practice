@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>416ce03d72ba469787edbb92211791e5</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_416ce03d72ba469787edbb92211791e5</sys_update_name>
+    <body>HR KB; can-read via HR criteria / user criteria.</body>
+    <data>{"type": "Knowledge base / content", "cls": "Out of the box", "req": [6], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>8</seq>
+    <title>HR knowledge base with criteria-based access and approval</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

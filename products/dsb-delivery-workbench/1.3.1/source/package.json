@@ -1,0 +1,30 @@
+{
+  "name": "dsb-workbench",
+  "version": "1.3.1",
+  "description": "Unified Delivery Workbench - requirements-to-build delivery record and diagnostic assessment with enforced gates (ServiceNow scoped app x_1577958_dsb)",
+  "license": "UNLICENSED",
+  "imports": {
+    "#now:*": "./@types/servicenow/fluent/*/index.js"
+  },
+  "scripts": {
+    "build": "now-sdk build",
+    "deploy": "now-sdk install",
+    "transform": "now-sdk transform",
+    "types": "now-sdk dependencies",
+    "dev": "now-sdk run dev",
+    "test:sim": "node tests/sim/build.mjs && node tests/sim/scenario.cjs && node tests/sim/evidence-runtime.cjs"
+  },
+  "devDependencies": {
+    "@servicenow/sdk": "4.12.2",
+    "@servicenow/glide": "27.0.5",
+    "typescript": "5.5.4",
+    "@servicenow/isomorphic-rollup": "^1.3.7",
+    "@types/react": "19.x",
+    "@types/react-dom": "19.x",
+    "esbuild": "0.23.1"
+  },
+  "dependencies": {
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  }
+}

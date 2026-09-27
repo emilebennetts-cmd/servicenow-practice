@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>cf387b9736d841aea2e9da793843678e</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_cf387b9736d841aea2e9da793843678e</sys_update_name>
+    <body>Given a task needs a part, When sourced, Then the part is reserved from the nearest stockroom and consumption updates stock on completion</body>
+    <data>{"type": "Process", "moscow": "Should", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>5c6ec6aa57e140f986af5947553a8c3e</pattern>
+    <seq>3</seq>
+    <title>Parts are reserved and consumed from stockrooms or van stock</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

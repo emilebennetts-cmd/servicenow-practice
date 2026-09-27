@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_form_sections form_id="6ba76dabaf724217879890696fe2044f" sys_domain="global" table="x_1577958_dsb_engagement">
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>0</position>
+      <sys_id>4261b93f5560494580649a83afe5c9da</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="Engagement" display_value="Engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">04ccd1a8bbf9494eb138101f77324f2c</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>1</position>
+      <sys_id>3e9bc25b2d9f4b09b768abc138b5bb99</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="Problem and scope" display_value="Problem and scope" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">bfef2b95d44748bf87d265b2f9620580</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>2</position>
+      <sys_id>1fad73cf50734a459cbfea4b1cd2cb81</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="Roles (no names)" display_value="Roles (no names)" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">708bf178cd0b41f1b9407551047fbb57</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>3</position>
+      <sys_id>47c800182c274eea81cad63141a5163d</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="Licensing and AI-assisted design" display_value="Licensing and AI-assisted design" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">8e31b591674b43e8b77bb413b73f78ea</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>4</position>
+      <sys_id>1e75048dc6b3413fb5ce9fca5bcafa45</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="New scoped application" display_value="New scoped application" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">9a8deb34b80849c8aa7062424b156d0a</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>5</position>
+      <sys_id>5007115c8fc4497b928fb53bdfab529f</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="Status (calculated)" display_value="Status (calculated)" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">da3c0400210646e7bd042fad94f8f0ea</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>6</position>
+      <sys_id>cfcc41f0cb514fae941eb7419b8e79c2</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="Solution design and as-built notes" display_value="Solution design and as-built notes" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">02a312f3a4ee4e9c95aeb313807f9dcf</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>7</position>
+      <sys_id>d0c6ec305e4a4e8bb4c52097e3f24b03</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="Outcomes" display_value="Outcomes" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">601577843f5b405a969ee58d3d0d754f</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>8</position>
+      <sys_id>0e9c7016b6c74a658502e9c975458aba</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="Licensing" display_value="Licensing" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">78da6b25a80249dfbbfaa56478936526</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>9</position>
+      <sys_id>a84a4b74f8274c6bb2d0163019c64c28</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="Requirements" display_value="Requirements" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">917d2c83668e41d1bb01d18d6827319d</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>10</position>
+      <sys_id>6791242a90b04c1c9ce11441adfb247b</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="Evidence" display_value="Evidence" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">46a250674a42489fb758ed5dcb3d0a54</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>11</position>
+      <sys_id>5124db7de64740389c550a02cc5a8cfe</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="Risks, assumptions, dependencies" display_value="Risks, assumptions, dependencies" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">3cd58e25d4c6406eb4a8866774561551</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>12</position>
+      <sys_id>495f83536f294596b5a3dc7d02d39dbd</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="Decisions" display_value="Decisions" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">83e2cf13d9cd4d10825a684601ccb3dd</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>13</position>
+      <sys_id>b48688d454e7432fa7f4086959a3eb90</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="Components" display_value="Components" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">4bfc03b26eee4689abe5ae4412688b37</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>14</position>
+      <sys_id>8d2ee0b742c84abbbc021fa0c36b981f</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="Build tasks" display_value="Build tasks" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">ba503a2dabf64eb284c1421c151d04af</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>15</position>
+      <sys_id>372f7062502048c9a2f9ab89835659c4</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="Update sets" display_value="Update sets" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">997aaffee914455eaf677680e1a9d6ed</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>16</position>
+      <sys_id>128031cd088f43aca09677bed016e98c</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="Tests" display_value="Tests" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">c56f272ed6004c9fa441cfd3d50c1d5f</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>17</position>
+      <sys_id>2c1ae16af0e94b2a896b4c22c0445c2b</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="Defects" display_value="Defects" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">281f9006ff7d4c118792fbec586564ae</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>18</position>
+      <sys_id>64a3fe550e2045ac93f876c9da246062</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="Releases" display_value="Releases" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">765d47e574714de39594831c409d3be7</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>19</position>
+      <sys_id>40289c3f9d0b4c32aff5deaf536c9b48</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="Gate approvals" display_value="Gate approvals" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">0d607d1261824a7194e5d407848ffb56</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>20</position>
+      <sys_id>3889d15c6c094820b4518210b3d1dd64</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="Applied patterns" display_value="Applied patterns" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">121f879dd6be45928ce538bbed1d0e25</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>21</position>
+      <sys_id>01ece4fcdb874aca9202cd036973dd5c</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">6ba76dabaf724217879890696fe2044f</sys_ui_form>
+      <sys_ui_section caption="History" display_value="History" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">272ecfa5838f4190b5ed889bce6b1ae3</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form action="INSERT_OR_UPDATE" apply_defaults="true">
+      <name>x_1577958_dsb_engagement</name>
+      <roles/>
+      <sys_id>6ba76dabaf724217879890696fe2044f</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <view name="NULL" display_value="Default view">Default view</view>
+      <view_name/>
+    </sys_ui_form>
+  </sys_ui_form_sections>
+</record_update>

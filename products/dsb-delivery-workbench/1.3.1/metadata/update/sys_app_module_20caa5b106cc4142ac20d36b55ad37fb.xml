@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="sys_app_module">
+  <sys_app_module action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>20caa5b106cc4142ac20d36b55ad37fb</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_app_module_20caa5b106cc4142ac20d36b55ad37fb</sys_update_name>
+    <active>true</active>
+    <application>6c4d97ade7c84149b4e753583e0b9401</application>
+    <link_type>LIST</link_type>
+    <name>x_1577958_dsb_test</name>
+    <order>340</order>
+    <roles>x_1577958_dsb.user</roles>
+    <title>Tests (UAT, PVT, ATF)</title>
+  </sys_app_module>
+</record_update>

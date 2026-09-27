@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_choice_set action="INSERT_OR_UPDATE" field="upgrade_impact" table="x_1577958_dsb_component" version="3" apply_defaults="true">
+    <sys_choice_set action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>10114171553c4e17b4d772584a58bb18</sys_id>
+      <element>upgrade_impact</element>
+      <sys_update_name>sys_choice_x_1577958_dsb_component_upgrade_impact</sys_update_name>
+      <name>x_1577958_dsb_component</name>
+      <sys_class_name>sys_choice_set</sys_class_name>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_package display_value="x_1577958_dsb" source="17aff6423fa94ebabea0896ca9bb2ea3">17aff6423fa94ebabea0896ca9bb2ea3</sys_package>
+      <sys_name>upgrade_impact</sys_name>
+    </sys_choice_set>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>7dbd3d3ab4ea40deb074e576ddaff8d5</sys_id>
+      <name>x_1577958_dsb_component</name>
+      <element>upgrade_impact</element>
+      <label>Low</label>
+      <value>low</value>
+      <sequence>10</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>f10d7c48931542918bd3ead1dd4b1e6b</sys_id>
+      <name>x_1577958_dsb_component</name>
+      <element>upgrade_impact</element>
+      <label>Medium</label>
+      <value>medium</value>
+      <sequence>20</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>23dc731213b145dfa37f1c6cfa4d5887</sys_id>
+      <name>x_1577958_dsb_component</name>
+      <element>upgrade_impact</element>
+      <label>High</label>
+      <value>high</value>
+      <sequence>30</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+  </sys_choice_set>
+</record_update>

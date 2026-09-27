@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>55e6f8e9c5d040f5bf141338caabdd73</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_55e6f8e9c5d040f5bf141338caabdd73</sys_update_name>
+    <body>Inbound email actions
+AWA service channels, queues, assignment eligibility
+OpenFrame configuration (credentials excluded)</body>
+    <data>{"key": "CHAN", "scope": "global / sn_customerservice"}</data>
+    <kind>update_set</kind>
+    <pattern>4874dc995cad4b3cb3bda8c29e4e0be8</pattern>
+    <seq>1</seq>
+    <title>CSM_Channels_&lt;client&gt;_v1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

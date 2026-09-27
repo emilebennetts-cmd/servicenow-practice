@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4b5f1d634c754be6bdf5cc17ab08b4bd</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_evidence_reviewed_by_second_en</sys_update_name>
+    <element>reviewed_by_second</element>
+    <help/>
+    <hint/>
+    <label>Script reviewed by a second person</label>
+    <language>en</language>
+    <name>x_1577958_dsb_evidence</name>
+    <plural>Script reviewed by a second persons</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

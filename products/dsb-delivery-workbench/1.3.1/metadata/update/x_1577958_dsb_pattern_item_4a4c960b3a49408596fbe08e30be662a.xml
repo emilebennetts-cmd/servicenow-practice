@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4a4c960b3a49408596fbe08e30be662a</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_4a4c960b3a49408596fbe08e30be662a</sys_update_name>
+    <body>Given any integration or import writes CIs, When the source is reviewed, Then it uses a Service Graph Connector, Discovery, or IntegrationHub ETL / IRE API and not a direct transform to cmdb_ci tables
+Given two sources present the same server, When both run, Then one CI exists with both sources recorded</body>
+    <data>{"type": "Data", "moscow": "Must", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>031fd78c2b3742d38dc20450125b3992</pattern>
+    <seq>0</seq>
+    <share_key>cmdb.ire</share_key>
+    <title>All CI data enters the CMDB through the Identification and Reconciliation Engine</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

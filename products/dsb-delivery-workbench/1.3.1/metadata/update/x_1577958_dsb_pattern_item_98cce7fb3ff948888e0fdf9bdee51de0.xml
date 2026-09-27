@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>98cce7fb3ff948888e0fdf9bdee51de0</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_98cce7fb3ff948888e0fdf9bdee51de0</sys_update_name>
+    <body>Given an agent opens a case, When the record page loads, Then the account/contact, products, open cases and recent interactions are visible without navigation</body>
+    <data>{"type": "Process", "moscow": "Should", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>4874dc995cad4b3cb3bda8c29e4e0be8</pattern>
+    <seq>7</seq>
+    <title>Agents work in CSM Configurable Workspace with a 360-degree customer view</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>399bbe5e450f477abf990588de277b05</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_399bbe5e450f477abf990588de277b05</sys_update_name>
+    <body>// DSB IMPLEMENTATION upg-triage-export — READ ONLY.
+var h = new GlideRecord('sys_upgrade_history'); h.orderByDesc('sys_created_on'); h.setLimit(1); h.query();
+if (!h.next()) { gs.print('no upgrade history'); }
+else {
+  var SK = []; var ch = new GlideRecord('sys_choice'); ch.addQuery('name', 'sys_upgrade_history_log'); ch.addQuery('element', 'disposition'); ch.addQuery('label', 'CONTAINS', 'kip'); ch.query(); while (ch.next()) if (SK.indexOf(ch.getValue('value')) &lt; 0) SK.push(ch.getValue('value'));
+  var l = new GlideRecord('sys_upgrade_history_log'); l.addQuery('upgrade_history', h.getUniqueValue()); l.addQuery('disposition', 'IN', SK.join(','));
+  l.orderBy('file_name'); l.setLimit(10000); l.query();
+  gs.print('file_name|type|disposition|resolution_status|sys_id');
+  while (l.next()) gs.print([l.getValue('file_name'), l.isValidField('type') ? l.getDisplayValue('type') : '', l.getDisplayValue('disposition'), l.isValidField('resolution_status') ? l.getDisplayValue('resolution_status') : '', l.getUniqueValue()].join('|'));
+}</body>
+    <data>{"kind": "script", "purpose": "Prints skipped records from the latest upgrade as CSV-style lines to seed the triage register.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>93dbb3f9c9374c8b88cbf9fbbc6dee11</pattern>
+    <seq>1</seq>
+    <title>Skipped-record triage export (READ ONLY)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

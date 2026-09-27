@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>84885e78cd8c4c699a26b1f7720dfc8f</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_84885e78cd8c4c699a26b1f7720dfc8f</sys_update_name>
+    <body>Record Insert
+Run Server Side Script
+Record Query
+Record Validation</body>
+    <data>{"req": 1, "note": null}</data>
+    <kind>atf</kind>
+    <pattern>e96633990a4b4bd0a7aa9de3d4f7fa00</pattern>
+    <seq>0</seq>
+    <title>Network incident lists impacted accounts</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

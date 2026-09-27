@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>1c93a7ad16914ef69f1b81e981877830</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_1c93a7ad16914ef69f1b81e981877830</sys_update_name>
+    <body>Update set 1: SecOps_SIR_&lt;client&gt;_v1 (Security Incident scope)
+  - Categories, severity calculators, SLAs, assignment rules, PIR settings, dashboards
+Update set 2: SecOps_Playbooks_&lt;client&gt;_v1
+  - Playbooks / process definitions, flows, activities (activate after UAT)
+Update set 3: SecOps_Integrations_&lt;client&gt;_v1 (integration scopes)
+  - Integration profiles (credentials and API keys per environment)
+Data: group memberships, role grants, threat intel feeds.</body>
+    <data>{"kind": "checklist", "purpose": "SIR configuration lives in the sn_si scope; playbooks and integrations promote separately.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>9502ffca8cf0439989ddf6b7b57dddea</pattern>
+    <seq>0</seq>
+    <title>Update set plan — Security Incident Response</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

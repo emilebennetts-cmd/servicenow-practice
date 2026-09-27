@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>77c98666f75448fea7b3124687d2f576</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_77c98666f75448fea7b3124687d2f576</sys_update_name>
+    <body>Daily sync; exception report.</body>
+    <data>{"type": "Import set / transform map", "cls": "Configuration", "req": [3], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>feb9570f3df64d249bd135c8a0a1bfa2</pattern>
+    <seq>0</seq>
+    <title>Contact data sync (mobile, location, manager) from HR/identity</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

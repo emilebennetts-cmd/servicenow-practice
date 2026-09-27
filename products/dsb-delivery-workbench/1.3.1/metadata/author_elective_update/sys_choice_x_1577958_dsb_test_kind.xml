@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_choice_set action="INSERT_OR_UPDATE" field="kind" table="x_1577958_dsb_test" version="3" apply_defaults="true">
+    <sys_choice_set action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>31a3b8c37ee04ceab79996af6297a06b</sys_id>
+      <element>kind</element>
+      <sys_update_name>sys_choice_x_1577958_dsb_test_kind</sys_update_name>
+      <name>x_1577958_dsb_test</name>
+      <sys_class_name>sys_choice_set</sys_class_name>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_package display_value="x_1577958_dsb" source="17aff6423fa94ebabea0896ca9bb2ea3">17aff6423fa94ebabea0896ca9bb2ea3</sys_package>
+      <sys_name>kind</sys_name>
+    </sys_choice_set>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>14debd26cb2d4bdda780d84ea2ce5d74</sys_id>
+      <name>x_1577958_dsb_test</name>
+      <element>kind</element>
+      <label>UAT</label>
+      <value>uat</value>
+      <sequence>10</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>8008dd3248fd4cd1841f50a6ff250871</sys_id>
+      <name>x_1577958_dsb_test</name>
+      <element>kind</element>
+      <label>PVT (post-deployment verification)</label>
+      <value>pvt</value>
+      <sequence>20</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>7d5b9f23ee724daf9115a7326cbdd266</sys_id>
+      <name>x_1577958_dsb_test</name>
+      <element>kind</element>
+      <label>SIT</label>
+      <value>sit</value>
+      <sequence>30</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>262303778e7840baafb803c56e46ac3c</sys_id>
+      <name>x_1577958_dsb_test</name>
+      <element>kind</element>
+      <label>ATF</label>
+      <value>atf</value>
+      <sequence>40</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+  </sys_choice_set>
+</record_update>

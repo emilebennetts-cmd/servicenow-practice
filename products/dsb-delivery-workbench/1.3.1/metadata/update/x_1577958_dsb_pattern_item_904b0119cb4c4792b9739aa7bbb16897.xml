@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>904b0119cb4c4792b9739aa7bbb16897</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_904b0119cb4c4792b9739aa7bbb16897</sys_update_name>
+    <body>Given a termination date is set, When the offboarding event runs, Then IT access-removal and asset-return tasks are created with due dates on or before the last day</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>4</seq>
+    <title>Offboarding removes access and recovers assets on the agreed timeline</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

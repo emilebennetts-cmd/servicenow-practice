@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>83d404d1d4b14fbda26ca474b38bdf32</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_83d404d1d4b14fbda26ca474b38bdf32</sys_update_name>
+    <body>Given a basic indicator on patch compliance, When it runs, Then the result is stored and a failed result raises an issue</body>
+    <data>{"type": "Process", "moscow": "Should", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>4b16aa07c3c5429a93a6f33c5ef138c0</pattern>
+    <seq>6</seq>
+    <title>Indicators monitor control effectiveness from platform data where possible</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

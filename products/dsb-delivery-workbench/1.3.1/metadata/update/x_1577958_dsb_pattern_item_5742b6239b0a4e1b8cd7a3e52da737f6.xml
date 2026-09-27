@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>5742b6239b0a4e1b8cd7a3e52da737f6</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_5742b6239b0a4e1b8cd7a3e52da737f6</sys_update_name>
+    <body>Given an access request, When received, Then identity verification and fulfilment tasks are created with a due date per the applicable law</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>a828e5429bda4f57b75d7e4a3331f23f</pattern>
+    <seq>2</seq>
+    <title>Data subject requests are received, verified and fulfilled within statutory timeframes</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

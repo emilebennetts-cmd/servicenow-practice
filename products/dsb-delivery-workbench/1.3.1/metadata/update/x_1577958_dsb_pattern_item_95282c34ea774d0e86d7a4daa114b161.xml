@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>95282c34ea774d0e86d7a4daa114b161</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_95282c34ea774d0e86d7a4daa114b161</sys_update_name>
+    <body>Transform maps and scheduled imports for users/groups/locations
+sys_user_group types and group records (or loaded as data — decide)
+CSDM service and offering records are data: load via import set, not update set</body>
+    <data>{"key": "FND", "scope": "global"}</data>
+    <kind>update_set</kind>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>0</seq>
+    <title>ITSM_Foundation_&lt;client&gt;_v1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

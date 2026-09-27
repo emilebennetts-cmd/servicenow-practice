@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>963fe880dda8499db0cedcace023fd00</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_963fe880dda8499db0cedcace023fd00</sys_update_name>
+    <body>Impersonate
+Open a New Form
+Set Field Values
+Submit a Form
+Record Query
+Record Validation</body>
+    <data>{"req": 0, "note": null}</data>
+    <kind>atf</kind>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>0</seq>
+    <title>P1 incident routes and attaches SLAs</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

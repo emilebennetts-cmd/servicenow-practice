@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern">
+  <x_1577958_dsb_pattern action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>a828e5429bda4f57b75d7e4a3331f23f</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_a828e5429bda4f57b75d7e4a3331f23f</sys_update_name>
+    <active>true</active>
+    <exclude_terms>[]</exclude_terms>
+    <indicative_cases>7</indicative_cases>
+    <key>dpo-privacy</key>
+    <library_version>1.5</library_version>
+    <licence_products>privacy</licence_products>
+    <min_hits>2</min_hits>
+    <name>Privacy management and data governance</name>
+    <overview>Register, assess, respond, protect. (1) Privacy register of processing activities linked to business applications (CSDM) and data categories. (2) Threshold assessment → full PIA workflow with privacy officer approval (Privacy Management / IRM assessments). (3) Data subject request intake (portal/email), identity verification, fulfilment tasks across system owners, statutory timers. (4) Breach assessment linked to security incidents (SIR) with the notifiable-data-breach decision and dates. (5) Platform protection: data classification on sensitive fields, field encryption (Cloud Encryption / Column Level Encryption where licensed), role-based field access, clone data anonymisation/cleanup, and archive/destroy rules. (6) Privacy dashboard.</overview>
+    <pain>PIAs done in documents with no register
+Access and deletion requests tracked in inboxes, deadlines missed
+Breach assessment inconsistent and slow
+Personal information in ServiceNow not classified or masked
+Production data copied to sub-production clones unmasked</pain>
+    <phase>3</phase>
+    <requires/>
+    <strong_terms>[{"re": "privacy|personal information|\\bDSAR\\b|\\bPIA\\b", "flags": "i"}]</strong_terms>
+    <summary>Privacy obligations (Australian Privacy Act and APPs, GDPR for offshore customers) are managed through documents and email: privacy impact assessments are inconsistent, data subject requests are tracked in inboxes, breaches are assessed ad hoc, and nobody can show where personal information lives in ServiceNow itself. The pattern converges on OOB Privacy Management where licensed (processing activities, PIAs, data subject requests, breach assessment) plus platform data governance: data classification, encryption and masking, data privacy/anonymisation for clones and exports, and retention rules.</summary>
+    <triggers>[{"re": "privacy|personal information|\\bPII\\b|\\bGDPR\\b|Privacy Act|\\bOAIC\\b", "flags": "i"}, {"re": "\\bAPPs?\\b", "flags": ""}, {"re": "data subject|access request|\\bDSAR\\b|right to (access|erasure)", "flags": "i"}, {"re": "\\bPIA\\b|privacy impact|\\bDPIA\\b", "flags": "i"}, {"re": "data breach|notifiable", "flags": "i"}, {"re": "data governance|data classification|data residency|retention", "flags": "i"}, {"re": "masking|encryption|anonymi[sz]", "flags": "i"}, {"re": "personal data|customer data protection", "flags": "i"}]</triggers>
+    <verified>false</verified>
+  </x_1577958_dsb_pattern>
+</record_update>

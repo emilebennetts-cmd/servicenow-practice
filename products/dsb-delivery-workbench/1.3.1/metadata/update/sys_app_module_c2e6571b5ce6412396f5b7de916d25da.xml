@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="sys_app_module">
+  <sys_app_module action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>c2e6571b5ce6412396f5b7de916d25da</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_app_module_c2e6571b5ce6412396f5b7de916d25da</sys_update_name>
+    <active>true</active>
+    <application>6c4d97ade7c84149b4e753583e0b9401</application>
+    <link_type>LIST</link_type>
+    <name>x_1577958_dsb_release</name>
+    <order>370</order>
+    <roles>x_1577958_dsb.user</roles>
+    <title>Releases</title>
+  </sys_app_module>
+</record_update>

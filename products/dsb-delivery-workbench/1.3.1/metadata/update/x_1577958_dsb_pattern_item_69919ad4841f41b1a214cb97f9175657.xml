@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>69919ad4841f41b1a214cb97f9175657</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_69919ad4841f41b1a214cb97f9175657</sys_update_name>
+    <body>Product offerings, product/service/resource specifications.</body>
+    <data>{"type": "Data load / reference data", "cls": "Out of the box", "req": [3], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>e96633990a4b4bd0a7aa9de3d4f7fa00</pattern>
+    <seq>5</seq>
+    <title>Product catalogue and specifications</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>de247901a16d4780ba29e95cea4c936b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_de247901a16d4780ba29e95cea4c936b</sys_update_name>
+    <body>Given the agency classification, When the instance is reviewed, Then hosting (e.g. Australian data centres / IRAP-assessed), encryption and retention policies are documented and configured</body>
+    <data>{"type": "Security / Access", "moscow": "Must", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>628bf2891d554853993138856ccb4ef2</pattern>
+    <seq>4</seq>
+    <title>Data classification, hosting and records retention requirements are met</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

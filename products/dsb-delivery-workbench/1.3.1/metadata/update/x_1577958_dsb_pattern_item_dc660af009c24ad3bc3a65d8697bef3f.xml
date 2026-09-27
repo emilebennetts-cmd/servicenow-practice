@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>dc660af009c24ad3bc3a65d8697bef3f</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_dc660af009c24ad3bc3a65d8697bef3f</sys_update_name>
+    <body>// DSB EVIDENCE vr.discovered — READ ONLY.
+var out = {key:'vr.discovered', notes:[]};
+// --- DSB helper prelude (read only; no personal information is printed) ---
+var DSB_NOTES = [];
+function _tbl(t){ return gs.tableExists(t); }
+function _fieldOk(t, path){ var gr = new GlideRecord(t); var parts = path.split('.'); for (var i = 0; i &lt; parts.length; i++) { if (!gr.isValidField(parts[i])) return false; if (i &lt; parts.length - 1) { var ref = gr.getElement(parts[i]).getReferenceTable(); if (!ref) return false; gr = new GlideRecord(ref); } } return true; }
+function _badField(t, q){ if (!q) return ''; var conds = String(q).split(/\^NQ|\^OR|\^/); for (var i = 0; i &lt; conds.length; i++) { var m = conds[i].match(/^([a-z0-9_.]+)/); if (!m) continue; var f = m[1].replace(/\.$/, ''); if (f === 'sys_id') continue; if (!_fieldOk(t, f)) return f; } return ''; }
+function count(t, q){ if (!_tbl(t)) return 'table not found'; var bad = _badField(t, q); if (bad) { DSB_NOTES.push(t + ': field not found ' + bad); return 'field not found: ' + bad; } var ga = new GlideAggregate(t); if (q) ga.addEncodedQuery(q); ga.addAggregate('COUNT'); ga.query(); return ga.next() ? parseInt(ga.getAggregate('COUNT'), 10) : 0; }
+function groupCount(t, f, q, lim){ if (!_tbl(t)) return 'table not found'; var bad = _badField(t, q) || (_fieldOk(t, f) ? '' : f); if (bad) { DSB_NOTES.push(t + ': field not found ' + bad); return 'field not found: ' + bad; } var rows = []; var ga = new GlideAggregate(t); if (q) ga.addEncodedQuery(q); ga.addAggregate('COUNT'); ga.groupBy(f); ga.query(); var guard = 0; while (ga.next() &amp;&amp; guard++ &lt; 5000) rows.push([ga.getDisplayValue(f) || '(empty)', parseInt(ga.getAggregate('COUNT'), 10)]); rows.sort(function(a, b){ return b[1] - a[1]; }); var o = {}; rows.slice(0, lim || 50).forEach(function(r){ o[r[0]] = r[1]; }); if (rows.length &gt; (lim || 50)) o['(other groups)'] = rows.length - (lim || 50); return o; }
+function groupSet(t, f, q){ var o = {}; if (!_tbl(t) || !_fieldOk(t, f) || _badField(t, q)) return o; var ga = new GlideAggregate(t); if (q) ga.addEncodedQuery(q); ga.addAggregate('COUNT'); ga.groupBy(f); ga.query(); while (ga.next()) o[ga.getValue(f)] = parseInt(ga.getAggregate('COUNT'), 10); return o; }
+function isNum(x){ return typeof x === 'number' &amp;&amp; !isNaN(x); }
+function diff(a, b){ return (isNum(a) &amp;&amp; isNum(b)) ? a - b : 'n/a'; }
+function pct(t, q, base){ var b = count(t, base); if (!isNum(b) || !b) return isNum(b) ? 0 : b; var c = count(t, base ? base + '^' + q : q); return isNum(c) ? Math.round(100 * c / b) : c; }
+function hasField(t, f){ return _tbl(t) &amp;&amp; _fieldOk(t, f); }
+function dsbPrint(key, out){ if (DSB_NOTES.length) out.dsb_notes = DSB_NOTES; var LIM = 60000; var s = JSON.stringify(out, null, 1); if (s.length &gt; LIM) s = JSON.stringify(out); var cut = [], loops = 0; while (s.length &gt; LIM &amp;&amp; loops++ &lt; 60) { var bigK = null, bigL = 0; for (var k in out) { if (k === 'key' || k === 'dsb_truncated' || !out[k] || typeof out[k] !== 'object') continue; var l = JSON.stringify(out[k]).length; if (l &gt; bigL) { bigL = l; bigK = k; } } if (!bigK) break; var v = out[bigK]; if (Object.prototype.toString.call(v) === '[object Array]' &amp;&amp; v.length &gt; 10) { out[bigK] = v.slice(0, Math.floor(v.length / 2)); cut.push(bigK + ' kept ' + out[bigK].length + ' of ' + v.length); } else { out[bigK] = 'omitted: ' + bigL + ' characters'; cut.push(bigK + ' omitted'); } out.dsb_truncated = cut; s = JSON.stringify(out); } gs.print('=== DSB-EVIDENCE ' + key + ' ===\n' + s); }
+var MAX_ROWS = 5000;
+var LAST90 = 'sys_created_onRELATIVEGT@dayofweek@ago@90';
+if (gs.tableExists('sn_sec_cmn_discovered_item')) {
+  out.discovered_total = count('sn_sec_cmn_discovered_item');
+  var st = new GlideAggregate('sn_sec_cmn_discovered_item'); st.addAggregate('COUNT'); st.groupBy('state'); st.query();
+  out.by_state = {}; while (st.next()) out.by_state[st.getDisplayValue('state') || '(empty)'] = parseInt(st.getAggregate('COUNT'),10);
+  var rl = new GlideAggregate('sn_sec_cmn_discovered_item'); rl.addAggregate('COUNT'); rl.groupBy('ci_lookup_rule'); rl.query();
+  out.by_lookup_rule = {}; while (rl.next()) out.by_lookup_rule[rl.getDisplayValue('ci_lookup_rule') || '(none)'] = parseInt(rl.getAggregate('COUNT'),10);
+  // sample unmatched items: which fields does the scanner actually send?
+  var gr = new GlideRecord('sn_sec_cmn_discovered_item'); gr.addNullQuery('cmdb_ci'); gr.orderByDesc('sys_updated_on'); gr.setLimit(15); gr.query();
+  out.unmatched_sample = [];
+  while (gr.next()) {
+    var row = {source_id: gr.getValue('source_id')};
+    ['name','fqdn','ip_address','mac_address','netbios','dns_name','operating_system'].forEach(function(f){ if (gr.isValidField(f)) row[f] = gr.getValue(f); });
+    if (gr.isValidField('source_data')) { var sd = gr.getValue('source_data') || ''; row.source_data_keys = sd.substring(0,1) === '{' ? Object.keys(JSON.parse(sd)) : '(not JSON)'; }
+    out.unmatched_sample.push(row);
+  }
+} else out.notes.push('sn_sec_cmn_discovered_item not found — confirm Security Support Common release');
+if (gs.tableExists('sn_sec_cmn_ci_lookup_rule')) {
+  var rules = []; var r = new GlideRecord('sn_sec_cmn_ci_lookup_rule'); r.orderBy('order'); r.query();
+  while (r.next()) { var o = {name: r.getValue('name'), active: r.getValue('active'), order: r.getValue('order')}; ['source_field','target_field','table','cmdb_field','matching_field','integration'].forEach(function(f){ if (r.isValidField(f)) o[f] = r.getDisplayValue(f); }); rules.push(o); }
+  out.ci_lookup_rules = rules;
+} else out.notes.push('sn_sec_cmn_ci_lookup_rule not found');
+if (gs.tableExists('sn_sec_cmn_src_cmdb_map')) { out.host_import_maps = count('sn_sec_cmn_src_cmdb_map'); }
+dsbPrint('vr.discovered', out);</body>
+    <data>{"key": "vr.discovered", "why": "Shows why matching fails (which attributes Tenable sends vs what the CMDB holds)", "unblocks": "CI lookup rule design"}</data>
+    <kind>evidence_script</kind>
+    <pattern>9ad6efafe3d645c1bce9ff6b75af7152</pattern>
+    <seq>1</seq>
+    <title>Discovered items: matched vs unmatched, lookup rules in use, sample of unmatched source data</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

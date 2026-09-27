@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>1040927d6b604d6cad30a20438735c5f</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_1040927d6b604d6cad30a20438735c5f</sys_update_name>
+    <body>OOB data privacy / Now Assist Guardian settings for masking and offensiveness filtering; patterns agreed with privacy.</body>
+    <data>{"type": "OOB application configuration", "cls": "Out of the box", "req": [6], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>0516e578c5dd4dfda26e406e0d0f601d</pattern>
+    <seq>2</seq>
+    <title>Sensitive data handling / data privacy patterns for AI prompts</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

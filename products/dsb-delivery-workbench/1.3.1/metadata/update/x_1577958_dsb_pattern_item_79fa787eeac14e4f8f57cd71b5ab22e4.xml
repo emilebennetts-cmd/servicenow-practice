@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>79fa787eeac14e4f8f57cd71b5ab22e4</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_79fa787eeac14e4f8f57cd71b5ab22e4</sys_update_name>
+    <body>OOB clone profiles; cleanup scripts in clone configuration.</body>
+    <data>{"type": "OOB application configuration", "cls": "Out of the box", "req": [5], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>8d97fa25f5114eb4b6ee61ef9fdc7882</pattern>
+    <seq>7</seq>
+    <title>Clone calendar, exclusions, preservers and post-clone cleanup</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

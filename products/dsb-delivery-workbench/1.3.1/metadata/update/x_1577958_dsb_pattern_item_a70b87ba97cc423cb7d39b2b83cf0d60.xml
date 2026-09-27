@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>a70b87ba97cc423cb7d39b2b83cf0d60</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_a70b87ba97cc423cb7d39b2b83cf0d60</sys_update_name>
+    <body>Entities from locations/business units.</body>
+    <data>{"type": "Data load / reference data", "cls": "Configuration", "req": [1], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>708c573d6514412a95254bedf01bfc4a</pattern>
+    <seq>1</seq>
+    <title>Reporting entity model</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>fd6724942ec445c394b2422cbc69bd11</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_fd6724942ec445c394b2422cbc69bd11</sys_update_name>
+    <body>// DSB IMPLEMENTATION platform-health-check — DATA CHANGING (creates incidents) unless DRY_RUN = true.
+var DRY_RUN = true;
+var GROUP = 'ServiceNow Platform Support';   // &lt;confirm&gt;
+var T = {errors_24h: 500, event_ready: 5000, ecc_ready: 1000, triggers_overdue: 20, import_run_errors_24h: 1, send_failed_24h: 50};
+function count(t, q){ var ga = new GlideAggregate(t); ga.addEncodedQuery(q); ga.addAggregate('COUNT'); ga.query(); return ga.next() ? parseInt(ga.getAggregate('COUNT'), 10) : 0; }
+var D1 = 'sys_created_onRELATIVEGT@hour@ago@24';
+var M = {
+  errors_24h: count('syslog', D1 + '^level=2'),
+  event_ready: count('sysevent', 'state=ready'),
+  ecc_ready: count('ecc_queue', 'state=ready'),
+  triggers_overdue: count('sys_trigger', 'next_action&lt;javascript:gs.hoursAgoStart(1)^state=0'),
+  import_run_errors_24h: count('sys_import_set_run', D1 + '^errors&gt;0'),
+  send_failed_24h: count('sys_email', D1 + '^type=send-failed')
+};
+var g = new GlideRecord('sys_user_group'); var gid = g.get('name', GROUP) ? g.getUniqueValue() : '';
+Object.keys(T).forEach(function(k){
+  if (M[k] &lt; T[k]) return;
+  var sd = 'DSB-HEALTH ' + k + ' breached: ' + M[k] + ' &gt;= ' + T[k];
+  var dup = new GlideRecord('incident'); dup.addActiveQuery(); dup.addQuery('short_description', 'STARTSWITH', 'DSB-HEALTH ' + k); dup.addEncodedQuery('sys_created_onONToday@javascript:gs.beginningOfToday()@javascript:gs.endOfToday()'); dup.setLimit(1); dup.query();
+  if (dup.hasNext()) return;
+  gs.print((DRY_RUN ? '[DRY RUN] ' : '') + sd);
+  if (DRY_RUN) return;
+  var inc = new GlideRecord('incident'); inc.initialize(); inc.setValue('short_description', sd); inc.setValue('description', JSON.stringify(M, null, 2)); if (gid) inc.setValue('assignment_group', gid); inc.setValue('impact', 2); inc.setValue('urgency', 2); inc.insert();
+});
+gs.print('=== DSB-IMPL platform-health-check ===\n' + JSON.stringify({metrics: M, thresholds: T, dry_run: DRY_RUN}, null, 2));</body>
+    <data>{"kind": "script", "purpose": "Evaluates health thresholds and raises one incident per breach per day to the platform group. With DRY_RUN it only prints the evaluation.", "prereqs": "Create the platform support group and thresholds; tune for two weeks in DRY_RUN before enabling.", "rollback": "Deactivate the scheduled job; incidents created carry the tag \"DSB-HEALTH\" in short description."}</data>
+    <kind>implementation</kind>
+    <modifies_data>true</modifies_data>
+    <pattern>8d97fa25f5114eb4b6ee61ef9fdc7882</pattern>
+    <seq>1</seq>
+    <title>Scheduled platform health check (DRY RUN by default — creates incidents only when enabled)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

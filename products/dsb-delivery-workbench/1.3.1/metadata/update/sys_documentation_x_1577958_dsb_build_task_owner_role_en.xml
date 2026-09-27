@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>86bd79b004cf45f1addcaf4bb713a05b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_build_task_owner_role_en</sys_update_name>
+    <element>owner_role</element>
+    <help/>
+    <hint/>
+    <label>Owner (role)</label>
+    <language>en</language>
+    <name>x_1577958_dsb_build_task</name>
+    <plural>Owner (role)</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

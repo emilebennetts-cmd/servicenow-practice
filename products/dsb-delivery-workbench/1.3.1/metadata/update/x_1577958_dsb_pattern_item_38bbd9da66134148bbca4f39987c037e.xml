@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>38bbd9da66134148bbca4f39987c037e</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_38bbd9da66134148bbca4f39987c037e</sys_update_name>
+    <body>Without Discovery or a Service Graph Connector feeding the in-scope classes there is nothing reliable to match against.</body>
+    <data>{"cat": "Data", "l": 4, "i": 4, "treat": "Decide and fund the source before lookup-rule tuning; sequence CMDB load ahead of VR re-run."}</data>
+    <kind>risk</kind>
+    <pattern>9ad6efafe3d645c1bce9ff6b75af7152</pattern>
+    <seq>0</seq>
+    <title>Authoritative population source not in place — Tenable becomes de facto CMDB</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

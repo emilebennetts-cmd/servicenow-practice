@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern">
+  <x_1577958_dsb_pattern action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>034d05e2e2bc499f95be7ad7aa17f020</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_034d05e2e2bc499f95be7ad7aa17f020</sys_update_name>
+    <active>true</active>
+    <exclude_terms>[]</exclude_terms>
+    <indicative_cases>80</indicative_cases>
+    <key>integration-hub</key>
+    <library_version>1.5</library_version>
+    <licence_products>integrationhub</licence_products>
+    <min_hits>2</min_hits>
+    <name>Enterprise integrations (IntegrationHub, SAP, Workday, Salesforce)</name>
+    <overview>Register, standardise, secure, monitor. (1) Build the integration register from evidence int.inventory and interviews: owner, direction, system of record, objects, volume, SLA, method. (2) Standard: spoke first; custom IntegrationHub action with connection alias second; scripted REST only with justification. (3) Credentials in credential/connection aliases (or external vault); OAuth for inbound; IP access control. (4) Standard error handling subflow: retry with back-off, dead-letter record, incident to owner. (5) Refactor high-risk scripts (int.risk) in priority order. (6) Monitoring dashboard and alerts; IntegrationHub transaction consumption reviewed monthly. (7) Contract tests in ATF for critical integrations using mock responses where possible.</overview>
+    <pain>Point-to-point scripts with hard-coded endpoints and credentials
+Failures discovered by users days later
+No inventory or owner for integrations
+Upgrades break custom SOAP/REST scripts
+Duplicate data because system-of-record boundaries are unclear</pain>
+    <phase>3</phase>
+    <requires/>
+    <strong_terms>[{"re": "integrat|point.to.point|IntegrationHub", "flags": "i"}]</strong_terms>
+    <summary>Integrations have grown point-to-point: scripted REST calls with hard-coded endpoints and credentials, silent failures, no retry, and no owner. Upgrades break them and nobody knows which are still used. The pattern converges on a governed integration layer: an integration inventory with owners, IntegrationHub spokes and Flow Designer actions in preference to scripts, connection and credential aliases, standard error handling and retry, monitoring and alerting, and a contract per integration (direction, system of record, volume, SLA).</summary>
+    <triggers>[{"re": "integrat", "flags": "i"}, {"re": "IntegrationHub|spoke|Flow Designer action", "flags": "i"}, {"re": "\\bAPI\\b|\\bREST\\b|\\bSOAP\\b|webhook|MuleSoft|middleware|Boomi|Azure (Logic|Integration)", "flags": "i"}, {"re": "\\bSAP\\b|Workday|Salesforce|Jira|Teams|Slack|ServiceNow to ServiceNow|eBonding", "flags": "i"}, {"re": "sync|interface|data flow|point.to.point", "flags": "i"}, {"re": "MID server|credential|OAuth", "flags": "i"}, {"re": "connect(ed|ion)? (to|with)", "flags": "i"}]</triggers>
+    <verified>false</verified>
+  </x_1577958_dsb_pattern>
+</record_update>

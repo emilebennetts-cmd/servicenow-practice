@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>df70f6d47a3a4becb904593fac0f21c0</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_df70f6d47a3a4becb904593fac0f21c0</sys_update_name>
+    <body>Given a maintenance plan with a 90-day interval, When the interval elapses, Then a work order is generated</body>
+    <data>{"type": "Process", "moscow": "Should", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>5c6ec6aa57e140f986af5947553a8c3e</pattern>
+    <seq>5</seq>
+    <title>Planned maintenance is scheduled from asset maintenance plans</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>ed422425c4b54b7e8c8cf431bd97b7b2</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_ed422425c4b54b7e8c8cf431bd97b7b2</sys_update_name>
+    <body>wm_agent, wm_dispatcher, wm_qualifier as applicable.</body>
+    <data>{"type": "Role", "cls": "Out of the box", "req": [1, 2], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>5c6ec6aa57e140f986af5947553a8c3e</pattern>
+    <seq>8</seq>
+    <title>FSM roles and groups</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>933be3cb1f534e0ca6a67a2f55fe702e</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_933be3cb1f534e0ca6a67a2f55fe702e</sys_update_name>
+    <body>Tenable ranked below the authoritative source for name, os, ip_address; permitted to update only agreed attributes.</body>
+    <data>{"type": "CMDB / IRE rule", "cls": "Configuration", "req": [2], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>9ad6efafe3d645c1bce9ff6b75af7152</pattern>
+    <seq>2</seq>
+    <share_key>cmp.recon</share_key>
+    <title>Reconciliation definitions: Tenable discovery source precedence (cmdb_reconciliation_definition)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

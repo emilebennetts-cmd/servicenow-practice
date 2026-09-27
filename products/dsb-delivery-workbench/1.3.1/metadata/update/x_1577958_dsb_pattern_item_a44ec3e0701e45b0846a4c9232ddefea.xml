@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>a44ec3e0701e45b0846a4c9232ddefea</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_a44ec3e0701e45b0846a4c9232ddefea</sys_update_name>
+    <body>Reconciliation schedules, reclamation rules, notification templates
+Entitlement import set and transform map</body>
+    <data>{"key": "SAM", "scope": "sn_samp / SAM scope"}</data>
+    <kind>update_set</kind>
+    <pattern>f0c40ed7d7ac4c1a957aafe864f1f114</pattern>
+    <seq>1</seq>
+    <title>ITAM_SAM_&lt;client&gt;_v1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

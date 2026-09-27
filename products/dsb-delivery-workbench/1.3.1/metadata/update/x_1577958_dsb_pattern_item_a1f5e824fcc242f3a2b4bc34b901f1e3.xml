@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>a1f5e824fcc242f3a2b4bc34b901f1e3</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_a1f5e824fcc242f3a2b4bc34b901f1e3</sys_update_name>
+    <body>Skills and admin console differ by release.</body>
+    <data>{"cat": "Technical", "l": 2, "i": 4, "treat": "Evidence ai.readiness; upgrade plan if needed."}</data>
+    <kind>risk</kind>
+    <pattern>0516e578c5dd4dfda26e406e0d0f601d</pattern>
+    <seq>4</seq>
+    <title>Release not on a Now Assist–supported family</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

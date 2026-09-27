@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>96ef34756f0e4c4d8d168c1b425bafcc</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_96ef34756f0e4c4d8d168c1b425bafcc</sys_update_name>
+    <body>Impersonate
+Open a Catalog Item (SP)
+Order Catalog Item (SP)
+Record Query
+Record Validation</body>
+    <data>{"req": 1, "note": null}</data>
+    <kind>atf</kind>
+    <pattern>f57c6db779734f4ea34b1ec5d8dedf38</pattern>
+    <seq>0</seq>
+    <title>Department request routes to department group with SLA</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

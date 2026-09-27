@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>5ec5baeed2284c44882fa172bbedcf78</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_5ec5baeed2284c44882fa172bbedcf78</sys_update_name>
+    <body>Given an employee opens Employee Center, When they search for "parental leave", Then the matching HR knowledge article and HR service are shown
+Given an employee submits an HR service, When the case is created, Then it is categorised to the correct HR service and COE without manual triage</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "End user"}</data>
+    <kind>requirement</kind>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>0</seq>
+    <title>Employees raise HR enquiries and requests through Employee Center using an HR service catalogue</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

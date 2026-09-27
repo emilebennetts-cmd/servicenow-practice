@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_list table="x_1577958_dsb_release" parent="" relationship="" sys_domain="global" view="">
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>389c0eddde9140f4bcc05952bbd06cf2</sys_id>
+      <list_id display_value="x_1577958_dsb_release" name="x_1577958_dsb_release" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">ba93a48fb9f3437185e4e7c8855c3a34</list_id>
+      <element>number</element>
+      <position>0</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>c701758eef9c47efad899c7468993c5e</sys_id>
+      <list_id display_value="x_1577958_dsb_release" name="x_1577958_dsb_release" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">ba93a48fb9f3437185e4e7c8855c3a34</list_id>
+      <element>engagement</element>
+      <position>1</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>82a9130c669c429da307a9c7a43b82ec</sys_id>
+      <list_id display_value="x_1577958_dsb_release" name="x_1577958_dsb_release" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">ba93a48fb9f3437185e4e7c8855c3a34</list_id>
+      <element>name</element>
+      <position>2</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>8efaef26c08845c39729e641e0d31920</sys_id>
+      <list_id display_value="x_1577958_dsb_release" name="x_1577958_dsb_release" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">ba93a48fb9f3437185e4e7c8855c3a34</list_id>
+      <element>change_ref</element>
+      <position>3</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>89cefe248c4040df9e399f1394f67c96</sys_id>
+      <list_id display_value="x_1577958_dsb_release" name="x_1577958_dsb_release" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">ba93a48fb9f3437185e4e7c8855c3a34</list_id>
+      <element>status</element>
+      <position>4</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>d1d3e0122d234bfbb6eb47637637d632</sys_id>
+      <list_id display_value="x_1577958_dsb_release" name="x_1577958_dsb_release" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">ba93a48fb9f3437185e4e7c8855c3a34</list_id>
+      <element>planned_start</element>
+      <position>5</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>ba20fc0289ec4ea48a662cb2ee83682a</sys_id>
+      <list_id display_value="x_1577958_dsb_release" name="x_1577958_dsb_release" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">ba93a48fb9f3437185e4e7c8855c3a34</list_id>
+      <element>deployed_on</element>
+      <position>6</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>282f9521592e4080af4be4d8d6e125b5</sys_id>
+      <list_id display_value="x_1577958_dsb_release" name="x_1577958_dsb_release" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">ba93a48fb9f3437185e4e7c8855c3a34</list_id>
+      <element>rollback_tested</element>
+      <position>7</position>
+    </sys_ui_list_element>
+    <sys_ui_list action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>ba93a48fb9f3437185e4e7c8855c3a34</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <view name="NULL">Default view</view>
+      <name>x_1577958_dsb_release</name>
+      <sys_domain>global</sys_domain>
+    </sys_ui_list>
+  </sys_ui_list>
+</record_update>

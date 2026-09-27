@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>e7cfb1da20ce4cef89630087eadddc86</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_e7cfb1da20ce4cef89630087eadddc86</sys_update_name>
+    <body>// DSB IMPLEMENTATION sir-stale — READ ONLY.
+var DAYS = 14, out = [];
+var g = new GlideRecord('sn_si_incident'); g.addActiveQuery(); g.addEncodedQuery('sys_updated_onRELATIVELT@dayofweek@ago@' + DAYS); g.orderBy('sys_updated_on'); g.setLimit(300); g.query();
+while (g.next()) out.push({number: g.getValue('number'), category: g.getDisplayValue('category'), state: g.getDisplayValue('state'), group: g.getDisplayValue('assignment_group'), updated: g.getValue('sys_updated_on')});
+gs.print('=== DSB-IMPL sir-stale ===\n' + JSON.stringify({days: DAYS, count: out.length, incidents: out}, null, 2));</body>
+    <data>{"kind": "script", "purpose": "Lists open security incidents without an update in N days for SOC triage.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>9502ffca8cf0439989ddf6b7b57dddea</pattern>
+    <seq>1</seq>
+    <title>Stale open security incidents report (READ ONLY)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

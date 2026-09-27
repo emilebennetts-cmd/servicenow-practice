@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>11dc6db88a924883b8b2c1d7340edaaa</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_11dc6db88a924883b8b2c1d7340edaaa</sys_update_name>
+    <body>Given an outreach is closed, When reviewed later, Then message, recipients, responses and follow-ups are available to authorised roles only</body>
+    <data>{"type": "Security / Access", "moscow": "Should", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>feb9570f3df64d249bd135c8a0a1bfa2</pattern>
+    <seq>5</seq>
+    <title>Outreach and responses are retained as an audit trail</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

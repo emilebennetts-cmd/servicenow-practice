@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>6ce2c64606bd460b85408e967d72e785</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_6ce2c64606bd460b85408e967d72e785</sys_update_name>
+    <body>Update set 1: HRSD_Security_&lt;client&gt;_v1 (Human Resources: Core)
+  - Restricted HR service settings, any justified ACL additions
+Update set 2: HRSD_Services_&lt;client&gt;_v1 (Human Resources: Core)
+  - COEs/topic categories/topic details/HR services, HR templates
+  - Record producers, matching rules, SLA definitions, HR criteria
+Update set 3: HRSD_Lifecycle_&lt;client&gt;_v1 (Human Resources: Lifecycle Events)
+  - Activity sets, activities, lifecycle event services
+Update set 4: HRSD_EmployeeCenter_&lt;client&gt;_v1 (global / Employee Center scope)
+  - Taxonomy, branding, dashboards, survey triggers
+Data (not update sets): group memberships, HR profiles, knowledge articles.
+Note: group role grants (sys_group_has_role) are captured in update sets — review them before completing.
+Tip: use a batch update set parent so the four promote together.</body>
+    <data>{"kind": "checklist", "purpose": "HRSD configuration lives in HR application scopes; each scope needs its own update set. Store apps and plugins do not travel.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>0</seq>
+    <title>Update set plan — HRSD foundation</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

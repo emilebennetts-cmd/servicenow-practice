@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>0f56c0d96d1246618a19c06ca39626a9</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_0f56c0d96d1246618a19c06ca39626a9</sys_update_name>
+    <body>Given a project manager publishes a status report, When executives open the portfolio view, Then overall, schedule, cost and resource RAG show with commentary
+Given a project risk is raised, When it exceeds threshold, Then it appears on the portfolio risk view</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>009e981159a14b74a82d20a26b9752a8</pattern>
+    <seq>3</seq>
+    <title>Projects are planned and tracked with status reports and RAID items</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

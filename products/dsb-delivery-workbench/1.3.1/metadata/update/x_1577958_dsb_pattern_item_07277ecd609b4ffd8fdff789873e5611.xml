@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>07277ecd609b4ffd8fdff789873e5611</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_07277ecd609b4ffd8fdff789873e5611</sys_update_name>
+    <body>Balances speed with risk and CAB capacity.</body>
+    <data>{}</data>
+    <kind>decision</kind>
+    <pattern>8d97fa25f5114eb4b6ee61ef9fdc7882</pattern>
+    <seq>1</seq>
+    <title>Release cadence and change model</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

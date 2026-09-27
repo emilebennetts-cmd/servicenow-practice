@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern">
+  <x_1577958_dsb_pattern action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>f0c40ed7d7ac4c1a957aafe864f1f114</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_f0c40ed7d7ac4c1a957aafe864f1f114</sys_update_name>
+    <active>true</active>
+    <exclude_terms>[{"re": "medical device|biomed", "flags": "i"}]</exclude_terms>
+    <indicative_cases>29</indicative_cases>
+    <key>itam-ham-sam</key>
+    <library_version>1.5</library_version>
+    <licence_products>itam_ham,itam_sam</licence_products>
+    <min_hits>2</min_hits>
+    <name>Hardware and software asset management (HAM / SAM)</name>
+    <overview>Clean the foundation, then run the lifecycle, then prove the licence position. (1) Normalise hardware and software content (Content Service) so models and publishers are consistent. (2) Configure model categories so CIs and assets create each other one-to-one, and apply OOB asset–CI field and status synchronisation — no custom sync scripts. (3) Run the hardware lifecycle on OOB states and substates, stockrooms, transfer orders and HAM workspace refresh/disposal. (4) For SAM, pick priority publishers (by spend and audit risk), load entitlements from contracts/POs with correct licence metrics, and let OOB publisher packs reconcile installs to entitlements. (5) Turn on reclamation rules for high-cost, low-use titles. (6) Reconcile with finance on asset tag/cost centre. (7) Report from the HAM and SAM workspaces. Custom asset tables are not required.</overview>
+    <pain>Asset register does not match the CMDB or the finance fixed-asset register
+Hardware lifecycle and stock are tracked in spreadsheets; refresh and disposal are late
+No defensible licence position for major publishers; audit exposure
+Software spend on unused installs and subscriptions (no reclamation)
+Models and manufacturers are not normalised, so reports split one product many ways</pain>
+    <phase>2</phase>
+    <requires>cmdb-csdm-foundation</requires>
+    <strong_terms>[{"re": "\\bHAM\\b|\\bSAM\\b|\\bITAM\\b", "flags": "i"}, {"re": "licen[cs]e (position|compliance)|software asset|hardware asset", "flags": "i"}]</strong_terms>
+    <summary>Asset records are incomplete or disconnected from the CMDB, hardware lifecycle (request, receive, deploy, refresh, dispose) is run from spreadsheets, and software spend is justified without a defensible licence position. Vendor audits and refresh programmes become fire drills. The pattern converges on OOB Hardware Asset Management and Software Asset Management: normalised models, one-to-one asset–CI synchronisation, lifecycle states and stockrooms, entitlements loaded from contracts, and reconciliation of installs to entitlements for the priority publishers.</summary>
+    <triggers>[{"re": "\\bHAM\\b|hardware asset", "flags": "i"}, {"re": "\\bSAM\\b|software asset|licen[cs]e (position|compliance|optimi|audit)", "flags": "i"}, {"re": "\\bITAM\\b|asset (management|lifecycle|register)", "flags": "i"}, {"re": "stockroom|procure|refresh|disposal|retire", "flags": "i"}, {"re": "entitlement|true.?up|vendor audit|microsoft|oracle|adobe", "flags": "i"}, {"re": "asset", "flags": "i"}, {"re": "normali[sz]", "flags": "i"}, {"re": "laptops?|devices?|hardware", "flags": "i"}, {"re": "licen[cs]es?", "flags": "i"}]</triggers>
+    <verified>false</verified>
+  </x_1577958_dsb_pattern>
+</record_update>

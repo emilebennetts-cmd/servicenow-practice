@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_section caption="Requirements" section_id="917d2c83668e41d1bb01d18d6827319d" sys_domain="global" table="x_1577958_dsb_engagement" view="">
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>12M.x_1577958_dsb_engagement.x_1577958_dsb_requirement.engagement</element>
+      <position>0</position>
+      <sys_id>b81fb0b18ea14c54b73d60862fc7f4cf</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Requirements" display_value="Requirements" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">917d2c83668e41d1bb01d18d6827319d</sys_ui_section>
+      <sys_user/>
+      <type>list</type>
+    </sys_ui_element>
+    <sys_ui_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <caption>Requirements</caption>
+      <header>false</header>
+      <name>x_1577958_dsb_engagement</name>
+      <roles/>
+      <sys_domain>global</sys_domain>
+      <sys_id>917d2c83668e41d1bb01d18d6827319d</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <title>false</title>
+      <view_name/>
+      <view name="NULL" display_value="Default view">Default view</view>
+    </sys_ui_section>
+  </sys_ui_section>
+</record_update>

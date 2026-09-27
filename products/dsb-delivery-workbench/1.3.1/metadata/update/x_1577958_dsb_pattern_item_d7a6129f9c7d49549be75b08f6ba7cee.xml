@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>d7a6129f9c7d49549be75b08f6ba7cee</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_d7a6129f9c7d49549be75b08f6ba7cee</sys_update_name>
+    <data>{"cat": "Security", "l": 3, "i": 5, "treat": "Security assessment before data load."}</data>
+    <kind>risk</kind>
+    <pattern>628bf2891d554853993138856ccb4ef2</pattern>
+    <seq>0</seq>
+    <title>Classification/hosting not approved for the data</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

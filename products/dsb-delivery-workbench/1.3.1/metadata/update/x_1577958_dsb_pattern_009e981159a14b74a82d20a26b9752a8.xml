@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern">
+  <x_1577958_dsb_pattern action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>009e981159a14b74a82d20a26b9752a8</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_009e981159a14b74a82d20a26b9752a8</sys_update_name>
+    <active>true</active>
+    <exclude_terms>[]</exclude_terms>
+    <indicative_cases>23</indicative_cases>
+    <key>spm-portfolio</key>
+    <library_version>1.5</library_version>
+    <licence_products>spm</licence_products>
+    <min_hits>2</min_hits>
+    <name>Strategic Portfolio Management (demand, project, portfolio)</name>
+    <overview>Intake, decide, deliver, measure. (1) One intake: Idea/Demand record producer in the portal; demand assessment and scoring using OOB assessments. (2) Portfolio structure (portfolio → programme → planning items) with owners and fiscal periods; Portfolio Planning Workspace for prioritisation and funding scenarios where licensed. (3) Demand to project/epic conversion using OOB actions — no re-keying. (4) Project delivery on OOB Project Workspace: plans, baselines, status reports, RAID. (5) Resource management on OOB resource plans with group capacity; time cards feeding actuals and cost plans. (6) Agile (Enterprise Agile Planning) linked to planning items where teams already work in sprints; integrate with Jira rather than force a move if that is the decision. (7) Goals and targets for alignment; executive dashboards. Configure OOB states and forms; avoid custom fields on pm_project unless reporting demands them.</overview>
+    <pain>Demand arrives through many channels; no consistent assessment or prioritisation
+Project status reported manually in slide decks
+Resource over-allocation discovered late
+No link between funded work and strategic objectives
+Project, agile and financial data in separate tools</pain>
+    <phase>2</phase>
+    <requires/>
+    <strong_terms>[{"re": "\\bSPM\\b|\\bPPM\\b|portfolio", "flags": "i"}, {"re": "demand (management|intake)", "flags": "i"}]</strong_terms>
+    <summary>Work enters IT through email and meetings, projects are tracked in separate tools and spreadsheets, and leaders cannot see what is being funded, who is working on it or whether it delivers strategic goals. The pattern converges on OOB SPM: a single demand intake with scoring, portfolios and programmes with planning items, project and agile delivery on the platform, resource plans and time cards feeding cost, and portfolio dashboards tied to goals.</summary>
+    <triggers>[{"re": "\\bSPM\\b|\\bPPM\\b|strategic portfolio|project portfolio", "flags": "i"}, {"re": "demand|intake|idea", "flags": "i"}, {"re": "project|programme|program", "flags": "i"}, {"re": "portfolio|investment|funding|budget", "flags": "i"}, {"re": "resource (plan|management|capacity)|timesheet|time card", "flags": "i"}, {"re": "agile|scrum|SAFe|epic|story|sprint", "flags": "i"}, {"re": "roadmap|\\bOKR\\b|goal|alignment", "flags": "i"}, {"re": "projects?", "flags": "i"}, {"re": "budget|funding", "flags": "i"}]</triggers>
+    <verified>false</verified>
+  </x_1577958_dsb_pattern>
+</record_update>

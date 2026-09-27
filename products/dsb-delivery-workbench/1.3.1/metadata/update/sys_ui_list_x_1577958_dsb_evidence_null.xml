@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_list table="x_1577958_dsb_evidence" parent="" relationship="" sys_domain="global" view="">
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>f5d7d5e0d5c548178012f68460c25952</sys_id>
+      <list_id display_value="x_1577958_dsb_evidence" name="x_1577958_dsb_evidence" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">67107f0ae5054fcfaa9a4d3d5bca81c6</list_id>
+      <element>number</element>
+      <position>0</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>98ed0e522b234cd6b1db43a3dc0683ee</sys_id>
+      <list_id display_value="x_1577958_dsb_evidence" name="x_1577958_dsb_evidence" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">67107f0ae5054fcfaa9a4d3d5bca81c6</list_id>
+      <element>engagement</element>
+      <position>1</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>d4af25f029fe49b0b86cad0a397689e5</sys_id>
+      <list_id display_value="x_1577958_dsb_evidence" name="x_1577958_dsb_evidence" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">67107f0ae5054fcfaa9a4d3d5bca81c6</list_id>
+      <element>item</element>
+      <position>2</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>90739fa18673495f93b851277b06d5e5</sys_id>
+      <list_id display_value="x_1577958_dsb_evidence" name="x_1577958_dsb_evidence" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">67107f0ae5054fcfaa9a4d3d5bca81c6</list_id>
+      <element>status</element>
+      <position>3</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>5a777c56394341dcbe09f0d2d54f30b0</sys_id>
+      <list_id display_value="x_1577958_dsb_evidence" name="x_1577958_dsb_evidence" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">67107f0ae5054fcfaa9a4d3d5bca81c6</list_id>
+      <element>flagged</element>
+      <position>4</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>e50c6977e0ef48d28e508e4a4d8248d3</sys_id>
+      <list_id display_value="x_1577958_dsb_evidence" name="x_1577958_dsb_evidence" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">67107f0ae5054fcfaa9a4d3d5bca81c6</list_id>
+      <element>reviewed_by_second</element>
+      <position>5</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>8b6900672c934d2e8533f8d359eba195</sys_id>
+      <list_id display_value="x_1577958_dsb_evidence" name="x_1577958_dsb_evidence" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">67107f0ae5054fcfaa9a4d3d5bca81c6</list_id>
+      <element>pattern_key</element>
+      <position>6</position>
+    </sys_ui_list_element>
+    <sys_ui_list action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>67107f0ae5054fcfaa9a4d3d5bca81c6</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <view name="NULL">Default view</view>
+      <name>x_1577958_dsb_evidence</name>
+      <sys_domain>global</sys_domain>
+    </sys_ui_list>
+  </sys_ui_list>
+</record_update>

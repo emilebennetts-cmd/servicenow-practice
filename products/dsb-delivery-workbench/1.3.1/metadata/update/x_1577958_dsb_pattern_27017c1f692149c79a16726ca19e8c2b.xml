@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern">
+  <x_1577958_dsb_pattern action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>27017c1f692149c79a16726ca19e8c2b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_27017c1f692149c79a16726ca19e8c2b</sys_update_name>
+    <active>true</active>
+    <exclude_terms>[]</exclude_terms>
+    <indicative_cases>6</indicative_cases>
+    <key>itom-aiops-event</key>
+    <library_version>1.5</library_version>
+    <licence_products>itom_health</licence_products>
+    <min_hits>2</min_hits>
+    <name>ITOM Health: event management, AIOps and observability</name>
+    <overview>Ingest, reduce, bind, act. (1) Prefer OOB connectors (pull via MID) or the source tool's native push integration to the Event Management inbound endpoint; one integration per tool. (2) Event rules at the edge: ignore informational noise, normalise fields (node, type, resource, metric, message key), and set severity mapping. (3) CI binding by node name/IP/FQDN against a CMDB that follows the CMDB/CSDM pattern; unbound alerts are a data-quality signal, not an EM defect. (4) De-duplicate on message key, correlate with OOB tag-based and CMDB/service-based alert grouping (AIOps where licensed). (5) Alert management rules create incidents only for actionable, production, bound alerts, with service offering and support group from the CI; clearing policy agreed with the service desk. (6) Operator Workspace and service health for critical services. (7) Add remediation subflows for recurring alerts once stable. Measure compression and alert-to-incident ratios per source.</overview>
+    <pain>Thousands of alerts a day across tools; genuine issues missed
+Duplicate tickets for the same outage
+Alerts without CI or service context, so impact is guessed
+Incidents raised manually and late; MTTR is high
+No single operations view across monitoring tools</pain>
+    <phase>2</phase>
+    <requires>cmdb-csdm-foundation</requires>
+    <strong_terms>[{"re": "event management|AIOps", "flags": "i"}, {"re": "alert (noise|storm)|monitoring", "flags": "i"}]</strong_terms>
+    <summary>Monitoring tools each raise their own alerts; the operations team drowns in noise, duplicates are handled by hand, and incidents are raised late or without service context. The pattern converges on OOB Event Management: connectors or push integrations from each monitoring tool, event rules to filter and transform, CI binding to the CMDB, alert correlation and grouping, alert-to-incident rules with service impact, and Operator Workspace — measured by noise reduction and time to detect.</summary>
+    <triggers>[{"re": "event management|\\bevents?\\b", "flags": "i"}, {"re": "alert|alarm|noise|storm", "flags": "i"}, {"re": "AIOps|observability|monitoring", "flags": "i"}, {"re": "SolarWinds|Splunk|Dynatrace|Datadog|Nagios|\\bSCOM\\b|Zabbix|\\bPRTG\\b|AppDynamics|New Relic|Prometheus|LogicMonitor", "flags": "i"}, {"re": "outage|major incident|\\bMTTR\\b|downtime", "flags": "i"}, {"re": "operator workspace|\\bNOC\\b|operations centre|operations center", "flags": "i"}, {"re": "correlat|dedup", "flags": "i"}]</triggers>
+    <verified>false</verified>
+  </x_1577958_dsb_pattern>
+</record_update>

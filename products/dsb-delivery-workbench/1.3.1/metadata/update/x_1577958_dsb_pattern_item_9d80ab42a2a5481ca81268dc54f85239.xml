@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>9d80ab42a2a5481ca81268dc54f85239</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_9d80ab42a2a5481ca81268dc54f85239</sys_update_name>
+    <body>Entity filters depend on them</body>
+    <data>{"validate": "Evidence cmdb.csdm or irm.scope entities_no_owner"}</data>
+    <kind>assumption</kind>
+    <pattern>4b16aa07c3c5429a93a6f33c5ef138c0</pattern>
+    <seq>0</seq>
+    <title>Business applications / business units exist in the platform with owners</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

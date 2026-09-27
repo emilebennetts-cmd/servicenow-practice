@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>b46bcb8f946148f0aa3c538859181009</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_b46bcb8f946148f0aa3c538859181009</sys_update_name>
+    <body>Update set: FSM_Config_&lt;client&gt;_v1 — templates configuration, scheduling rules, mobile applets, notifications, dashboards
+Data per environment: territories, skills and user skills, schedules, stockrooms and stock rules, maintenance plans, task templates (if treated as data)
+Mobile: publish mobile app config; test offline on target devices before go-live.</body>
+    <data>{"kind": "checklist", "purpose": "Separate configuration from resource reference data.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>5c6ec6aa57e140f986af5947553a8c3e</pattern>
+    <seq>0</seq>
+    <title>Update set and data plan — FSM</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

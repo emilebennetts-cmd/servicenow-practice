@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>d8afc50e09664af9970bbd188a738336</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_d8afc50e09664af9970bbd188a738336</sys_update_name>
+    <body>Given a recipient receives the outreach, When they reply "Need help", Then the response is recorded against them within one minute</body>
+    <data>{"type": "UI / Experience", "moscow": "Must", "persona": "End user"}</data>
+    <kind>requirement</kind>
+    <pattern>feb9570f3df64d249bd135c8a0a1bfa2</pattern>
+    <seq>1</seq>
+    <title>Recipients respond through email, SMS, mobile or Teams and responses are recorded</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

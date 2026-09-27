@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>7e238b902a794a50845cbcf2240856f7</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_7e238b902a794a50845cbcf2240856f7</sys_update_name>
+    <body>Asset-based plans generating work orders.</body>
+    <data>{"type": "Scheduled job", "cls": "Out of the box", "req": [5], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>5c6ec6aa57e140f986af5947553a8c3e</pattern>
+    <seq>7</seq>
+    <title>Planned maintenance plans</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

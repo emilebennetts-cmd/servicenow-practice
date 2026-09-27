@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>0e831a6995594aca8e78563606d9243b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_0e831a6995594aca8e78563606d9243b</sys_update_name>
+    <body>Given an application requires inspection, When scheduled, Then the inspector completes the checklist on mobile and results update the case</body>
+    <data>{"type": "Process", "moscow": "Could", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>628bf2891d554853993138856ccb4ef2</pattern>
+    <seq>3</seq>
+    <title>Inspections and site visits are scheduled and recorded</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>f4f40dab69fa42039254c49a22620245</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_f4f40dab69fa42039254c49a22620245</sys_update_name>
+    <body>Record Insert
+Run Server Side Script
+Field Values Validation</body>
+    <data>{"req": 2, "note": null}</data>
+    <kind>atf</kind>
+    <pattern>708c573d6514412a95254bedf01bfc4a</pattern>
+    <seq>0</seq>
+    <title>Out-of-range submission is flagged for review</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

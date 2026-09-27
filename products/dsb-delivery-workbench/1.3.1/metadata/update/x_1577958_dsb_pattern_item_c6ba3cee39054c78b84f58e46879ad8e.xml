@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>c6ba3cee39054c78b84f58e46879ad8e</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_c6ba3cee39054c78b84f58e46879ad8e</sys_update_name>
+    <body>Given a clinician scans a device tag or selects a ward, When they report a fault, Then the request routes to clinical engineering with the device attached</body>
+    <data>{"type": "UI / Experience", "moscow": "Should", "persona": "End user"}</data>
+    <kind>requirement</kind>
+    <pattern>0e998cd6afca4efe958b07af4c028893</pattern>
+    <seq>4</seq>
+    <title>Clinicians request equipment help from a simple portal or phone channel</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

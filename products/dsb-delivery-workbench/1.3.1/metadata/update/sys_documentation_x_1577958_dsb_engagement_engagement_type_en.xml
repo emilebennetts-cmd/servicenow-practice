@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>2a1a2ac83c9c4f4b99d3b0b3fb02e3d3</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_engagement_engagement_type_en</sys_update_name>
+    <element>engagement_type</element>
+    <help/>
+    <hint/>
+    <label>Engagement type</label>
+    <language>en</language>
+    <name>x_1577958_dsb_engagement</name>
+    <plural>Engagement types</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

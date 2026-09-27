@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<record_update table="sys_properties">
+  <sys_properties action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>f99bf03be25f4380999a93c3e4822336</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_properties_f99bf03be25f4380999a93c3e4822336</sys_update_name>
+    <choices/>
+    <description>Design effort as a fraction of build hours.</description>
+    <ignore_cache>false</ignore_cache>
+    <is_private>false</is_private>
+    <name>x_1577958_dsb.effort.pct_design</name>
+    <read_roles>x_1577958_dsb.user</read_roles>
+    <suffix>effort.pct_design</suffix>
+    <type>string</type>
+    <value>0.10</value>
+    <write_roles>x_1577958_dsb.admin</write_roles>
+  </sys_properties>
+</record_update>

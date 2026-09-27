@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>948afe651e63488697bbe2ff4f4cd0d4</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_948afe651e63488697bbe2ff4f4cd0d4</sys_update_name>
+    <body>In-scope classes and mandatory attributes per class; no custom classes without justification.</body>
+    <data>{"type": "CMDB / IRE rule", "cls": "Out of the box", "req": [2], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>031fd78c2b3742d38dc20450125b3992</pattern>
+    <seq>1</seq>
+    <share_key>cmp.class</share_key>
+    <title>CSDM scope and class model decision (Class Manager)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

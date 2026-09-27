@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<record_update table="sys_number">
+  <sys_number action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>e7bb7dc71c3c4562827a7c33594d5ef7</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_number_e7bb7dc71c3c4562827a7c33594d5ef7</sys_update_name>
+    <category>x_1577958_dsb_release</category>
+    <maximum_digits>7</maximum_digits>
+    <number>1000</number>
+    <prefix>DRL</prefix>
+  </sys_number>
+</record_update>

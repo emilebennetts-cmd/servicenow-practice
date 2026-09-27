@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>337068d5c30544e3a8fa56145f092a47</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_337068d5c30544e3a8fa56145f092a47</sys_update_name>
+    <body>Time sheet policy, approval flow, cost calculation.</body>
+    <data>{"type": "Governance / documentation", "cls": "Out of the box", "req": [5], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>009e981159a14b74a82d20a26b9752a8</pattern>
+    <seq>6</seq>
+    <title>Time card configuration and approvals</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

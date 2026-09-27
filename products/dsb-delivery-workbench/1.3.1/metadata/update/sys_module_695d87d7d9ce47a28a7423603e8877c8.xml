@@ -1,0 +1,281 @@
+<?xml version="1.0"?>
+<record_update table="sys_module">
+  <sys_module action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>695d87d7d9ce47a28a7423603e8877c8</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_module_695d87d7d9ce47a28a7423603e8877c8</sys_update_name>
+    <content><![CDATA[import { gs } from '@servicenow/glide';
+import { T, val, bool, num, count, each, getRecord, gr, logHistory, redact, nowValue, safeJson, hasRole, propNum } from './common.ts';
+import { componentHours } from './estimate.ts';
+import { GATE_LABEL, blockersFor, previousRequiredGate, gateApproved, lifecycleFor, PATH_GATES } from './gate.ts';
+/* ================= Gate approvals: enforced, sequenced, evidenced ================= */
+/**
+ * Validate a gate decision. Used by the business rule (authoritative) and by the REST API
+ * (to return a readable message before inserting). Returns an error message or ''.
+ */
+export function checkGateDecision(engId, gate, status, f, selfId = '') {
+    const e = getRecord(T.engagement, engId);
+    if (!e)
+        return 'Engagement not found.';
+    if (status !== 'approved' && status !== 'waived')
+        return '';
+    const path = val(e, 'delivery_path') || 'standard';
+    const seq = PATH_GATES[path] || PATH_GATES.standard;
+    if (seq.indexOf(gate) < 0)
+        return `${GATE_LABEL[gate]} is not part of the ${path} delivery path.`;
+    const other = gr(T.gate);
+    other.addEncodedQuery(`engagement=${engId}^gate=${gate}^statusINapproved,waived${selfId ? '^sys_id!=' + selfId : ''}`);
+    other.query();
+    if (other.next())
+        return `${GATE_LABEL[gate]} is already ${val(other, 'status')}. Revoke it first to record a new decision.`;
+    const prior = previousRequiredGate(path, gate);
+    if (prior && !gateApproved(engId, prior))
+        return `${GATE_LABEL[gate]} cannot be recorded before ${GATE_LABEL[prior]} is approved or waived.`;
+    if (status === 'approved') {
+        if (!f.approval_ref)
+            return 'An approval reference is required (change number, email subject and date, DocuSign ID or minutes reference). Do not record names.';
+        if (!f.approver_role)
+            return 'Record the approver as a role (for example "Client process owner").';
+        const blockers = blockersFor(engId, gate);
+        if (blockers.length)
+            return `${GATE_LABEL[gate]} has ${blockers.length} open High blocker(s). First: ${blockers[0].text}`;
+    }
+    if (status === 'waived') {
+        if (!hasRole('delivery_lead') && !gs.hasRole('admin'))
+            return 'Only a DSB delivery lead can waive a gate.';
+        if (!f.waiver_reason || !f.waiver_expiry)
+            return 'A waiver needs a reason and an expiry date.';
+    }
+    return '';
+}
+/** before insert/update on x_1577958_dsb_gate */
+export function gateBefore(current, previous) {
+    const engId = val(current, 'engagement');
+    const gate = val(current, 'gate');
+    const status = val(current, 'status');
+    const prevStatus = previous ? val(previous, 'status') : '';
+    if ((status === 'approved' || status === 'waived') && status !== prevStatus) {
+        const err = checkGateDecision(engId, gate, status, { approval_ref: val(current, 'approval_ref'), approver_role: val(current, 'approver_role'), waiver_reason: val(current, 'waiver_reason'), waiver_expiry: val(current, 'waiver_expiry') }, current.getUniqueValue());
+        if (err)
+            return abort(current, err);
+        current.setValue('blockers_at_decision', blockersFor(engId, gate).map((b) => `[${b.stage}] ${b.text}`).join('\n').slice(0, 7900));
+        current.setValue('decided_on', nowValue());
+    }
+    if (status === 'revoked' && prevStatus !== 'revoked')
+        current.setValue('decided_on', nowValue());
+}
+/** after insert/update on x_1577958_dsb_gate */
+export function gateAfter(current, previous) {
+    const engId = val(current, 'engagement');
+    const status = val(current, 'status');
+    const gate = val(current, 'gate');
+    if (status === 'revoked' && (!previous || val(previous, 'status') !== 'revoked')) {
+        const later = gr(T.gate);
+        later.addEncodedQuery(`engagement=${engId}^gate>${gate}^statusINapproved,waived`);
+        later.query();
+        while (later.next()) {
+            later.setValue('status', 'revoked');
+            later.setValue('waiver_reason', `Revoked automatically because ${GATE_LABEL[gate]} was revoked.`);
+            later.update();
+        }
+    }
+    const e = getRecord(T.engagement, engId);
+    if (e) {
+        e.setValue('lifecycle_state', lifecycleFor(engId));
+        e.update();
+    }
+    logHistory(engId, `Gate ${status}`, `${GATE_LABEL[gate]} ${status}. Reference: ${val(current, 'approval_ref') || val(current, 'waiver_reason') || '-'}; approver role: ${val(current, 'approver_role') || '-'}`, T.gate, gate.toUpperCase(), 'gates');
+}
+function abort(current, msg) {
+    gs.addErrorMessage(msg);
+    current.setAbortAction(true);
+}
+/* ================= Engagement ================= */
+/** before insert/update on engagement: redaction, delivery-path suggestion, protected lifecycle. */
+export function engagementBefore(current, previous) {
+    for (const f of ['problem', 'scope_in', 'scope_out', 'constraints', 'path_rationale', 'design_notes', 'tester_roles', 'lead_role', 'sponsor_role', 'process_owner_role', 'support_owner_role', 'purpose', 'user_groups', 'known_events', 'environments', 'application_name']) {
+        const v = val(current, f);
+        if (v) {
+            const r = redact(v);
+            if (r !== v)
+                current.setValue(f, r);
+        }
+    }
+    current.setValue('path_suggested', suggestPath(current));
+}
+/** Delivery-path criteria (assessment section 8). Any one criterion moves the work up. */
+export function suggestPath(e) {
+    const id = e.getUniqueValue();
+    const est = num(e, 'estimate_hours');
+    const q = `engagement=${id}`;
+    const complexSignals = est > propNum('path.standard_max_hours', 160) ||
+        bool(e, 'greenfield') ||
+        count(T.requirement, q + '^fit=customisation') > 0 ||
+        count(T.component, q + '^build_class=customisation') > 0 ||
+        count(T.component, q + '^component_type.nameINCMDB / IRE rule,ACL^ORcomponent_type.name=Role') > 0 ||
+        count(T.requirement, q + '^req_type=security') > 0 ||
+        count(T.requirement, q + '^fit=integration') > 1;
+    if (complexSignals)
+        return 'complex';
+    const standardSignals = est > propNum('path.express_max_hours', 16) ||
+        count(T.component, q + '^component_type.nameINTable,Integration (REST/SOAP),Integration spoke / connection,Import set / transform map,Data load / reference data') > 0 ||
+        count(T.requirement, q + '^fit=integration') === 1 ||
+        count(T.entitlement, q + '^status!=entitled^needed_by_pattern=true') > 0;
+    return standardSignals ? 'standard' : 'express';
+}
+/* ================= Child records ================= */
+const SEEDED_IGNORE = ['hours', 'seeded', 'score', 'rag', 'sys_updated_on', 'sys_updated_by', 'sys_mod_count'];
+/** before update on seeded tables: any real edit clears `seeded`, so Remove pattern keeps edited work. */
+export function clearSeeded(current, previous) {
+    if (!bool(current, 'seeded') || !previous)
+        return;
+    const els = current.getElements();
+    for (let i = 0; i < els.length; i++) {
+        const name = els[i].getName();
+        if (SEEDED_IGNORE.indexOf(name) >= 0 || name.indexOf('sys_') === 0)
+            continue;
+        if (els[i].changes()) {
+            current.setValue('seeded', false);
+            return;
+        }
+    }
+}
+/** before insert/update on RAD: score, RAG, redaction. */
+export function radBefore(current, previous) {
+    const kind = val(current, 'kind');
+    const l = num(current, 'likelihood') || 3;
+    const i = num(current, 'impact') || 3;
+    if (kind === 'risk' || kind === 'issue') {
+        const s = l * i;
+        current.setValue('score', s);
+        current.setValue('rag', s >= 15 ? 'red' : s >= 8 ? 'amber' : 'green');
+    }
+    else {
+        current.setValue('score', 0);
+        current.setValue('rag', '');
+    }
+    for (const f of ['description', 'treatment']) {
+        const v = val(current, f);
+        if (v && redact(v) !== v)
+            current.setValue(f, redact(v));
+    }
+}
+/** before insert/update on component: calculated hours. */
+export function componentBefore(current, previous) {
+    current.setValue('hours', componentHours(current));
+}
+/** before insert/update on evidence: redact pasted output, parse the JSON envelope, count metrics needing attention. */
+const ATTN = /duplicate|without|no_|missing|error|breach|overdue|stale|unassigned|not_found|unmatched|empty|orphan|failed|_open_older/i;
+export function evidenceBefore(current, previous) {
+    const out = val(current, 'output');
+    if (!out)
+        return;
+    const clean = redact(out);
+    if (clean !== out) {
+        current.setValue('output', clean);
+        gs.addInfoMessage('Personal information was removed from the pasted output.');
+    }
+    const parsed = parseEnvelope(clean);
+    if (!parsed)
+        return;
+    const flat = {};
+    flatten(parsed, '', flat);
+    const flagged = Object.keys(flat).filter((k) => typeof flat[k] === 'string' || (ATTN.test(k) && flat[k] > 0));
+    current.setValue('metrics', JSON.stringify({ metrics: flat, flagged }, null, 1).slice(0, 64000));
+    current.setValue('flagged', flagged.length);
+    if (val(current, 'status') === 'requested' || val(current, 'status') === 'outstanding')
+        current.setValue('status', 'received');
+}
+export function parseEnvelope(txt) {
+    const i = txt.indexOf('{');
+    const j = txt.lastIndexOf('}');
+    if (i < 0 || j <= i)
+        return null;
+    return safeJson(txt.slice(i, j + 1), null);
+}
+function flatten(o, prefix, out) {
+    if (o && typeof o === 'object' && !Array.isArray(o)) {
+        Object.keys(o).forEach((k) => flatten(o[k], prefix ? prefix + '.' + k : k, out));
+    }
+    else if (typeof o === 'number') {
+        out[prefix] = o;
+    }
+    else if (typeof o === 'string' && /not found/.test(o)) {
+        out[prefix] = o;
+    }
+}
+/** after update on entitlement: keep requirement licensing in step for patterns that need the product. */
+export function entitlementAfter(current, previous) {
+    if (previous && val(previous, 'status') === val(current, 'status'))
+        return;
+    const engId = val(current, 'engagement');
+    const product = getRecord(T.licenceProduct, val(current, 'product'));
+    if (!product)
+        return;
+    const key = val(product, 'key');
+    const lic = val(current, 'status') === 'entitled' ? 'none' : val(current, 'status') === 'not_entitled' ? 'required' : 'confirm';
+    const patterns = [];
+    each(T.pattern, `licence_productsLIKE${key}`, (p) => patterns.push(val(p, 'key')));
+    if (!patterns.length)
+        return;
+    const r = gr(T.requirement);
+    r.addEncodedQuery(`engagement=${engId}^pattern_keyIN${patterns.join(',')}`);
+    r.query();
+    let n = 0;
+    while (r.next()) {
+        // Only move requirements that are still at a pattern-driven value; a consultant's explicit "none" on an entitled product stays.
+        if (val(r, 'licensing') !== lic) {
+            r.setValue('licensing', lic);
+            r.update();
+            n++;
+        }
+    }
+    logHistory(engId, 'Licensing synced', `${val(product, 'label')} set to ${val(current, 'status')}; ${n} requirement(s) updated.`, T.entitlement, key, 'intake');
+}
+/** after insert/update/delete on delivery-record tables: append-only history of which fields changed (never values). */
+export function historyAfter(current, previous) {
+    const engId = val(current, 'engagement');
+    if (!engId)
+        return;
+    const table = current.getTableName();
+    const op = current.operation();
+    let detail = '';
+    if (op === 'update') {
+        const changed = [];
+        const els = current.getElements();
+        for (let i = 0; i < els.length; i++) {
+            const name = els[i].getName();
+            if (name.indexOf('sys_') === 0)
+                continue;
+            if (els[i].changes())
+                changed.push(name);
+        }
+        if (!changed.length)
+            return;
+        detail = `Changed: ${changed.join(', ')}`;
+        if (changed.indexOf('status') >= 0 || changed.indexOf('result') >= 0 || changed.indexOf('state') >= 0) {
+            detail += ` (now ${val(current, 'status') || val(current, 'result') || val(current, 'state')})`;
+        }
+    }
+    else {
+        detail = op === 'delete' ? 'Deleted' : 'Created';
+    }
+    logHistory(engId, `${op} ${table.replace('x_1577958_dsb_', '')}`, detail, table, val(current, 'number') || val(current, 'title') || val(current, 'name'), '');
+}
+/** after update on engagement: log path and consent changes explicitly. */
+export function engagementAfter(current, previous) {
+    if (!previous || current.operation() === 'insert') {
+        logHistory(current.getUniqueValue(), 'Engagement created', `Path ${val(current, 'delivery_path')}`, T.engagement, val(current, 'number'), 'intake');
+        return;
+    }
+    const watch = ['delivery_path', 'ai_consent', 'instance_name', 'lifecycle_state', 'support_owner_role'];
+    const changed = watch.filter((f) => val(current, f) !== val(previous, f));
+    if (changed.length)
+        logHistory(current.getUniqueValue(), 'Engagement updated', changed.map((f) => `${f}: ${val(previous, f) || '-'} -> ${val(current, f) || '-'}`).join('; '), T.engagement, val(current, 'number'), 'intake');
+}
+]]></content>
+    <external_source>false</external_source>
+    <path>x_1577958_dsb/dsb-workbench/1.3.1/src/server/rules.ts</path>
+    <sys_name>x_1577958_dsb/dsb-workbench/1.3.1/src/server/rules.ts</sys_name>
+  </sys_module>
+</record_update>

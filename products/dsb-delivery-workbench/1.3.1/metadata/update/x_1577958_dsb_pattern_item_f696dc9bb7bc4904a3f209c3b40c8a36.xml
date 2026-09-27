@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>f696dc9bb7bc4904a3f209c3b40c8a36</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_f696dc9bb7bc4904a3f209c3b40c8a36</sys_update_name>
+    <body>Given an epic linked to a project, When stories are completed in sprints, Then progress rolls up to the planning item</body>
+    <data>{"type": "Process", "moscow": "Could", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>009e981159a14b74a82d20a26b9752a8</pattern>
+    <seq>6</seq>
+    <title>Agile teams plan and deliver in the platform linked to the portfolio</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

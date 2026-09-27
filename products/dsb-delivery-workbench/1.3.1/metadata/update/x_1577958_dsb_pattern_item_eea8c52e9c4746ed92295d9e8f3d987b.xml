@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>eea8c52e9c4746ed92295d9e8f3d987b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_eea8c52e9c4746ed92295d9e8f3d987b</sys_update_name>
+    <body>Given the month closes, When the report is generated, Then ticket volumes, SLA attainment, releases delivered, health exceptions and upcoming upgrade dates are included</body>
+    <data>{"type": "Reporting", "moscow": "Must", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>8d97fa25f5114eb4b6ee61ef9fdc7882</pattern>
+    <seq>4</seq>
+    <title>Managed-service SLAs and a monthly service report are produced</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

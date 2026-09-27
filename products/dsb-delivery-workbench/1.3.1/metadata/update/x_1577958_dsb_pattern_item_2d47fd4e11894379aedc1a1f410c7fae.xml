@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>2d47fd4e11894379aedc1a1f410c7fae</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_2d47fd4e11894379aedc1a1f410c7fae</sys_update_name>
+    <body>Given a known alert type, When it fires, Then the recommended remediation subflow is offered or run per rule</body>
+    <data>{"type": "Process", "moscow": "Could", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>27017c1f692149c79a16726ca19e8c2b</pattern>
+    <seq>6</seq>
+    <title>Remediation runbooks are attached to recurring alerts</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

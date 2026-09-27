@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_list table="x_1577958_dsb_evidence_tmpl" parent="" relationship="" sys_domain="global" view="">
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>53b3fc326c534f33bab517a91e5a6f0a</sys_id>
+      <list_id display_value="x_1577958_dsb_evidence_tmpl" name="x_1577958_dsb_evidence_tmpl" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">5a680c936fc14b7f944b41ce022abc9d</list_id>
+      <element>key</element>
+      <position>0</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>886da7ead38349aab6ba65bde8649821</sys_id>
+      <list_id display_value="x_1577958_dsb_evidence_tmpl" name="x_1577958_dsb_evidence_tmpl" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">5a680c936fc14b7f944b41ce022abc9d</list_id>
+      <element>applies_to</element>
+      <position>1</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>cad387ce3f8d475ca03c95e4dd7547f7</sys_id>
+      <list_id display_value="x_1577958_dsb_evidence_tmpl" name="x_1577958_dsb_evidence_tmpl" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">5a680c936fc14b7f944b41ce022abc9d</list_id>
+      <element>item</element>
+      <position>2</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>58188120b32f4771963c48a17a10d2a0</sys_id>
+      <list_id display_value="x_1577958_dsb_evidence_tmpl" name="x_1577958_dsb_evidence_tmpl" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">5a680c936fc14b7f944b41ce022abc9d</list_id>
+      <element>unblocks</element>
+      <position>3</position>
+    </sys_ui_list_element>
+    <sys_ui_list action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>5a680c936fc14b7f944b41ce022abc9d</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <view name="NULL">Default view</view>
+      <name>x_1577958_dsb_evidence_tmpl</name>
+      <sys_domain>global</sys_domain>
+    </sys_ui_list>
+  </sys_ui_list>
+</record_update>

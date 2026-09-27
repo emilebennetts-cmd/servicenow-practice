@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>2c0eef7864de4fa8b5be54e4167a87ee</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_2c0eef7864de4fa8b5be54e4167a87ee</sys_update_name>
+    <data>{"cat": "People", "l": 3, "i": 3, "treat": "Operating model workshop before catalogue build."}</data>
+    <kind>risk</kind>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>3</seq>
+    <title>HR operating model not settled (tiers, COEs)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

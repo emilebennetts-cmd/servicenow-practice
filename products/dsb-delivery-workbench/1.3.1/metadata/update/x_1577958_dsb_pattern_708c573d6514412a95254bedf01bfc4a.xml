@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern">
+  <x_1577958_dsb_pattern action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>708c573d6514412a95254bedf01bfc4a</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_708c573d6514412a95254bedf01bfc4a</sys_update_name>
+    <active>true</active>
+    <exclude_terms>[]</exclude_terms>
+    <indicative_cases>5</indicative_cases>
+    <key>esg-sustainability</key>
+    <library_version>1.5</library_version>
+    <licence_products>esg</licence_products>
+    <min_hits>2</min_hits>
+    <name>ESG and sustainability reporting</name>
+    <overview>Define once, collect with evidence, report with traceability. (1) Agree frameworks (e.g. AASB S2/ISSB, GRI) and build the metric library with units and calculation rules. (2) Model reporting entities (legal entities, sites, business units) reusing platform data. (3) Collection schedules generate tasks to named owners with evidence attachments and validation ranges. (4) Review/approval with rejection loop. (5) Calculations (e.g. emissions factors) configured, not coded, and versioned. (6) Targets, goals and initiatives tracked against baselines. (7) Supplier questionnaires via the supplier/vendor portal. (8) Disclosure reports with drill-down to evidence. Source systems (energy retailers, fleet, HR) integrate via import sets or IntegrationHub where volume justifies it.</overview>
+    <pain>ESG data gathered by email and spreadsheet each cycle
+No evidence trail for assurance
+Targets and initiatives not tracked between reports
+Supplier ESG data inconsistent
+Multiple frameworks require the same metric in different forms</pain>
+    <phase>3</phase>
+    <requires/>
+    <strong_terms>[{"re": "\\bESG\\b|carbon|emission|sustainab|AASB S2", "flags": "i"}]</strong_terms>
+    <summary>ESG data (energy, emissions, workforce, supplier information) is collected by email and spreadsheet from many owners ahead of each reporting cycle. Evidence is hard to trace, targets are not tracked between cycles, and new mandatory climate disclosures (e.g. AASB S2 in Australia) raise the assurance bar. The pattern converges on OOB ESG Management where licensed: a metric and framework library, data collection tasks to owners with evidence, calculations, targets and goals, supplier ESG questionnaires, and audit-ready disclosure reporting.</summary>
+    <triggers>[{"re": "\\bESG\\b|sustainab|environmental, social", "flags": "i"}, {"re": "carbon|emission|scope [123]|net zero|greenhouse|\\bGHG\\b", "flags": "i"}, {"re": "climate (disclosure|report)|AASB S2|\\bISSB\\b|\\bTCFD\\b|\\bCSRD\\b|\\bGRI\\b", "flags": "i"}, {"re": "disclosure|metric|target|evidence|audit trail", "flags": "i"}, {"re": "energy|waste|water", "flags": "i"}, {"re": "supplier (ESG|questionnaire)", "flags": "i"}]</triggers>
+    <verified>false</verified>
+  </x_1577958_dsb_pattern>
+</record_update>

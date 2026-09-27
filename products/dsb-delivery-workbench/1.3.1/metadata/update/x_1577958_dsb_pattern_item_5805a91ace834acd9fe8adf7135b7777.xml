@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>5805a91ace834acd9fe8adf7135b7777</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_5805a91ace834acd9fe8adf7135b7777</sys_update_name>
+    <body>// DSB IMPLEMENTATION ownership-ire — DATA CHANGING. DRY RUN unless DRY_RUN = false.
+var DRY_RUN = true;
+var SOURCE = 'DSB_Ownership';                 // &lt;confirm&gt; registered discovery_source value
+var CLASS = 'cmdb_ci_linux_server';           // &lt;confirm&gt;
+var MAP = { /* 'hostname': 'Support group name' */ };
+Object.keys(MAP).forEach(function(host){
+  var g = new GlideRecord('sys_user_group'); if (!g.get('name', MAP[host])) { gs.print('group missing: ' + MAP[host]); return; }
+  var ci = new GlideRecord(CLASS); if (!ci.get('name', host)) { gs.print('ci missing: ' + host); return; }
+  gs.print((DRY_RUN ? '[DRY RUN] ' : '') + host + ': ' + (ci.getDisplayValue('support_group') || '(empty)') + ' -&gt; ' + MAP[host]);
+  if (DRY_RUN) return;
+  var payload = {items: [{className: CLASS, values: {name: host, serial_number: ci.getValue('serial_number'), support_group: g.getUniqueValue()}}]};
+  gs.print(sn_cmdb.IdentificationEngine.createOrUpdateCIEnhanced(SOURCE, JSON.stringify(payload), {}));
+});</body>
+    <data>{"kind": "script", "purpose": "Sets support_group on CIs from a name→group map using createOrUpdateCIEnhanced so the change is attributed to a data source and respects reconciliation.", "prereqs": "Register the data source name (sys_choice on discovery_source) and a reconciliation rule that allows it to update support_group. Sub-prod first.", "rollback": "Output lists old/new values; reverse via the same script with old values."}</data>
+    <kind>implementation</kind>
+    <modifies_data>true</modifies_data>
+    <pattern>031fd78c2b3742d38dc20450125b3992</pattern>
+    <seq>2</seq>
+    <title>Ownership backfill through the IRE (DRY RUN by default)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

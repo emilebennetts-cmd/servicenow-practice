@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>aac25c4e0af546dfa7693553cb7c89ca</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_aac25c4e0af546dfa7693553cb7c89ca</sys_update_name>
+    <body>Given the agreed list of critical journeys, When the ATF suite runs after an upgrade in a clone, Then each journey passes or its failure is logged as an upgrade defect</body>
+    <data>{"type": "Non-functional", "moscow": "Must", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>93dbb3f9c9374c8b88cbf9fbbc6dee11</pattern>
+    <seq>4</seq>
+    <title>Critical user journeys are covered by an ATF regression suite</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>c48bd8e6d6684bd48d3dc38af8a41b8f</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_c48bd8e6d6684bd48d3dc38af8a41b8f</sys_update_name>
+    <body>Interactions created per contact; linked to cases.</body>
+    <data>{"type": "Integration (REST/SOAP)", "cls": "Out of the box", "req": [2], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>4874dc995cad4b3cb3bda8c29e4e0be8</pattern>
+    <seq>5</seq>
+    <title>Chat and phone channels (Virtual Agent / live chat, OpenFrame / CTI)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

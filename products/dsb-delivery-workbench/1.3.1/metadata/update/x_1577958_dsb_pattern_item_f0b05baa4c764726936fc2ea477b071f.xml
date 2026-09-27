@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>f0b05baa4c764726936fc2ea477b071f</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_f0b05baa4c764726936fc2ea477b071f</sys_update_name>
+    <body>Given the data model, When reviewed, Then each table has a stated purpose, extends Task only where records are assigned and worked, and the total custom tables fit the entitlement</body>
+    <data>{"type": "Data", "moscow": "Must", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>7b4d65824e3147e0ab19ef6bd011d80c</pattern>
+    <seq>1</seq>
+    <title>The application is built in its own scope with a minimal, documented data model</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

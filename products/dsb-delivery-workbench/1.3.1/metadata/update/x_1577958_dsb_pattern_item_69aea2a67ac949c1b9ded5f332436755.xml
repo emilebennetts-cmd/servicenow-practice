@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>69aea2a67ac949c1b9ded5f332436755</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_69aea2a67ac949c1b9ded5f332436755</sys_update_name>
+    <body>Given the HR/identity sync, When evaluated, Then active users have mobile number and work location coverage above the agreed threshold</body>
+    <data>{"type": "Data", "moscow": "Must", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>feb9570f3df64d249bd135c8a0a1bfa2</pattern>
+    <seq>3</seq>
+    <title>Contact and location data is current</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

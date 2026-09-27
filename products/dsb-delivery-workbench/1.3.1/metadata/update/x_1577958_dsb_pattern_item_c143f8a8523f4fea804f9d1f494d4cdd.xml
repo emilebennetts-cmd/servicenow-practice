@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>c143f8a8523f4fea804f9d1f494d4cdd</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_c143f8a8523f4fea804f9d1f494d4cdd</sys_update_name>
+    <body>Given a recurring platform issue, When resolved, Then a runbook article exists in the platform team knowledge base</body>
+    <data>{"type": "Process", "moscow": "Should", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>8d97fa25f5114eb4b6ee61ef9fdc7882</pattern>
+    <seq>6</seq>
+    <title>Platform knowledge and runbooks are maintained</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

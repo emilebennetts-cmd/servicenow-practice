@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_list table="x_1577958_dsb_defect" parent="" relationship="" sys_domain="global" view="">
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>d88c22c2e3244243b8841da44c366fdc</sys_id>
+      <list_id display_value="x_1577958_dsb_defect" name="x_1577958_dsb_defect" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">fb705dc0b0de4b7aacf302db8b969724</list_id>
+      <element>number</element>
+      <position>0</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>1e4c48d0547e452b8193c53293359c86</sys_id>
+      <list_id display_value="x_1577958_dsb_defect" name="x_1577958_dsb_defect" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">fb705dc0b0de4b7aacf302db8b969724</list_id>
+      <element>engagement</element>
+      <position>1</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>6574620ffd3449ec88ec922a525c30c6</sys_id>
+      <list_id display_value="x_1577958_dsb_defect" name="x_1577958_dsb_defect" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">fb705dc0b0de4b7aacf302db8b969724</list_id>
+      <element>title</element>
+      <position>2</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>62bcb3209f0b4816a7008c10c66ea684</sys_id>
+      <list_id display_value="x_1577958_dsb_defect" name="x_1577958_dsb_defect" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">fb705dc0b0de4b7aacf302db8b969724</list_id>
+      <element>severity</element>
+      <position>3</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>8d2a7cc1a221494c9ae42d4b536fcace</sys_id>
+      <list_id display_value="x_1577958_dsb_defect" name="x_1577958_dsb_defect" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">fb705dc0b0de4b7aacf302db8b969724</list_id>
+      <element>state</element>
+      <position>4</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>1954dd0a6d79408288f3d60ebef05a82</sys_id>
+      <list_id display_value="x_1577958_dsb_defect" name="x_1577958_dsb_defect" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">fb705dc0b0de4b7aacf302db8b969724</list_id>
+      <element>requirement</element>
+      <position>5</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>1880d7e746ff4448aaca35cd941d8649</sys_id>
+      <list_id display_value="x_1577958_dsb_defect" name="x_1577958_dsb_defect" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">fb705dc0b0de4b7aacf302db8b969724</list_id>
+      <element>known_error</element>
+      <position>6</position>
+    </sys_ui_list_element>
+    <sys_ui_list action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>fb705dc0b0de4b7aacf302db8b969724</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <view name="NULL">Default view</view>
+      <name>x_1577958_dsb_defect</name>
+      <sys_domain>global</sys_domain>
+    </sys_ui_list>
+  </sys_ui_list>
+</record_update>

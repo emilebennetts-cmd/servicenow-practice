@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4889a936de9d477ab5bb390e2f3ea603</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_4889a936de9d477ab5bb390e2f3ea603</sys_update_name>
+    <body>Given the HR system integration runs, When a worker record changes, Then the HR profile and user record are updated within the agreed interval
+Given a worker has no HR profile, When the reconciliation report runs, Then they appear on the exception list</body>
+    <data>{"type": "Data", "moscow": "Must", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>5</seq>
+    <title>HR profiles and employment data are populated from the HR system of record</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

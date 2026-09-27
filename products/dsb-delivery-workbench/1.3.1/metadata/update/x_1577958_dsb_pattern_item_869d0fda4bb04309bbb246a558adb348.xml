@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>869d0fda4bb04309bbb246a558adb348</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_869d0fda4bb04309bbb246a558adb348</sys_update_name>
+    <body>Update set 1: CMDB_Foundation_&lt;client&gt;_v1 (global scope)
+  - cmdb_identifier_entry changes for computer/hardware classes (priority order)
+  - cmdb_reconciliation_definition records for the Tenable discovery source
+  - CMDB Health configuration for in-scope classes (thresholds, duplicate detection)
+  - Import set table + transform map for ownership backfill (coalesce serial_number)
+  - Reports: CMDB completeness for in-scope classes
+Update set 2: VR_Foundation_&lt;client&gt;_v1 (Vulnerability Response scope)
+  - sn_sec_cmn_ci_lookup_rule order / activation changes
+  - sn_sec_cmn_src_cmdb_map adjustments
+  - Reconcile Unmatched Discovered Items schedule
+  - VR assignment rule configuration
+  - Integration run failure notification
+  - Report: open VITs by CI class and match-rate trend
+Note: store applications (VR, Tenable integration) do not travel in update sets — versions must match across environments.</body>
+    <data>{"kind": "checklist", "purpose": "Everything in this pattern is configuration. Capture it in two update sets so global CMDB changes can be reviewed separately from VR configuration.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>9ad6efafe3d645c1bce9ff6b75af7152</pattern>
+    <seq>0</seq>
+    <title>Update set contents — VR_CMDB_Foundation</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

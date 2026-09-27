@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_list table="x_1577958_dsb_requirement" parent="" relationship="" sys_domain="global" view="">
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>2e4a2c38849842baa56e45082e42e4c4</sys_id>
+      <list_id display_value="x_1577958_dsb_requirement" name="x_1577958_dsb_requirement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">c4ed952196104756bfb9955ce0f10f82</list_id>
+      <element>number</element>
+      <position>0</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>87b8da93c48b4759b026997bec624215</sys_id>
+      <list_id display_value="x_1577958_dsb_requirement" name="x_1577958_dsb_requirement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">c4ed952196104756bfb9955ce0f10f82</list_id>
+      <element>engagement</element>
+      <position>1</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>063b860e4245455587fcb6168625df82</sys_id>
+      <list_id display_value="x_1577958_dsb_requirement" name="x_1577958_dsb_requirement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">c4ed952196104756bfb9955ce0f10f82</list_id>
+      <element>title</element>
+      <position>2</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>7b47dbbbe86e47a58a4ded1f93c3bb6b</sys_id>
+      <list_id display_value="x_1577958_dsb_requirement" name="x_1577958_dsb_requirement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">c4ed952196104756bfb9955ce0f10f82</list_id>
+      <element>req_type</element>
+      <position>3</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>8042732c1da545f7acce4ebba6a6fbd2</sys_id>
+      <list_id display_value="x_1577958_dsb_requirement" name="x_1577958_dsb_requirement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">c4ed952196104756bfb9955ce0f10f82</list_id>
+      <element>moscow</element>
+      <position>4</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>6d06c1ecbf9a443485b920e58cf0f959</sys_id>
+      <list_id display_value="x_1577958_dsb_requirement" name="x_1577958_dsb_requirement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">c4ed952196104756bfb9955ce0f10f82</list_id>
+      <element>fit</element>
+      <position>5</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>5a6c8c59043c4d638ce99872bbde466a</sys_id>
+      <list_id display_value="x_1577958_dsb_requirement" name="x_1577958_dsb_requirement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">c4ed952196104756bfb9955ce0f10f82</list_id>
+      <element>licensing</element>
+      <position>6</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>15ab9368ef94414b82aa1405538ea40d</sys_id>
+      <list_id display_value="x_1577958_dsb_requirement" name="x_1577958_dsb_requirement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">c4ed952196104756bfb9955ce0f10f82</list_id>
+      <element>acceptance</element>
+      <position>7</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>11baa09bca6b4d1f8f355b463ef56273</sys_id>
+      <list_id display_value="x_1577958_dsb_requirement" name="x_1577958_dsb_requirement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">c4ed952196104756bfb9955ce0f10f82</list_id>
+      <element>pattern_key</element>
+      <position>8</position>
+    </sys_ui_list_element>
+    <sys_ui_list action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>c4ed952196104756bfb9955ce0f10f82</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <view name="NULL">Default view</view>
+      <name>x_1577958_dsb_requirement</name>
+      <sys_domain>global</sys_domain>
+    </sys_ui_list>
+  </sys_ui_list>
+</record_update>

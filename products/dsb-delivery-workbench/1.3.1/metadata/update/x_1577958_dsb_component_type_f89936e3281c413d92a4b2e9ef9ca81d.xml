@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_component_type">
+  <x_1577958_dsb_component_type action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>f89936e3281c413d92a4b2e9ef9ca81d</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_component_type_f89936e3281c413d92a4b2e9ef9ca81d</sys_update_name>
+    <base_hours>2</base_hours>
+    <build_order>1.5</build_order>
+    <build_phase>1. Data model</build_phase>
+    <name>CMDB / IRE rule</name>
+    <pvt_checks>Rule present, active and in the designed order
+A test payload through IdentificationEngine.identifyCI returns the expected operation
+No new duplicate CIs after the next source run</pvt_checks>
+  </x_1577958_dsb_component_type>
+</record_update>

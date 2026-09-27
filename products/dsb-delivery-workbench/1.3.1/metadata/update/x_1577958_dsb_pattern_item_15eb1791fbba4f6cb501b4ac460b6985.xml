@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>15eb1791fbba4f6cb501b4ac460b6985</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_15eb1791fbba4f6cb501b4ac460b6985</sys_update_name>
+    <body>Given an alert is raised in the SIEM, When the integration runs, Then a security incident is created with source, category and observables
+Given a duplicate alert for an open incident, When ingested, Then it is correlated to the existing incident</body>
+    <data>{"type": "Integration", "moscow": "Must", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>9502ffca8cf0439989ddf6b7b57dddea</pattern>
+    <seq>0</seq>
+    <title>Security alerts from the SIEM / EDR create or update security incidents</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

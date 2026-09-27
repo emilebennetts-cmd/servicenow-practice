@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>d0572e4ad5c84898819d6d6f4639ab44</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_d0572e4ad5c84898819d6d6f4639ab44</sys_update_name>
+    <body>Given a department onboarding template, When a new department is onboarded, Then it uses existing ESM case/request tables, a group, catalogue category and SLA — no new table unless approved by the design authority</body>
+    <data>{"type": "Non-functional", "moscow": "Must", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>f57c6db779734f4ea34b1ec5d8dedf38</pattern>
+    <seq>5</seq>
+    <title>New departments onboard through a standard template without custom tables</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

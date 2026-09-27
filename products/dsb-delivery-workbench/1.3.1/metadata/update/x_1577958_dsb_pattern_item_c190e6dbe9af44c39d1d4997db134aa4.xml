@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>c190e6dbe9af44c39d1d4997db134aa4</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_c190e6dbe9af44c39d1d4997db134aa4</sys_update_name>
+    <body>Portfolios, programmes, owners; fiscal periods generated.</body>
+    <data>{"type": "Data load / reference data", "cls": "Configuration", "req": [1], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>009e981159a14b74a82d20a26b9752a8</pattern>
+    <seq>1</seq>
+    <title>Portfolio, programme structure and fiscal calendar</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

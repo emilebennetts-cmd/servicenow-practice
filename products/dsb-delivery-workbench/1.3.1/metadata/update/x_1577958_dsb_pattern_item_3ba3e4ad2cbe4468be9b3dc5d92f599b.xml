@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>3ba3e4ad2cbe4468be9b3dc5d92f599b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_3ba3e4ad2cbe4468be9b3dc5d92f599b</sys_update_name>
+    <body>CDM recalls or HAM-based recall process with serial-range matching.</body>
+    <data>{"type": "OOB application configuration", "cls": "Out of the box", "req": [2], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>0e998cd6afca4efe958b07af4c028893</pattern>
+    <seq>3</seq>
+    <title>Recall management records and matching</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

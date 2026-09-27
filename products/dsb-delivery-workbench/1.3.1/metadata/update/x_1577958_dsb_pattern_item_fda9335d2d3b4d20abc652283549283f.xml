@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>fda9335d2d3b4d20abc652283549283f</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_fda9335d2d3b4d20abc652283549283f</sys_update_name>
+    <body>Decision on creating CIs for unmatched items (unclassed hardware for triage vs hold). OOB "Reconcile Unmatched Discovered Items" job scheduled after CMDB source loads; weekly review report.</body>
+    <data>{"type": "Scheduled job", "cls": "Configuration", "req": [3], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>9ad6efafe3d645c1bce9ff6b75af7152</pattern>
+    <seq>5</seq>
+    <title>Unmatched discovered-item policy and reapply job</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

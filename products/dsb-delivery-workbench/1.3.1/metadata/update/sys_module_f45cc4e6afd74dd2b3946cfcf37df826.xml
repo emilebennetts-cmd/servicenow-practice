@@ -1,0 +1,355 @@
+<?xml version="1.0"?>
+<record_update table="sys_module">
+  <sys_module action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>f45cc4e6afd74dd2b3946cfcf37df826</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_module_f45cc4e6afd74dd2b3946cfcf37df826</sys_update_name>
+    <content><![CDATA[import { gs } from '@servicenow/glide';
+import { T, gr, val, bool, each, count, getRecord, logHistory, propStr } from './common.ts';
+import { BUILD_PHASES } from './libdata.ts';
+function insert(table, fields) {
+    const r = gr(table);
+    r.initialize();
+    Object.keys(fields).forEach((k) => {
+        if (fields[k] !== undefined && fields[k] !== null && fields[k] !== '')
+            r.setValue(k, fields[k]);
+    });
+    return r.insert() || '';
+}
+/** Evidence list: platform-wide templates (+ greenfield set for new scoped apps). */
+export function generateEvidence(engId) {
+    const e = getRecord(T.engagement, engId);
+    if (!e)
+        return 0;
+    const greenfield = bool(e, 'greenfield');
+    let n = 0;
+    let refreshed = 0;
+    each(T.evidenceTemplate, greenfield ? '' : 'applies_to=all', (t) => {
+        const existing = gr(T.evidence);
+        existing.addQuery('engagement', engId);
+        existing.addQuery('script_key', val(t, 'key'));
+        existing.query();
+        if (existing.next()) {
+            // Items generated before templates carried scripts get the script now; a script already on the item is kept.
+            if (!val(existing, 'script') && val(t, 'script')) {
+                existing.setValue('script', val(t, 'script'));
+                existing.update();
+                refreshed++;
+            }
+            return;
+        }
+        insert(T.evidence, { engagement: engId, item: val(t, 'item'), why: val(t, 'why'), how: val(t, 'how'), unblocks: val(t, 'unblocks'), script_key: val(t, 'key'), script: val(t, 'script'), status: 'requested' });
+        n++;
+    });
+    logHistory(engId, 'Evidence list generated', `${n} item(s) added${refreshed ? `, ${refreshed} script(s) added to existing items` : ''}`, T.evidence, '', 'evidence');
+    return n;
+}
+/** Build plan in ServiceNow build order: data model → security → server logic → automation → data/integration → experience → test & deploy. */
+export function generateBuildPlan(engId) {
+    let n = 0;
+    let seq = 0;
+    BUILD_PHASES.forEach((ph) => {
+        ;
+        (ph.tasks || []).forEach((t) => {
+            seq += 10;
+            if (count(T.buildTask, `engagement=${engId}^title=${t}`) > 0)
+                return;
+            insert(T.buildTask, { engagement: engId, title: t, phase: ph.phase, seq, status: 'not_started' });
+            n++;
+        });
+        const types = ph.types.map((x) => x);
+        each(T.component, `engagement=${engId}^component_type.nameIN${types.join(',')}`, (c) => {
+            seq += 10;
+            if (count(T.buildTask, `engagement=${engId}^component=${c.getUniqueValue()}`) > 0)
+                return;
+            insert(T.buildTask, { engagement: engId, component: c.getUniqueValue(), title: `Build ${val(c, 'number')}: ${val(c, 'name')}`.slice(0, 400), phase: ph.phase, seq, status: 'not_started' });
+            n++;
+        }, 'component_type.build_order');
+    });
+    logHistory(engId, 'Build plan generated', `${n} task(s) added`, T.buildTask, '', 'build');
+    return n;
+}
+/** UAT cases from Given/When/Then acceptance criteria (one test per criterion). */
+export function generateUat(engId) {
+    let n = 0;
+    each(T.requirement, `engagement=${engId}^moscow!=wont`, (r) => {
+        const lines = val(r, 'acceptance_criteria').split('\n').map((l) => l.trim()).filter(Boolean);
+        lines.forEach((line, i) => {
+            const title = `${val(r, 'number')} AC${i + 1}: ${val(r, 'title')}`.slice(0, 400);
+            if (count(T.test, `engagement=${engId}^kind=uat^requirement=${r.getUniqueValue()}^title=${title}`) > 0)
+                return;
+            const then = line.match(/\bthen\b(.*)$/i);
+            insert(T.test, { engagement: engId, kind: 'uat', title, requirement: r.getUniqueValue(), steps: line, expected: then ? then[1].trim() : line, environment: 'uat', result: 'not_run' });
+            n++;
+        });
+    });
+    logHistory(engId, 'UAT generated', `${n} test(s) added`, T.test, '', 'tests');
+    return n;
+}
+/** PVT cases per component from its type's post-deployment checks, for test and production. */
+export function generatePvt(engId) {
+    let n = 0;
+    each(T.component, `engagement=${engId}`, (c) => {
+        const checks = c.component_type ? String(c.component_type.pvt_checks || '').split('\n').filter(Boolean) : [];
+        if (!checks.length)
+            checks.push('Component present and functioning as designed');
+        ['test', 'prod'].forEach((env) => {
+            checks.forEach((chk, i) => {
+                const title = `${val(c, 'number')} PVT${i + 1}: ${chk}`.slice(0, 400);
+                if (count(T.test, `engagement=${engId}^kind=pvt^component=${c.getUniqueValue()}^environment=${env}^title=${title}`) > 0)
+                    return;
+                insert(T.test, { engagement: engId, kind: 'pvt', title, component: c.getUniqueValue(), steps: `${val(c, 'name')}: ${chk}`, expected: chk, environment: env, result: 'not_run' });
+                n++;
+            });
+        });
+    });
+    logHistory(engId, 'PVT generated', `${n} test(s) added (test and production)`, T.test, '', 'tests');
+    return n;
+}
+/** ATF outlines for Must requirements that have none. Access tests use a server-side GlideRecordSecure check. */
+export function generateAtf(engId) {
+    let n = 0;
+    each(T.requirement, `engagement=${engId}^moscow=must`, (r) => {
+        if (count(T.test, `engagement=${engId}^kind=atf^requirement=${r.getUniqueValue()}`) > 0)
+            return;
+        const security = val(r, 'req_type') === 'security';
+        const steps = security
+            ? ['Impersonate (role under test)', 'Run Server Side Script: new GlideRecordSecure(<table>).get(<sys_id>) / canRead() returns the expected result', 'Assert expected access (positive and negative)']
+            : ['Impersonate (persona role)', 'Open a New Form / Record Insert', 'Set Field Values from the acceptance criteria', 'Submit a Form', 'Field Values Validation / Record Validation'];
+        insert(T.test, { engagement: engId, kind: 'atf', title: `${val(r, 'number')} ATF: ${val(r, 'title')}`.slice(0, 400), requirement: r.getUniqueValue(), steps: steps.join('\n'), atf_status: 'not_built', environment: 'test' });
+        n++;
+    });
+    logHistory(engId, 'ATF outlines generated', `${n} outline(s) added`, T.test, '', 'tests');
+    return n;
+}
+/* ================= Guarded scripts (assessment DSB-07) ================= */
+/**
+ * Wrap a background script so it only runs on the engagement's target instance, and so
+ * data-changing scripts never run on a production-like instance name.
+ */
+export function guard(engId, body, modifies, label) {
+    const e = getRecord(T.engagement, engId);
+    const target = e ? val(e, 'instance_name') : '';
+    if (!target)
+        throw new Error('Set the target sub-production instance name on the engagement before generating scripts.');
+    const markers = propStr('prod_instance_markers', 'prod,prd,live')
+        .split(',')
+        .map((m) => m.trim().toLowerCase())
+        .filter(Boolean);
+    const lines = [
+        `// DSB Workbench - ${label}`,
+        `// Generated for ${val(e, 'number')} on ${new Date().toISOString().slice(0, 10)}. ${modifies ? 'DATA CHANGING - dry run by default.' : 'READ ONLY.'}`,
+        '// Review before running (second-person review is recorded on the evidence item). Prints counts and sys_ids only.',
+        '(function dsbGuarded() {',
+        `    var DSB_TARGET = ${JSON.stringify(target)};`,
+        "    var here = String(gs.getProperty('instance_name'));",
+        "    if (here !== DSB_TARGET) { gs.print('DSB ABORT: generated for ' + DSB_TARGET + ' but this instance is ' + here + '. Nothing was run.'); return; }",
+    ];
+    if (modifies) {
+        lines.push(`    var DSB_PROD_MARKERS = ${JSON.stringify(markers)};`);
+        lines.push("    for (var m = 0; m < DSB_PROD_MARKERS.length; m++) { if (here.toLowerCase().indexOf(DSB_PROD_MARKERS[m]) >= 0) { gs.print('DSB ABORT: data-changing script blocked on a production-like instance name (' + here + '). Use the change process.'); return; } }");
+    }
+    lines.push('    // ---- script body ----');
+    body.split('\n').forEach((l) => lines.push('    ' + l));
+    lines.push('})();');
+    return lines.join('\n');
+}
+/** The item's own script, or the evidence template's script for items generated before templates carried one. */
+function scriptOf(ev) {
+    const own = val(ev, 'script');
+    if (own)
+        return own;
+    const key = val(ev, 'script_key');
+    if (!key)
+        return '';
+    const t = gr(T.evidenceTemplate);
+    return t.get('key', key) ? val(t, 'script') : '';
+}
+export function evidenceScript(evidenceId) {
+    const ev = getRecord(T.evidence, evidenceId);
+    const body = ev ? scriptOf(ev) : '';
+    if (!body)
+        throw new Error('This evidence item has no script.');
+    return guard(val(ev, 'engagement'), isolate(val(ev, 'script_key'), body), false, `Evidence ${val(ev, 'number')}: ${val(ev, 'item')}`);
+}
+/** Runs one evidence body in its own function; any runtime error is printed as that item's result instead of stopping the run. */
+function isolate(key, body) {
+    const k = JSON.stringify(key || 'unknown');
+    return ['try { (function () {', body, `})(); } catch (e) { gs.print('=== DSB-EVIDENCE ' + ${k} + ' ===\\n' + JSON.stringify({ key: ${k}, script_error: String(e), error_count: 1 })); }`].join('\n');
+}
+/**
+ * One guarded, read-only script that runs every evidence item with a script (N/A items are skipped).
+ * Each item runs in its own function so one failure doesn't stop the rest; each prints its own
+ * "=== DSB-EVIDENCE <key> ===" block, which importEvidenceOutput() splits back onto the items.
+ */
+export function evidenceAllScript(engId) {
+    const parts = [];
+    const keys = [];
+    each(T.evidence, `engagement=${engId}^status!=not_applicable^script_keyISNOTEMPTY`, (ev) => {
+        const body = scriptOf(ev);
+        if (!body)
+            return;
+        const key = val(ev, 'script_key');
+        keys.push(key);
+        parts.push(`// ===== ${val(ev, 'number')} ${key}: ${val(ev, 'item').replace(/[\r\n]+/g, ' ')} =====\n` + isolate(key, body));
+    }, 'number');
+    if (!parts.length)
+        throw new Error('No evidence items with scripts. Generate the evidence list or apply a pattern first.');
+    const header = [
+        `gs.print('DSB evidence run: ${parts.length} item(s). Copy ALL of the output below and paste it into the Workbench (Evidence scripts > Paste combined output).');`,
+    ];
+    return { script: guard(engId, header.concat(parts).join('\n'), false, `All evidence scripts (${parts.length} items)`), items: parts.length, keys };
+}
+/** Splits pasted combined output by "=== DSB-EVIDENCE <key> ===" and saves each block on the matching item (the evidence rule redacts and parses it). */
+export function importEvidenceOutput(engId, text) {
+    const re = /=== DSB-EVIDENCE ([^\s=]+) ===/g;
+    const marks = [];
+    let m;
+    while ((m = re.exec(text)))
+        marks.push({ key: m[1], at: m.index });
+    if (!marks.length)
+        throw new Error('No "=== DSB-EVIDENCE <key> ===" blocks found. Paste the whole output of the evidence script.');
+    const updated = [];
+    const unmatched = [];
+    const skipped = [];
+    const unparsed = [];
+    marks.forEach((mk, i) => {
+        const block = text.slice(mk.at, i + 1 < marks.length ? marks[i + 1].at : text.length).replace(/\*\*\* Script:\s*$/, '').trim();
+        const ev = gr(T.evidence);
+        ev.addQuery('engagement', engId);
+        ev.addQuery('script_key', mk.key);
+        ev.query();
+        if (!ev.next()) {
+            unmatched.push(mk.key);
+            return;
+        }
+        if (val(ev, 'status') === 'not_applicable') {
+            skipped.push(mk.key);
+            return;
+        }
+        ev.setValue('output', block.slice(0, 64000));
+        ev.update();
+        updated.push(mk.key);
+        // The evidence rule only marks an item Received when the JSON parses (e.g. not cut off by the 64,000-character field).
+        const check = getRecord(T.evidence, ev.getUniqueValue());
+        if (!check || !val(check, 'metrics'))
+            unparsed.push(mk.key);
+    });
+    logHistory(engId, 'Evidence output imported', `${updated.length} item(s) updated${unparsed.length ? `; output not parsed for ${unparsed.join(', ')}` : ''}${unmatched.length ? `; no item for ${unmatched.join(', ')}` : ''}`, T.evidence, '', 'evidence');
+    return { updated, unmatched, skipped, unparsed };
+}
+export function implementationScript(engId, patternItemId) {
+    const it = getRecord(T.patternItem, patternItemId);
+    if (!it || val(it, 'kind') !== 'implementation')
+        throw new Error('Implementation asset not found.');
+    const body = val(it, 'body');
+    const isScript = /DRY_RUN|GlideRecord|gs\.print/.test(body);
+    if (!isScript)
+        return body;
+    return guard(engId, body, bool(it, 'modifies_data'), val(it, 'title'));
+}
+/** Update-set create (dry run) and verify (read only) scripts from the plan. The workbench never generates update-set XML. */
+export function updateSetScripts(engId) {
+    const sets = [];
+    each(T.updateSet, `engagement=${engId}^status!=backed_out`, (u) => sets.push({ name: val(u, 'name'), scope: val(u, 'target_scope') || 'global', planned: val(u, 'status') }), 'commit_order');
+    const createBody = [
+        'var DRY_RUN = true; // set false to create the update sets',
+        `var SETS = ${JSON.stringify(sets.map((s) => ({ name: s.name, scope: s.scope })))};`,
+        'var out = {dry_run: DRY_RUN, exists: 0, would_create: 0, created: 0, scope_missing: []};',
+        'SETS.forEach(function (s) {',
+        "    var us = new GlideRecord('sys_update_set'); us.addQuery('name', s.name); us.query();",
+        '    if (us.next()) { out.exists++; return; }',
+        "    var app = new GlideRecord('sys_scope'); if (!app.get('scope', s.scope)) { out.scope_missing.push(s.scope); return; }",
+        '    out.would_create++;',
+        "    if (!DRY_RUN) { var n = new GlideRecord('sys_update_set'); n.initialize(); n.setValue('name', s.name); n.setValue('application', app.getUniqueValue()); n.setValue('state', 'in progress'); if (n.insert()) out.created++; }",
+        '});',
+        "gs.print('=== DSB update sets ===\\n' + JSON.stringify(out, null, 2));",
+    ].join('\n');
+    const verifyBody = [
+        `var SETS = ${JSON.stringify(sets.map((s) => s.name))};`,
+        'var out = {sets: []};',
+        'SETS.forEach(function (name) {',
+        "    var us = new GlideRecord('sys_update_set'); us.addQuery('name', name); us.query();",
+        "    if (!us.next()) { out.sets.push({name: name, found: false}); return; }",
+        "    var ga = new GlideAggregate('sys_update_xml'); ga.addQuery('update_set', us.getUniqueValue()); ga.addAggregate('COUNT', 'type'); ga.groupBy('type'); ga.query();",
+        '    var byType = {}; var total = 0;',
+        "    while (ga.next()) { var c = parseInt(ga.getAggregate('COUNT', 'type'), 10); byType[ga.getValue('type')] = c; total += c; }",
+        "    out.sets.push({name: name, found: true, state: us.getValue('state'), sys_id: us.getUniqueValue(), updates: total, by_type: byType});",
+        '});',
+        "gs.print('=== DSB update set verify ===\\n' + JSON.stringify(out, null, 2));",
+    ].join('\n');
+    return {
+        create: guard(engId, createBody, true, 'Update set create (dry run)'),
+        verify: guard(engId, verifyBody, false, 'Update set verify (read only)'),
+    };
+}
+/** Traceability matrix: outcome → requirement → decision → component → tests → acceptance → update set / release. */
+export function traceability(engId) {
+    // Pre-index child records once (a big engagement has hundreds of requirements).
+    const comps = {};
+    const sets = {};
+    each(T.component, `engagement=${engId}^requirementsISNOTEMPTY`, (c) => {
+        const setName = c.update_set && val(c, 'update_set') ? String(c.update_set.name) : '';
+        val(c, 'requirements').split(',').forEach((r) => {
+            ;
+            (comps[r] = comps[r] || []).push(val(c, 'number'));
+            if (setName && (sets[r] = sets[r] || []).indexOf(setName) < 0)
+                sets[r].push(setName);
+        });
+    });
+    const adrs = {};
+    each(T.decision, `engagement=${engId}^requirementsISNOTEMPTY`, (d) => val(d, 'requirements').split(',').forEach((r) => (adrs[r] = adrs[r] || []).push(val(d, 'number'))));
+    const tally = {};
+    const t = (r) => (tally[r] = tally[r] || { uat: 0, uatPassed: 0, atf: 0, defects: 0 });
+    each(T.test, `engagement=${engId}^requirementISNOTEMPTY^kindINuat,atf`, (x) => {
+        const r = t(val(x, 'requirement'));
+        if (val(x, 'kind') === 'atf')
+            r.atf++;
+        else {
+            r.uat++;
+            if (val(x, 'result') === 'pass')
+                r.uatPassed++;
+        }
+    });
+    each(T.defect, `engagement=${engId}^requirementISNOTEMPTY^stateINopen,in_progress,fixed`, (d) => t(val(d, 'requirement')).defects++);
+    const rows = [];
+    each(T.requirement, `engagement=${engId}`, (r) => {
+        const id = r.getUniqueValue();
+        const k = tally[id] || { uat: 0, uatPassed: 0, atf: 0, defects: 0 };
+        rows.push({
+            sysId: id,
+            number: val(r, 'number'),
+            title: val(r, 'title'),
+            moscow: val(r, 'moscow'),
+            fit: val(r, 'fit'),
+            outcome: r.outcome && val(r, 'outcome') ? String(r.outcome.title || '') : '',
+            decisions: adrs[id] || [],
+            components: comps[id] || [],
+            uat: k.uat,
+            uatPassed: k.uatPassed,
+            atf: k.atf,
+            defectsOpen: k.defects,
+            acceptance: val(r, 'acceptance'),
+            updateSets: sets[id] || [],
+        });
+    }, 'number');
+    return rows;
+}
+/** Handover pack data: as-built component register, runbook items and known errors. */
+export function handover(engId) {
+    const comps = [];
+    each(T.component, `engagement=${engId}`, (c) => comps.push({ number: val(c, 'number'), name: val(c, 'name'), type: c.component_type ? String(c.component_type.name) : '', cls: val(c, 'build_class'), capture: val(c, 'capture'), updateSet: c.update_set ? String(c.update_set.name || '') : '', upgrade: val(c, 'upgrade_impact'), description: val(c, 'description') }), 'number');
+    const runbook = comps
+        .filter((c) => /System property|Scheduled job|Integration|Discovery|Import set|Data load|Notification|Flow/.test(c.type))
+        .map((c) => ({ component: c.number, item: `${c.type}: ${c.name}`, owner: 'Support owner (role)', check: 'Runs / values confirmed after each release and clone' }));
+    const knownErrors = [];
+    each(T.defect, `engagement=${engId}^known_error=true^ORstate=deferred`, (d) => knownErrors.push({ number: val(d, 'number'), title: val(d, 'title'), severity: val(d, 'severity'), workaround: val(d, 'workaround') }));
+    const e = getRecord(T.engagement, engId);
+    return { designNotes: e ? val(e, 'design_notes') : '', supportOwner: e ? val(e, 'support_owner_role') : '', components: comps, runbook, knownErrors, generatedOn: new Date().toISOString(), instance: gs.getProperty('instance_name') };
+}
+]]></content>
+    <external_source>false</external_source>
+    <path>x_1577958_dsb/dsb-workbench/1.3.1/src/server/generate.ts</path>
+    <sys_name>x_1577958_dsb/dsb-workbench/1.3.1/src/server/generate.ts</sys_name>
+  </sys_module>
+</record_update>

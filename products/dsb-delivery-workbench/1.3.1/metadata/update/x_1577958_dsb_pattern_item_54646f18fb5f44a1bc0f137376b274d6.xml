@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>54646f18fb5f44a1bc0f137376b274d6</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_54646f18fb5f44a1bc0f137376b274d6</sys_update_name>
+    <body>// DSB IMPLEMENTATION asset-ci-link — DATA CHANGING. DRY RUN unless DRY_RUN = false.
+var DRY_RUN = true;
+var CI_TABLE = 'cmdb_ci_computer';   // &lt;confirm&gt;
+var stats = {checked: 0, would_link: 0, linked: 0, ambiguous: 0, no_match: 0};
+var a = new GlideRecord('alm_hardware'); a.addEncodedQuery('install_status!=7^ciISEMPTY^serial_numberISNOTEMPTY'); a.setLimit(5000); a.query();
+while (a.next()) {
+  stats.checked++;
+  var c = new GlideRecord(CI_TABLE); c.addQuery('serial_number', a.getValue('serial_number')); c.addQuery('install_status', '!=', 7); c.query();
+  if (c.getRowCount() === 0) { stats.no_match++; continue; }
+  if (c.getRowCount() &gt; 1) { stats.ambiguous++; continue; }
+  c.next();
+  if (c.getValue('asset')) { stats.ambiguous++; continue; }
+  stats.would_link++;
+  gs.print((DRY_RUN ? '[DRY RUN] ' : '') + a.getValue('asset_tag') + ' (' + a.getValue('serial_number') + ') -&gt; ' + c.getValue('name') + ' asset=' + a.getUniqueValue() + ' ci=' + c.getUniqueValue());
+  if (!DRY_RUN) { a.setValue('ci', c.getUniqueValue()); a.update(); stats.linked++; }
+}
+gs.print('=== DSB-IMPL asset-ci-link ===\n' + JSON.stringify(stats, null, 2));</body>
+    <data>{"kind": "script", "purpose": "Links unlinked hardware assets to an existing CI with the same serial where exactly one active match exists and the CI has no asset.", "prereqs": "Asset manager approves the dry-run list. Sub-prod first. Take an export of alm_hardware.", "rollback": "Output lists asset and CI sys_ids; clear the ci/asset references to reverse."}</data>
+    <kind>implementation</kind>
+    <modifies_data>true</modifies_data>
+    <pattern>f0c40ed7d7ac4c1a957aafe864f1f114</pattern>
+    <seq>1</seq>
+    <title>Link hardware assets to CIs by serial number (DRY RUN by default)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

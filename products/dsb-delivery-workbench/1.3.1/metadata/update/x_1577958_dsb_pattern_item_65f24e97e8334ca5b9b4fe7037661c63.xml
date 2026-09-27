@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>65f24e97e8334ca5b9b4fe7037661c63</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_65f24e97e8334ca5b9b4fe7037661c63</sys_update_name>
+    <body>Decides sync direction for cost, depreciation and cost centre.</body>
+    <data>{}</data>
+    <kind>decision</kind>
+    <pattern>f0c40ed7d7ac4c1a957aafe864f1f114</pattern>
+    <seq>1</seq>
+    <title>Authoritative asset record: ServiceNow or finance system</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

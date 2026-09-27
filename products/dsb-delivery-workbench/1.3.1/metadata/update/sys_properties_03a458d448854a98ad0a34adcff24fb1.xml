@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<record_update table="sys_properties">
+  <sys_properties action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>03a458d448854a98ad0a34adcff24fb1</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_properties_03a458d448854a98ad0a34adcff24fb1</sys_update_name>
+    <choices/>
+    <description>Project management and governance as a fraction of the subtotal (not applied on Express).</description>
+    <ignore_cache>false</ignore_cache>
+    <is_private>false</is_private>
+    <name>x_1577958_dsb.effort.pct_pm</name>
+    <read_roles>x_1577958_dsb.user</read_roles>
+    <suffix>effort.pct_pm</suffix>
+    <type>string</type>
+    <value>0.12</value>
+    <write_roles>x_1577958_dsb.admin</write_roles>
+  </sys_properties>
+</record_update>

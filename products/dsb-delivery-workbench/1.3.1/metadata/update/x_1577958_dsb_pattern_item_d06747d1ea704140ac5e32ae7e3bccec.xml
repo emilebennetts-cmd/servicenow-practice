@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>d06747d1ea704140ac5e32ae7e3bccec</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_d06747d1ea704140ac5e32ae7e3bccec</sys_update_name>
+    <body>Affects taxonomy design and IT portal transition.</body>
+    <data>{}</data>
+    <kind>decision</kind>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>2</seq>
+    <title>Employee Center as the single front door for HR and IT at go-live</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern">
+  <x_1577958_dsb_pattern action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>9502ffca8cf0439989ddf6b7b57dddea</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_9502ffca8cf0439989ddf6b7b57dddea</sys_update_name>
+    <active>true</active>
+    <exclude_terms>[]</exclude_terms>
+    <indicative_cases>14</indicative_cases>
+    <key>secops-sir</key>
+    <library_version>1.5</library_version>
+    <licence_products>secops_sir</licence_products>
+    <min_hits>2</min_hits>
+    <name>Security Incident Response and SecOps foundation</name>
+    <overview>Ingest, prioritise, respond, learn — with access designed first. (1) Security roles and group model: SOC analysts, handlers, managers; IT responders get tasks, not incidents; platform admins do not get SIR access by default. (2) Ingest from the SIEM/EDR via the OOB store integrations (or the SIR ingestion APIs / email parsing as fallback); correlate duplicates. (3) Severity calculator using CI business criticality, data classification and category — this depends on the CMDB/CSDM pattern. (4) Playbooks (Playbook/PAD) for the top categories from evidence (e.g. phishing, malware, account compromise, data loss). (5) Response tasks and SIR requests to IT groups with SLAs; change requests for remediation via the OOB link. (6) Threat intelligence enrichment using licensed or free feeds via OOB integrations. (7) Major security incident, post-incident review, and a notifiable data breach assessment captured on the incident. (8) SOC dashboard. No custom tables; extend categories and playbooks, not the data model.</overview>
+    <pain>Alerts triaged manually from the SIEM; no audit trail
+Severity decided by judgement, not business impact
+Containment depends on individual analysts; no playbooks
+IT teams engaged by chat with no SLA or evidence
+Post-incident reviews and notifiable data breach assessments not consistently recorded</pain>
+    <phase>2</phase>
+    <requires>cmdb-csdm-foundation</requires>
+    <strong_terms>[{"re": "security incident|\\bSOC\\b|\\bSIEM\\b", "flags": "i"}, {"re": "phishing|malware", "flags": "i"}]</strong_terms>
+    <summary>Security alerts from the SIEM and EDR tools are triaged in email, chat and spreadsheets. There is no consistent severity model, containment steps depend on who is on shift, IT teams are engaged informally, and post-incident reviews and regulator notifications are hard to evidence. The pattern converges on OOB Security Incident Response: ingestion from security tools into security incidents, a calculated severity using CMDB business context, playbooks for the top incident categories, response tasks to IT groups, threat-intelligence enrichment, restricted access, and post-incident review and notification tracking.</summary>
+    <triggers>[{"re": "security incident|\\bSIR\\b|SecOps|security operations", "flags": "i"}, {"re": "\\bSOC\\b|\\bSIEM\\b|Splunk|Sentinel|QRadar|CrowdStrike|Defender|\\bXDR\\b|\\bEDR\\b", "flags": "i"}, {"re": "phishing|malware|ransomware|breach|threat", "flags": "i"}, {"re": "playbook|runbook|containment", "flags": "i"}, {"re": "threat intel|observable|IOC\\b", "flags": "i"}, {"re": "notifiable|\\bOAIC\\b|\\bNDB\\b|post.incident", "flags": "i"}]</triggers>
+    <verified>false</verified>
+  </x_1577958_dsb_pattern>
+</record_update>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern">
+  <x_1577958_dsb_pattern action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4874dc995cad4b3cb3bda8c29e4e0be8</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_4874dc995cad4b3cb3bda8c29e4e0be8</sys_update_name>
+    <active>true</active>
+    <exclude_terms>[{"re": "field service|work order", "flags": "i"}]</exclude_terms>
+    <indicative_cases>41</indicative_cases>
+    <key>csm-case-foundation</key>
+    <library_version>1.5</library_version>
+    <licence_products>csm</licence_products>
+    <min_hits>2</min_hits>
+    <name>Customer Service Management case and contact-centre foundation</name>
+    <overview>Model the customer, then the work, then the channels. (1) Choose B2B (account/contact), B2C (consumer) or both, and integrate the CRM/billing system of record as the master (OOB Salesforce/Microsoft Dynamics spokes or IntegrationHub) — ServiceNow does not become the CRM. (2) Load products and install base only as far as routing and entitlements need them. (3) Define case types (extensions of the OOB case only where the process genuinely differs), categories, SLAs and entitlements. (4) Channels: inbound email actions, chat and phone (OpenFrame/CTI) creating interactions linked to cases; AWA queues, service channels, skills and capacity for push routing. (5) Customer portal with knowledge deflection and case communication. (6) Complaints on the OOB complaint management capability where regulated timeframes apply. (7) Middle/back-office requests via OOB request/task flows with SLAs. (8) CSM Configurable Workspace for agents and supervisors; dashboards for channel, FCR, AHT, SLA and CSAT.</overview>
+    <pain>Agents swivel between CRM, billing and ticketing to answer one question
+No single case history, so customers repeat themselves
+Complaints and escalations tracked in email and spreadsheets
+Back-office teams engaged by email with no SLA
+Channel volumes and handle time cannot be reported reliably</pain>
+    <phase>1</phase>
+    <requires/>
+    <strong_terms>[{"re": "\\bCSM\\b|customer service", "flags": "i"}, {"re": "contact cent(er|re)|call cent(er|re)", "flags": "i"}]</strong_terms>
+    <summary>Customer or citizen enquiries arrive by phone, email and web into disconnected tools. Agents lack a single view of the customer, their products and prior cases; complaints and escalations are handled by email; middle- and back-office teams are engaged through side channels. The pattern converges on OOB CSM: an accounts/contacts (B2B) or consumers (B2C) data model, case types with SLAs, omni-channel intake with Advanced Work Assignment, a customer portal with knowledge, and requests to the middle/back office through OOB request and task flows — integrated with the CRM or billing system of record rather than replicating it.</summary>
+    <triggers>[{"re": "\\bCSM\\b|customer service", "flags": "i"}, {"re": "contact.?cent(er|re)|call cent(er|re)|agent", "flags": "i"}, {"re": "customer (portal|case|complaint|experience)|citizen", "flags": "i"}, {"re": "omni.?channel|chat|email.to.case|telephony|\\bCTI\\b", "flags": "i"}, {"re": "entitlement|contract|install base|product", "flags": "i"}, {"re": "complaint", "flags": "i"}, {"re": "customer|consumer|account", "flags": "i"}, {"re": "customers?", "flags": "i"}, {"re": "complain", "flags": "i"}]</triggers>
+    <verified>false</verified>
+  </x_1577958_dsb_pattern>
+</record_update>

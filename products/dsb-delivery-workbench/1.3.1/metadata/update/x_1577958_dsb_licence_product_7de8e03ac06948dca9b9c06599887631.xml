@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_licence_product">
+  <x_1577958_dsb_licence_product action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>7de8e03ac06948dca9b9c06599887631</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_licence_product_7de8e03ac06948dca9b9c06599887631</sys_update_name>
+    <key>spm</key>
+    <label>Strategic Portfolio Management</label>
+  </x_1577958_dsb_licence_product>
+</record_update>

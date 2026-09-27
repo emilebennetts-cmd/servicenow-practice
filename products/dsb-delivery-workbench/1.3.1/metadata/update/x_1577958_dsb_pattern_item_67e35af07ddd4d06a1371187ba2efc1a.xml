@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>67e35af07ddd4d06a1371187ba2efc1a</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_67e35af07ddd4d06a1371187ba2efc1a</sys_update_name>
+    <body>Microsoft, Oracle, Adobe etc. as agreed; reconciliation after discovery runs.</body>
+    <data>{"type": "Scheduled job", "cls": "Out of the box", "req": [5], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>f0c40ed7d7ac4c1a957aafe864f1f114</pattern>
+    <seq>8</seq>
+    <title>Publisher packs and reconciliation schedule for priority publishers</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

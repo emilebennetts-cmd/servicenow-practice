@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>2b2ec4951d2e44188c22572427d181db</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_2b2ec4951d2e44188c22572427d181db</sys_update_name>
+    <body>Given an agreed SLA matrix, When a P1 incident is created, Then response and resolution task SLAs attach with the agreed schedule
+Given an incident is placed On Hold – Awaiting Caller, When the SLA is evaluated, Then the timer pauses per the pause condition</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>2</seq>
+    <title>SLA definitions are harmonised and measured consistently</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

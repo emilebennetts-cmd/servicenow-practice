@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>739dbef96f524b2f83ce8896463819a1</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_739dbef96f524b2f83ce8896463819a1</sys_update_name>
+    <body>cmdb_identifier_entry changes
+Reconciliation and data refresh rules
+Retirement of direct transform maps (deactivate)</body>
+    <data>{"key": "IRE", "scope": "global"}</data>
+    <kind>update_set</kind>
+    <pattern>031fd78c2b3742d38dc20450125b3992</pattern>
+    <seq>0</seq>
+    <title>CMDB_IRE_&lt;client&gt;_v1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

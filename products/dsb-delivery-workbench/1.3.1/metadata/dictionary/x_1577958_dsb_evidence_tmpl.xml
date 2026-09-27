@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<database>
+  <element name="x_1577958_dsb_evidence_tmpl" type="collection" label="UDW Evidence Template" is_extendable="false" text_index="false" read_only="false" audit="false" display="item" access="public" caller_access="0" ws_access="true" scriptable_table="false" attributes="">
+    <element name="key" type="string" active="true" array="false" audit="false" unique="true" label="Key" max_length="60" mandatory="true" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Keys"/>
+    <element name="applies_to" type="choice" active="true" array="false" audit="false" default_value="all" unique="false" label="Applies to" mandatory="false" read_only="false" choice="3" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Applies to">
+      <choice>
+        <element value="all" label="Every engagement" inactive="false" inactive_on_update="false" sequence="10" language="en"/>
+        <element value="greenfield" label="New scoped apps" inactive="false" inactive_on_update="false" sequence="20" language="en"/>
+      </choice>
+    </element>
+    <element name="item" type="string" active="true" array="false" audit="false" unique="false" label="Evidence item" max_length="300" mandatory="true" read_only="false" choice="0" display="true" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Evidence items"/>
+    <element name="why" type="string" active="true" array="false" audit="false" unique="false" label="Why" max_length="600" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Whys"/>
+    <element name="how" type="string" active="true" array="false" audit="false" unique="false" label="How" max_length="600" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Hows"/>
+    <element name="unblocks" type="string" active="true" array="false" audit="false" unique="false" label="Unblocks" max_length="300" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Unblocks"/>
+    <element name="script" type="multi_two_lines" active="true" array="false" audit="false" unique="false" label="Evidence script (read only)" max_length="65000" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Evidence script (read only)"/>
+  </element>
+</database>

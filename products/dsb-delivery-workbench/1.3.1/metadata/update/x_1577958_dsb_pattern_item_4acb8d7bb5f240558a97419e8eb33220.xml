@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4acb8d7bb5f240558a97419e8eb33220</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_4acb8d7bb5f240558a97419e8eb33220</sys_update_name>
+    <body>Coalesce on employee number or UPN; manager and location resolved by reference. Scheduled daily.</body>
+    <data>{"type": "Import set / transform map", "cls": "Configuration", "req": [6], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>0</seq>
+    <title>Identity and HR user import (LDAP / Entra ID / HR SGC) with department, manager and location</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

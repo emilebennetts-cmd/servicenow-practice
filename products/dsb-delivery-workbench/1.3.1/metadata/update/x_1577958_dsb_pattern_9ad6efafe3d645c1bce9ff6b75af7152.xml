@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern">
+  <x_1577958_dsb_pattern action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>9ad6efafe3d645c1bce9ff6b75af7152</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_9ad6efafe3d645c1bce9ff6b75af7152</sys_update_name>
+    <active>true</active>
+    <exclude_terms>[]</exclude_terms>
+    <indicative_cases>0</indicative_cases>
+    <key>vr-tenable-cmdb</key>
+    <library_version>1.5</library_version>
+    <licence_products>secops_vr,itom_visibility</licence_products>
+    <min_hits>2</min_hits>
+    <name>Tenable vulnerability ingestion without a CMDB foundation</name>
+    <overview>Foundation first, then matching. (1) Agree the in-scope asset classes and an authoritative population source (Discovery or a Service Graph Connector such as SCCM/Intune/Jamf) — Tenable is a consumer of the CMDB, not its source. (2) Make the IRE deterministic for those classes: serial number first, then name/FQDN; IP is a last-resort lookup, never an identifier. (3) Give Tenable the right reconciliation precedence so it can enrich but never overwrite authoritative attributes. (4) Order the VR CI lookup rules to match on the attributes both sides actually carry (from the evidence), and review the host import map. (5) Decide the unmatched policy — create unclassed hardware for triage, or hold in discovered items — and schedule the reapply job. (6) Populate support group and business criticality so assignment and risk scoring work without custom code. (7) Make the state visible: CMDB Health for the in-scope classes and VR match-rate reporting. All of this is configuration captured in an update set; no custom integration is required.</overview>
+    <pain>Vulnerable items (VITs) not matched to CIs, so no assignment group, no business criticality, no remediation owner
+Tenable becomes the de facto CMDB source — unclassed hardware sprawl and duplicates
+Reports count findings, not assets; SLA and exposure figures are not defensible
+Prior attempts to bypass CI matching with custom integrations create technical debt and upgrade risk</pain>
+    <phase>0</phase>
+    <requires/>
+    <strong_terms>[{"re": "tenable", "flags": "i"}, {"re": "vulnerab", "flags": "i"}, {"re": "discovered item", "flags": "i"}]</strong_terms>
+    <summary>Vulnerability Response is ingesting Tenable findings, but the CMDB has no reliable population, identification, reconciliation or ownership rules. Vulnerable items land on unmatched discovered items or unclassed hardware, nothing routes to an owner, and risk scoring has no CI context. The fix is a CMDB foundation for the in-scope asset classes plus correctly ordered CI lookup and reconciliation rules — not a custom integration that bypasses matching.</summary>
+    <triggers>[{"re": "tenable", "flags": "i"}, {"re": "vulnerab", "flags": "i"}, {"re": "\\bVR\\b", "flags": ""}, {"re": "cmdb", "flags": "i"}, {"re": "ci\\s*lookup", "flags": "i"}, {"re": "unmatched", "flags": "i"}, {"re": "discovered item", "flags": "i"}]</triggers>
+    <verified>false</verified>
+  </x_1577958_dsb_pattern>
+</record_update>

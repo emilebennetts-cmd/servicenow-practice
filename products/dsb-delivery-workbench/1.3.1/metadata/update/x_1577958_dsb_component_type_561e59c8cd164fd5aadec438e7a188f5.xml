@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_component_type">
+  <x_1577958_dsb_component_type action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>561e59c8cd164fd5aadec438e7a188f5</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_component_type_561e59c8cd164fd5aadec438e7a188f5</sys_update_name>
+    <base_hours>1</base_hours>
+    <build_order>0.5</build_order>
+    <build_phase>0. Prepare</build_phase>
+    <name>Store app / plugin activation</name>
+    <pvt_checks>Application or plugin installed at the agreed version in this environment
+Version matches the other environments (sys_store_app / sys_plugins)
+Dependent plugins active</pvt_checks>
+  </x_1577958_dsb_component_type>
+</record_update>

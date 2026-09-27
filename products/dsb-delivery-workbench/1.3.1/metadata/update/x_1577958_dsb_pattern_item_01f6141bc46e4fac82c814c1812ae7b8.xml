@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>01f6141bc46e4fac82c814c1812ae7b8</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_01f6141bc46e4fac82c814c1812ae7b8</sys_update_name>
+    <body>Avoids ServiceNow becoming a second CRM.</body>
+    <data>{}</data>
+    <kind>decision</kind>
+    <pattern>4874dc995cad4b3cb3bda8c29e4e0be8</pattern>
+    <seq>1</seq>
+    <title>System of record for customer and product data and the sync direction</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>a52ffcc8f0eb4ebbae0f23905d14e689</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_a52ffcc8f0eb4ebbae0f23905d14e689</sys_update_name>
+    <body>Given assets past their refresh date, When the refresh plan runs, Then refresh requests are generated for the agreed scope
+Given an asset is disposed, When disposal completes, Then certificate of disposal is attached and the asset is retired</body>
+    <data>{"type": "Process", "moscow": "Should", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>f0c40ed7d7ac4c1a957aafe864f1f114</pattern>
+    <seq>3</seq>
+    <title>Refresh and disposal are planned and tracked</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

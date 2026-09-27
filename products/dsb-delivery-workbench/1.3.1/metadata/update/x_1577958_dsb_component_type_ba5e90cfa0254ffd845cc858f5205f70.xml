@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_component_type">
+  <x_1577958_dsb_component_type action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>ba5e90cfa0254ffd845cc858f5205f70</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_component_type_ba5e90cfa0254ffd845cc858f5205f70</sys_update_name>
+    <base_hours>1</base_hours>
+    <build_order>11.5</build_order>
+    <build_phase>4. Automation</build_phase>
+    <name>Assignment / matching rule</name>
+    <pvt_checks>A test record with the rule conditions is assigned to the expected group
+A record outside the conditions is not assigned by this rule
+Rule order does not conflict with other rules</pvt_checks>
+  </x_1577958_dsb_component_type>
+</record_update>

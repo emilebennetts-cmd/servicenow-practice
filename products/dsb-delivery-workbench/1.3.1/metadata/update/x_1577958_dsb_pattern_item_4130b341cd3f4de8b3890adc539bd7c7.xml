@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4130b341cd3f4de8b3890adc539bd7c7</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_4130b341cd3f4de8b3890adc539bd7c7</sys_update_name>
+    <data>{"type": "Third party"}</data>
+    <kind>dependency</kind>
+    <pattern>27017c1f692149c79a16726ca19e8c2b</pattern>
+    <seq>0</seq>
+    <title>Monitoring tool owners and API/credential access</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

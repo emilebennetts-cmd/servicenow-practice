@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>b8bcda3f4374481381742d1d65d59f1e</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_b8bcda3f4374481381742d1d65d59f1e</sys_update_name>
+    <body>Message, response options, reminder window.</body>
+    <data>{"type": "Data load / reference data", "cls": "Configuration", "req": [0], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>feb9570f3df64d249bd135c8a0a1bfa2</pattern>
+    <seq>2</seq>
+    <title>Scenario outreach templates</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

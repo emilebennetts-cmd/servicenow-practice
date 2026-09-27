@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern">
+  <x_1577958_dsb_pattern action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>628bf2891d554853993138856ccb4ef2</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_628bf2891d554853993138856ccb4ef2</sys_update_name>
+    <active>true</active>
+    <exclude_terms>[]</exclude_terms>
+    <indicative_cases>6</indicative_cases>
+    <key>public-sector-case</key>
+    <library_version>1.5</library_version>
+    <licence_products>psds,csm</licence_products>
+    <min_hits>2</min_hits>
+    <name>Public sector case, licensing and grants</name>
+    <overview>Settle compliance, then model services, then digitise. (1) Confirm hosting, classification (e.g. OFFICIAL / PROTECTED), IRAP posture, encryption and records retention before data lands. (2) Use the CSM consumer model for residents and account/contact for businesses. (3) Configure application/case types with the PSDS or Licensing &amp; Permitting / Grants capabilities where licensed — stages, eligibility rules, assessment tasks, decisions, issued licences/grants with conditions and renewals. (4) Citizen portal with identity (e.g. state digital ID via SSO where available), status tracking and information requests. (5) Inspections on mobile. (6) Statutory timeframe SLAs and reporting. (7) Records retention via archive/destroy rules aligned to the retention schedule.</overview>
+    <pain>Citizens phone and email for status
+Officers re-key applications from PDF forms
+Inconsistent eligibility and assessment decisions
+Records retention and FOI evidence are manual
+Hosting and security classification unclear for cloud services</pain>
+    <phase>3</phase>
+    <requires>csm-case-foundation</requires>
+    <strong_terms>[{"re": "council|government|agency|citizen|resident", "flags": "i"}, {"re": "permit|licensing application|grant", "flags": "i"}]</strong_terms>
+    <summary>An agency or council runs citizen-facing services — enquiries, complaints, licences, permits or grants — on legacy case systems, forms and spreadsheets. Citizens cannot see progress, officers re-key data, eligibility and assessment are inconsistent, and compliance (records, privacy, IRAP/PROTECTED) is hard to evidence. The pattern converges on ServiceNow Public Sector Digital Services capabilities where licensed (citizen portal, case, licensing and permitting, grants) on the CSM data model, with records governance and hosting/classification requirements settled first.</summary>
+    <triggers>[{"re": "public sector|government|council|agency|department of|ministry|state|federal|citizen|resident|constituent", "flags": "i"}, {"re": "licen[cs]e(s|ing)? and permit|permit|licensing application|registration", "flags": "i"}, {"re": "grant(s)?\\b|funding application|assessment panel", "flags": "i"}, {"re": "case management|casework|complaint|311|enquir", "flags": "i"}, {"re": "PROTECTED|\\bIRAP\\b|data sovereignty|\\bFOI\\b|privacy act", "flags": "i"}, {"re": "eligibility|assessment|inspection", "flags": "i"}]</triggers>
+    <verified>false</verified>
+  </x_1577958_dsb_pattern>
+</record_update>

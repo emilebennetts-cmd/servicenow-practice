@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>d3053121a8104c449c25e46b6db4b444</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_d3053121a8104c449c25e46b6db4b444</sys_update_name>
+    <body>Each transform found in evidence cmdb.sources re-platformed through the IRE.</body>
+    <data>{"type": "Import set / transform map", "cls": "Configuration", "req": [0], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>031fd78c2b3742d38dc20450125b3992</pattern>
+    <seq>4</seq>
+    <title>Retire direct CMDB transform maps; replace with IntegrationHub ETL or IRE API</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

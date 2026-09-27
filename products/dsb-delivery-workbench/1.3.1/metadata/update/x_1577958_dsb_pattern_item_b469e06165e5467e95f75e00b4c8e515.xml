@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>b469e06165e5467e95f75e00b4c8e515</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_b469e06165e5467e95f75e00b4c8e515</sys_update_name>
+    <body>Update set 1: S2P_Config_&lt;client&gt;_v1 — intake, approval flows, SLAs, notifications, dashboards
+Update set 2: S2P_Integration_&lt;client&gt;_v1 — spoke actions/flows (connection aliases; credentials per environment)
+Data: approval matrix, supplier and PO reference sync (scheduled import per environment)</body>
+    <data>{"kind": "checklist", "purpose": "Configuration separated from ERP integration.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>8d626f620b62477fb3d9517346e13cf8</pattern>
+    <seq>0</seq>
+    <title>Update set plan — S2P</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

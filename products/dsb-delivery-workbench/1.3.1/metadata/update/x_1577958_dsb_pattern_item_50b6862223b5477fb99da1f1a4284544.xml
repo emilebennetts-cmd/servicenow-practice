@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>50b6862223b5477fb99da1f1a4284544</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_50b6862223b5477fb99da1f1a4284544</sys_update_name>
+    <body>Given the risk and compliance workspace dashboards, When the CRO opens them, Then compliance score by authority document, top residual risks and overdue issues are shown</body>
+    <data>{"type": "Reporting", "moscow": "Should", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>4b16aa07c3c5429a93a6f33c5ef138c0</pattern>
+    <seq>8</seq>
+    <title>Compliance and risk posture is reported to executives and the board</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

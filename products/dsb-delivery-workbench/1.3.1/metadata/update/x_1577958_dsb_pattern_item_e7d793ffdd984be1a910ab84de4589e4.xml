@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>e7d793ffdd984be1a910ab84de4589e4</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_e7d793ffdd984be1a910ab84de4589e4</sys_update_name>
+    <body>Normalisation enabled; unmatched models reviewed monthly.</body>
+    <data>{"type": "CMDB / IRE rule", "cls": "Out of the box", "req": [1, 5], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>f0c40ed7d7ac4c1a957aafe864f1f114</pattern>
+    <seq>0</seq>
+    <title>Content normalisation for hardware and software (Content Service)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>82fa5cd75903448c9dffdfc8c4ca838b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_82fa5cd75903448c9dffdfc8c4ca838b</sys_update_name>
+    <body>Given received stock, When an asset technician receives it into a stockroom, Then state is In stock with the correct substate
+Given an asset is deployed to a user, When the task completes, Then state is In use and assigned_to and location are set</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>f0c40ed7d7ac4c1a957aafe864f1f114</pattern>
+    <seq>2</seq>
+    <title>Hardware lifecycle is managed through stockrooms and OOB lifecycle states</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>bbb92e333ff84cd9a3423f353c37680d</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_evidence_unblocks_en</sys_update_name>
+    <element>unblocks</element>
+    <help/>
+    <hint/>
+    <label>What it unblocks</label>
+    <language>en</language>
+    <name>x_1577958_dsb_evidence</name>
+    <plural>What it unblocks</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

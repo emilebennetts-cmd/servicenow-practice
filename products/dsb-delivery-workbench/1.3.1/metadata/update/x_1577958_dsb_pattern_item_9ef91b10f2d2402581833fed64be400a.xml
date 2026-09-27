@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>9ef91b10f2d2402581833fed64be400a</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_9ef91b10f2d2402581833fed64be400a</sys_update_name>
+    <body>Given the biomed register is loaded, When a device is opened, Then model, serial, location, department, risk class and maintenance plan are shown</body>
+    <data>{"type": "Data", "moscow": "Must", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>0e998cd6afca4efe958b07af4c028893</pattern>
+    <seq>0</seq>
+    <title>Clinical devices are recorded as assets with model, location, owner and clinical risk</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

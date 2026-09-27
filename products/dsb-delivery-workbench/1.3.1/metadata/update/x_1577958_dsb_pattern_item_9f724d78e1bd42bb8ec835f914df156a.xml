@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>9f724d78e1bd42bb8ec835f914df156a</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_9f724d78e1bd42bb8ec835f914df156a</sys_update_name>
+    <body>CMDB quality decays within months without stewardship.</body>
+    <data>{"cat": "People", "l": 4, "i": 4, "treat": "Named owners with KPIs; monthly governance forum; Data Manager attestations."}</data>
+    <kind>risk</kind>
+    <pattern>031fd78c2b3742d38dc20450125b3992</pattern>
+    <seq>1</seq>
+    <title>Governance not sustained after the project</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

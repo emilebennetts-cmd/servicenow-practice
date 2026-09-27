@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>2cbb8cd0d0c14eaaa60615512c6cdcf6</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_2cbb8cd0d0c14eaaa60615512c6cdcf6</sys_update_name>
+    <body>Given the HR/identity source, When the user import runs, Then active users, managers, departments and locations match the source
+Given the agreed group model, When groups are loaded, Then each has a manager, type and at least one member</body>
+    <data>{"type": "Data", "moscow": "Must", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>6</seq>
+    <title>Foundation data (users, groups, locations, companies, services) is loaded from authoritative sources</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

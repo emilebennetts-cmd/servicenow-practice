@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<database>
+  <element name="x_1577958_dsb_gate" type="collection" label="UDW Gate Approval" is_extendable="false" text_index="false" read_only="false" audit="true" display="gate" access="public" caller_access="0" ws_access="true" scriptable_table="false" attributes="">
+    <element name="engagement" type="reference" active="true" array="false" audit="false" unique="false" label="Engagement" mandatory="true" read_only="false" reference_cascade_rule="delete" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" reference="x_1577958_dsb_engagement" plural="Engagements"/>
+    <element name="gate" type="choice" active="true" array="false" audit="false" unique="false" label="Gate" mandatory="true" read_only="false" choice="3" display="true" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Gates">
+      <choice>
+        <element value="g0" label="G0 - Qualified (path and licensing captured)" inactive="false" inactive_on_update="false" sequence="0" language="en"/>
+        <element value="g1" label="G1 - Requirements agreed" inactive="false" inactive_on_update="false" sequence="10" language="en"/>
+        <element value="g2" label="G2 - Design signed off" inactive="false" inactive_on_update="false" sequence="20" language="en"/>
+        <element value="g3" label="G3 - Peer review, SIT and ATF passed" inactive="false" inactive_on_update="false" sequence="30" language="en"/>
+        <element value="g4" label="G4 - UAT accepted" inactive="false" inactive_on_update="false" sequence="40" language="en"/>
+        <element value="g5" label="G5 - Production PVT passed" inactive="false" inactive_on_update="false" sequence="50" language="en"/>
+        <element value="g6" label="G6 - Support accepted handover" inactive="false" inactive_on_update="false" sequence="60" language="en"/>
+      </choice>
+    </element>
+    <element name="status" type="choice" active="true" array="false" audit="false" default_value="requested" unique="false" label="Status" mandatory="false" read_only="false" choice="3" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Status">
+      <choice>
+        <element value="requested" label="Requested" inactive="false" inactive_on_update="false" sequence="10" language="en"/>
+        <element value="approved" label="Approved" inactive="false" inactive_on_update="false" sequence="20" language="en"/>
+        <element value="rejected" label="Rejected" inactive="false" inactive_on_update="false" sequence="30" language="en"/>
+        <element value="waived" label="Waived (delivery lead)" inactive="false" inactive_on_update="false" sequence="40" language="en"/>
+        <element value="revoked" label="Revoked" inactive="false" inactive_on_update="false" sequence="50" language="en"/>
+      </choice>
+    </element>
+    <element name="approver_role" type="string" active="true" array="false" audit="false" unique="false" label="Approver (role)" max_length="100" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Approver (role)"/>
+    <element name="approval_ref" type="string" active="true" array="false" audit="false" unique="false" label="Approval reference" max_length="200" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Approval references" hint="Change number, email subject/date, DocuSign ID or meeting minute reference. No names."/>
+    <element name="decided_on" type="glide_date_time" active="true" array="false" audit="false" unique="false" label="Decided on" mandatory="false" read_only="true" read_only_option="instance_configured" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Decided ons"/>
+    <element name="waiver_reason" type="multi_two_lines" active="true" array="false" audit="false" unique="false" label="Waiver reason" max_length="2000" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Waiver reasons"/>
+    <element name="waiver_expiry" type="glide_date" active="true" array="false" audit="false" unique="false" label="Waiver expiry" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Waiver expiries"/>
+    <element name="blockers_at_decision" type="multi_two_lines" active="true" array="false" audit="false" unique="false" label="Blockers at decision (snapshot)" max_length="8000" mandatory="false" read_only="true" read_only_option="instance_configured" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Blockers at decision (snapshot)"/>
+  </element>
+</database>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<record_update table="sys_properties">
+  <sys_properties action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>d866e2713af14b7e988390e27e312258</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_properties_d866e2713af14b7e988390e27e312258</sys_update_name>
+    <choices/>
+    <description>Comma-separated fragments of instance names treated as production-like. Data-changing scripts abort on them.</description>
+    <ignore_cache>false</ignore_cache>
+    <is_private>false</is_private>
+    <name>x_1577958_dsb.prod_instance_markers</name>
+    <read_roles>x_1577958_dsb.user</read_roles>
+    <suffix>prod_instance_markers</suffix>
+    <type>string</type>
+    <value>prod,prd,live</value>
+    <write_roles>x_1577958_dsb.admin</write_roles>
+  </sys_properties>
+</record_update>

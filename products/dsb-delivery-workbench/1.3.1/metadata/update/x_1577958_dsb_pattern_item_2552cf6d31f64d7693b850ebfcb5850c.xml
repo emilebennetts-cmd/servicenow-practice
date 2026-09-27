@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>2552cf6d31f64d7693b850ebfcb5850c</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_2552cf6d31f64d7693b850ebfcb5850c</sys_update_name>
+    <body>Given an informational event matches an ignore rule, When processed, Then no alert is created
+Given an event carries a hostname, When processed, Then the alert is bound to the matching CI</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>27017c1f692149c79a16726ca19e8c2b</pattern>
+    <seq>1</seq>
+    <title>Events are filtered, transformed and bound to CIs</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

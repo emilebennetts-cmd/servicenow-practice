@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<record_update table="sys_properties">
+  <sys_properties action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>cb8dc8ba163d4fb2bc79a89bd751a8d2</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_properties_cb8dc8ba163d4fb2bc79a89bd751a8d2</sys_update_name>
+    <choices/>
+    <description>Data remediation / load hours per data-captured component.</description>
+    <ignore_cache>false</ignore_cache>
+    <is_private>false</is_private>
+    <name>x_1577958_dsb.effort.hours_per_data_component</name>
+    <read_roles>x_1577958_dsb.user</read_roles>
+    <suffix>effort.hours_per_data_component</suffix>
+    <type>string</type>
+    <value>2</value>
+    <write_roles>x_1577958_dsb.admin</write_roles>
+  </sys_properties>
+</record_update>

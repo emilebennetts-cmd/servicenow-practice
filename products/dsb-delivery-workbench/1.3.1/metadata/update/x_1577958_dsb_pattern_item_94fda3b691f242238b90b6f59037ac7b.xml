@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>94fda3b691f242238b90b6f59037ac7b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_94fda3b691f242238b90b6f59037ac7b</sys_update_name>
+    <body>Needed for deterministic identification</body>
+    <data>{"validate": "Evidence cmdb.population pct_with_serial_number and cmdb.ire duplicates_by_serial"}</data>
+    <kind>assumption</kind>
+    <pattern>9ad6efafe3d645c1bce9ff6b75af7152</pattern>
+    <seq>0</seq>
+    <title>Serial numbers are populated and unique for the in-scope hardware in at least one source</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

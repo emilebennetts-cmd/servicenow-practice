@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>77b08260d3bc464fa18d4f1cf6fd2070</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_77b08260d3bc464fa18d4f1cf6fd2070</sys_update_name>
+    <body>Given an employee relations case, When a Tier 1 HR agent searches for it, Then it is not returned
+Given an IT administrator without HR roles, When they query sn_hr_core_case, Then no case data is visible
+Given a user is the subject of a case, When they view their own cases, Then the case is visible only if the HR service allows it</body>
+    <data>{"type": "Security / Access", "moscow": "Must", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>2</seq>
+    <title>Sensitive HR cases are restricted to authorised HR roles only</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

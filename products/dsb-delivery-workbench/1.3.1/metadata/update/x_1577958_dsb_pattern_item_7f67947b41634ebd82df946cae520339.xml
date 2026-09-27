@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>7f67947b41634ebd82df946cae520339</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_7f67947b41634ebd82df946cae520339</sys_update_name>
+    <body>Given an HR case for a payroll service, When it is created, Then it is assigned to the payroll team by matching rule and an SLA attaches
+Given a Tier 1 agent cannot resolve a case, When they transfer it, Then the case moves to the Tier 2 COE with history intact</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>1</seq>
+    <title>HR cases are routed to the correct HR team with tiered support and SLAs</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

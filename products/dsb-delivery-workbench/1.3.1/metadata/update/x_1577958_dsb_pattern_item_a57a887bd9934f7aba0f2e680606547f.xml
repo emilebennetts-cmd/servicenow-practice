@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>a57a887bd9934f7aba0f2e680606547f</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_a57a887bd9934f7aba0f2e680606547f</sys_update_name>
+    <data>{"type": "Internal"}</data>
+    <kind>dependency</kind>
+    <pattern>5c6ec6aa57e140f986af5947553a8c3e</pattern>
+    <seq>2</seq>
+    <title>HAM stockroom model (see HAM/SAM pattern)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4ad2c18ce1a541ceb68a3623507e206d</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_4ad2c18ce1a541ceb68a3623507e206d</sys_update_name>
+    <body>// DSB IMPLEMENTATION migration-reconcile — READ ONLY.
+var TABLE = 'incident';                   // &lt;confirm&gt;
+var REF_FIELD = 'correlation_id';         // &lt;confirm&gt; field holding the legacy ticket number
+var SOURCE_TOTALS = { /* 'New': 120, 'In Progress': 340 */ };   // from the source extract
+var out = {table: TABLE, by_state:{}, missing_ref: 0, duplicate_refs: 0, variance:{}};
+var ga = new GlideAggregate(TABLE); ga.addNotNullQuery(REF_FIELD); ga.addAggregate('COUNT'); ga.groupBy('state'); ga.query();
+while (ga.next()) out.by_state[ga.getDisplayValue('state')] = parseInt(ga.getAggregate('COUNT'), 10);
+Object.keys(SOURCE_TOTALS).forEach(function(s){ out.variance[s] = (out.by_state[s] || 0) - SOURCE_TOTALS[s]; });
+var d = new GlideAggregate(TABLE); d.addNotNullQuery(REF_FIELD); d.addAggregate('COUNT'); d.groupBy(REF_FIELD); d.addHaving('COUNT', '&gt;', 1); d.query();
+while (d.next()) out.duplicate_refs++;
+gs.print('=== DSB-IMPL migration-reconcile ===\n' + JSON.stringify(out, null, 2));</body>
+    <data>{"kind": "script", "purpose": "Run after each migration load. Compares counts by state against the source extract totals you paste in, and lists records missing a source reference.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>1</seq>
+    <title>Open-ticket migration reconciliation (READ ONLY)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_component_type">
+  <x_1577958_dsb_component_type action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>c86bdf877836486fb13251042daac405</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_component_type_c86bdf877836486fb13251042daac405</sys_update_name>
+    <base_hours>0.5</base_hours>
+    <build_order>3</build_order>
+    <build_phase>1. Data model</build_phase>
+    <name>Choice list</name>
+    <pvt_checks>All choice values present with correct labels, values, order and default
+Dependent choices filter correctly (if used)</pvt_checks>
+  </x_1577958_dsb_component_type>
+</record_update>

@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_section caption="Details" section_id="9ae416ef0aec40a9a548524acc65fe43" sys_domain="global" table="x_1577958_dsb_rad" view="">
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.begin_split</element>
+      <position>0</position>
+      <sys_id>b2578587d2b644268e51e2e5a0b23f71</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_rad" sys_domain="global" view="Default view">9ae416ef0aec40a9a548524acc65fe43</sys_ui_section>
+      <sys_user/>
+      <type>.begin_split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>number</element>
+      <position>1</position>
+      <sys_id>7330a41bd82b49c69f3219bc657e2fe3</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_rad" sys_domain="global" view="Default view">9ae416ef0aec40a9a548524acc65fe43</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>engagement</element>
+      <position>2</position>
+      <sys_id>1105586ef7e0420ca63ce4c7d9e6ee21</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_rad" sys_domain="global" view="Default view">9ae416ef0aec40a9a548524acc65fe43</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>kind</element>
+      <position>3</position>
+      <sys_id>3781105135b741b5ab1eb77a3abeef2e</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_rad" sys_domain="global" view="Default view">9ae416ef0aec40a9a548524acc65fe43</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>title</element>
+      <position>4</position>
+      <sys_id>a3ac30bfa55447c483b8e0638d5b4e32</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_rad" sys_domain="global" view="Default view">9ae416ef0aec40a9a548524acc65fe43</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>category</element>
+      <position>5</position>
+      <sys_id>e91022a2b2ca4f0ba496206bee9f619d</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_rad" sys_domain="global" view="Default view">9ae416ef0aec40a9a548524acc65fe43</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>likelihood</element>
+      <position>6</position>
+      <sys_id>6d3ca54b443c452b8718705d64c2d2c6</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_rad" sys_domain="global" view="Default view">9ae416ef0aec40a9a548524acc65fe43</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>impact</element>
+      <position>7</position>
+      <sys_id>94476d5b2dd6425bacc5f9bbf552553f</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_rad" sys_domain="global" view="Default view">9ae416ef0aec40a9a548524acc65fe43</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>score</element>
+      <position>8</position>
+      <sys_id>6ba152d7a33446d2b3975730696ae3cc</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_rad" sys_domain="global" view="Default view">9ae416ef0aec40a9a548524acc65fe43</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.split</element>
+      <position>9</position>
+      <sys_id>0f9755ec2553412c9f354306a75d00dc</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_rad" sys_domain="global" view="Default view">9ae416ef0aec40a9a548524acc65fe43</sys_ui_section>
+      <sys_user/>
+      <type>.split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>rag</element>
+      <position>10</position>
+      <sys_id>2bffef8429ae4035af3362ad772db8e2</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_rad" sys_domain="global" view="Default view">9ae416ef0aec40a9a548524acc65fe43</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>owner_role</element>
+      <position>11</position>
+      <sys_id>8e9b9b4b5d7e4dd1af9d5b4e91e3ffe5</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_rad" sys_domain="global" view="Default view">9ae416ef0aec40a9a548524acc65fe43</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>status</element>
+      <position>12</position>
+      <sys_id>58b7753531a64cc39d2eec483231c761</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_rad" sys_domain="global" view="Default view">9ae416ef0aec40a9a548524acc65fe43</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>accepted_ref</element>
+      <position>13</position>
+      <sys_id>90b9c1f1d87b4e4dbbe8ea430f0c2d35</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_rad" sys_domain="global" view="Default view">9ae416ef0aec40a9a548524acc65fe43</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>raised_by_rule</element>
+      <position>14</position>
+      <sys_id>fd1cb0fb1a0848edad1d7ef51d9f7a36</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_rad" sys_domain="global" view="Default view">9ae416ef0aec40a9a548524acc65fe43</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>pattern_key</element>
+      <position>15</position>
+      <sys_id>21bb5ffaba9a4ff0a9aa0c7795bd48eb</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_rad" sys_domain="global" view="Default view">9ae416ef0aec40a9a548524acc65fe43</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>seeded</element>
+      <position>16</position>
+      <sys_id>78f3a6eb25814fbf98e12e7e1b83acbc</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_rad" sys_domain="global" view="Default view">9ae416ef0aec40a9a548524acc65fe43</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.end_split</element>
+      <position>17</position>
+      <sys_id>bb62caa0a5794c3dbf31fb292d15214a</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_rad" sys_domain="global" view="Default view">9ae416ef0aec40a9a548524acc65fe43</sys_ui_section>
+      <sys_user/>
+      <type>.end_split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>description</element>
+      <position>18</position>
+      <sys_id>1ffce92f773b4729b7e34d8014ef0f70</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_rad" sys_domain="global" view="Default view">9ae416ef0aec40a9a548524acc65fe43</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>treatment</element>
+      <position>19</position>
+      <sys_id>5860e86499da4131a43830a51b4ed310</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_rad" sys_domain="global" view="Default view">9ae416ef0aec40a9a548524acc65fe43</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <caption>Details</caption>
+      <header>false</header>
+      <name>x_1577958_dsb_rad</name>
+      <roles/>
+      <sys_domain>global</sys_domain>
+      <sys_id>9ae416ef0aec40a9a548524acc65fe43</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <title>false</title>
+      <view_name/>
+      <view name="NULL" display_value="Default view">Default view</view>
+    </sys_ui_section>
+  </sys_ui_section>
+</record_update>

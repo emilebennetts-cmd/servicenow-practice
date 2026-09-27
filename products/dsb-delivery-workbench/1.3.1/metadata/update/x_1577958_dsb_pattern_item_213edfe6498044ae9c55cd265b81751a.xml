@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>213edfe6498044ae9c55cd265b81751a</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_213edfe6498044ae9c55cd265b81751a</sys_update_name>
+    <body>Assessment templates, DSAR flows, dashboards</body>
+    <data>{"key": "PRIV", "scope": "privacy app scope"}</data>
+    <kind>update_set</kind>
+    <pattern>a828e5429bda4f57b75d7e4a3331f23f</pattern>
+    <seq>0</seq>
+    <title>PRIV_Config_&lt;client&gt;_v1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

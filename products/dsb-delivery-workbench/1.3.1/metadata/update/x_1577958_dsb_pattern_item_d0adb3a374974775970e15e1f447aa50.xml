@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>d0adb3a374974775970e15e1f447aa50</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_d0adb3a374974775970e15e1f447aa50</sys_update_name>
+    <body>// DSB EVIDENCE ps.compliance — READ ONLY.
+// --- DSB helper prelude (read only; no personal information is printed) ---
+var DSB_NOTES = [];
+function _tbl(t){ return gs.tableExists(t); }
+function _fieldOk(t, path){ var gr = new GlideRecord(t); var parts = path.split('.'); for (var i = 0; i &lt; parts.length; i++) { if (!gr.isValidField(parts[i])) return false; if (i &lt; parts.length - 1) { var ref = gr.getElement(parts[i]).getReferenceTable(); if (!ref) return false; gr = new GlideRecord(ref); } } return true; }
+function _badField(t, q){ if (!q) return ''; var conds = String(q).split(/\^NQ|\^OR|\^/); for (var i = 0; i &lt; conds.length; i++) { var m = conds[i].match(/^([a-z0-9_.]+)/); if (!m) continue; var f = m[1].replace(/\.$/, ''); if (f === 'sys_id') continue; if (!_fieldOk(t, f)) return f; } return ''; }
+function count(t, q){ if (!_tbl(t)) return 'table not found'; var bad = _badField(t, q); if (bad) { DSB_NOTES.push(t + ': field not found ' + bad); return 'field not found: ' + bad; } var ga = new GlideAggregate(t); if (q) ga.addEncodedQuery(q); ga.addAggregate('COUNT'); ga.query(); return ga.next() ? parseInt(ga.getAggregate('COUNT'), 10) : 0; }
+function groupCount(t, f, q, lim){ if (!_tbl(t)) return 'table not found'; var bad = _badField(t, q) || (_fieldOk(t, f) ? '' : f); if (bad) { DSB_NOTES.push(t + ': field not found ' + bad); return 'field not found: ' + bad; } var rows = []; var ga = new GlideAggregate(t); if (q) ga.addEncodedQuery(q); ga.addAggregate('COUNT'); ga.groupBy(f); ga.query(); var guard = 0; while (ga.next() &amp;&amp; guard++ &lt; 5000) rows.push([ga.getDisplayValue(f) || '(empty)', parseInt(ga.getAggregate('COUNT'), 10)]); rows.sort(function(a, b){ return b[1] - a[1]; }); var o = {}; rows.slice(0, lim || 50).forEach(function(r){ o[r[0]] = r[1]; }); if (rows.length &gt; (lim || 50)) o['(other groups)'] = rows.length - (lim || 50); return o; }
+function groupSet(t, f, q){ var o = {}; if (!_tbl(t) || !_fieldOk(t, f) || _badField(t, q)) return o; var ga = new GlideAggregate(t); if (q) ga.addEncodedQuery(q); ga.addAggregate('COUNT'); ga.groupBy(f); ga.query(); while (ga.next()) o[ga.getValue(f)] = parseInt(ga.getAggregate('COUNT'), 10); return o; }
+function isNum(x){ return typeof x === 'number' &amp;&amp; !isNaN(x); }
+function diff(a, b){ return (isNum(a) &amp;&amp; isNum(b)) ? a - b : 'n/a'; }
+function pct(t, q, base){ var b = count(t, base); if (!isNum(b) || !b) return isNum(b) ? 0 : b; var c = count(t, base ? base + '^' + q : q); return isNum(c) ? Math.round(100 * c / b) : c; }
+function hasField(t, f){ return _tbl(t) &amp;&amp; _fieldOk(t, f); }
+function dsbPrint(key, out){ if (DSB_NOTES.length) out.dsb_notes = DSB_NOTES; var LIM = 60000; var s = JSON.stringify(out, null, 1); if (s.length &gt; LIM) s = JSON.stringify(out); var cut = [], loops = 0; while (s.length &gt; LIM &amp;&amp; loops++ &lt; 60) { var bigK = null, bigL = 0; for (var k in out) { if (k === 'key' || k === 'dsb_truncated' || !out[k] || typeof out[k] !== 'object') continue; var l = JSON.stringify(out[k]).length; if (l &gt; bigL) { bigL = l; bigK = k; } } if (!bigK) break; var v = out[bigK]; if (Object.prototype.toString.call(v) === '[object Array]' &amp;&amp; v.length &gt; 10) { out[bigK] = v.slice(0, Math.floor(v.length / 2)); cut.push(bigK + ' kept ' + out[bigK].length + ' of ' + v.length); } else { out[bigK] = 'omitted: ' + bigL + ' characters'; cut.push(bigK + ' omitted'); } out.dsb_truncated = cut; s = JSON.stringify(out); } gs.print('=== DSB-EVIDENCE ' + key + ' ===\n' + s); }
+var MAX_ROWS = 5000;
+var LAST90 = 'sys_created_onRELATIVEGT@dayofweek@ago@90';
+gs.print('=== DSB-EVIDENCE ps.compliance ===\n' + JSON.stringify({key:'ps.compliance',
+  instance_name: gs.getProperty('instance_name', '(not set)'),
+  archive_rules: count('sys_archive', 'active=true'), destroy_rules: count('sys_archive_destroy', 'active=true'),
+  data_privacy_policies: count('sys_data_policy2', 'active=true'),
+  encryption_contexts: count('sys_encryption_context'),
+  audited_tables_exclusions: gs.getProperty('glide.ui.audit_deleted_tables', '(not set)'),
+  ip_access_rules: count('ip_access', 'active=true'),
+  mfa_enabled: gs.getProperty('glide.authenticate.multifactor', '(not set)')}, null, 2));</body>
+    <data>{"key": "ps.compliance", "why": "Evidence for classification and records compliance", "unblocks": "Security and records design"}</data>
+    <kind>evidence_script</kind>
+    <pattern>628bf2891d554853993138856ccb4ef2</pattern>
+    <seq>2</seq>
+    <title>Security and records posture: data centre / instance properties, encryption, retention (archive/destroy rules), audit</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

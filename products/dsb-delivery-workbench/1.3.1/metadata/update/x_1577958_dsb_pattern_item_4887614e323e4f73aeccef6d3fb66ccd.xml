@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4887614e323e4f73aeccef6d3fb66ccd</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_4887614e323e4f73aeccef6d3fb66ccd</sys_update_name>
+    <body>Tickets, SLA, releases, health exceptions, upgrade calendar.</body>
+    <data>{"type": "Report / dashboard", "cls": "Configuration", "req": [4], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>8d97fa25f5114eb4b6ee61ef9fdc7882</pattern>
+    <seq>9</seq>
+    <title>Managed-service monthly report pack</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_section caption="History" section_id="272ecfa5838f4190b5ed889bce6b1ae3" sys_domain="global" table="x_1577958_dsb_engagement" view="">
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>12M.x_1577958_dsb_engagement.x_1577958_dsb_history.engagement</element>
+      <position>0</position>
+      <sys_id>365ee9b5b0ca41ad809ddddc8fe27315</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="History" display_value="History" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">272ecfa5838f4190b5ed889bce6b1ae3</sys_ui_section>
+      <sys_user/>
+      <type>list</type>
+    </sys_ui_element>
+    <sys_ui_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <caption>History</caption>
+      <header>false</header>
+      <name>x_1577958_dsb_engagement</name>
+      <roles/>
+      <sys_domain>global</sys_domain>
+      <sys_id>272ecfa5838f4190b5ed889bce6b1ae3</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <title>false</title>
+      <view_name/>
+      <view name="NULL" display_value="Default view">Default view</view>
+    </sys_ui_section>
+  </sys_ui_section>
+</record_update>

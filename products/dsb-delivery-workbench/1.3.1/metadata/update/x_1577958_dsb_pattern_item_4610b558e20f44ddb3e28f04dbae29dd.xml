@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4610b558e20f44ddb3e28f04dbae29dd</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_4610b558e20f44ddb3e28f04dbae29dd</sys_update_name>
+    <body>Given an emergency affecting a region, When the crisis manager creates an outreach, Then recipients are selected by location/group and the message is sent through the configured channels</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>feb9570f3df64d249bd135c8a0a1bfa2</pattern>
+    <seq>0</seq>
+    <title>The crisis team can send targeted outreach by location, group or custom list</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

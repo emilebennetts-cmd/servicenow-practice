@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>8d470f8e19254a0dac98d31c3288e5ed</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_8d470f8e19254a0dac98d31c3288e5ed</sys_update_name>
+    <body>Given sensitive data patterns are configured, When a prompt contains them, Then they are masked before leaving the instance
+Given a skill is enabled, When its configuration is reviewed, Then roles, tables and human-review requirement match the AI governance register</body>
+    <data>{"type": "Security / Access", "moscow": "Must", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>0516e578c5dd4dfda26e406e0d0f601d</pattern>
+    <seq>6</seq>
+    <title>AI guardrails are defined and enforced (data privacy, human review, scope)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

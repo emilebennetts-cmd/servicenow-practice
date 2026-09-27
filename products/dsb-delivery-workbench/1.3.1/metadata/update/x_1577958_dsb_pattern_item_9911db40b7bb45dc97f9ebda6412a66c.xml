@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>9911db40b7bb45dc97f9ebda6412a66c</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_9911db40b7bb45dc97f9ebda6412a66c</sys_update_name>
+    <body>Given the dashboard, When opened, Then open PIAs, DSAR timeliness, breach assessments and classification coverage are shown</body>
+    <data>{"type": "Reporting", "moscow": "Should", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>a828e5429bda4f57b75d7e4a3331f23f</pattern>
+    <seq>6</seq>
+    <title>Privacy posture is reported to the privacy officer</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

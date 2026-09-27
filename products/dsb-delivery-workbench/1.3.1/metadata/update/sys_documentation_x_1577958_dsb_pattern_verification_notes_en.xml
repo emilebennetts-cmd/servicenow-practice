@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>e22ca1e13e2c401c958123b5eecf8582</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_pattern_verification_notes_en</sys_update_name>
+    <element>verification_notes</element>
+    <help/>
+    <hint/>
+    <label>Verification notes (names corrected, not found)</label>
+    <language>en</language>
+    <name>x_1577958_dsb_pattern</name>
+    <plural>Verification notes (names corrected, not found)</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

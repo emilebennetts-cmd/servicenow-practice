@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>878d881a9312472a83cab0ccf2d62820</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_878d881a9312472a83cab0ccf2d62820</sys_update_name>
+    <body>Reusable criteria for services, knowledge and content.</body>
+    <data>{"type": "Knowledge base / content", "cls": "Configuration", "req": [6, 1], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>6</seq>
+    <title>HR criteria for audience targeting (country, entity, employment type)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

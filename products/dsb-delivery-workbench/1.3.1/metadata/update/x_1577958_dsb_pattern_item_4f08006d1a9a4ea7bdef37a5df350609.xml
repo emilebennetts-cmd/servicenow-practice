@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4f08006d1a9a4ea7bdef37a5df350609</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_4f08006d1a9a4ea7bdef37a5df350609</sys_update_name>
+    <body>var SKIP_BUSINESS_RULES = false; // DSB: true also suppresses audit history, notifications and engines. Record the reason in the engagement decision log before changing.
+// DSB IMPLEMENTATION ownership-backfill — DATA CHANGING. DRY RUN unless DRY_RUN = false.
+var DRY_RUN = true;
+var TABLE = 'cmdb_ci_computer';            // &lt;confirm&gt; in-scope class
+var MAP = {                                 // serial_number : support group name — from the client ownership register
+  // 'ABC123': 'Desktop Support',
+};
+var stats = {checked:0, would_change:0, changed:0, group_missing:[], ci_missing:[]};
+var groups = {};
+Object.keys(MAP).forEach(function(sn){ var g = MAP[sn]; if (groups[g] !== undefined) return; var gr = new GlideRecord('sys_user_group'); gr.addQuery('name', g); gr.addQuery('active', true); gr.query(); groups[g] = gr.next() ? gr.getUniqueValue() : null; if (!groups[g]) stats.group_missing.push(g); });
+Object.keys(MAP).forEach(function(sn){
+  var gid = groups[MAP[sn]]; if (!gid) return;
+  var ci = new GlideRecord(TABLE); ci.addQuery('serial_number', sn); ci.query();
+  if (!ci.next()) { stats.ci_missing.push(sn); return; }
+  stats.checked++;
+  if (ci.getValue('support_group') == gid) return;
+  gs.print((DRY_RUN ? '[DRY RUN] ' : '') + ci.getValue('name') + ' (' + sn + '): support_group ' + (ci.getDisplayValue('support_group') || '(empty)') + ' -&gt; ' + MAP[sn]);
+  stats.would_change++;
+  if (!DRY_RUN) { ci.setValue('support_group', gid); if (SKIP_BUSINESS_RULES) { ci.setWorkflow(false); } ci.update(); stats.changed++; }
+});
+gs.print('=== DSB-IMPL ownership-backfill ===\n' + JSON.stringify(stats, null, 2));</body>
+    <data>{"kind": "script", "purpose": "Fallback when an import set is not practical. Sets support_group on in-scope CIs from a serial→group map. Prints what it would change; only writes when DRY_RUN=false.", "prereqs": "Run in sub-prod first. Group names must exist in sys_user_group. Take a CMDB export of the affected class before running in production.", "rollback": "The script prints old and new values per CI — keep the output; reverse by setting the old value, or restore from the export."}</data>
+    <kind>implementation</kind>
+    <modifies_data>true</modifies_data>
+    <pattern>9ad6efafe3d645c1bce9ff6b75af7152</pattern>
+    <seq>1</seq>
+    <title>Ownership backfill — support group by serial number (DRY RUN by default)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

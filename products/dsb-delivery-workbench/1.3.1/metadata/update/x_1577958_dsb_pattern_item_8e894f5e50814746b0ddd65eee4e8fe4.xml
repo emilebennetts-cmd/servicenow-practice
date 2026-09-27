@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>8e894f5e50814746b0ddd65eee4e8fe4</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_8e894f5e50814746b0ddd65eee4e8fe4</sys_update_name>
+    <body>Verification, tasks to system owners, timers.</body>
+    <data>{"type": "Flow / subflow", "cls": "Out of the box", "req": [2], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>a828e5429bda4f57b75d7e4a3331f23f</pattern>
+    <seq>2</seq>
+    <title>Data subject request intake and fulfilment</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>8ce541e53b814339bf35e4c16fa680bc</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_8ce541e53b814339bf35e4c16fa680bc</sys_update_name>
+    <body>Drives integration effort and licensing.</body>
+    <data>{}</data>
+    <kind>decision</kind>
+    <pattern>4874dc995cad4b3cb3bda8c29e4e0be8</pattern>
+    <seq>2</seq>
+    <title>Telephony approach: OpenFrame/CTI partner, native voice or out of scope</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

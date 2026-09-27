@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>21af65986e604a99bb4221a81e7e117c</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_21af65986e604a99bb4221a81e7e117c</sys_update_name>
+    <body>Given an employee searches "desk booking" or "contract review", When results display, Then the correct department service and knowledge are shown</body>
+    <data>{"type": "UI / Experience", "moscow": "Must", "persona": "End user"}</data>
+    <kind>requirement</kind>
+    <pattern>f57c6db779734f4ea34b1ec5d8dedf38</pattern>
+    <seq>0</seq>
+    <title>Employees request department services from Employee Center through one taxonomy</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

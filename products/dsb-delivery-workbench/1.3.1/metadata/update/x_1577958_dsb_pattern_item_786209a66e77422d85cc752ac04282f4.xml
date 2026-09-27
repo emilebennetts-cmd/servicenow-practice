@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>786209a66e77422d85cc752ac04282f4</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_786209a66e77422d85cc752ac04282f4</sys_update_name>
+    <body>Group role grants (sys_group_has_role) ARE captured in update sets — confirm the intended grants before completing the set; group membership is data
+Restricted HR service configuration
+Any additional ACLs (avoid; justify)</body>
+    <data>{"key": "SEC", "scope": "sn_hr_core"}</data>
+    <kind>update_set</kind>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>0</seq>
+    <title>HRSD_Security_&lt;client&gt;_v1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

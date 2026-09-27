@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>dda03e86e095457d8626c97e1460057d</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_dda03e86e095457d8626c97e1460057d</sys_update_name>
+    <body>Given the duplicate detection job runs, When duplicates by serial number exist, Then de-duplication tasks are created and worked to closure</body>
+    <data>{"type": "Data", "moscow": "Should", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>9ad6efafe3d645c1bce9ff6b75af7152</pattern>
+    <seq>7</seq>
+    <share_key>cmdb.dupes</share_key>
+    <title>Duplicate CIs in the in-scope classes are identified and remediated</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

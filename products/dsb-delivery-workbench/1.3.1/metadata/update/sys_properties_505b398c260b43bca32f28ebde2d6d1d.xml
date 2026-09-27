@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<record_update table="sys_properties">
+  <sys_properties action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>505b398c260b43bca32f28ebde2d6d1d</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_properties_505b398c260b43bca32f28ebde2d6d1d</sys_update_name>
+    <choices/>
+    <description>Express path upper limit (estimate hours).</description>
+    <ignore_cache>false</ignore_cache>
+    <is_private>false</is_private>
+    <name>x_1577958_dsb.path.express_max_hours</name>
+    <read_roles>x_1577958_dsb.user</read_roles>
+    <suffix>path.express_max_hours</suffix>
+    <type>string</type>
+    <value>16</value>
+    <write_roles>x_1577958_dsb.admin</write_roles>
+  </sys_properties>
+</record_update>

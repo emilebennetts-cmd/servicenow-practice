@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>e2cffed8c61c452a8d1cd21db5e0e6bb</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_e2cffed8c61c452a8d1cd21db5e0e6bb</sys_update_name>
+    <body>Search/report impact and licensing.</body>
+    <data>{}</data>
+    <kind>decision</kind>
+    <pattern>a828e5429bda4f57b75d7e4a3331f23f</pattern>
+    <seq>1</seq>
+    <title>Encryption approach for sensitive fields</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

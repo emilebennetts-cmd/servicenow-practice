@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>9f3139a1b21e412ab680399ac1b36771</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_decision_context_en</sys_update_name>
+    <element>context</element>
+    <help/>
+    <hint/>
+    <label>Context</label>
+    <language>en</language>
+    <name>x_1577958_dsb_decision</name>
+    <plural>Contexts</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

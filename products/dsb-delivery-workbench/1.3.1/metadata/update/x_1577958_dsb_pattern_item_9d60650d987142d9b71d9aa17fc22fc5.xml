@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>9d60650d987142d9b71d9aa17fc22fc5</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_9d60650d987142d9b71d9aa17fc22fc5</sys_update_name>
+    <body>First-time fix, utilisation, travel, SLA.</body>
+    <data>{"type": "Report / dashboard", "cls": "Configuration", "req": [6], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>5c6ec6aa57e140f986af5947553a8c3e</pattern>
+    <seq>9</seq>
+    <title>Field performance dashboard</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_section caption="Licensing and AI-assisted design" section_id="8e31b591674b43e8b77bb413b73f78ea" sys_domain="global" table="x_1577958_dsb_engagement" view="">
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>ai_consent</element>
+      <position>0</position>
+      <sys_id>6bd30d0e5e234a83aa72fd5556f08749</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Licensing and AI-assisted design" display_value="Licensing and AI-assisted design" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">8e31b591674b43e8b77bb413b73f78ea</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>ai_consent_ref</element>
+      <position>1</position>
+      <sys_id>e775d7635ec34b88b92df06ddb7f05e5</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Licensing and AI-assisted design" display_value="Licensing and AI-assisted design" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">8e31b591674b43e8b77bb413b73f78ea</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>licensing_source</element>
+      <position>2</position>
+      <sys_id>76866a9826bf43dab206577716ea6d4a</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Licensing and AI-assisted design" display_value="Licensing and AI-assisted design" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">8e31b591674b43e8b77bb413b73f78ea</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <caption>Licensing and AI-assisted design</caption>
+      <header>false</header>
+      <name>x_1577958_dsb_engagement</name>
+      <roles/>
+      <sys_domain>global</sys_domain>
+      <sys_id>8e31b591674b43e8b77bb413b73f78ea</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <title>false</title>
+      <view_name/>
+      <view name="NULL" display_value="Default view">Default view</view>
+    </sys_ui_section>
+  </sys_ui_section>
+</record_update>

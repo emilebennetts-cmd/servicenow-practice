@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>71e5b2cbaa104e22bb62598d89a951d8</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_71e5b2cbaa104e22bb62598d89a951d8</sys_update_name>
+    <body>Given the Tenable integration has run, When vulnerable items are reviewed, Then at least &lt;target %&gt; reference a CI that is not unclassed hardware
+Given an asset in scope, When it is scanned by Tenable, Then the discovered item is matched by a CI lookup rule on the first run</body>
+    <data>{"type": "Data", "moscow": "Must", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>9ad6efafe3d645c1bce9ff6b75af7152</pattern>
+    <seq>0</seq>
+    <title>Vulnerable items match to a CMDB CI for the agreed proportion of ingested Tenable assets</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

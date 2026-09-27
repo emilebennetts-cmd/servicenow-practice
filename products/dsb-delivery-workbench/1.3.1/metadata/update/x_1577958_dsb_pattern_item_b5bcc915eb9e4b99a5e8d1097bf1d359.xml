@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>b5bcc915eb9e4b99a5e8d1097bf1d359</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_b5bcc915eb9e4b99a5e8d1097bf1d359</sys_update_name>
+    <data>{"type": "Internal"}</data>
+    <kind>dependency</kind>
+    <pattern>a828e5429bda4f57b75d7e4a3331f23f</pattern>
+    <seq>2</seq>
+    <title>CSDM business applications (see CMDB/CSDM pattern)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>bb06795a17e748e18049ca7109d9000f</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_bb06795a17e748e18049ca7109d9000f</sys_update_name>
+    <body>Integration configuration (credentials per environment)</body>
+    <data>{"key": "INT", "scope": "integration app scopes"}</data>
+    <kind>update_set</kind>
+    <pattern>9502ffca8cf0439989ddf6b7b57dddea</pattern>
+    <seq>2</seq>
+    <title>SecOps_Integrations_&lt;client&gt;_v1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

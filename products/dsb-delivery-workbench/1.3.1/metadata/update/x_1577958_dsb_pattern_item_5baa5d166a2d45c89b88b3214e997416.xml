@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>5baa5d166a2d45c89b88b3214e997416</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_5baa5d166a2d45c89b88b3214e997416</sys_update_name>
+    <body>Agreed classes (e.g. cmdb_ci_computer / cmdb_ci_server subclasses) and which attributes are mandatory for matching. Documented, no schema change unless a class is missing.</body>
+    <data>{"type": "CMDB / IRE rule", "cls": "Configuration", "req": [1], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>9ad6efafe3d645c1bce9ff6b75af7152</pattern>
+    <seq>0</seq>
+    <share_key>cmp.class</share_key>
+    <title>CMDB class model decision for in-scope assets (Class Manager)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

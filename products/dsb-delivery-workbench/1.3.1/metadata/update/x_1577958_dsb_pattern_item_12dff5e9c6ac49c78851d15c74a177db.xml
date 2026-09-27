@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>12dff5e9c6ac49c78851d15c74a177db</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_12dff5e9c6ac49c78851d15c74a177db</sys_update_name>
+    <body>Account-level outage notifications.</body>
+    <data>{"type": "Notification", "cls": "Configuration", "req": [2], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>e96633990a4b4bd0a7aa9de3d4f7fa00</pattern>
+    <seq>4</seq>
+    <title>Proactive customer notification and case linkage</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

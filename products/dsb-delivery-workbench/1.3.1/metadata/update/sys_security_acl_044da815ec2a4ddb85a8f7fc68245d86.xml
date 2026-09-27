@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<record_update table="sys_security_acl">
+  <sys_security_acl action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>044da815ec2a4ddb85a8f7fc68245d86</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_security_acl_044da815ec2a4ddb85a8f7fc68245d86</sys_update_name>
+    <active>true</active>
+    <admin_overrides>true</admin_overrides>
+    <advanced>false</advanced>
+    <applies_to/>
+    <condition/>
+    <decision_type>allow</decision_type>
+    <description>Only DSB Workbench users can call the workbench API.</description>
+    <name>DSB Workbench API</name>
+    <operation display_value="execute">execute</operation>
+    <script/>
+    <security_attribute/>
+    <sys_name>DSB Workbench API</sys_name>
+    <type>REST_Endpoint</type>
+  </sys_security_acl>
+</record_update>

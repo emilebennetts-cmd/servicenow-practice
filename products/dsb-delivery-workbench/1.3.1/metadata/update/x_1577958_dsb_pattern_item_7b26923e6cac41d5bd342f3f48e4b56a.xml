@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>7b26923e6cac41d5bd342f3f48e4b56a</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_7b26923e6cac41d5bd342f3f48e4b56a</sys_update_name>
+    <body>Linked to business applications and data categories.</body>
+    <data>{"type": "Data load / reference data", "cls": "Out of the box", "req": [0], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>a828e5429bda4f57b75d7e4a3331f23f</pattern>
+    <seq>0</seq>
+    <title>Privacy register of processing activities</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

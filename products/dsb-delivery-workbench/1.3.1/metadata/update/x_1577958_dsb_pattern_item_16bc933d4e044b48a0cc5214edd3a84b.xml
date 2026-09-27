@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>16bc933d4e044b48a0cc5214edd3a84b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_16bc933d4e044b48a0cc5214edd3a84b</sys_update_name>
+    <body>Now Assist skills require it</body>
+    <data>{"validate": "Subscription Management + account team email"}</data>
+    <kind>assumption</kind>
+    <pattern>0516e578c5dd4dfda26e406e0d0f601d</pattern>
+    <seq>0</seq>
+    <title>Client holds Pro Plus / Enterprise Plus (or Now Assist add-on) for the in-scope workflow</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_section caption="Details" section_id="b77a02b98047481c83ad69a54abc6b36" sys_domain="global" table="x_1577958_dsb_entitlement" view="">
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.begin_split</element>
+      <position>0</position>
+      <sys_id>c55c0560c24e4f98b3bcdb85732eee81</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_entitlement" sys_domain="global" view="Default view">b77a02b98047481c83ad69a54abc6b36</sys_ui_section>
+      <sys_user/>
+      <type>.begin_split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>engagement</element>
+      <position>1</position>
+      <sys_id>6011d00574094a4ebaa3f35798ad2dc4</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_entitlement" sys_domain="global" view="Default view">b77a02b98047481c83ad69a54abc6b36</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>product</element>
+      <position>2</position>
+      <sys_id>90df95c6a876424e89083c3d99e9da38</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_entitlement" sys_domain="global" view="Default view">b77a02b98047481c83ad69a54abc6b36</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>status</element>
+      <position>3</position>
+      <sys_id>93c737753bc44c05879661de79819ca7</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_entitlement" sys_domain="global" view="Default view">b77a02b98047481c83ad69a54abc6b36</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.split</element>
+      <position>4</position>
+      <sys_id>1c047ed8d580419782f35ccbcf23f551</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_entitlement" sys_domain="global" view="Default view">b77a02b98047481c83ad69a54abc6b36</sys_ui_section>
+      <sys_user/>
+      <type>.split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>source</element>
+      <position>5</position>
+      <sys_id>a9d1d4161f1a43c28549b5b9d3c8a3a4</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_entitlement" sys_domain="global" view="Default view">b77a02b98047481c83ad69a54abc6b36</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>needed_by_pattern</element>
+      <position>6</position>
+      <sys_id>a70fe947e2a04cdda2ad4979ff6796c5</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_entitlement" sys_domain="global" view="Default view">b77a02b98047481c83ad69a54abc6b36</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.end_split</element>
+      <position>7</position>
+      <sys_id>e371c4a371204355b7dbd9548e854d42</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_entitlement" sys_domain="global" view="Default view">b77a02b98047481c83ad69a54abc6b36</sys_ui_section>
+      <sys_user/>
+      <type>.end_split</type>
+    </sys_ui_element>
+    <sys_ui_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <caption>Details</caption>
+      <header>false</header>
+      <name>x_1577958_dsb_entitlement</name>
+      <roles/>
+      <sys_domain>global</sys_domain>
+      <sys_id>b77a02b98047481c83ad69a54abc6b36</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <title>false</title>
+      <view_name/>
+      <view name="NULL" display_value="Default view">Default view</view>
+    </sys_ui_section>
+  </sys_ui_section>
+</record_update>

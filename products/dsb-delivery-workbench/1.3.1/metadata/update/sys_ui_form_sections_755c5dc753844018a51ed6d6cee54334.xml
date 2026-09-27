@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_form_sections form_id="755c5dc753844018a51ed6d6cee54334" sys_domain="global" table="x_1577958_dsb_evidence_tmpl">
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>0</position>
+      <sys_id>b32d903e372f4d338e5117d305441bf7</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_evidence_tmpl" name="x_1577958_dsb_evidence_tmpl" sys_domain="global" view="Default view">755c5dc753844018a51ed6d6cee54334</sys_ui_form>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_evidence_tmpl" sys_domain="global" view="Default view">8d37cac91ba348dd8f91f080fc0d3900</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form action="INSERT_OR_UPDATE" apply_defaults="true">
+      <name>x_1577958_dsb_evidence_tmpl</name>
+      <roles/>
+      <sys_id>755c5dc753844018a51ed6d6cee54334</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <view name="NULL" display_value="Default view">Default view</view>
+      <view_name/>
+    </sys_ui_form>
+  </sys_ui_form_sections>
+</record_update>

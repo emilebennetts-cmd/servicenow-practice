@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_form_sections form_id="b91c3016f54f42dabef22903ce247853" sys_domain="global" table="x_1577958_dsb_release">
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>0</position>
+      <sys_id>573cde2d76314db282c1132694f1060f</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_release" name="x_1577958_dsb_release" sys_domain="global" view="Default view">b91c3016f54f42dabef22903ce247853</sys_ui_form>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_release" sys_domain="global" view="Default view">eb110340c2994c50aa093b65e92bace5</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>1</position>
+      <sys_id>77b813e2268a4b9e96d386691e4bf05a</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_release" name="x_1577958_dsb_release" sys_domain="global" view="Default view">b91c3016f54f42dabef22903ce247853</sys_ui_form>
+      <sys_ui_section caption="Update sets" display_value="Update sets" name="x_1577958_dsb_release" sys_domain="global" view="Default view">8c83d1b053044d3f81e5c8e727e89d9a</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form action="INSERT_OR_UPDATE" apply_defaults="true">
+      <name>x_1577958_dsb_release</name>
+      <roles/>
+      <sys_id>b91c3016f54f42dabef22903ce247853</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <view name="NULL" display_value="Default view">Default view</view>
+      <view_name/>
+    </sys_ui_form>
+  </sys_ui_form_sections>
+</record_update>

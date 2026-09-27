@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>db611b11ed974d30867184052ab23f31</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_db611b11ed974d30867184052ab23f31</sys_update_name>
+    <body>Given the platform health dashboard, When opened, Then skipped-record backlog, scan findings, ATF pass rate and release currency are shown over time</body>
+    <data>{"type": "Reporting", "moscow": "Should", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>93dbb3f9c9374c8b88cbf9fbbc6dee11</pattern>
+    <seq>8</seq>
+    <title>Technical-debt trend is reported to the platform owner</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

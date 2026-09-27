@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_section caption="Status (calculated)" section_id="da3c0400210646e7bd042fad94f8f0ea" sys_domain="global" table="x_1577958_dsb_engagement" view="">
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.begin_split</element>
+      <position>0</position>
+      <sys_id>ddfe54452c65410fa436a3fcedd18b34</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Status (calculated)" display_value="Status (calculated)" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">da3c0400210646e7bd042fad94f8f0ea</sys_ui_section>
+      <sys_user/>
+      <type>.begin_split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>readiness</element>
+      <position>1</position>
+      <sys_id>8702d4cef0f0495c825b8612e713aeef</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Status (calculated)" display_value="Status (calculated)" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">da3c0400210646e7bd042fad94f8f0ea</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>high_blockers</element>
+      <position>2</position>
+      <sys_id>fc3ff93729744a6ca75fbf6932935419</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Status (calculated)" display_value="Status (calculated)" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">da3c0400210646e7bd042fad94f8f0ea</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>next_action</element>
+      <position>3</position>
+      <sys_id>e977f07cd8ef49e685cffa86742a827b</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Status (calculated)" display_value="Status (calculated)" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">da3c0400210646e7bd042fad94f8f0ea</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>estimate_hours</element>
+      <position>4</position>
+      <sys_id>7a3efe5343584486aed20e7f95473ba3</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Status (calculated)" display_value="Status (calculated)" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">da3c0400210646e7bd042fad94f8f0ea</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.split</element>
+      <position>5</position>
+      <sys_id>a2050aeef15a437b84bf8d41b28fb4c7</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Status (calculated)" display_value="Status (calculated)" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">da3c0400210646e7bd042fad94f8f0ea</sys_ui_section>
+      <sys_user/>
+      <type>.split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>actual_hours</element>
+      <position>6</position>
+      <sys_id>2cf1223598964dc093ae60b1ef7a8bad</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Status (calculated)" display_value="Status (calculated)" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">da3c0400210646e7bd042fad94f8f0ea</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>gate_evaluated_on</element>
+      <position>7</position>
+      <sys_id>72b9b295efe04656a16de12fc0b0a77e</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Status (calculated)" display_value="Status (calculated)" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">da3c0400210646e7bd042fad94f8f0ea</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>library_version</element>
+      <position>8</position>
+      <sys_id>dda67c06981b49a1b682cc4d1aa657c7</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Status (calculated)" display_value="Status (calculated)" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">da3c0400210646e7bd042fad94f8f0ea</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>parent_engagement</element>
+      <position>9</position>
+      <sys_id>274fbd3c50834c978c4e84672cdeaa2c</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Status (calculated)" display_value="Status (calculated)" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">da3c0400210646e7bd042fad94f8f0ea</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.end_split</element>
+      <position>10</position>
+      <sys_id>cca68d3ab82d4ff897889cca41b7e251</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Status (calculated)" display_value="Status (calculated)" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">da3c0400210646e7bd042fad94f8f0ea</sys_ui_section>
+      <sys_user/>
+      <type>.end_split</type>
+    </sys_ui_element>
+    <sys_ui_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <caption>Status (calculated)</caption>
+      <header>false</header>
+      <name>x_1577958_dsb_engagement</name>
+      <roles/>
+      <sys_domain>global</sys_domain>
+      <sys_id>da3c0400210646e7bd042fad94f8f0ea</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <title>false</title>
+      <view_name/>
+      <view name="NULL" display_value="Default view">Default view</view>
+    </sys_ui_section>
+  </sys_ui_section>
+</record_update>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>77af8d66195b47c9a04ead1ff1445a88</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_77af8d66195b47c9a04ead1ff1445a88</sys_update_name>
+    <body>Scripted REST ACLs and REST API access policies.</body>
+    <data>{"type": "ACL", "cls": "Configuration", "req": [4], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>034d05e2e2bc499f95be7ad7aa17f020</pattern>
+    <seq>4</seq>
+    <title>Inbound API security: OAuth, ACLs, IP access control, rate limits</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

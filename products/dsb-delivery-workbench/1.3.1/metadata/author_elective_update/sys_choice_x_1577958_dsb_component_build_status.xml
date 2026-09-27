@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_choice_set action="INSERT_OR_UPDATE" field="build_status" table="x_1577958_dsb_component" version="3" apply_defaults="true">
+    <sys_choice_set action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>19b649c7175b416e8e13fa49771eeffa</sys_id>
+      <element>build_status</element>
+      <sys_update_name>sys_choice_x_1577958_dsb_component_build_status</sys_update_name>
+      <name>x_1577958_dsb_component</name>
+      <sys_class_name>sys_choice_set</sys_class_name>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_package display_value="x_1577958_dsb" source="17aff6423fa94ebabea0896ca9bb2ea3">17aff6423fa94ebabea0896ca9bb2ea3</sys_package>
+      <sys_name>build_status</sys_name>
+    </sys_choice_set>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>92f7baaffc1c43138161d53d58d66c85</sys_id>
+      <name>x_1577958_dsb_component</name>
+      <element>build_status</element>
+      <label>Not started</label>
+      <value>not_started</value>
+      <sequence>10</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>e84b47a852574d40ac5a361931ee9d4b</sys_id>
+      <name>x_1577958_dsb_component</name>
+      <element>build_status</element>
+      <label>In progress</label>
+      <value>in_progress</value>
+      <sequence>20</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>c1944e38570442e696721ede8ecfd558</sys_id>
+      <name>x_1577958_dsb_component</name>
+      <element>build_status</element>
+      <label>Built</label>
+      <value>built</value>
+      <sequence>30</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>aaabf11621b9451fbe66367a77e4e0a9</sys_id>
+      <name>x_1577958_dsb_component</name>
+      <element>build_status</element>
+      <label>Peer reviewed</label>
+      <value>reviewed</value>
+      <sequence>40</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+  </sys_choice_set>
+</record_update>

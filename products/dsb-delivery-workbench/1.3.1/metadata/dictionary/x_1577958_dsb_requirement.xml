@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<database>
+  <element name="x_1577958_dsb_requirement" type="collection" label="UDW Requirement" is_extendable="false" text_index="false" read_only="false" audit="true" display="title" access="public" caller_access="0" ws_access="true" scriptable_table="false" attributes="">
+    <element name="number" type="string" active="true" array="false" audit="false" default_value="javascript:global.getNextObjNumberPadded();" unique="false" label="Number" mandatory="false" read_only="true" read_only_option="instance_configured" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Numbers"/>
+    <element name="engagement" type="reference" active="true" array="false" audit="false" unique="false" label="Engagement" mandatory="true" read_only="false" reference_cascade_rule="delete" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" reference="x_1577958_dsb_engagement" plural="Engagements"/>
+    <element name="outcome" type="reference" active="true" array="false" audit="false" unique="false" label="Business outcome" mandatory="false" read_only="false" reference_cascade_rule="clear" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" reference="x_1577958_dsb_outcome" plural="Business outcomes"/>
+    <element name="title" type="string" active="true" array="false" audit="false" unique="false" label="Requirement" max_length="400" mandatory="true" read_only="false" choice="0" display="true" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Requirements"/>
+    <element name="req_type" type="choice" active="true" array="false" audit="false" default_value="process" unique="false" label="Type" mandatory="false" read_only="false" choice="3" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Types">
+      <choice>
+        <element value="process" label="Process" inactive="false" inactive_on_update="false" sequence="10" language="en"/>
+        <element value="data" label="Data" inactive="false" inactive_on_update="false" sequence="20" language="en"/>
+        <element value="integration" label="Integration" inactive="false" inactive_on_update="false" sequence="30" language="en"/>
+        <element value="ui" label="UI / Experience" inactive="false" inactive_on_update="false" sequence="40" language="en"/>
+        <element value="reporting" label="Reporting" inactive="false" inactive_on_update="false" sequence="50" language="en"/>
+        <element value="security" label="Security / Access" inactive="false" inactive_on_update="false" sequence="60" language="en"/>
+        <element value="nfr" label="Non-functional" inactive="false" inactive_on_update="false" sequence="70" language="en"/>
+      </choice>
+    </element>
+    <element name="moscow" type="choice" active="true" array="false" audit="false" default_value="must" unique="false" label="MoSCoW" mandatory="false" read_only="false" choice="3" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="MoSCoWs">
+      <choice>
+        <element value="must" label="Must" inactive="false" inactive_on_update="false" sequence="10" language="en"/>
+        <element value="should" label="Should" inactive="false" inactive_on_update="false" sequence="20" language="en"/>
+        <element value="could" label="Could" inactive="false" inactive_on_update="false" sequence="30" language="en"/>
+        <element value="wont" label="Won't (this release)" inactive="false" inactive_on_update="false" sequence="40" language="en"/>
+      </choice>
+    </element>
+    <element name="persona" type="string" active="true" array="false" audit="false" unique="false" label="Persona" max_length="60" mandatory="false" read_only="false" choice="2" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Personas">
+      <choice>
+        <element value="end_user" label="End user" sequence="1" language="en"/>
+        <element value="fulfiller" label="Fulfiller" sequence="2" language="en"/>
+        <element value="approver" label="Approver" sequence="3" language="en"/>
+        <element value="manager" label="Manager" sequence="4" language="en"/>
+        <element value="administrator" label="Administrator" sequence="5" language="en"/>
+        <element value="integration" label="Integration / system" sequence="6" language="en"/>
+      </choice>
+    </element>
+    <element name="acceptance_criteria" type="multi_two_lines" active="true" array="false" audit="false" unique="false" label="Acceptance criteria (Given / When / Then, one per line)" max_length="8000" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Acceptance criteria (Given / When / Then, one per line)"/>
+    <element name="fit" type="choice" active="true" array="false" audit="false" default_value="unassessed" unique="false" label="Fit" mandatory="false" read_only="false" choice="3" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Fits">
+      <choice>
+        <element value="unassessed" label="Unassessed" inactive="false" inactive_on_update="false" sequence="10" language="en"/>
+        <element value="oob" label="Out of the box" inactive="false" inactive_on_update="false" sequence="20" language="en"/>
+        <element value="configuration" label="Configuration" inactive="false" inactive_on_update="false" sequence="30" language="en"/>
+        <element value="customisation" label="Customisation" inactive="false" inactive_on_update="false" sequence="40" language="en"/>
+        <element value="integration" label="Integration" inactive="false" inactive_on_update="false" sequence="50" language="en"/>
+        <element value="not_feasible" label="Not feasible" inactive="false" inactive_on_update="false" sequence="60" language="en"/>
+      </choice>
+    </element>
+    <element name="capability" type="string" active="true" array="false" audit="false" unique="false" label="Platform capability / plugin" max_length="300" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Platform capability / plugins"/>
+    <element name="solution_note" type="multi_two_lines" active="true" array="false" audit="false" unique="false" label="How it will be met" max_length="4000" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="How it will be mets"/>
+    <element name="licensing" type="choice" active="true" array="false" audit="false" default_value="confirm" unique="false" label="Licensing" mandatory="false" read_only="false" choice="3" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Licensings">
+      <choice>
+        <element value="none" label="None (entitled)" inactive="false" inactive_on_update="false" sequence="10" language="en"/>
+        <element value="confirm" label="Confirm" inactive="false" inactive_on_update="false" sequence="20" language="en"/>
+        <element value="required" label="Required (purchase)" inactive="false" inactive_on_update="false" sequence="30" language="en"/>
+      </choice>
+    </element>
+    <element name="justification" type="multi_two_lines" active="true" array="false" audit="false" unique="false" label="Customisation justification" max_length="4000" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Customisation justifications"/>
+    <element name="architect_reviewed" type="boolean" active="true" array="false" audit="false" default_value="false" unique="false" label="Architect reviewed (custom/integration)" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Architect reviewed (custom/integration)"/>
+    <element name="acceptance" type="choice" active="true" array="false" audit="false" default_value="pending" unique="false" label="Client acceptance" mandatory="false" read_only="false" choice="3" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Client acceptances">
+      <choice>
+        <element value="pending" label="Pending" inactive="false" inactive_on_update="false" sequence="10" language="en"/>
+        <element value="accepted" label="Accepted" inactive="false" inactive_on_update="false" sequence="20" language="en"/>
+        <element value="rejected" label="Rejected" inactive="false" inactive_on_update="false" sequence="30" language="en"/>
+      </choice>
+    </element>
+    <element name="acceptance_ref" type="string" active="true" array="false" audit="false" unique="false" label="Acceptance reference" max_length="200" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Acceptance references"/>
+    <element name="pattern_key" type="string" active="true" array="false" audit="false" unique="false" label="Seeded by pattern" max_length="60" mandatory="false" read_only="true" read_only_option="instance_configured" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Seeded by patterns"/>
+    <element name="share_key" type="string" active="true" array="false" audit="false" unique="false" label="Shared key" max_length="60" mandatory="false" read_only="true" read_only_option="instance_configured" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Shared keys"/>
+    <element name="seeded" type="boolean" active="true" array="false" audit="false" default_value="false" unique="false" label="Seeded, not yet edited" mandatory="false" read_only="true" read_only_option="instance_configured" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Seeded, not yet edited"/>
+  </element>
+</database>

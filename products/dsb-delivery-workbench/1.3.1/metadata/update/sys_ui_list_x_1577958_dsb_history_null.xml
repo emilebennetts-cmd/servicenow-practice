@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_list table="x_1577958_dsb_history" parent="" relationship="" sys_domain="global" view="">
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>ac6be484344c498db20179fd7595234d</sys_id>
+      <list_id display_value="x_1577958_dsb_history" name="x_1577958_dsb_history" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">4f978493886c41309e0a746aa47981e2</list_id>
+      <element>sys_created_on</element>
+      <position>0</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>7704906ff0f24548ab73f4a027b17b25</sys_id>
+      <list_id display_value="x_1577958_dsb_history" name="x_1577958_dsb_history" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">4f978493886c41309e0a746aa47981e2</list_id>
+      <element>engagement</element>
+      <position>1</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>53abed0bae68478da88112f81bf60706</sys_id>
+      <list_id display_value="x_1577958_dsb_history" name="x_1577958_dsb_history" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">4f978493886c41309e0a746aa47981e2</list_id>
+      <element>action</element>
+      <position>2</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>d7964cb1f1394c209b4948f6ffd80c81</sys_id>
+      <list_id display_value="x_1577958_dsb_history" name="x_1577958_dsb_history" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">4f978493886c41309e0a746aa47981e2</list_id>
+      <element>record_number</element>
+      <position>3</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>f9046bd82244430aaab4c0a67cc16807</sys_id>
+      <list_id display_value="x_1577958_dsb_history" name="x_1577958_dsb_history" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">4f978493886c41309e0a746aa47981e2</list_id>
+      <element>detail</element>
+      <position>4</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>b1baed959f714bd7999645fb1fbfbc9c</sys_id>
+      <list_id display_value="x_1577958_dsb_history" name="x_1577958_dsb_history" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">4f978493886c41309e0a746aa47981e2</list_id>
+      <element>lifecycle_state</element>
+      <position>5</position>
+    </sys_ui_list_element>
+    <sys_ui_list action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>4f978493886c41309e0a746aa47981e2</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <view name="NULL">Default view</view>
+      <name>x_1577958_dsb_history</name>
+      <sys_domain>global</sys_domain>
+    </sys_ui_list>
+  </sys_ui_list>
+</record_update>

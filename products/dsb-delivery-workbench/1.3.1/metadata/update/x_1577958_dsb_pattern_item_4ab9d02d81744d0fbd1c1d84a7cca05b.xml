@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4ab9d02d81744d0fbd1c1d84a7cca05b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_4ab9d02d81744d0fbd1c1d84a7cca05b</sys_update_name>
+    <body>Task assignment</body>
+    <data>{"validate": "Owner list"}</data>
+    <kind>assumption</kind>
+    <pattern>708c573d6514412a95254bedf01bfc4a</pattern>
+    <seq>1</seq>
+    <title>Data owners are identifiable as platform users</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

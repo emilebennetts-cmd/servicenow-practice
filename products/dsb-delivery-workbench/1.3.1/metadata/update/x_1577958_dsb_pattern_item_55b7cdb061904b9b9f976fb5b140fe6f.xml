@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>55b7cdb061904b9b9f976fb5b140fe6f</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_55b7cdb061904b9b9f976fb5b140fe6f</sys_update_name>
+    <body>Impersonate
+Open a Catalog Item (SP)
+Set Variable Values (SP)
+Order Catalog Item (SP)
+Record Query
+Record Validation</body>
+    <data>{"req": 1, "note": null}</data>
+    <kind>atf</kind>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>1</seq>
+    <title>Catalogue item order creates approval and task</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

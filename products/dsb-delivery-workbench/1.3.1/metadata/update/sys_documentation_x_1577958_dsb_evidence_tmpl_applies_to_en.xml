@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>887f536ad0174f39a93c5c3f928a45fa</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_evidence_tmpl_applies_to_en</sys_update_name>
+    <element>applies_to</element>
+    <help/>
+    <hint/>
+    <label>Applies to</label>
+    <language>en</language>
+    <name>x_1577958_dsb_evidence_tmpl</name>
+    <plural>Applies to</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

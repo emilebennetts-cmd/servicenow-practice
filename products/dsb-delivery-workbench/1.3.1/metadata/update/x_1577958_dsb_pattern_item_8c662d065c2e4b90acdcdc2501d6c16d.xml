@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>8c662d065c2e4b90acdcdc2501d6c16d</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_8c662d065c2e4b90acdcdc2501d6c16d</sys_update_name>
+    <body>SAM reconciliation depends on install data</body>
+    <data>{"validate": "Evidence itam.software installs vs cmdb.classes computers"}</data>
+    <kind>assumption</kind>
+    <pattern>f0c40ed7d7ac4c1a957aafe864f1f114</pattern>
+    <seq>0</seq>
+    <title>Discovery or endpoint connectors populate software installs for in-scope devices</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

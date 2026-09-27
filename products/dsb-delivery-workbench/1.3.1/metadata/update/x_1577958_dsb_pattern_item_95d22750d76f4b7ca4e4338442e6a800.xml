@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>95d22750d76f4b7ca4e4338442e6a800</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_95d22750d76f4b7ca4e4338442e6a800</sys_update_name>
+    <body>Playbooks (Process Automation Designer) with activities, flows and approvals.</body>
+    <data>{"type": "Flow / subflow", "cls": "Configuration", "req": [2], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>9502ffca8cf0439989ddf6b7b57dddea</pattern>
+    <seq>5</seq>
+    <title>Playbooks for top incident categories</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

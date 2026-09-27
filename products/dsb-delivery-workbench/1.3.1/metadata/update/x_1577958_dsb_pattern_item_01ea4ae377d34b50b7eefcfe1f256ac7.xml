@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>01ea4ae377d34b50b7eefcfe1f256ac7</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_01ea4ae377d34b50b7eefcfe1f256ac7</sys_update_name>
+    <body>OOB topics adapted (password reset, access request, status check); fallback to live agent or ticket with transcript.</body>
+    <data>{"type": "OOB application configuration", "cls": "Configuration", "req": [3, 2], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>0516e578c5dd4dfda26e406e0d0f601d</pattern>
+    <seq>5</seq>
+    <title>Virtual Agent topics for the top contact drivers</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

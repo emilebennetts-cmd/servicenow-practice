@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern">
+  <x_1577958_dsb_pattern action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>7663f4d384ef408a8ba3062e8c27a96c</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_7663f4d384ef408a8ba3062e8c27a96c</sys_update_name>
+    <active>true</active>
+    <exclude_terms>[{"re": "security incident", "flags": "i"}]</exclude_terms>
+    <indicative_cases>168</indicative_cases>
+    <key>itsm-consolidation</key>
+    <library_version>1.5</library_version>
+    <licence_products>itsm</licence_products>
+    <min_hits>2</min_hits>
+    <name>ITSM consolidation and legacy service-desk migration</name>
+    <overview>Adopt, don't adapt. (1) Load the foundation first: users, groups, departments, locations and companies from the authoritative identity/HR source, plus a minimal CSDM service layer (business services and offerings) so incidents and requests carry a service. (2) Stand up Incident, Request, Problem, Change and Knowledge on OOB processes and states; configure, don't script. (3) Route with assignment rules / data lookups driven by service offering and category, backed by a rationalised group model (evidence itsm.routing). (4) Rationalise the catalogue to owned, used items and build fulfilment in Flow Designer, not legacy workflow. (5) Harmonise SLAs into one matrix with schedules and pause conditions. (6) Migrate open tickets only, with a source reference; archive closed history unless there is a regulatory need. (7) Put agents in Service Operations Workspace and managers on one dashboard. Anything customised in a legacy instance is re-assessed against OOB before it is rebuilt.</overview>
+    <pain>Agents swivel between tools; no single view of a user's tickets
+SLAs and priorities are calculated differently per tool, so performance reports are disputed
+Assignment groups and categories have grown organically — misrouting and reassignment loops
+Previous customisation makes upgrades slow and risky
+Knowledge is scattered and not linked to incidents, so first-contact resolution stays low</pain>
+    <phase>1</phase>
+    <requires/>
+    <strong_terms>[{"re": "\\bITSM\\b", "flags": "i"}, {"re": "service desk", "flags": "i"}, {"re": "incident management", "flags": "i"}]</strong_terms>
+    <summary>IT support runs across several tools (or an old, heavily customised ServiceNow instance). Tickets, SLAs and knowledge are fragmented, reporting is not trusted and every change to the tool is expensive. The pattern converges on out-of-the-box Incident, Request, Problem, Change and Knowledge on a clean data foundation (users, groups, locations, services), with a controlled historical-data decision rather than a full lift-and-shift.</summary>
+    <triggers>[{"re": "\\bITSM\\b", "flags": "i"}, {"re": "service desk", "flags": "i"}, {"re": "incident", "flags": "i"}, {"re": "\\brequest\\b|catalog", "flags": "i"}, {"re": "change (management|request)", "flags": "i"}, {"re": "legacy|remedy|cherwell|jira|ivanti|zendesk|multiple (tools|systems)", "flags": "i"}, {"re": "consolidat|migrat", "flags": "i"}, {"re": "\\bSLA\\b", "flags": "i"}, {"re": "tickets?", "flags": "i"}, {"re": "help ?desk", "flags": "i"}]</triggers>
+    <verified>false</verified>
+  </x_1577958_dsb_pattern>
+</record_update>

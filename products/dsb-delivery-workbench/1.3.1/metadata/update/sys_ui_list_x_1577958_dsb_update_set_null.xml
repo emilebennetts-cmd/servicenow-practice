@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_list table="x_1577958_dsb_update_set" parent="" relationship="" sys_domain="global" view="">
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>9a67ba73322243db92212d295e254494</sys_id>
+      <list_id display_value="x_1577958_dsb_update_set" name="x_1577958_dsb_update_set" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">2047b53cbfc9434993e3eb5306609b61</list_id>
+      <element>number</element>
+      <position>0</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>e0e82a7e589345e6a4bd42647afd520a</sys_id>
+      <list_id display_value="x_1577958_dsb_update_set" name="x_1577958_dsb_update_set" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">2047b53cbfc9434993e3eb5306609b61</list_id>
+      <element>engagement</element>
+      <position>1</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>1bcc9f407fe6403baa2dbab940542d95</sys_id>
+      <list_id display_value="x_1577958_dsb_update_set" name="x_1577958_dsb_update_set" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">2047b53cbfc9434993e3eb5306609b61</list_id>
+      <element>name</element>
+      <position>2</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>1d238eb3c2c8449c8c6773e7a42a0667</sys_id>
+      <list_id display_value="x_1577958_dsb_update_set" name="x_1577958_dsb_update_set" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">2047b53cbfc9434993e3eb5306609b61</list_id>
+      <element>target_scope</element>
+      <position>3</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>0b35f3ea8f054128ba5d7e7d8957a2f8</sys_id>
+      <list_id display_value="x_1577958_dsb_update_set" name="x_1577958_dsb_update_set" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">2047b53cbfc9434993e3eb5306609b61</list_id>
+      <element>status</element>
+      <position>4</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>47ecc6ffceb44e60b2c8325aefab52b1</sys_id>
+      <list_id display_value="x_1577958_dsb_update_set" name="x_1577958_dsb_update_set" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">2047b53cbfc9434993e3eb5306609b61</list_id>
+      <element>commit_order</element>
+      <position>5</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>34b380b1a1c545faac35db5b9acf43a6</sys_id>
+      <list_id display_value="x_1577958_dsb_update_set" name="x_1577958_dsb_update_set" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">2047b53cbfc9434993e3eb5306609b61</list_id>
+      <element>release</element>
+      <position>6</position>
+    </sys_ui_list_element>
+    <sys_ui_list action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>2047b53cbfc9434993e3eb5306609b61</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <view name="NULL">Default view</view>
+      <name>x_1577958_dsb_update_set</name>
+      <sys_domain>global</sys_domain>
+    </sys_ui_list>
+  </sys_ui_list>
+</record_update>

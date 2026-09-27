@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern">
+  <x_1577958_dsb_pattern action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>031fd78c2b3742d38dc20450125b3992</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_031fd78c2b3742d38dc20450125b3992</sys_update_name>
+    <active>true</active>
+    <exclude_terms>[]</exclude_terms>
+    <indicative_cases>60</indicative_cases>
+    <key>cmdb-csdm-foundation</key>
+    <library_version>1.5</library_version>
+    <licence_products>itom_visibility</licence_products>
+    <min_hits>2</min_hits>
+    <name>CMDB and CSDM foundation with Discovery / Service Graph</name>
+    <overview>Govern first, populate second, model third. (1) Agree governance: CMDB owner, class owners, data stewards, and a change process for the data model. (2) Scope CSDM to "Foundation" and "Crawl" first — foundation data, business applications, business services, offerings — with named owners. (3) Replace direct transforms with Service Graph Connectors, Discovery or IntegrationHub ETL so every write goes through the IRE; set identification rules per class (serial / object ID before name) and reconciliation precedence per attribute. (4) Model application services (manual, tag-based or Service Mapping) and relate business applications to them. (5) Turn on CMDB Health with agreed thresholds and CMDB Data Manager policies for stale CI retirement and attestation; de-duplicate through tasks. (6) Wire ITSM to the model: service offerings on incidents/changes, impact and conflict detection. (7) Report monthly to the governance forum. No custom CI tables unless a CSDM class genuinely does not exist.</overview>
+    <pain>Duplicate and stale CIs; nobody knows which source is right
+Services and applications are not modelled, so impact and change risk are guesswork
+Import sets write directly to CMDB tables, bypassing the IRE
+CIs have no owner or support group, so incidents and changes cannot be routed
+CMDB programmes stall because governance and ownership were never agreed</pain>
+    <phase>1</phase>
+    <requires/>
+    <strong_terms>[{"re": "\\bCMDB\\b", "flags": "i"}, {"re": "\\bCSDM\\b", "flags": "i"}]</strong_terms>
+    <summary>The CMDB exists but is not trusted: CIs are loaded from spreadsheets or several tools without identification rules, services and applications are not modelled to CSDM, ownership is missing, and nobody governs data quality. Incident, change and risk processes cannot use CI context. The pattern converges on a governed CMDB: agreed CSDM scope, authoritative sources via Discovery or Service Graph Connectors through the IRE, reconciliation precedence, CMDB Health thresholds with CMDB Data Manager policies, and a service model that ITSM uses.</summary>
+    <triggers>[{"re": "\\bCMDB\\b", "flags": "i"}, {"re": "\\bCSDM\\b", "flags": "i"}, {"re": "discovery|service graph|\\bSGC\\b", "flags": "i"}, {"re": "service mapping|application service", "flags": "i"}, {"re": "configuration item|\\bCIs?\\b", "flags": ""}, {"re": "duplicate|stale|data quality|health", "flags": "i"}, {"re": "business (service|application)", "flags": "i"}, {"re": "impact|dependency", "flags": "i"}, {"re": "asset data|data quality", "flags": "i"}, {"re": "services? (map|model)", "flags": "i"}]</triggers>
+    <verified>false</verified>
+  </x_1577958_dsb_pattern>
+</record_update>

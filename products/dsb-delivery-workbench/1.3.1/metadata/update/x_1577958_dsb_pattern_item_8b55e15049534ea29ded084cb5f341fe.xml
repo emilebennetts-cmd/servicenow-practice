@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>8b55e15049534ea29ded084cb5f341fe</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_8b55e15049534ea29ded084cb5f341fe</sys_update_name>
+    <body>Needed for coalesce and reconciliation</body>
+    <data>{"validate": "Sample extract from the source tool"}</data>
+    <kind>assumption</kind>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>1</seq>
+    <title>Legacy tool can export open tickets with a stable unique reference</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

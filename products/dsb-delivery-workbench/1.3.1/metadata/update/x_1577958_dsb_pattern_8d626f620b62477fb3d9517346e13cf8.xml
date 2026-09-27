@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern">
+  <x_1577958_dsb_pattern action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>8d626f620b62477fb3d9517346e13cf8</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_8d626f620b62477fb3d9517346e13cf8</sys_update_name>
+    <active>true</active>
+    <exclude_terms>[]</exclude_terms>
+    <indicative_cases>18</indicative_cases>
+    <key>s2p-procurement</key>
+    <library_version>1.5</library_version>
+    <licence_products>s2p,integrationhub</licence_products>
+    <min_hits>2</min_hits>
+    <name>Source-to-pay and procurement operations</name>
+    <overview>ServiceNow engages, the ERP records. (1) Guided buying intake in Employee Center routing to catalogue, preferred supplier or sourcing. (2) Purchase request approvals by budget/amount, then requisition/PO creation in the ERP via spoke or API; ERP numbers written back. (3) Supplier Lifecycle Operations for onboarding: supplier portal questionnaire, risk/compliance checks (link to IRM vendor risk where licensed), ERP supplier creation on approval. (4) Accounts Payable Operations for invoice exceptions and supplier queries as cases with SLAs. (5) Master data synchronised by ERP ID only; no parallel financial records. (6) Dashboards for cycle time, onboarding time and exception ageing.</overview>
+    <pain>Requesters email procurement; no guided buying
+Supplier onboarding takes weeks with manual risk checks
+Invoice exceptions handled by email between AP, buyers and approvers
+No visibility of procurement workload or cycle time
+Point tools duplicate ERP data</pain>
+    <phase>3</phase>
+    <requires>integration-hub</requires>
+    <strong_terms>[{"re": "procure|supplier|accounts payable|invoice", "flags": "i"}]</strong_terms>
+    <summary>Procurement and accounts payable teams juggle suppliers, contracts, portals, email and spreadsheets around the ERP. Requesters do not know how to buy, supplier onboarding is slow and risky, and invoice exceptions bounce between teams. The pattern converges on the ServiceNow procurement and finance operations layer — Procurement Service Management / Sourcing and Procurement Operations, Supplier Lifecycle Operations and Accounts Payable Operations where licensed — as the engagement layer over the ERP, which stays the system of record for POs, invoices and payments.</summary>
+    <triggers>[{"re": "source.to.pay|\\bS2P\\b|procure.to.pay|\\bP2P\\b", "flags": "i"}, {"re": "procurement|purchasing|purchase (order|request|requisition)|sourcing", "flags": "i"}, {"re": "supplier|vendor (onboarding|management|lifecycle)", "flags": "i"}, {"re": "accounts payable|invoice|\\bAP\\b", "flags": "i"}, {"re": "SAP Ariba|Coupa|Oracle|\\bSAP\\b|\\bERP\\b", "flags": "i"}, {"re": "spend|contract", "flags": "i"}]</triggers>
+    <verified>false</verified>
+  </x_1577958_dsb_pattern>
+</record_update>

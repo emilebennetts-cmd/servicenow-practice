@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>42d7c44a688c4b5fa4e0d20480b2c7b2</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_defect_workaround_en</sys_update_name>
+    <element>workaround</element>
+    <help/>
+    <hint/>
+    <label>Workaround</label>
+    <language>en</language>
+    <name>x_1577958_dsb_defect</name>
+    <plural>Workarounds</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

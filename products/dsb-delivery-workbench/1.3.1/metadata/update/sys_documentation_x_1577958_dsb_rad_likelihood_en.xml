@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4513fd090ffa48e897f4ecb485ab164e</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_rad_likelihood_en</sys_update_name>
+    <element>likelihood</element>
+    <help/>
+    <hint/>
+    <label>Likelihood (1-5)</label>
+    <language>en</language>
+    <name>x_1577958_dsb_rad</name>
+    <plural>Likelihood (1-5)</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

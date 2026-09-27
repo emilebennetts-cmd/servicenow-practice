@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_choice_set action="INSERT_OR_UPDATE" field="persona" table="x_1577958_dsb_requirement" version="3" apply_defaults="true">
+    <sys_choice_set action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>2499ada8608c45fc99793d4bf289c41a</sys_id>
+      <element>persona</element>
+      <sys_update_name>sys_choice_x_1577958_dsb_requirement_persona</sys_update_name>
+      <name>x_1577958_dsb_requirement</name>
+      <sys_class_name>sys_choice_set</sys_class_name>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_package display_value="x_1577958_dsb" source="17aff6423fa94ebabea0896ca9bb2ea3">17aff6423fa94ebabea0896ca9bb2ea3</sys_package>
+      <sys_name>persona</sys_name>
+    </sys_choice_set>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>e9a356a5b2d44507b235bd7317fd947c</sys_id>
+      <name>x_1577958_dsb_requirement</name>
+      <element>persona</element>
+      <label>End user</label>
+      <value>end_user</value>
+      <sequence>1</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>34fb1e547d7948859fa3bb9dedb3156a</sys_id>
+      <name>x_1577958_dsb_requirement</name>
+      <element>persona</element>
+      <label>Fulfiller</label>
+      <value>fulfiller</value>
+      <sequence>2</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>ab0669a4937b4114bb29e0f456fd6aaf</sys_id>
+      <name>x_1577958_dsb_requirement</name>
+      <element>persona</element>
+      <label>Approver</label>
+      <value>approver</value>
+      <sequence>3</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>b548f02451b34f67ba4547389edbc2a5</sys_id>
+      <name>x_1577958_dsb_requirement</name>
+      <element>persona</element>
+      <label>Manager</label>
+      <value>manager</value>
+      <sequence>4</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>7b8cfee0b7404705905b189c5e605114</sys_id>
+      <name>x_1577958_dsb_requirement</name>
+      <element>persona</element>
+      <label>Administrator</label>
+      <value>administrator</value>
+      <sequence>5</sequence>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>c196a984097445cc9af059c390d079c0</sys_id>
+      <name>x_1577958_dsb_requirement</name>
+      <element>persona</element>
+      <label>Integration / system</label>
+      <value>integration</value>
+      <sequence>6</sequence>
+      <language>en</language>
+    </sys_choice>
+  </sys_choice_set>
+</record_update>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>87b5d6132ed24687b6d7719f9307e9e9</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_87b5d6132ed24687b6d7719f9307e9e9</sys_update_name>
+    <body>// DSB IMPLEMENTATION em-test-events — DATA CHANGING (sub-prod). DRY RUN unless DRY_RUN = false.
+var DRY_RUN = true;
+var NODE = 'example-host01';   // &lt;confirm&gt; an existing CI name
+var events = [
+  {severity: '1', type: 'CPU', resource: 'cpu0', message_key: 'DSB_TEST_CPU_' + NODE, description: 'DSB test critical CPU'},
+  {severity: '5', type: 'Info', resource: 'agent', message_key: 'DSB_TEST_INFO_' + NODE, description: 'DSB test informational'}
+];
+events.forEach(function(e){
+  gs.print((DRY_RUN ? '[DRY RUN] ' : '') + JSON.stringify(e));
+  if (DRY_RUN) return;
+  var ev = new GlideRecord('em_event'); ev.initialize();
+  ev.setValue('source', 'DSB_TEST'); ev.setValue('node', NODE); ev.setValue('type', e.type); ev.setValue('resource', e.resource);
+  ev.setValue('severity', e.severity); ev.setValue('message_key', e.message_key); ev.setValue('description', e.description);
+  gs.print('inserted em_event ' + ev.insert());
+});</body>
+    <data>{"kind": "script", "purpose": "Creates a small set of test events through the OOB EvtMgmtCommons / em_event insert so rules, binding and incident creation can be verified. DRY RUN prints the payloads only.", "prereqs": "Sub-production only. Use a known CI name. Delete or close generated alerts after testing.", "rollback": "Generated events carry source \"DSB_TEST\"; close the resulting alerts and incidents."}</data>
+    <kind>implementation</kind>
+    <modifies_data>true</modifies_data>
+    <pattern>27017c1f692149c79a16726ca19e8c2b</pattern>
+    <seq>1</seq>
+    <title>Test event generator (sub-prod only — creates events)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

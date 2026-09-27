@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4944297415f84e18a713febeb3451c1a</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_4944297415f84e18a713febeb3451c1a</sys_update_name>
+    <body>Playbooks (process definitions), flows, subflows, activities</body>
+    <data>{"key": "PB", "scope": "sn_si / global"}</data>
+    <kind>update_set</kind>
+    <pattern>9502ffca8cf0439989ddf6b7b57dddea</pattern>
+    <seq>1</seq>
+    <title>SecOps_Playbooks_&lt;client&gt;_v1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<record_update table="sys_security_acl_role">
+  <sys_security_acl_role action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>f187ff84b5c84be490b4704496205ceb</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_security_acl_role_f187ff84b5c84be490b4704496205ceb</sys_update_name>
+    <sys_name>x_1577958_dsb_licence_product.x_1577958_dsb.architect</sys_name>
+    <sys_security_acl>75b2c41840a3447c885f1d3f6f3c23de</sys_security_acl>
+    <sys_user_role name="x_1577958_dsb.architect">dd52a225e5b74cc2b0842eefaac51f6e</sys_user_role>
+  </sys_security_acl_role>
+</record_update>

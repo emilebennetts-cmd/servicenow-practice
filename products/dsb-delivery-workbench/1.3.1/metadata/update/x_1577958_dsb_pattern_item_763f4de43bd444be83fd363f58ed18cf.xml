@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>763f4de43bd444be83fd363f58ed18cf</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_763f4de43bd444be83fd363f58ed18cf</sys_update_name>
+    <body>Alert lists, groups, service impact, actions.</body>
+    <data>{"type": "Workspace / portal page", "cls": "Out of the box", "req": [4], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>27017c1f692149c79a16726ca19e8c2b</pattern>
+    <seq>6</seq>
+    <title>Operator Workspace configuration</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_user_role">
+  <sys_user_role action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>06669eb2b89e45439396700e2af6d118</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_user_role_06669eb2b89e45439396700e2af6d118</sys_update_name>
+    <assignable_by/>
+    <can_delegate>true</can_delegate>
+    <description>Delivery lead: can waive a gate (with reason and expiry) and owns release readiness.</description>
+    <elevated_privilege>false</elevated_privilege>
+    <grantable>true</grantable>
+    <name>x_1577958_dsb.delivery_lead</name>
+    <scoped_admin>false</scoped_admin>
+    <suffix>delivery_lead</suffix>
+    <sys_name>x_1577958_dsb.delivery_lead</sys_name>
+  </sys_user_role>
+</record_update>

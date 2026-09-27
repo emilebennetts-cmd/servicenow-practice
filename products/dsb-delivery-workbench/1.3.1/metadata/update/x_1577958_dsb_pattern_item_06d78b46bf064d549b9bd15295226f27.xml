@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>06d78b46bf064d549b9bd15295226f27</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_06d78b46bf064d549b9bd15295226f27</sys_update_name>
+    <body>Given the upgrade runbook, When a family release is published, Then the plan targets production within the agreed window and uses Upgrade Center / Upgrade Plan where available</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>93dbb3f9c9374c8b88cbf9fbbc6dee11</pattern>
+    <seq>5</seq>
+    <title>Upgrades follow a documented clone–upgrade–test–promote runbook within N-1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

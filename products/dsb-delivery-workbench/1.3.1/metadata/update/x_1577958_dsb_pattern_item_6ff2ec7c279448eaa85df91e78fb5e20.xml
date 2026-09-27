@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>6ff2ec7c279448eaa85df91e78fb5e20</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_6ff2ec7c279448eaa85df91e78fb5e20</sys_update_name>
+    <body>OOB framework content plus client metrics.</body>
+    <data>{"type": "Data load / reference data", "cls": "Out of the box", "req": [0], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>708c573d6514412a95254bedf01bfc4a</pattern>
+    <seq>0</seq>
+    <title>Framework selection and metric library</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

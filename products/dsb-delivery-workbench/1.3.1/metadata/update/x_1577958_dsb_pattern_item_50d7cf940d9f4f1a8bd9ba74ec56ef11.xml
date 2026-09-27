@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>50d7cf940d9f4f1a8bd9ba74ec56ef11</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_50d7cf940d9f4f1a8bd9ba74ec56ef11</sys_update_name>
+    <body>// DSB EVIDENCE vr.apps — READ ONLY.
+var DSB_NOTES = [];
+function dsbPrint(key, out){ if (DSB_NOTES.length) out.dsb_notes = DSB_NOTES; var LIM = 60000; var s = JSON.stringify(out, null, 1); if (s.length &gt; LIM) s = JSON.stringify(out); var cut = [], loops = 0; while (s.length &gt; LIM &amp;&amp; loops++ &lt; 60) { var bigK = null, bigL = 0; for (var k in out) { if (k === 'key' || k === 'dsb_truncated' || !out[k] || typeof out[k] !== 'object') continue; var l = JSON.stringify(out[k]).length; if (l &gt; bigL) { bigL = l; bigK = k; } } if (!bigK) break; var v = out[bigK]; if (Object.prototype.toString.call(v) === '[object Array]' &amp;&amp; v.length &gt; 10) { out[bigK] = v.slice(0, Math.floor(v.length / 2)); cut.push(bigK + ' kept ' + out[bigK].length + ' of ' + v.length); } else { out[bigK] = 'omitted: ' + bigL + ' characters'; cut.push(bigK + ' omitted'); } out.dsb_truncated = cut; s = JSON.stringify(out); } gs.print('=== DSB-EVIDENCE ' + key + ' ===\n' + s); }
+var out = {key:'vr.apps', store_apps:[], plugins:[], properties:{}};
+var sa = new GlideRecord('sys_store_app'); sa.addEncodedQuery('scopeSTARTSWITHsn_vul^ORscopeSTARTSWITHsn_sec^ORscopeSTARTSWITHsn_cmdb^ORnameLIKEtenable^ORnameLIKEcmdb'); sa.query();
+while (sa.next()) out.store_apps.push({name: sa.getValue('name'), scope: sa.getValue('scope'), version: sa.getValue('version'), active: sa.getValue('active')});
+var pl = new GlideRecord('sys_plugins'); pl.addEncodedQuery('active=true^idLIKEcmdb^ORidLIKEdiscovery^ORidLIKEservice_graph^ORidLIKEvul'); pl.query();
+while (pl.next()) out.plugins.push({id: pl.getValue('id'), name: pl.getValue('name'), version: pl.getValue('version')});
+['glide.buildname','glide.war','glide.identification_engine.enabled','glide.cmdb.logger.level'].forEach(function(p){ out.properties[p] = gs.getProperty(p, '(not set)'); });
+dsbPrint('vr.apps', out);</body>
+    <data>{"key": "vr.apps", "why": "Confirms what is technically present (not what is licensed) and the VR/Tenable app versions", "unblocks": "Licensing check, release-specific design"}</data>
+    <kind>evidence_script</kind>
+    <pattern>9ad6efafe3d645c1bce9ff6b75af7152</pattern>
+    <seq>4</seq>
+    <title>Installed security and CMDB applications, versions and relevant properties</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

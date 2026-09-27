@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>2d778810892f44e4a45be7b6cac260d0</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_2d778810892f44e4a45be7b6cac260d0</sys_update_name>
+    <body>PIR required on severity 1 closure; review assessment template.</body>
+    <data>{"type": "Assessment / survey", "cls": "Out of the box", "req": [6], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>9502ffca8cf0439989ddf6b7b57dddea</pattern>
+    <seq>8</seq>
+    <title>Major security incident and post-incident review configuration</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_choice_set action="INSERT_OR_UPDATE" field="applies_to" table="x_1577958_dsb_evidence_tmpl" version="3" apply_defaults="true">
+    <sys_choice_set action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>6a1128d581554d569607ede42635de85</sys_id>
+      <element>applies_to</element>
+      <sys_update_name>sys_choice_x_1577958_dsb_evidence_tmpl_applies_to</sys_update_name>
+      <name>x_1577958_dsb_evidence_tmpl</name>
+      <sys_class_name>sys_choice_set</sys_class_name>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_package display_value="x_1577958_dsb" source="17aff6423fa94ebabea0896ca9bb2ea3">17aff6423fa94ebabea0896ca9bb2ea3</sys_package>
+      <sys_name>applies_to</sys_name>
+    </sys_choice_set>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>a2ed19c483574aff983a57d43268290e</sys_id>
+      <name>x_1577958_dsb_evidence_tmpl</name>
+      <element>applies_to</element>
+      <label>Every engagement</label>
+      <value>all</value>
+      <sequence>10</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>a4045de290554c3d99c6cd3ef25cad00</sys_id>
+      <name>x_1577958_dsb_evidence_tmpl</name>
+      <element>applies_to</element>
+      <label>New scoped apps</label>
+      <value>greenfield</value>
+      <sequence>20</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+  </sys_choice_set>
+</record_update>

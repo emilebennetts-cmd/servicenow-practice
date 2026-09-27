@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>0eb258c842614ba9a966b1f33758d670</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_0eb258c842614ba9a966b1f33758d670</sys_update_name>
+    <body>1. Confirm frameworks, boundary and metric changes for the period
+2. Update emission factors (new version) and validation ranges
+3. Open collection period; tasks issued to owners
+4. Chase and escalate overdue tasks
+5. Review/approve submissions; resolve rejections
+6. Run calculations; compare with prior period
+7. Update target progress
+8. Produce disclosure report; assurer drill-down walkthrough
+9. Lock period; archive evidence</body>
+    <data>{"kind": "checklist", "purpose": "Steps for each ESG reporting period.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>708c573d6514412a95254bedf01bfc4a</pattern>
+    <seq>0</seq>
+    <title>Reporting cycle checklist</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

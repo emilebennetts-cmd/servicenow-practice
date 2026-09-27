@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_component_type">
+  <x_1577958_dsb_component_type action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>ed0a787fbb2d43f0b6f248b7848c720e</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_component_type_ed0a787fbb2d43f0b6f248b7848c720e</sys_update_name>
+    <base_hours>0.5</base_hours>
+    <build_order>16</build_order>
+    <build_phase>6. Experience</build_phase>
+    <name>Application menu / module</name>
+    <pvt_checks>Menu and modules visible only to intended roles
+Each module opens the correct list, view or page</pvt_checks>
+  </x_1577958_dsb_component_type>
+</record_update>

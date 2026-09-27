@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>b72bd43359154d9bbe8a9e623948675f</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_b72bd43359154d9bbe8a9e623948675f</sys_update_name>
+    <body>Update set 1: AI_Enablement_&lt;client&gt;_v1
+  - Now Assist skill configuration (verify capture in sys_update_xml on this release)
+  - AI Search profiles, sources, Genius Result configuration
+  - Workspace Now Assist panel settings
+Update set 2: AI_VirtualAgent_&lt;client&gt;_v1
+  - VA topics / topic blocks, flows, NLU or LLM topic discovery settings
+Manual per environment (document in the deployment runbook):
+  - Plugin/app activation and versions, Now Assist Admin console toggles not captured
+  - Predictive Intelligence training (train in each environment)
+  - Guardrail pattern verification</body>
+    <data>{"kind": "checklist", "purpose": "AI configuration spans several scopes and some settings are environment-specific; the checklist records what must be repeated manually.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>0516e578c5dd4dfda26e406e0d0f601d</pattern>
+    <seq>0</seq>
+    <title>Update set plan — AI-assisted service delivery</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

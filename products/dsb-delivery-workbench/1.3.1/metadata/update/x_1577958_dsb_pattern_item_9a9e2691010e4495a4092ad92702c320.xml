@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>9a9e2691010e4495a4092ad92702c320</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_9a9e2691010e4495a4092ad92702c320</sys_update_name>
+    <data>{"cat": "Data", "l": 3, "i": 3, "treat": "Dry-run scripts; sub-prod first; CMDB owner sign-off."}</data>
+    <kind>risk</kind>
+    <pattern>f0c40ed7d7ac4c1a957aafe864f1f114</pattern>
+    <seq>2</seq>
+    <title>Asset–CI clean-up creates or retires records unexpectedly</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>0b4e610beaa541d9a7372e414a1b511b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_0b4e610beaa541d9a7372e414a1b511b</sys_update_name>
+    <body>Given the HAM and SAM workspaces, When the IT asset manager opens them, Then asset counts by state, refresh due, compliance position and reclamation savings are shown</body>
+    <data>{"type": "Reporting", "moscow": "Should", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>f0c40ed7d7ac4c1a957aafe864f1f114</pattern>
+    <seq>8</seq>
+    <title>Asset and licence position is reported to IT and procurement leaders</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

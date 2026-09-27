@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>b9ee6590e7094c378c73cfcd2d4b7666</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_component_type_base_hours_en</sys_update_name>
+    <element>base_hours</element>
+    <help/>
+    <hint/>
+    <label>Base hours</label>
+    <language>en</language>
+    <name>x_1577958_dsb_component_type</name>
+    <plural>Base hours</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

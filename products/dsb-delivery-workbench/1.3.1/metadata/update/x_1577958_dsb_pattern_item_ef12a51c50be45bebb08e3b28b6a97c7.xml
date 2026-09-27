@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>ef12a51c50be45bebb08e3b28b6a97c7</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_ef12a51c50be45bebb08e3b28b6a97c7</sys_update_name>
+    <body>IT KB with publish approval; article templates; contextual search in workspace and portal.</body>
+    <data>{"type": "Knowledge base / content", "cls": "Out of the box", "req": [5], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>9</seq>
+    <title>Knowledge bases, categories and approval workflow</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

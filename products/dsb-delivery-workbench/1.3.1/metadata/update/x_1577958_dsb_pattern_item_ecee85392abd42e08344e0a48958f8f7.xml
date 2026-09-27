@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>ecee85392abd42e08344e0a48958f8f7</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_ecee85392abd42e08344e0a48958f8f7</sys_update_name>
+    <body>// DSB IMPLEMENTATION retire-catalog-items — DATA CHANGING. DRY RUN unless DRY_RUN = false.
+var DRY_RUN = true;
+var DAYS = 180;
+var KEEP = [ /* sys_ids of seasonal or regulatory items to keep */ ];
+var stats = {checked: 0, would_deactivate: 0, deactivated: 0};
+var ci = new GlideRecord('sc_cat_item'); ci.addQuery('active', true); ci.addQuery('sys_class_name', 'sc_cat_item'); ci.query();
+while (ci.next()) {
+  stats.checked++;
+  if (KEEP.indexOf(ci.getUniqueValue()) &gt; -1) continue;
+  var r = new GlideAggregate('sc_req_item'); r.addQuery('cat_item', ci.getUniqueValue()); r.addEncodedQuery('sys_created_onRELATIVEGT@dayofweek@ago@' + DAYS); r.addAggregate('COUNT'); r.query();
+  var n = r.next() ? parseInt(r.getAggregate('COUNT'), 10) : 0;
+  if (n &gt; 0) continue;
+  stats.would_deactivate++;
+  gs.print((DRY_RUN ? '[DRY RUN] ' : '') + 'deactivate ' + ci.getValue('name') + ' (' + ci.getUniqueValue() + ')');
+  if (!DRY_RUN) { ci.setValue('active', false); ci.update(); stats.deactivated++; }
+}
+gs.print('=== DSB-IMPL retire-catalog-items ===\n' + JSON.stringify(stats, null, 2));</body>
+    <data>{"kind": "script", "purpose": "Deactivates standard catalogue items with no requested items in the look-back window and not on the keep list. Prints what it would change.", "prereqs": "Catalogue owner sign-off on the list printed by the dry run. Sub-prod first.", "rollback": "Output lists sys_ids; set active=true to restore. Never deletes."}</data>
+    <kind>implementation</kind>
+    <modifies_data>true</modifies_data>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>2</seq>
+    <title>Retire unused catalogue items (DRY RUN by default)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

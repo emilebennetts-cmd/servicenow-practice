@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern">
+  <x_1577958_dsb_pattern action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>feb9570f3df64d249bd135c8a0a1bfa2</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_feb9570f3df64d249bd135c8a0a1bfa2</sys_update_name>
+    <active>true</active>
+    <exclude_terms>[]</exclude_terms>
+    <indicative_cases>27</indicative_cases>
+    <key>emergency-response</key>
+    <library_version>1.5</library_version>
+    <licence_products>emergency</licence_products>
+    <min_hits>2</min_hits>
+    <name>Emergency outreach and workforce wellbeing (Safe Workplace)</name>
+    <overview>Contactable people, pre-built outreach, automatic follow-up. (1) Keep user mobile numbers, locations (with coordinates) and managers current via the HR/identity sync. (2) Configure the OOB outreach capability (Emergency Outreach / Safe Workplace where licensed) with channels: email, SMS (Notify/Twilio), Now Mobile and Microsoft Teams. (3) Outreach templates per scenario (bushfire, flood, building evacuation, cyber) with response options. (4) Follow-up flow: "need help" creates a welfare task; non-responders get reminders then escalate to managers. (5) Crisis dashboard with live counts; restricted role for the crisis team. (6) Run a test outreach each quarter. Response data is sensitive — access limited and retention defined.</overview>
+    <pain>No reliable way to reach staff in an affected area
+Responses tracked in spreadsheets
+People needing help are not followed up promptly
+Contact details and locations are out of date
+No audit trail for the crisis response</pain>
+    <phase>3</phase>
+    <requires/>
+    <strong_terms>[{"re": "emergency|bushfire|flood|crisis|are you safe|outreach", "flags": "i"}]</strong_terms>
+    <summary>When an emergency happens — bushfire, flood, cyber event, pandemic — the organisation cannot quickly reach affected staff, confirm they are safe, and coordinate help. Contact lists are out of date, responses come back by email and text, and follow-up is manual. The pattern converges on OOB Emergency Outreach / Safe Workplace capabilities where licensed (or a governed outreach flow): targeted outreach by location or group through email, SMS, mobile and Teams, response tracking, automatic follow-up tasks for people who need help, and dashboards for the crisis team.</summary>
+    <triggers>[{"re": "emergency|crisis|disaster|bushfire|flood|storm|cyclone|pandemic|\\bCOVID\\b", "flags": "i"}, {"re": "outreach|check.?in|welfare check|are you safe|mass notification", "flags": "i"}, {"re": "wellbeing|health and safety|\\bWHS\\b|\\bOHS\\b", "flags": "i"}, {"re": "business continuity|\\bBCP\\b|crisis management", "flags": "i"}, {"re": "workforce|employees? (safety|location)|travel", "flags": "i"}, {"re": "\\bSMS\\b|Notify|Teams", "flags": "i"}]</triggers>
+    <verified>false</verified>
+  </x_1577958_dsb_pattern>
+</record_update>

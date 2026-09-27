@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4b0be3b9cc654ae0b670a9c9e3b920c9</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_4b0be3b9cc654ae0b670a9c9e3b920c9</sys_update_name>
+    <body>For each department:
+ 1. Service owner, groups (fulfilment + approvers), roles
+ 2. Services list → catalogue category + items/record producers (shared variable sets)
+ 3. Target table: OOB department app if licensed; else agreed shared request/case table
+ 4. Flows: approvals and tasks from the reusable subflow
+ 5. SLAs and schedules
+ 6. Knowledge base and Employee Center taxonomy topic
+ 7. Notifications and survey
+ 8. Dashboard filtered to the department
+ 9. ATF: routing + negative access test
+10. Update set ESM_&lt;department&gt;_&lt;client&gt;_v1; go-live comms</body>
+    <data>{"kind": "checklist", "purpose": "Repeatable steps to onboard a department without custom tables.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>f57c6db779734f4ea34b1ec5d8dedf38</pattern>
+    <seq>0</seq>
+    <title>Department onboarding checklist</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

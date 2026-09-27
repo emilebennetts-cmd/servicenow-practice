@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>279234147b1841069002194671425948</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_279234147b1841069002194671425948</sys_update_name>
+    <body>Quarterly design/effectiveness attestations; non-compliant response raises an issue.</body>
+    <data>{"type": "Scheduled job", "cls": "Out of the box", "req": [3], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>4b16aa07c3c5429a93a6f33c5ef138c0</pattern>
+    <seq>5</seq>
+    <title>Attestation schedules and templates</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

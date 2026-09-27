@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern">
+  <x_1577958_dsb_pattern action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>0e998cd6afca4efe958b07af4c028893</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_0e998cd6afca4efe958b07af4c028893</sys_update_name>
+    <active>true</active>
+    <exclude_terms>[]</exclude_terms>
+    <indicative_cases>42</indicative_cases>
+    <key>healthcare-clinical</key>
+    <library_version>1.5</library_version>
+    <licence_products>hls,itam_ham</licence_products>
+    <min_hits>2</min_hits>
+    <name>Healthcare clinical device and service operations</name>
+    <overview>Device register first, then maintenance, recall and security. (1) Model medical devices as hardware assets (and CIs where connected) with model categories, clinical risk class and department/ward location — use Clinical Device Management where licensed. (2) Load the biomed register with serials and maintenance history. (3) Maintenance and calibration plans generating work orders (FSM or CDM work management). (4) Recall management: recall records matched on model and serial range; remediation tasks. (5) Connected devices discovered (or imported from medical device security tools) into the CMDB and included in Vulnerability Response with clinical risk in scoring. (6) Clinician channel: simple portal/QR-code request and phone intake. (7) Compliance and availability dashboards. Patient data is out of scope; no clinical records are stored.</overview>
+    <pain>Device inventory and maintenance history in biomed spreadsheets
+Recall notices matched to devices manually
+Connected medical devices missing from vulnerability management
+Clinicians wait on phone queues for equipment issues
+Equipment program allocations tracked outside the system</pain>
+    <phase>3</phase>
+    <requires>itam-ham-sam</requires>
+    <strong_terms>[{"re": "hospital|clinical|medical device|biomed", "flags": "i"}]</strong_terms>
+    <summary>Health organisations manage clinical devices, equipment programs and clinical support services across biomedical engineering spreadsheets, ITSM and supplier portals. Device recalls, preventive maintenance and security vulnerabilities on connected medical devices are hard to track, and clinicians cannot easily request help. The pattern converges on OOB Healthcare and Life Sciences capabilities where licensed (Clinical Device Management) or HAM + FSM + ITSM otherwise: a medical device asset model, maintenance and calibration plans, recall management, connected-device security (with VR), and a clinician-friendly request channel.</summary>
+    <triggers>[{"re": "health(care)?|hospital|clinical|patient|ward|aged care|medical", "flags": "i"}, {"re": "medical device|biomedical|biomed|clinical (device|engineering|equipment)", "flags": "i"}, {"re": "recall|\\bTGA\\b|\\bFDA\\b|alert", "flags": "i"}, {"re": "preventive maintenance|calibration|inspection", "flags": "i"}, {"re": "equipment (loan|program|allocation)|consumer|client equipment", "flags": "i"}, {"re": "\\bEMR\\b|\\bEHR\\b|Epic|Cerner|HL7|\\bFHIR\\b", "flags": "i"}]</triggers>
+    <verified>false</verified>
+  </x_1577958_dsb_pattern>
+</record_update>

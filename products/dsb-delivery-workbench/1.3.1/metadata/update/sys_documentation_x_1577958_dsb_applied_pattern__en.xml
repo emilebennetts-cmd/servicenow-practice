@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>06fa379d24774d97a16e3a0b4a893e6f</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_applied_pattern__en</sys_update_name>
+    <element/>
+    <help/>
+    <hint/>
+    <label>UDW Applied Pattern</label>
+    <language>en</language>
+    <name>x_1577958_dsb_applied_pattern</name>
+    <plural>UDW Applied Patterns</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

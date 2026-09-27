@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<record_update table="sys_properties">
+  <sys_properties action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>d245c8b8198c4a23af3a71a015d51dd3</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_properties_d245c8b8198c4a23af3a71a015d51dd3</sys_update_name>
+    <choices/>
+    <description>Hours per update set.</description>
+    <ignore_cache>false</ignore_cache>
+    <is_private>false</is_private>
+    <name>x_1577958_dsb.effort.hours_per_update_set</name>
+    <read_roles>x_1577958_dsb.user</read_roles>
+    <suffix>effort.hours_per_update_set</suffix>
+    <type>string</type>
+    <value>0.5</value>
+    <write_roles>x_1577958_dsb.admin</write_roles>
+  </sys_properties>
+</record_update>

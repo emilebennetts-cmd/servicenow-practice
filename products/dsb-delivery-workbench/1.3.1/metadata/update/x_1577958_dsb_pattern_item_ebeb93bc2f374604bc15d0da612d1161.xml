@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>ebeb93bc2f374604bc15d0da612d1161</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_ebeb93bc2f374604bc15d0da612d1161</sys_update_name>
+    <body>Given an analyst requests host isolation, When the response task is created, Then it is assigned to the endpoint team with a response SLA and restricted details</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>9502ffca8cf0439989ddf6b7b57dddea</pattern>
+    <seq>3</seq>
+    <title>Response tasks are assigned to IT and business teams with SLAs</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

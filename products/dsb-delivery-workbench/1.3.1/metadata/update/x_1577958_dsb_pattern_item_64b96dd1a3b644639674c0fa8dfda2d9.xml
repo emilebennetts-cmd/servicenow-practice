@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>64b96dd1a3b644639674c0fa8dfda2d9</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_64b96dd1a3b644639674c0fa8dfda2d9</sys_update_name>
+    <body>SLA definitions on sn_si_task; assignment by CI support group.</body>
+    <data>{"type": "Assignment / matching rule", "cls": "Out of the box", "req": [3], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>9502ffca8cf0439989ddf6b7b57dddea</pattern>
+    <seq>6</seq>
+    <title>Response tasks and SIR requests with SLAs to IT groups</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

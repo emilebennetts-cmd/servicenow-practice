@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_choice_set action="INSERT_OR_UPDATE" field="engagement_type" table="x_1577958_dsb_engagement" version="3" apply_defaults="true">
+    <sys_choice_set action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>d35ba25e18b04dabacf06e67e3285bb4</sys_id>
+      <element>engagement_type</element>
+      <sys_update_name>sys_choice_x_1577958_dsb_engagement_engagement_type</sys_update_name>
+      <name>x_1577958_dsb_engagement</name>
+      <sys_class_name>sys_choice_set</sys_class_name>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_package display_value="x_1577958_dsb" source="17aff6423fa94ebabea0896ca9bb2ea3">17aff6423fa94ebabea0896ca9bb2ea3</sys_package>
+      <sys_name>engagement_type</sys_name>
+    </sys_choice_set>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>8f7027e50d5549f28112221535b67422</sys_id>
+      <name>x_1577958_dsb_engagement</name>
+      <element>engagement_type</element>
+      <label>New implementation</label>
+      <value>implementation</value>
+      <sequence>10</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>5c973466a60c425dacadd98b5fae8c0a</sys_id>
+      <name>x_1577958_dsb_engagement</name>
+      <element>engagement_type</element>
+      <label>Major enhancement</label>
+      <value>major_enhancement</value>
+      <sequence>20</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>deae5163d28042a6b3974ea9af2fe092</sys_id>
+      <name>x_1577958_dsb_engagement</name>
+      <element>engagement_type</element>
+      <label>Minor enhancement</label>
+      <value>minor_enhancement</value>
+      <sequence>30</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>cac3533bdd6948e2bf6762f37b9ca1f9</sys_id>
+      <name>x_1577958_dsb_engagement</name>
+      <element>engagement_type</element>
+      <label>Defect fix</label>
+      <value>defect_fix</value>
+      <sequence>40</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>5e42f181dc344650aaf368ef2b34c5e5</sys_id>
+      <name>x_1577958_dsb_engagement</name>
+      <element>engagement_type</element>
+      <label>Production incident</label>
+      <value>incident</value>
+      <sequence>50</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>2d2a1dfe89b74491aeb11fbda11980e0</sys_id>
+      <name>x_1577958_dsb_engagement</name>
+      <element>engagement_type</element>
+      <label>Security remediation</label>
+      <value>security</value>
+      <sequence>60</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>2ec3396d7c064e30b4f70afdadcee371</sys_id>
+      <name>x_1577958_dsb_engagement</name>
+      <element>engagement_type</element>
+      <label>Integration change</label>
+      <value>integration</value>
+      <sequence>70</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>d673107f1bb04d8798ce588ed8fca75b</sys_id>
+      <name>x_1577958_dsb_engagement</name>
+      <element>engagement_type</element>
+      <label>Platform upgrade</label>
+      <value>upgrade</value>
+      <sequence>80</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+  </sys_choice_set>
+</record_update>

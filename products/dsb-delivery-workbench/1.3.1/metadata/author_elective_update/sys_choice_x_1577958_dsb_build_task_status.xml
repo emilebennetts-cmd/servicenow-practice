@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_choice_set action="INSERT_OR_UPDATE" field="status" table="x_1577958_dsb_build_task" version="3" apply_defaults="true">
+    <sys_choice_set action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>952669e27ea44086aa3e75f5b6766d25</sys_id>
+      <element>status</element>
+      <sys_update_name>sys_choice_x_1577958_dsb_build_task_status</sys_update_name>
+      <name>x_1577958_dsb_build_task</name>
+      <sys_class_name>sys_choice_set</sys_class_name>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_package display_value="x_1577958_dsb" source="17aff6423fa94ebabea0896ca9bb2ea3">17aff6423fa94ebabea0896ca9bb2ea3</sys_package>
+      <sys_name>status</sys_name>
+    </sys_choice_set>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>80341a123ce44535a65e97c45a57519b</sys_id>
+      <name>x_1577958_dsb_build_task</name>
+      <element>status</element>
+      <label>Not started</label>
+      <value>not_started</value>
+      <sequence>10</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>f4d6c88ee68a4d75888ad8d2f2932795</sys_id>
+      <name>x_1577958_dsb_build_task</name>
+      <element>status</element>
+      <label>In progress</label>
+      <value>in_progress</value>
+      <sequence>20</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>6be5f3d4f1364f88adabf9b9e028222e</sys_id>
+      <name>x_1577958_dsb_build_task</name>
+      <element>status</element>
+      <label>Done</label>
+      <value>done</value>
+      <sequence>30</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>904712147b744f1fbbaae067ad051984</sys_id>
+      <name>x_1577958_dsb_build_task</name>
+      <element>status</element>
+      <label>Blocked</label>
+      <value>blocked</value>
+      <sequence>40</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+  </sys_choice_set>
+</record_update>

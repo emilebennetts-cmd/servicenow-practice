@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>3777f0c593e34dda91bdb8c805e664c6</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_3777f0c593e34dda91bdb8c805e664c6</sys_update_name>
+    <body>OOB problem states; known error article creation.</body>
+    <data>{"type": "Knowledge base / content", "cls": "Out of the box", "req": [4], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>8</seq>
+    <title>Problem Management with known error to knowledge</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

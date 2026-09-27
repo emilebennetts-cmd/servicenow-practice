@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>694fc867f2964d0fb2b2d8e91964fb9d</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_component_type_build_order_en</sys_update_name>
+    <element>build_order</element>
+    <help/>
+    <hint/>
+    <label>Build order</label>
+    <language>en</language>
+    <name>x_1577958_dsb_component_type</name>
+    <plural>Build orders</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

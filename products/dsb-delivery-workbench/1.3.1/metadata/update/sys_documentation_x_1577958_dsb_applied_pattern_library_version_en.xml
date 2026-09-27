@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>bc1e02b9e9af4ef5a43bb445799ec116</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_applied_pattern_library_version_en</sys_update_name>
+    <element>library_version</element>
+    <help/>
+    <hint/>
+    <label>Library version applied</label>
+    <language>en</language>
+    <name>x_1577958_dsb_applied_pattern</name>
+    <plural>Library version applied</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>c9d8492ff8cf48e1ad042199b2cb688e</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_pattern_requires_en</sys_update_name>
+    <element>requires</element>
+    <help/>
+    <hint/>
+    <label>Prerequisite patterns (keys)</label>
+    <language>en</language>
+    <name>x_1577958_dsb_pattern</name>
+    <plural>Prerequisite patterns (keys)</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

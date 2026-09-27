@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>bf02042fa0f74aab8086df4387d88c12</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_bf02042fa0f74aab8086df4387d88c12</sys_update_name>
+    <body>OOB change conflict detection and impacted services.</body>
+    <data>{"type": "OOB application configuration", "cls": "Configuration", "req": [7], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>031fd78c2b3742d38dc20450125b3992</pattern>
+    <seq>14</seq>
+    <title>ITSM service context: service offering on incident/change, impact and conflict detection</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

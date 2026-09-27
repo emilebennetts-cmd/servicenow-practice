@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_choice_set action="INSERT_OR_UPDATE" field="status" table="x_1577958_dsb_gate" version="3" apply_defaults="true">
+    <sys_choice_set action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>bdd1c2d363524f4d863f0d93472f6fe1</sys_id>
+      <element>status</element>
+      <sys_update_name>sys_choice_x_1577958_dsb_gate_status</sys_update_name>
+      <name>x_1577958_dsb_gate</name>
+      <sys_class_name>sys_choice_set</sys_class_name>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_package display_value="x_1577958_dsb" source="17aff6423fa94ebabea0896ca9bb2ea3">17aff6423fa94ebabea0896ca9bb2ea3</sys_package>
+      <sys_name>status</sys_name>
+    </sys_choice_set>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>caee8fb268f74c1fa81cc1dd40187932</sys_id>
+      <name>x_1577958_dsb_gate</name>
+      <element>status</element>
+      <label>Requested</label>
+      <value>requested</value>
+      <sequence>10</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>ef79b4eee5454bc4b5d4622171cf1853</sys_id>
+      <name>x_1577958_dsb_gate</name>
+      <element>status</element>
+      <label>Approved</label>
+      <value>approved</value>
+      <sequence>20</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>f22ca0eb49dd4589b79aa690b1f1d63e</sys_id>
+      <name>x_1577958_dsb_gate</name>
+      <element>status</element>
+      <label>Rejected</label>
+      <value>rejected</value>
+      <sequence>30</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>85265240e6814f309ff8eeec65e03e56</sys_id>
+      <name>x_1577958_dsb_gate</name>
+      <element>status</element>
+      <label>Waived (delivery lead)</label>
+      <value>waived</value>
+      <sequence>40</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>71b9c14a78a74a4c8e8ea6465d763352</sys_id>
+      <name>x_1577958_dsb_gate</name>
+      <element>status</element>
+      <label>Revoked</label>
+      <value>revoked</value>
+      <sequence>50</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+  </sys_choice_set>
+</record_update>

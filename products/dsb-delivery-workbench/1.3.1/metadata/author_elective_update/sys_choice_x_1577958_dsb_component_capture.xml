@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_choice_set action="INSERT_OR_UPDATE" field="capture" table="x_1577958_dsb_component" version="3" apply_defaults="true">
+    <sys_choice_set action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>4c373a6c3244466a9db12c17cc75f7cd</sys_id>
+      <element>capture</element>
+      <sys_update_name>sys_choice_x_1577958_dsb_component_capture</sys_update_name>
+      <name>x_1577958_dsb_component</name>
+      <sys_class_name>sys_choice_set</sys_class_name>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_package display_value="x_1577958_dsb" source="17aff6423fa94ebabea0896ca9bb2ea3">17aff6423fa94ebabea0896ca9bb2ea3</sys_package>
+      <sys_name>capture</sys_name>
+    </sys_choice_set>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>223b3241e78f4b57bbf3516f98b31165</sys_id>
+      <name>x_1577958_dsb_component</name>
+      <element>capture</element>
+      <label>Captured in update set / app</label>
+      <value>captured</value>
+      <sequence>10</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>7e845754cc1445fdae89cef33670bbc4</sys_id>
+      <name>x_1577958_dsb_component</name>
+      <element>capture</element>
+      <label>Data - load per environment</label>
+      <value>data</value>
+      <sequence>20</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>23a90f86d64d4544b760cfc1681b66f9</sys_id>
+      <name>x_1577958_dsb_component</name>
+      <element>capture</element>
+      <label>Not captured - manual step</label>
+      <value>not_captured</value>
+      <sequence>30</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+  </sys_choice_set>
+</record_update>

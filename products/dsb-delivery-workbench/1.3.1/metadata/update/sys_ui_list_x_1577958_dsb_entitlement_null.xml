@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_list table="x_1577958_dsb_entitlement" parent="" relationship="" sys_domain="global" view="">
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>db9a2f58c7544710ae87776727ddc4ff</sys_id>
+      <list_id display_value="x_1577958_dsb_entitlement" name="x_1577958_dsb_entitlement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">b5453f27d420406983704c2513c672a0</list_id>
+      <element>engagement</element>
+      <position>0</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>3f6643bc6d234532996f47625e05ed1b</sys_id>
+      <list_id display_value="x_1577958_dsb_entitlement" name="x_1577958_dsb_entitlement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">b5453f27d420406983704c2513c672a0</list_id>
+      <element>product</element>
+      <position>1</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>a056321d03cd46f2a6025e5094fbd188</sys_id>
+      <list_id display_value="x_1577958_dsb_entitlement" name="x_1577958_dsb_entitlement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">b5453f27d420406983704c2513c672a0</list_id>
+      <element>status</element>
+      <position>2</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>77ab6a14a2b24654961a8a8311d15092</sys_id>
+      <list_id display_value="x_1577958_dsb_entitlement" name="x_1577958_dsb_entitlement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">b5453f27d420406983704c2513c672a0</list_id>
+      <element>source</element>
+      <position>3</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>26b14f1745d3481898f6e62099049af5</sys_id>
+      <list_id display_value="x_1577958_dsb_entitlement" name="x_1577958_dsb_entitlement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">b5453f27d420406983704c2513c672a0</list_id>
+      <element>needed_by_pattern</element>
+      <position>4</position>
+    </sys_ui_list_element>
+    <sys_ui_list action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>b5453f27d420406983704c2513c672a0</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <view name="NULL">Default view</view>
+      <name>x_1577958_dsb_entitlement</name>
+      <sys_domain>global</sys_domain>
+    </sys_ui_list>
+  </sys_ui_list>
+</record_update>

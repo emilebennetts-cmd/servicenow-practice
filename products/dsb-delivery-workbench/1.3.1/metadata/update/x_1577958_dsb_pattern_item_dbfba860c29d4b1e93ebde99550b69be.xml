@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>dbfba860c29d4b1e93ebde99550b69be</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_dbfba860c29d4b1e93ebde99550b69be</sys_update_name>
+    <body>Given an agent opens an incident with a work-notes history, When they request a summary, Then a summary is generated in the workspace and can be edited before saving
+Given a resolved incident, When the agent generates resolution notes, Then the draft is shown for review and not saved automatically</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>0516e578c5dd4dfda26e406e0d0f601d</pattern>
+    <seq>1</seq>
+    <title>Agents receive generated summaries of incidents / cases on handover and resolution</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

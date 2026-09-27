@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>272e57bf986349f1a85867097f44ff57</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_272e57bf986349f1a85867097f44ff57</sys_update_name>
+    <body>Update set 1: TEL_TSM_&lt;client&gt;_v1 — network incident, impact, notifications
+Update set 2: TEL_OrderMgmt_&lt;client&gt;_v1 — decomposition, orchestration flows
+Data: product catalogue and specifications (catalogue publish per environment), inventory via integration, partner endpoints/credentials per environment</body>
+    <data>{"kind": "checklist", "purpose": "Assurance and order configuration promoted separately; catalogue and inventory are data.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>e96633990a4b4bd0a7aa9de3d4f7fa00</pattern>
+    <seq>0</seq>
+    <title>Update set plan — telecom</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

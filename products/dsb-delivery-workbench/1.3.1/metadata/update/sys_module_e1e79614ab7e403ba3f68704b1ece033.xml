@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<record_update table="sys_module">
+  <sys_module action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>e1e79614ab7e403ba3f68704b1ece033</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_module_e1e79614ab7e403ba3f68704b1ece033</sys_update_name>
+    <content><![CDATA[{
+  "name": "dsb-workbench",
+  "version": "1.3.1",
+  "description": "Unified Delivery Workbench - requirements-to-build delivery record and diagnostic assessment with enforced gates (ServiceNow scoped app x_1577958_dsb)",
+  "license": "UNLICENSED",
+  "imports": {
+    "#now:*": "./@types/servicenow/fluent/*/index.js"
+  },
+  "scripts": {
+    "build": "now-sdk build",
+    "deploy": "now-sdk install",
+    "transform": "now-sdk transform",
+    "types": "now-sdk dependencies",
+    "dev": "now-sdk run dev",
+    "test:sim": "node tests/sim/build.mjs && node tests/sim/scenario.cjs && node tests/sim/evidence-runtime.cjs"
+  },
+  "devDependencies": {
+    "@servicenow/sdk": "4.12.2",
+    "@servicenow/glide": "27.0.5",
+    "typescript": "5.5.4",
+    "@servicenow/isomorphic-rollup": "^1.3.7",
+    "@types/react": "19.x",
+    "@types/react-dom": "19.x",
+    "esbuild": "0.23.1"
+  },
+  "dependencies": {
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  }
+}]]></content>
+    <external_source>false</external_source>
+    <path>x_1577958_dsb/dsb-workbench/1.3.1/package.json</path>
+    <sys_name>x_1577958_dsb/dsb-workbench/1.3.1/package.json</sys_name>
+  </sys_module>
+</record_update>

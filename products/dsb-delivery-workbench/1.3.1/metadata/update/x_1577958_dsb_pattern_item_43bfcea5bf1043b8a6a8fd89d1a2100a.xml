@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>43bfcea5bf1043b8a6a8fd89d1a2100a</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_43bfcea5bf1043b8a6a8fd89d1a2100a</sys_update_name>
+    <body>Discovery may be unsafe on some devices; passive tools preferred.</body>
+    <data>{}</data>
+    <kind>decision</kind>
+    <pattern>0e998cd6afca4efe958b07af4c028893</pattern>
+    <seq>1</seq>
+    <title>Medical device security data source</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

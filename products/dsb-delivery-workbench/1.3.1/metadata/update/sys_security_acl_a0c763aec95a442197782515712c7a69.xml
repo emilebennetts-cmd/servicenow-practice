@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<record_update table="sys_security_acl">
+  <sys_security_acl action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>a0c763aec95a442197782515712c7a69</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_security_acl_a0c763aec95a442197782515712c7a69</sys_update_name>
+    <active>true</active>
+    <admin_overrides>true</admin_overrides>
+    <advanced>false</advanced>
+    <applies_to/>
+    <condition/>
+    <decision_type>allow</decision_type>
+    <description>DSB users read the pattern library and reference data.</description>
+    <name>x_1577958_dsb_component_type</name>
+    <operation display_value="read">read</operation>
+    <script/>
+    <security_attribute/>
+    <sys_name>x_1577958_dsb_component_type</sys_name>
+    <type>record</type>
+  </sys_security_acl>
+</record_update>

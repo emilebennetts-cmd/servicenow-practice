@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>66335603661a4ca3b20e4d9292325ef0</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_66335603661a4ca3b20e4d9292325ef0</sys_update_name>
+    <body>Import set run errors, outbound HTTP errors, MID down.</body>
+    <data>{"type": "Notification", "cls": "Configuration", "req": [3], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>8d97fa25f5114eb4b6ee61ef9fdc7882</pattern>
+    <seq>6</seq>
+    <title>Integration and scheduled import failure notifications</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_list table="x_1577958_dsb_licence_product" parent="" relationship="" sys_domain="global" view="">
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>f5ffe33e60bf4d10ac660cca3c4bccdd</sys_id>
+      <list_id display_value="x_1577958_dsb_licence_product" name="x_1577958_dsb_licence_product" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">8cb8318378e84a6bb3b987554505f3b8</list_id>
+      <element>key</element>
+      <position>0</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>02bda5b1cbdf42f583342ca9ebdc637f</sys_id>
+      <list_id display_value="x_1577958_dsb_licence_product" name="x_1577958_dsb_licence_product" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">8cb8318378e84a6bb3b987554505f3b8</list_id>
+      <element>label</element>
+      <position>1</position>
+    </sys_ui_list_element>
+    <sys_ui_list action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>8cb8318378e84a6bb3b987554505f3b8</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <view name="NULL">Default view</view>
+      <name>x_1577958_dsb_licence_product</name>
+      <sys_domain>global</sys_domain>
+    </sys_ui_list>
+  </sys_ui_list>
+</record_update>

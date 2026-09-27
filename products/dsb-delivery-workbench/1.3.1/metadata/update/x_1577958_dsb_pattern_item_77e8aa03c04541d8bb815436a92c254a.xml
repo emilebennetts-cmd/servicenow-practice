@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>77e8aa03c04541d8bb815436a92c254a</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_77e8aa03c04541d8bb815436a92c254a</sys_update_name>
+    <body>One-off load mapped to risk statements and entities; source row reference retained.</body>
+    <data>{"type": "Import set / transform map", "cls": "Configuration", "req": [4, 5], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>4b16aa07c3c5429a93a6f33c5ef138c0</pattern>
+    <seq>11</seq>
+    <title>Spreadsheet register migration (risks, controls, issues)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

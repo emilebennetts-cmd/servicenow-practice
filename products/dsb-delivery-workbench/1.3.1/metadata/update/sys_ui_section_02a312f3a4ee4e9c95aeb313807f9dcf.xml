@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_section caption="Solution design and as-built notes" section_id="02a312f3a4ee4e9c95aeb313807f9dcf" sys_domain="global" table="x_1577958_dsb_engagement" view="">
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>design_notes</element>
+      <position>0</position>
+      <sys_id>d163a3572c184acdae928f70866de3ff</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Solution design and as-built notes" display_value="Solution design and as-built notes" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">02a312f3a4ee4e9c95aeb313807f9dcf</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <caption>Solution design and as-built notes</caption>
+      <header>false</header>
+      <name>x_1577958_dsb_engagement</name>
+      <roles/>
+      <sys_domain>global</sys_domain>
+      <sys_id>02a312f3a4ee4e9c95aeb313807f9dcf</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <title>false</title>
+      <view_name/>
+      <view name="NULL" display_value="Default view">Default view</view>
+    </sys_ui_section>
+  </sys_ui_section>
+</record_update>

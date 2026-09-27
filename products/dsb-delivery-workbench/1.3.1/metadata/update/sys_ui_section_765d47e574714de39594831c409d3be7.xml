@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_section caption="Releases" section_id="765d47e574714de39594831c409d3be7" sys_domain="global" table="x_1577958_dsb_engagement" view="">
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>12M.x_1577958_dsb_engagement.x_1577958_dsb_release.engagement</element>
+      <position>0</position>
+      <sys_id>107b46dd0096406b8e49e510c4f1d7db</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Releases" display_value="Releases" name="x_1577958_dsb_engagement" sys_domain="global" view="Default view">765d47e574714de39594831c409d3be7</sys_ui_section>
+      <sys_user/>
+      <type>list</type>
+    </sys_ui_element>
+    <sys_ui_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <caption>Releases</caption>
+      <header>false</header>
+      <name>x_1577958_dsb_engagement</name>
+      <roles/>
+      <sys_domain>global</sys_domain>
+      <sys_id>765d47e574714de39594831c409d3be7</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <title>false</title>
+      <view_name/>
+      <view name="NULL" display_value="Default view">Default view</view>
+    </sys_ui_section>
+  </sys_ui_section>
+</record_update>

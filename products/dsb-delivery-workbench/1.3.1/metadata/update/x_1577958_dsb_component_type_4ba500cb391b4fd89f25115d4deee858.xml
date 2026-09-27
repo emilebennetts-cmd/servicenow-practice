@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_component_type">
+  <x_1577958_dsb_component_type action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4ba500cb391b4fd89f25115d4deee858</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_component_type_4ba500cb391b4fd89f25115d4deee858</sys_update_name>
+    <base_hours>1</base_hours>
+    <build_order>12</build_order>
+    <build_phase>4. Automation</build_phase>
+    <name>Notification</name>
+    <pvt_checks>Sent to correct recipients with correct subject and body (use test users)
+Not sent when conditions are not met
+Email logs show no bounces (sys_email)</pvt_checks>
+  </x_1577958_dsb_component_type>
+</record_update>

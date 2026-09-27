@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_choice_set action="INSERT_OR_UPDATE" field="status" table="x_1577958_dsb_diag_run" version="3" apply_defaults="true">
+    <sys_choice_set action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>65edfc83effb40058ca305adfc737f26</sys_id>
+      <element>status</element>
+      <sys_update_name>sys_choice_x_1577958_dsb_diag_run_status</sys_update_name>
+      <name>x_1577958_dsb_diag_run</name>
+      <sys_class_name>sys_choice_set</sys_class_name>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_package display_value="x_1577958_dsb" source="17aff6423fa94ebabea0896ca9bb2ea3">17aff6423fa94ebabea0896ca9bb2ea3</sys_package>
+      <sys_name>status</sys_name>
+    </sys_choice_set>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>8942faef4d32453b8a942642fbaf212b</sys_id>
+      <name>x_1577958_dsb_diag_run</name>
+      <element>status</element>
+      <label>Imported</label>
+      <value>imported</value>
+      <sequence>10</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>53d9dbb4255d4f1aba3deddd112c8407</sys_id>
+      <name>x_1577958_dsb_diag_run</name>
+      <element>status</element>
+      <label>Validated</label>
+      <value>validated</value>
+      <sequence>20</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>23352865c22f402e8f74e8b4e3740c71</sys_id>
+      <name>x_1577958_dsb_diag_run</name>
+      <element>status</element>
+      <label>Requires review</label>
+      <value>requires_review</value>
+      <sequence>30</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>91b4bdbb86934507ae830b50a92d3ad8</sys_id>
+      <name>x_1577958_dsb_diag_run</name>
+      <element>status</element>
+      <label>Validation failed</label>
+      <value>failed</value>
+      <sequence>40</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+  </sys_choice_set>
+</record_update>

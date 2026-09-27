@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>9f9d31a7a5724e9696942a863b8c65f5</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_9f9d31a7a5724e9696942a863b8c65f5</sys_update_name>
+    <body>Update set per scope (Policy and Compliance, Risk, GRC common):
+  - Entity types/filters, methodology, attestation templates, indicator templates
+  - Notifications, workspace/dashboard configuration
+Content (data) per environment, in this order:
+  1. Authority documents → citations (UCF or import)
+  2. Policies → policy statements → statement-citation links
+  3. Entity types run → entities
+  4. Controls generate (verify counts against sub-prod)
+  5. Risk statements → risks generate
+  6. Migrated register rows (import set, keep source reference)
+Store apps must be the same version in every environment.</body>
+    <data>{"kind": "checklist", "purpose": "IRM configuration is per application scope; the content library is data and moves by import/XML.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>4b16aa07c3c5429a93a6f33c5ef138c0</pattern>
+    <seq>0</seq>
+    <title>Update set and content plan — IRM foundation</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

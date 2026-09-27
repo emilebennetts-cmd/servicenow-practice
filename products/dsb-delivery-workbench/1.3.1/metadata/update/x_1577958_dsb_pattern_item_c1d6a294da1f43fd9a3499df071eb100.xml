@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>c1d6a294da1f43fd9a3499df071eb100</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_c1d6a294da1f43fd9a3499df071eb100</sys_update_name>
+    <body>Supplier portal questionnaire, checks, approvals.</body>
+    <data>{"type": "Workspace / portal page", "cls": "Out of the box", "req": [2], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>8d626f620b62477fb3d9517346e13cf8</pattern>
+    <seq>3</seq>
+    <title>Supplier Lifecycle Operations onboarding workflow</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

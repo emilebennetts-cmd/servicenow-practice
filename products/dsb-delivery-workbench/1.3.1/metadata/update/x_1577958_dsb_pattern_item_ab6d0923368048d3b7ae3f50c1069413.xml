@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>ab6d0923368048d3b7ae3f50c1069413</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_ab6d0923368048d3b7ae3f50c1069413</sys_update_name>
+    <body>Given a critical alert on a production CI, When the alert management rule runs, Then an incident is created with the CI, service offering and assignment group
+Given the alert clears, When the rule evaluates, Then the incident is updated per the agreed policy</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>27017c1f692149c79a16726ca19e8c2b</pattern>
+    <seq>3</seq>
+    <title>Actionable alerts create or update incidents automatically with service context</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

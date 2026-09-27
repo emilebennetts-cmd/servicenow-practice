@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<record_update table="sys_properties">
+  <sys_properties action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>ff4e23eb630048c7906b511a51f9974c</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_properties_ff4e23eb630048c7906b511a51f9974c</sys_update_name>
+    <choices/>
+    <description>Standard path upper limit (estimate hours). Above this the Complex path is suggested.</description>
+    <ignore_cache>false</ignore_cache>
+    <is_private>false</is_private>
+    <name>x_1577958_dsb.path.standard_max_hours</name>
+    <read_roles>x_1577958_dsb.user</read_roles>
+    <suffix>path.standard_max_hours</suffix>
+    <type>string</type>
+    <value>160</value>
+    <write_roles>x_1577958_dsb.admin</write_roles>
+  </sys_properties>
+</record_update>

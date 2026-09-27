@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>9047fe7f574d4a38a07d4e2d04f23544</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_9047fe7f574d4a38a07d4e2d04f23544</sys_update_name>
+    <body>Use OOB privacy/breach fields where present; otherwise minimal justified fields.</body>
+    <data>{"type": "Field", "cls": "Configuration", "req": [6], "justification": null, "upgrade": "Medium", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>9502ffca8cf0439989ddf6b7b57dddea</pattern>
+    <seq>9</seq>
+    <title>Notifiable data breach assessment fields and guidance</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

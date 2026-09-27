@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<record_update table="sys_module">
+  <sys_module action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>2d37d4b8d20342b292bed4350684a31a</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_module_2d37d4b8d20342b292bed4350684a31a</sys_update_name>
+    <content><![CDATA[import { GlideDateTime, GlideDigest, GlideSysAttachment } from '@servicenow/glide';
+import { T, gr, val, bool, num, each, getRecord, redact, logHistory } from './common.ts';
+import { guard } from './generate.ts';
+import { DW_GUIDES } from './dwdata.ts';
+/*
+ * Diagnostic Workbench capabilities inside DSB (combined app, 1.2.0):
+ * - customer profile built from the engagement's Scope & context fields
+ * - the 29 EXT/FIX customer-template scripts, with the profile applied and the DSB instance guard
+ * - import of servicenow-diagnostic-result/1 JSON files as diagnostic runs, with validation and a secret scan
+ * - the nine guided collection steps as evidence items on assessment engagements
+ */
+const list = (s) => String(s || '')
+    .split(/[,\n]/)
+    .map((x) => x.trim())
+    .filter(Boolean);
+export function customerProfile(engId) {
+    const e = getRecord(T.engagement, engId);
+    if (!e)
+        return null;
+    const tokens = list(val(e, 'search_tokens'));
+    const scopes = list(val(e, 'app_scopes'));
+    const prefixes = list(val(e, 'table_prefixes'));
+    return {
+        schema: 'servicenow-diagnostic-profile/1',
+        generatedAt: new GlideDateTime().getDisplayValueInternal(),
+        customerName: val(e, 'client') || 'CUSTOMER_NAME',
+        assessmentName: val(e, 'name'),
+        applicationName: val(e, 'application_name') || 'CUSTOMER_APP',
+        applicationToken: tokens[0] || val(e, 'application_name') || 'CUSTOMER_APP',
+        scopes,
+        prefixes,
+        tokens,
+        alwaysInclude: list(val(e, 'always_include')),
+        approvedInstance: val(e, 'instance_name') || 'CUSTOMER_INSTANCE',
+        changeReference: val(e, 'change_ref') || 'CUSTOMER_CHANGE_REFERENCE',
+        tablePrefix: prefixes[0] || 'CUSTOMER_TABLE_PREFIX',
+    };
+}
+/** Placeholders still unresolved for this engagement (what the consultant must complete in Scope & context). */
+export function profileGaps(profile) {
+    const need = {
+        CUSTOMER_NAME: 'Client',
+        CUSTOMER_APP: 'Application under assessment or a search token',
+        CUSTOMER_INSTANCE: 'Target instance name',
+        CUSTOMER_TABLE_PREFIX: 'Table prefixes',
+        CUSTOMER_CHANGE_REFERENCE: 'Change reference (APPLY scripts only)',
+    };
+    const text = JSON.stringify(profile || {});
+    const gaps = [];
+    Object.keys(need).forEach((k) => {
+        if (text.indexOf(k) >= 0)
+            gaps.push(need[k]);
+    });
+    if (!profile || !profile.scopes || !profile.scopes.length)
+        gaps.push('Application scopes');
+    return gaps;
+}
+export function applyProfile(source, profile) {
+    const rep = {
+        CUSTOMER_NAME: profile.customerName,
+        CUSTOMER_APP: profile.applicationToken || profile.applicationName,
+        CUSTOMER_INSTANCE: profile.approvedInstance,
+        CUSTOMER_SCOPES: (profile.scopes || []).join(','),
+        CUSTOMER_SCOPE: (profile.scopes || [])[0],
+        CUSTOMER_CHANGE_REFERENCE: profile.changeReference,
+        CUSTOMER_TABLE_PREFIX: profile.tablePrefix,
+    };
+    // Longest token first so CUSTOMER_SCOPES is not half-replaced by CUSTOMER_SCOPE.
+    return Object.keys(rep)
+        .sort((a, b) => b.length - a.length)
+        .reduce((text, k) => {
+        const v = rep[k];
+        return v && String(v).indexOf('CUSTOMER_') !== 0 ? text.split(k).join(String(v).replace(/["\\]/g, '')) : text;
+    }, String(source || ''));
+}
+export function listDiagScripts() {
+    const out = [];
+    each(T.diagScript, 'active=true', (s) => out.push({ id: val(s, 'script_id'), title: val(s, 'title'), kind: val(s, 'kind'), stage: num(s, 'stage'), writes: bool(s, 'writes'), safety: val(s, 'safety'), description: val(s, 'description') }), 'script_id');
+    return out;
+}
+/** The customer-template script with this engagement's profile applied, wrapped in the DSB instance guard. */
+export function diagScript(engId, scriptId) {
+    const s = gr(T.diagScript);
+    if (!s.get('script_id', scriptId))
+        throw new Error(`Script ${scriptId} is not in the library.`);
+    const profile = customerProfile(engId);
+    const writes = bool(s, 'writes');
+    const body = applyProfile(val(s, 'source'), profile);
+    const label = `${scriptId} ${val(s, 'title')}${writes ? ' (PLAN by default; APPLY needs a change reference)' : ''}`;
+    return { script: guard(engId, body, writes, label), gaps: profileGaps(profile), writes, title: val(s, 'title') };
+}
+// Key/value with a non-trivial literal value, e.g. "password":"x...", password=x..., or a bearer token.
+const SECRET = /((password|passwd|secret|api[_-]?key|client_secret|private[_-]?key)["']?\s*[:=]\s*["']?[^"'\s,}\]]{6,})|(bearer\s+[a-z0-9._-]{16,})/i;
+function sha256(text) {
+    try {
+        const d = new GlideDigest();
+        return String(d.getSHA256Hex(text)).toLowerCase();
+    }
+    catch (e) {
+        return '';
+    }
+}
+/**
+ * Imports a Diagnostic Workbench result file (servicenow-diagnostic-result/1, or an instance manifest).
+ * The full file is kept as an attachment on the run; the record holds a redacted summary.
+ */
+export function importDiagRun(engId, fileName, text) {
+    const e = getRecord(T.engagement, engId);
+    if (!e)
+        throw new Error('Engagement not found.');
+    let doc = null;
+    try {
+        doc = JSON.parse(text);
+    }
+    catch (err) {
+        throw new Error('The file is not valid JSON. Import the .json attachment the script created (not the printed WORKBENCH_RESULT line).');
+    }
+    const schema = String(doc.schema || (doc.manifest && doc.manifest.schema) || '');
+    if (!/^servicenow-(diagnostic-result|instance-manifest)\//.test(schema))
+        throw new Error(`Unrecognised result schema "${schema || 'none'}". Expected servicenow-diagnostic-result/1.`);
+    const problems = [];
+    if (SECRET.test(text))
+        problems.push('Possible credential or secret in the file. It was not stored; scrub the source and re-run.');
+    if (problems.length)
+        throw new Error(problems[0]);
+    const counts = doc.counts || {};
+    const recordCount = Array.isArray(doc.records) ? doc.records.length : Object.keys(counts).reduce((a, k) => a + (parseInt(counts[k], 10) || 0), 0);
+    const warnings = (doc.warnings || []).concat((doc.manifest && doc.manifest.warnings) || []);
+    const errors = (doc.errors || []).concat((doc.manifest && doc.manifest.errors) || []);
+    const ranOn = String((doc.manifest && doc.manifest.instance && doc.manifest.instance.name) || (doc.profile && doc.profile.approvedInstance) || '');
+    const target = val(e, 'instance_name');
+    const review = [];
+    if (target && ranOn && ranOn.toLowerCase().indexOf(target.toLowerCase()) < 0)
+        review.push(`ran on ${ranOn}, engagement targets ${target}`);
+    if (warnings.length)
+        review.push(`${warnings.length} warning(s)`);
+    if (doc.mode && String(doc.mode).toUpperCase() === 'APPLY')
+        review.push('APPLY run: check the rollback block');
+    const status = errors.length || doc.ok === false ? 'failed' : review.length ? 'requires_review' : 'validated';
+    const summary = JSON.stringify({ counts, warnings: warnings.slice(0, 50), errors: errors.slice(0, 50), review, rollback: Array.isArray(doc.rollback) ? doc.rollback.length : undefined }, null, 1);
+    const run = gr(T.diagRun);
+    run.initialize();
+    run.setValue('engagement', engId);
+    run.setValue('script_id', String(doc.scriptId || (schema.indexOf('instance-manifest') >= 0 ? 'EXT-000' : '')).slice(0, 20));
+    run.setValue('schema_name', schema.slice(0, 80));
+    run.setValue('mode', String(doc.mode || 'READ_ONLY').slice(0, 20));
+    run.setValue('ok', doc.ok !== false && !errors.length);
+    run.setValue('source_instance', redact(ranOn).slice(0, 200));
+    run.setValue('started_at', String(doc.startedAt || '').slice(0, 40));
+    run.setValue('records', recordCount);
+    run.setValue('warnings', warnings.length);
+    run.setValue('errors', errors.length);
+    run.setValue('summary', redact(summary).slice(0, 64000));
+    run.setValue('file_name', redact(String(fileName || '')).slice(0, 200));
+    run.setValue('sha256', sha256(text));
+    run.setValue('status', status);
+    const id = run.insert();
+    if (!id)
+        throw new Error('The run could not be saved. Check your DSB role.');
+    try {
+        new GlideSysAttachment().write(run, String(fileName || `${doc.scriptId || 'result'}.json`).replace(/[^\w.-]+/g, '_'), 'application/json', text);
+    }
+    catch (err) {
+        // The summary is still stored; the attachment is a convenience copy.
+    }
+    const guides = markGuides(engId, String(doc.scriptId || ''));
+    logHistory(engId, 'Diagnostic result imported', `${doc.scriptId || schema}: ${status}, ${recordCount} record(s), ${warnings.length} warning(s), ${errors.length} error(s)`, T.diagRun, val(run, 'number'), 'evidence');
+    return { sysId: id, number: val(run, 'number'), status, records: recordCount, warnings: warnings.length, errors: errors.length, review, guides };
+}
+/** Marks the guided-collection evidence items that this script feeds as Received. */
+function markGuides(engId, scriptId) {
+    const hit = [];
+    if (!scriptId)
+        return hit;
+    DW_GUIDES.forEach((g) => {
+        if (g.scripts.indexOf(scriptId) < 0)
+            return;
+        const ev = gr(T.evidence);
+        ev.addQuery('engagement', engId);
+        ev.addQuery('script_key', 'dw.' + g.id);
+        ev.query();
+        if (ev.next() && val(ev, 'status') !== 'received' && val(ev, 'status') !== 'not_applicable') {
+            ev.setValue('status', 'received');
+            ev.update();
+            hit.push(g.title);
+        }
+    });
+    return hit;
+}
+/** Adds the nine guided collection steps as evidence items (assessment engagements only). */
+export function generateGuideEvidence(engId) {
+    const e = getRecord(T.engagement, engId);
+    if (!e || !bool(e, 'diagnostic_assessment'))
+        return 0;
+    let n = 0;
+    DW_GUIDES.forEach((g) => {
+        const ev = gr(T.evidence);
+        ev.addQuery('engagement', engId);
+        ev.addQuery('script_key', 'dw.' + g.id);
+        ev.query();
+        if (ev.hasNext())
+            return;
+        const r = gr(T.evidence);
+        r.initialize();
+        r.setValue('engagement', engId);
+        r.setValue('item', `${g.order}. ${g.title}`.slice(0, 300));
+        r.setValue('why', g.why.slice(0, 600));
+        r.setValue('how', (g.steps.join(' ') + (g.scripts.length ? ` Scripts: ${g.scripts.join(', ')}.` : '')).slice(0, 600));
+        r.setValue('unblocks', g.unlocks.join(', ').slice(0, 300));
+        r.setValue('script_key', 'dw.' + g.id);
+        r.setValue('status', 'requested');
+        if (r.insert())
+            n++;
+    });
+    return n;
+}
+export function listDiagRuns(engId) {
+    const out = [];
+    each(T.diagRun, `engagement=${engId}`, (r) => out.push({ sysId: r.getUniqueValue(), number: val(r, 'number'), scriptId: val(r, 'script_id'), mode: val(r, 'mode'), status: val(r, 'status'), records: num(r, 'records'), warnings: num(r, 'warnings'), errors: num(r, 'errors'), ranOn: val(r, 'source_instance'), file: val(r, 'file_name'), created: val(r, 'sys_created_on') }), 'number');
+    return out.reverse();
+}
+]]></content>
+    <external_source>false</external_source>
+    <path>x_1577958_dsb/dsb-workbench/1.3.1/src/server/diagnostics.ts</path>
+    <sys_name>x_1577958_dsb/dsb-workbench/1.3.1/src/server/diagnostics.ts</sys_name>
+  </sys_module>
+</record_update>

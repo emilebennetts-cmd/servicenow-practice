@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>882f2f4737204143bcb01a5e4fc57f75</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_882f2f4737204143bcb01a5e4fc57f75</sys_update_name>
+    <body>Create a User
+Impersonate
+Run Server Side Script</body>
+    <data>{"req": 1, "note": "Access check: in the server script use GlideRecordSecure (or GlideRecord.canRead()) as the impersonated user and assert that the record cannot be read. Plain Record Query does not enforce ACLs."}</data>
+    <kind>atf</kind>
+    <pattern>4874dc995cad4b3cb3bda8c29e4e0be8</pattern>
+    <seq>0</seq>
+    <title>Contact cannot see another account's case (negative portal test)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>2d9645b430b3465dae2ada17d99fcae0</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_2d9645b430b3465dae2ada17d99fcae0</sys_update_name>
+    <body>Within/outside timeframe by type.</body>
+    <data>{"type": "Report / dashboard", "cls": "Configuration", "req": [5], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>628bf2891d554853993138856ccb4ef2</pattern>
+    <seq>8</seq>
+    <title>Service performance dashboard</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

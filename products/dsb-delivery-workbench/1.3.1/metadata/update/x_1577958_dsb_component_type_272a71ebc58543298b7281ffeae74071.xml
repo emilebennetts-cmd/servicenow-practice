@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_component_type">
+  <x_1577958_dsb_component_type action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>272a71ebc58543298b7281ffeae74071</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_component_type_272a71ebc58543298b7281ffeae74071</sys_update_name>
+    <base_hours>2</base_hours>
+    <build_order>11.8</build_order>
+    <build_phase>4. Automation</build_phase>
+    <name>OOB application configuration</name>
+    <pvt_checks>Configuration records present and active in this environment
+Process behaves as designed for a test record (states, generated tasks, notifications)
+No errors in the system log during the test</pvt_checks>
+  </x_1577958_dsb_component_type>
+</record_update>

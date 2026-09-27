@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>954252fa305948a3884420c353225c90</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_954252fa305948a3884420c353225c90</sys_update_name>
+    <body>Given a department is onboarded, When its requests are submitted, Then they route to that department's groups with the agreed SLA</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>f57c6db779734f4ea34b1ec5d8dedf38</pattern>
+    <seq>1</seq>
+    <title>Each onboarded department has a service catalogue, fulfilment groups and SLAs</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

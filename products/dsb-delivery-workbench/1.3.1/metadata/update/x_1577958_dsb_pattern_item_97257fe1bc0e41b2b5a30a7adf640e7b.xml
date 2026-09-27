@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>97257fe1bc0e41b2b5a30a7adf640e7b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_97257fe1bc0e41b2b5a30a7adf640e7b</sys_update_name>
+    <body>Create a User
+Impersonate
+Run Server Side Script</body>
+    <data>{"req": 4, "note": "Access check: in the server script use GlideRecordSecure (or GlideRecord.canRead()) as the impersonated user and assert that the record cannot be read. Plain Record Query does not enforce ACLs."}</data>
+    <kind>atf</kind>
+    <pattern>9502ffca8cf0439989ddf6b7b57dddea</pattern>
+    <seq>0</seq>
+    <title>IT responder cannot read parent security incident (negative)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>49f42c9f2a0d4097b9f093e18ea3240d</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_49f42c9f2a0d4097b9f093e18ea3240d</sys_update_name>
+    <body>Given a customer order for a product offering, When submitted, Then it decomposes into service and resource orders routed to the correct fulfilment systems</body>
+    <data>{"type": "Process", "moscow": "Should", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>e96633990a4b4bd0a7aa9de3d4f7fa00</pattern>
+    <seq>3</seq>
+    <title>Orders are captured against a product catalogue and decomposed into fulfilment tasks</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<database>
+  <element name="x_1577958_dsb_test" type="collection" label="UDW Test Case" is_extendable="false" text_index="false" read_only="false" audit="true" display="title" access="public" caller_access="0" ws_access="true" scriptable_table="false" attributes="">
+    <element name="number" type="string" active="true" array="false" audit="false" default_value="javascript:global.getNextObjNumberPadded();" unique="false" label="Number" mandatory="false" read_only="true" read_only_option="instance_configured" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Numbers"/>
+    <element name="engagement" type="reference" active="true" array="false" audit="false" unique="false" label="Engagement" mandatory="true" read_only="false" reference_cascade_rule="delete" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" reference="x_1577958_dsb_engagement" plural="Engagements"/>
+    <element name="kind" type="choice" active="true" array="false" audit="false" default_value="uat" unique="false" label="Kind" mandatory="false" read_only="false" choice="3" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Kinds">
+      <choice>
+        <element value="uat" label="UAT" inactive="false" inactive_on_update="false" sequence="10" language="en"/>
+        <element value="pvt" label="PVT (post-deployment verification)" inactive="false" inactive_on_update="false" sequence="20" language="en"/>
+        <element value="sit" label="SIT" inactive="false" inactive_on_update="false" sequence="30" language="en"/>
+        <element value="atf" label="ATF" inactive="false" inactive_on_update="false" sequence="40" language="en"/>
+      </choice>
+    </element>
+    <element name="title" type="string" active="true" array="false" audit="false" unique="false" label="Test" max_length="400" mandatory="true" read_only="false" choice="0" display="true" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Tests"/>
+    <element name="requirement" type="reference" active="true" array="false" audit="false" unique="false" label="Requirement" mandatory="false" read_only="false" reference_cascade_rule="clear" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" reference="x_1577958_dsb_requirement" plural="Requirements"/>
+    <element name="component" type="reference" active="true" array="false" audit="false" unique="false" label="Component" mandatory="false" read_only="false" reference_cascade_rule="clear" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" reference="x_1577958_dsb_component" plural="Components"/>
+    <element name="steps" type="multi_two_lines" active="true" array="false" audit="false" unique="false" label="Steps" max_length="8000" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Steps"/>
+    <element name="expected" type="multi_two_lines" active="true" array="false" audit="false" unique="false" label="Expected result" max_length="4000" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Expected results"/>
+    <element name="environment" type="choice" active="true" array="false" audit="false" default_value="test" unique="false" label="Environment" mandatory="false" read_only="false" choice="3" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Environments">
+      <choice>
+        <element value="dev" label="Development" inactive="false" inactive_on_update="false" sequence="10" language="en"/>
+        <element value="test" label="Test" inactive="false" inactive_on_update="false" sequence="20" language="en"/>
+        <element value="uat" label="UAT" inactive="false" inactive_on_update="false" sequence="30" language="en"/>
+        <element value="prod" label="Production" inactive="false" inactive_on_update="false" sequence="40" language="en"/>
+      </choice>
+    </element>
+    <element name="result" type="choice" active="true" array="false" audit="false" default_value="not_run" unique="false" label="Result" mandatory="false" read_only="false" choice="3" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Results">
+      <choice>
+        <element value="not_run" label="Not run" inactive="false" inactive_on_update="false" sequence="10" language="en"/>
+        <element value="pass" label="Pass" inactive="false" inactive_on_update="false" sequence="20" language="en"/>
+        <element value="fail" label="Fail" inactive="false" inactive_on_update="false" sequence="30" language="en"/>
+        <element value="blocked" label="Blocked" inactive="false" inactive_on_update="false" sequence="40" language="en"/>
+      </choice>
+    </element>
+    <element name="atf_status" type="choice" active="true" array="false" audit="false" unique="false" label="ATF status" mandatory="false" read_only="false" choice="1" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="ATF status">
+      <choice>
+        <element value="not_built" label="Not built" inactive="false" inactive_on_update="false" sequence="10" language="en"/>
+        <element value="built" label="Built" inactive="false" inactive_on_update="false" sequence="20" language="en"/>
+        <element value="pass" label="Pass" inactive="false" inactive_on_update="false" sequence="30" language="en"/>
+        <element value="fail" label="Fail" inactive="false" inactive_on_update="false" sequence="40" language="en"/>
+        <element value="blocked" label="Blocked" inactive="false" inactive_on_update="false" sequence="50" language="en"/>
+      </choice>
+    </element>
+    <element name="atf_test_ref" type="string" active="true" array="false" audit="false" unique="false" label="ATF test / result link" max_length="300" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="ATF test / result links"/>
+    <element name="tester_role" type="string" active="true" array="false" audit="false" unique="false" label="Tester (role)" max_length="100" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Tester (role)"/>
+    <element name="run_on" type="glide_date" active="true" array="false" audit="false" unique="false" label="Run on" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Run ons"/>
+    <element name="pattern_key" type="string" active="true" array="false" audit="false" unique="false" label="Seeded by pattern" max_length="60" mandatory="false" read_only="true" read_only_option="instance_configured" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Seeded by patterns"/>
+    <element name="seeded" type="boolean" active="true" array="false" audit="false" default_value="false" unique="false" label="Seeded, not yet edited" mandatory="false" read_only="true" read_only_option="instance_configured" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Seeded, not yet edited"/>
+  </element>
+</database>

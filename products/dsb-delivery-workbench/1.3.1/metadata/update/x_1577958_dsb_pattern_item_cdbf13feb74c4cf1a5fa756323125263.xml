@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>cdbf13feb74c4cf1a5fa756323125263</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_cdbf13feb74c4cf1a5fa756323125263</sys_update_name>
+    <data>{"type": "Client"}</data>
+    <kind>dependency</kind>
+    <pattern>031fd78c2b3742d38dc20450125b3992</pattern>
+    <seq>1</seq>
+    <title>MID server hosts, firewall rules and discovery credentials</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

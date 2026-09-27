@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>43d2e499ddb142d0bd9dad9cd2e98da5</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_43d2e499ddb142d0bd9dad9cd2e98da5</sys_update_name>
+    <data>{"type": "Client"}</data>
+    <kind>dependency</kind>
+    <pattern>4b16aa07c3c5429a93a6f33c5ef138c0</pattern>
+    <seq>1</seq>
+    <title>Existing registers and policies supplied in editable form</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

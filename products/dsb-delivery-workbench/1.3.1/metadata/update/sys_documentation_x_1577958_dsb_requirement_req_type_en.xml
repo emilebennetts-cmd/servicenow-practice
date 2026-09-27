@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>7bf151f216e243eea08512d6a56eca4e</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_requirement_req_type_en</sys_update_name>
+    <element>req_type</element>
+    <help/>
+    <hint/>
+    <label>Type</label>
+    <language>en</language>
+    <name>x_1577958_dsb_requirement</name>
+    <plural>Types</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

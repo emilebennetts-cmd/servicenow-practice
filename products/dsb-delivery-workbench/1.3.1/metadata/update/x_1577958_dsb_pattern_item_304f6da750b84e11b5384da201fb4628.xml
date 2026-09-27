@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>304f6da750b84e11b5384da201fb4628</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_304f6da750b84e11b5384da201fb4628</sys_update_name>
+    <body>Given a new supplier request, When submitted, Then the supplier completes a portal questionnaire, risk checks run and the supplier is created in the ERP after approval</body>
+    <data>{"type": "Process", "moscow": "Should", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>8d626f620b62477fb3d9517346e13cf8</pattern>
+    <seq>2</seq>
+    <title>Supplier onboarding is a managed workflow with risk and compliance checks</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

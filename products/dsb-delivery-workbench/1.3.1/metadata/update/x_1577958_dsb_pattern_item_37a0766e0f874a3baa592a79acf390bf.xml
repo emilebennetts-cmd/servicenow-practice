@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>37a0766e0f874a3baa592a79acf390bf</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_37a0766e0f874a3baa592a79acf390bf</sys_update_name>
+    <body>Given the migration decision, When cut-over completes, Then open tickets exist in ServiceNow with the source reference number
+Given closed history is archived rather than migrated, When a user needs an old ticket, Then it is retrievable from the agreed archive</body>
+    <data>{"type": "Data", "moscow": "Should", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>7</seq>
+    <title>Historical tickets are handled per the agreed migration decision</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>1a54caa82a694c9f8515e2d536b65db8</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_1a54caa82a694c9f8515e2d536b65db8</sys_update_name>
+    <body>Intake, flows, SLAs, notifications, dashboards</body>
+    <data>{"key": "S2P", "scope": "S2P app scopes"}</data>
+    <kind>update_set</kind>
+    <pattern>8d626f620b62477fb3d9517346e13cf8</pattern>
+    <seq>0</seq>
+    <title>S2P_Config_&lt;client&gt;_v1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

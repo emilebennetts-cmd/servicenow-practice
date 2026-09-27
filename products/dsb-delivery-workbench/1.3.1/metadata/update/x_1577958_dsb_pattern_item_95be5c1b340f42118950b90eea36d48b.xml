@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>95be5c1b340f42118950b90eea36d48b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_95be5c1b340f42118950b90eea36d48b</sys_update_name>
+    <body>Use OOB asset/CI field mapping and install status sync; no custom business rules.</body>
+    <data>{"type": "OOB application configuration", "cls": "Out of the box", "req": [0], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>f0c40ed7d7ac4c1a957aafe864f1f114</pattern>
+    <seq>2</seq>
+    <title>Asset–CI field and status synchronisation (OOB mapping)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

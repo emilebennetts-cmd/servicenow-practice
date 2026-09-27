@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>086334e4f7634f0ba2f2133aace1b570</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_086334e4f7634f0ba2f2133aace1b570</sys_update_name>
+    <body>Update set 1: CMDB_IRE_&lt;client&gt;_v1 (global) — reviewed by the Design Authority
+  - Identification rule entries, reconciliation rules, data refresh rules
+  - Deactivation of direct cmdb_ci transform maps
+Update set 2: CMDB_Sources_&lt;client&gt;_v1 (global + each connector scope)
+  - Discovery schedules/behaviours; SGC configuration; IntegrationHub ETL
+  - Credentials and MID server config are environment-specific — not promoted
+Update set 3: CMDB_Governance_&lt;client&gt;_v1 (global)
+  - CMDB Health thresholds, Data Manager policies, de-dup templates
+  - Notifications, reports, dashboards
+Data (not update sets): CSDM business apps/services/offerings, ownership backfill, group records.</body>
+    <data>{"kind": "checklist", "purpose": "Separate the high-risk global IRE changes from source and governance configuration.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>031fd78c2b3742d38dc20450125b3992</pattern>
+    <seq>0</seq>
+    <title>Update set plan — CMDB / CSDM foundation</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

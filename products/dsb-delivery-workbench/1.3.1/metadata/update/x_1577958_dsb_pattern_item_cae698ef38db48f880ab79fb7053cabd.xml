@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>cae698ef38db48f880ab79fb7053cabd</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_cae698ef38db48f880ab79fb7053cabd</sys_update_name>
+    <body>Create a User
+Impersonate
+Run Server Side Script</body>
+    <data>{"req": 3, "note": "Access check: in the server script use GlideRecordSecure (or GlideRecord.canRead()) as the impersonated user and assert that the record cannot be read. Plain Record Query does not enforce ACLs."}</data>
+    <kind>atf</kind>
+    <pattern>f57c6db779734f4ea34b1ec5d8dedf38</pattern>
+    <seq>1</seq>
+    <title>Non-legal user cannot read legal request (negative)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

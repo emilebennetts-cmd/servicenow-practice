@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>8ebdf6aecc414eeeb4941b55ee5df91b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_8ebdf6aecc414eeeb4941b55ee5df91b</sys_update_name>
+    <body>Decomposition rules, orchestration flows (catalogue content as data)</body>
+    <data>{"key": "OM", "scope": "order management scope"}</data>
+    <kind>update_set</kind>
+    <pattern>e96633990a4b4bd0a7aa9de3d4f7fa00</pattern>
+    <seq>1</seq>
+    <title>TEL_OrderMgmt_&lt;client&gt;_v1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

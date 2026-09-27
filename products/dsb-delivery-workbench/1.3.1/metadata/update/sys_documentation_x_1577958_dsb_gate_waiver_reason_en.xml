@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>e692b53c47064ee4944ee2a16702e0af</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_gate_waiver_reason_en</sys_update_name>
+    <element>waiver_reason</element>
+    <help/>
+    <hint/>
+    <label>Waiver reason</label>
+    <language>en</language>
+    <name>x_1577958_dsb_gate</name>
+    <plural>Waiver reasons</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

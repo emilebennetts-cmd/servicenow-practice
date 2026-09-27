@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>b776c351f3614a77904f6ab1f192ef76</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_b776c351f3614a77904f6ab1f192ef76</sys_update_name>
+    <body>Coalesce key for user and HR profile</body>
+    <data>{"validate": "Evidence hr.profile users_active_with_employee_number"}</data>
+    <kind>assumption</kind>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>0</seq>
+    <title>Employee number is unique and present for all active workers</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

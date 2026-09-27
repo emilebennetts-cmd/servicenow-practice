@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>a33851ae72294ed7b9e1ccc86a720a1d</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_a33851ae72294ed7b9e1ccc86a720a1d</sys_update_name>
+    <data>{"cat": "Data", "l": 4, "i": 3, "treat": "Cleansing before load; serial/model normalisation."}</data>
+    <kind>risk</kind>
+    <pattern>0e998cd6afca4efe958b07af4c028893</pattern>
+    <seq>1</seq>
+    <title>Biomed register quality poor</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

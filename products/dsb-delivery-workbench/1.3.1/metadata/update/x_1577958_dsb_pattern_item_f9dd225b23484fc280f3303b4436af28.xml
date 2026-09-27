@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>f9dd225b23484fc280f3303b4436af28</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_f9dd225b23484fc280f3303b4436af28</sys_update_name>
+    <body>Given the CRM integration runs, When a new account and contact are created in CRM, Then they exist in ServiceNow within the agreed interval with the CRM ID
+Given an install base item is linked to an account, When an agent opens the account, Then its products and entitlements are shown</body>
+    <data>{"type": "Data", "moscow": "Must", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>4874dc995cad4b3cb3bda8c29e4e0be8</pattern>
+    <seq>0</seq>
+    <title>The customer data model (accounts/contacts or consumers, products, install base) is populated from the system of record</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

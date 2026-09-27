@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>1d355a5d37ac4b2e9bb2afd6d2244e17</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_1d355a5d37ac4b2e9bb2afd6d2244e17</sys_update_name>
+    <body>Platform owner, product owners, platform team, partner; governance forum terms of reference.</body>
+    <data>{"type": "Governance / documentation", "cls": "Configuration", "req": [0, 4], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>8d97fa25f5114eb4b6ee61ef9fdc7882</pattern>
+    <seq>0</seq>
+    <title>Platform operating model and RACI</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

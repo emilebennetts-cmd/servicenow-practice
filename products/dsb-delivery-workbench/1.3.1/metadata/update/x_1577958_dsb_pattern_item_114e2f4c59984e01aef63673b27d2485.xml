@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>114e2f4c59984e01aef63673b27d2485</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_114e2f4c59984e01aef63673b27d2485</sys_update_name>
+    <body>Given a vulnerable item on a CI with a support group, When it is created, Then the assignment group is set from the CI without manual triage
+Given two vulnerable items with the same severity, When their CIs differ in business criticality, Then the higher-criticality item has the higher risk score</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>9ad6efafe3d645c1bce9ff6b75af7152</pattern>
+    <seq>4</seq>
+    <title>In-scope CIs carry a support group and business criticality so vulnerable items are assigned and prioritised automatically</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

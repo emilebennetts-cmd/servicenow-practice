@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_choice_set action="INSERT_OR_UPDATE" field="gate" table="x_1577958_dsb_gate" version="3" apply_defaults="true">
+    <sys_choice_set action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>e91d9fb8a81948388c5452b683a32ad1</sys_id>
+      <element>gate</element>
+      <sys_update_name>sys_choice_x_1577958_dsb_gate_gate</sys_update_name>
+      <name>x_1577958_dsb_gate</name>
+      <sys_class_name>sys_choice_set</sys_class_name>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_package display_value="x_1577958_dsb" source="17aff6423fa94ebabea0896ca9bb2ea3">17aff6423fa94ebabea0896ca9bb2ea3</sys_package>
+      <sys_name>gate</sys_name>
+    </sys_choice_set>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>091a9717218c4e96910fd1bc52fe0fb4</sys_id>
+      <name>x_1577958_dsb_gate</name>
+      <element>gate</element>
+      <label>G0 - Qualified (path and licensing captured)</label>
+      <value>g0</value>
+      <sequence>0</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>c3db49e134724ad28128067495a898d3</sys_id>
+      <name>x_1577958_dsb_gate</name>
+      <element>gate</element>
+      <label>G1 - Requirements agreed</label>
+      <value>g1</value>
+      <sequence>10</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>07e23afd59e44742b493354411ddf7ea</sys_id>
+      <name>x_1577958_dsb_gate</name>
+      <element>gate</element>
+      <label>G2 - Design signed off</label>
+      <value>g2</value>
+      <sequence>20</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>6e6d284857bc4c2fa4ea6ca9af6ad0bf</sys_id>
+      <name>x_1577958_dsb_gate</name>
+      <element>gate</element>
+      <label>G3 - Peer review, SIT and ATF passed</label>
+      <value>g3</value>
+      <sequence>30</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>6dc79a5f57a14305a3fd11e727a35971</sys_id>
+      <name>x_1577958_dsb_gate</name>
+      <element>gate</element>
+      <label>G4 - UAT accepted</label>
+      <value>g4</value>
+      <sequence>40</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>e0c517e2504943b79e05191b19393df2</sys_id>
+      <name>x_1577958_dsb_gate</name>
+      <element>gate</element>
+      <label>G5 - Production PVT passed</label>
+      <value>g5</value>
+      <sequence>50</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>64412968216e488aac639f253bc0af3c</sys_id>
+      <name>x_1577958_dsb_gate</name>
+      <element>gate</element>
+      <label>G6 - Support accepted handover</label>
+      <value>g6</value>
+      <sequence>60</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+  </sys_choice_set>
+</record_update>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>74107aee046c48bd9c8bab4c758e5fac</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_74107aee046c48bd9c8bab4c758e5fac</sys_update_name>
+    <body>Taxonomy and branding configuration
+Dashboards and surveys</body>
+    <data>{"key": "EC", "scope": "global"}</data>
+    <kind>update_set</kind>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>3</seq>
+    <title>HRSD_EmployeeCenter_&lt;client&gt;_v1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

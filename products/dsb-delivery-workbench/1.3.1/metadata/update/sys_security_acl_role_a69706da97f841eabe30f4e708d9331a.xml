@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<record_update table="sys_security_acl_role">
+  <sys_security_acl_role action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>a69706da97f841eabe30f4e708d9331a</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_security_acl_role_a69706da97f841eabe30f4e708d9331a</sys_update_name>
+    <sys_name>x_1577958_dsb_defect.x_1577958_dsb.user</sys_name>
+    <sys_security_acl>a40ba051e9f14db0a5a8e12f79097e98</sys_security_acl>
+    <sys_user_role name="x_1577958_dsb.user">2b8a17a6d2454acaa680c43df012cf9e</sys_user_role>
+  </sys_security_acl_role>
+</record_update>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>23e4e175e89e4406806eb29d353f0a14</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_23e4e175e89e4406806eb29d353f0a14</sys_update_name>
+    <body>Run Server Side Script
+Record Query
+Record Validation
+Log</body>
+    <data>{"req": 0, "note": null}</data>
+    <kind>atf</kind>
+    <pattern>031fd78c2b3742d38dc20450125b3992</pattern>
+    <seq>0</seq>
+    <title>Two sources, one CI: IRE merges on serial number</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

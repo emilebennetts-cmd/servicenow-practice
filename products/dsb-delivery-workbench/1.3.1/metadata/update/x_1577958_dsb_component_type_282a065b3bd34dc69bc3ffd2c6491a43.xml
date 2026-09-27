@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_component_type">
+  <x_1577958_dsb_component_type action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>282a065b3bd34dc69bc3ffd2c6491a43</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_component_type_282a065b3bd34dc69bc3ffd2c6491a43</sys_update_name>
+    <base_hours>3</base_hours>
+    <build_order>14</build_order>
+    <build_phase>5. Data &amp; integration</build_phase>
+    <name>Import set / transform map</name>
+    <pvt_checks>Sample file loads and transforms correctly
+Coalesce updates existing records instead of duplicating
+Transform errors are reported and do not create partial records</pvt_checks>
+  </x_1577958_dsb_component_type>
+</record_update>

@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<database>
+  <element name="x_1577958_dsb_rad" type="collection" label="UDW RAID Item" is_extendable="false" text_index="false" read_only="false" audit="true" display="title" access="public" caller_access="0" ws_access="true" scriptable_table="false" attributes="">
+    <element name="number" type="string" active="true" array="false" audit="false" default_value="javascript:global.getNextObjNumberPadded();" unique="false" label="Number" mandatory="false" read_only="true" read_only_option="instance_configured" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Numbers"/>
+    <element name="engagement" type="reference" active="true" array="false" audit="false" unique="false" label="Engagement" mandatory="true" read_only="false" reference_cascade_rule="delete" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" reference="x_1577958_dsb_engagement" plural="Engagements"/>
+    <element name="kind" type="choice" active="true" array="false" audit="false" default_value="risk" unique="false" label="Kind" mandatory="false" read_only="false" choice="3" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Kinds">
+      <choice>
+        <element value="risk" label="Risk" inactive="false" inactive_on_update="false" sequence="10" language="en"/>
+        <element value="assumption" label="Assumption" inactive="false" inactive_on_update="false" sequence="20" language="en"/>
+        <element value="dependency" label="Dependency" inactive="false" inactive_on_update="false" sequence="30" language="en"/>
+        <element value="issue" label="Issue" inactive="false" inactive_on_update="false" sequence="40" language="en"/>
+      </choice>
+    </element>
+    <element name="title" type="string" active="true" array="false" audit="false" unique="false" label="Title" max_length="400" mandatory="true" read_only="false" choice="0" display="true" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Titles"/>
+    <element name="description" type="multi_two_lines" active="true" array="false" audit="false" unique="false" label="Description / basis" max_length="4000" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Description / basis"/>
+    <element name="category" type="string" active="true" array="false" audit="false" unique="false" label="Category" max_length="40" mandatory="false" read_only="false" choice="2" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Categories">
+      <choice>
+        <element value="delivery" label="Delivery" sequence="1" language="en"/>
+        <element value="scope" label="Scope" sequence="2" language="en"/>
+        <element value="licensing" label="Licensing" sequence="3" language="en"/>
+        <element value="maintainability" label="Maintainability" sequence="4" language="en"/>
+        <element value="security" label="Security" sequence="5" language="en"/>
+        <element value="data" label="Data" sequence="6" language="en"/>
+        <element value="integration" label="Integration" sequence="7" language="en"/>
+        <element value="quality" label="Quality" sequence="8" language="en"/>
+        <element value="performance" label="Performance" sequence="9" language="en"/>
+        <element value="adoption" label="Adoption" sequence="10" language="en"/>
+        <element value="client" label="Client" sequence="11" language="en"/>
+        <element value="third_party" label="Third party" sequence="12" language="en"/>
+        <element value="internal" label="Internal" sequence="13" language="en"/>
+        <element value="platform" label="Platform" sequence="14" language="en"/>
+      </choice>
+    </element>
+    <element name="likelihood" type="integer" active="true" array="false" audit="false" default_value="3" unique="false" label="Likelihood (1-5)" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Likelihood (1-5)"/>
+    <element name="impact" type="integer" active="true" array="false" audit="false" default_value="3" unique="false" label="Impact (1-5)" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Impact (1-5)"/>
+    <element name="score" type="integer" active="true" array="false" audit="false" unique="false" label="Score" mandatory="false" read_only="true" read_only_option="instance_configured" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Scores"/>
+    <element name="rag" type="choice" active="true" array="false" audit="false" unique="false" label="RAG" mandatory="false" read_only="true" read_only_option="instance_configured" choice="1" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="RAGs">
+      <choice>
+        <element value="red" label="Red" inactive="false" inactive_on_update="false" sequence="10" language="en"/>
+        <element value="amber" label="Amber" inactive="false" inactive_on_update="false" sequence="20" language="en"/>
+        <element value="green" label="Green" inactive="false" inactive_on_update="false" sequence="30" language="en"/>
+      </choice>
+    </element>
+    <element name="treatment" type="multi_two_lines" active="true" array="false" audit="false" unique="false" label="Treatment / validation" max_length="4000" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Treatment / validations"/>
+    <element name="owner_role" type="string" active="true" array="false" audit="false" unique="false" label="Owner (role)" max_length="100" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Owner (role)"/>
+    <element name="status" type="choice" active="true" array="false" audit="false" default_value="open" unique="false" label="Status" mandatory="false" read_only="false" choice="3" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Status">
+      <choice>
+        <element value="open" label="Open" inactive="false" inactive_on_update="false" sequence="10" language="en"/>
+        <element value="accepted" label="Accepted" inactive="false" inactive_on_update="false" sequence="20" language="en"/>
+        <element value="validated" label="Validated" inactive="false" inactive_on_update="false" sequence="30" language="en"/>
+        <element value="closed" label="Closed" inactive="false" inactive_on_update="false" sequence="40" language="en"/>
+      </choice>
+    </element>
+    <element name="accepted_ref" type="string" active="true" array="false" audit="false" unique="false" label="Acceptance reference" max_length="200" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Acceptance references"/>
+    <element name="raised_by_rule" type="string" active="true" array="false" audit="false" unique="false" label="Auto-raised by rule" max_length="60" mandatory="false" read_only="true" read_only_option="instance_configured" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Auto-raised by rules"/>
+    <element name="pattern_key" type="string" active="true" array="false" audit="false" unique="false" label="Seeded by pattern" max_length="60" mandatory="false" read_only="true" read_only_option="instance_configured" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Seeded by patterns"/>
+    <element name="seeded" type="boolean" active="true" array="false" audit="false" default_value="false" unique="false" label="Seeded, not yet edited" mandatory="false" read_only="true" read_only_option="instance_configured" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Seeded, not yet edited"/>
+  </element>
+</database>

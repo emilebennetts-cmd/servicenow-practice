@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_choice_set action="INSERT_OR_UPDATE" field="status" table="x_1577958_dsb_rad" version="3" apply_defaults="true">
+    <sys_choice_set action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>1f23be46af004da6bb38aae57594f376</sys_id>
+      <element>status</element>
+      <sys_update_name>sys_choice_x_1577958_dsb_rad_status</sys_update_name>
+      <name>x_1577958_dsb_rad</name>
+      <sys_class_name>sys_choice_set</sys_class_name>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_package display_value="x_1577958_dsb" source="17aff6423fa94ebabea0896ca9bb2ea3">17aff6423fa94ebabea0896ca9bb2ea3</sys_package>
+      <sys_name>status</sys_name>
+    </sys_choice_set>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>b356cf9896fe4b88a16fe60bc3ea51d0</sys_id>
+      <name>x_1577958_dsb_rad</name>
+      <element>status</element>
+      <label>Open</label>
+      <value>open</value>
+      <sequence>10</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>6b1b664d692146da85eee8dd526b6f74</sys_id>
+      <name>x_1577958_dsb_rad</name>
+      <element>status</element>
+      <label>Accepted</label>
+      <value>accepted</value>
+      <sequence>20</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>0c1423aa5f6b402fa0ebe2be0f26f7e1</sys_id>
+      <name>x_1577958_dsb_rad</name>
+      <element>status</element>
+      <label>Validated</label>
+      <value>validated</value>
+      <sequence>30</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>021ac4ac8f26499095a358fdad4bb998</sys_id>
+      <name>x_1577958_dsb_rad</name>
+      <element>status</element>
+      <label>Closed</label>
+      <value>closed</value>
+      <sequence>40</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+  </sys_choice_set>
+</record_update>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4c97e357e33145ed8a5b90d31278d9fb</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_4c97e357e33145ed8a5b90d31278d9fb</sys_update_name>
+    <body>Given the top contact drivers from evidence, When the use-case backlog is reviewed, Then each item has a baseline metric, target and owner
+Given a Now Assist skill is enabled, When 30 days have passed, Then its adoption and outcome metric are reported against baseline</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>0516e578c5dd4dfda26e406e0d0f601d</pattern>
+    <seq>0</seq>
+    <title>AI use cases are prioritised and baselined before enablement</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

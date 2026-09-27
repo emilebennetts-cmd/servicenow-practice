@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern">
+  <x_1577958_dsb_pattern action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>7b4d65824e3147e0ab19ef6bd011d80c</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_7b4d65824e3147e0ab19ef6bd011d80c</sys_update_name>
+    <active>true</active>
+    <exclude_terms>[]</exclude_terms>
+    <indicative_cases>8</indicative_cases>
+    <key>app-engine-greenfield</key>
+    <library_version>1.5</library_version>
+    <licence_products>app_engine</licence_products>
+    <min_hits>2</min_hits>
+    <name>Greenfield scoped application (App Engine)</name>
+    <overview>Prove the gap, design small, secure first, test always. (1) Fit-to-standard: search OOB apps and existing tables (evidence ae.fit); only proceed with a design-authority decision. (2) Scoped application created with App Engine Studio or the Fluent SDK (now-sdk) — source-controlled. (3) Minimal data model: one primary table (extend Task only if work is assigned and SLA-tracked), child/reference tables only where needed; choices and properties over hard-coding. (4) Roles and ACLs from a persona matrix before any UI. (5) Flow Designer for approvals, notifications and integrations; no business-rule workflows. (6) UI Builder workspace for fulfillers, portal/Employee Center record producer for requesters. (7) ATF from the first sprint: critical path plus one access test per persona. (8) Governance: owner, App Engine Management Center or pipeline, app repository deployment, support model, and a custom-table count against entitlement. The workbench greenfield skeleton seeds the component list; this pattern adds the governance and evidence around it.</overview>
+    <pain>Critical process lives in a spreadsheet or legacy database with no audit trail
+No approvals, SLAs or notifications
+Previous quick builds became unowned technical debt
+Custom-table licence consumption unknown
+No standard for citizen developers</pain>
+    <phase>3</phase>
+    <requires/>
+    <strong_terms>[{"re": "App Engine|low.?code|custom app|scoped app", "flags": "i"}, {"re": "spreadsheet|access database|sharepoint list|paper form", "flags": "i"}]</strong_terms>
+    <summary>A business process has no fit in an OOB application and runs on spreadsheets, an Access/Lotus database or a SharePoint list. The client wants it on the platform quickly without creating unmanaged technical debt. The pattern converges on a governed scoped application: fit-to-standard check first, a minimal data model extending Task only where work is assigned, roles and ACLs designed up front, Flow Designer for logic, a workspace/portal UI, ATF from day one, and App Engine governance (Management Center, pipelines, custom-table entitlement) — built with App Engine Studio or the Fluent SDK.</summary>
+    <triggers>[{"re": "App Engine|App Engine Studio|\\bAES\\b|low.?code|no.?code", "flags": "i"}, {"re": "custom (app|application)|scoped app|bespoke|build (an|a new) app", "flags": "i"}, {"re": "spreadsheet|access database|lotus notes|sharepoint list|paper form|manual (process|register)", "flags": "i"}, {"re": "citizen develop|fusion team", "flags": "i"}, {"re": "Fluent|now.?sdk|\\bIDE\\b", "flags": ""}, {"re": "register|tracker|approval process", "flags": "i"}, {"re": "\\bregister\\b", "flags": "i"}, {"re": "\\btrack(ing|er)?\\b", "flags": "i"}, {"re": "approv(al|e)", "flags": "i"}, {"re": "onboard", "flags": "i"}, {"re": "\\bform\\b", "flags": "i"}, {"re": "new (app|application|system)", "flags": "i"}]</triggers>
+    <verified>false</verified>
+  </x_1577958_dsb_pattern>
+</record_update>

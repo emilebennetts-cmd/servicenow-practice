@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_section caption="Details" section_id="ab3919331dc94f73a80cad6a29c13a80" sys_domain="global" table="x_1577958_dsb_defect" view="">
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.begin_split</element>
+      <position>0</position>
+      <sys_id>58a245253ee343c68c7262da06edd275</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_defect" sys_domain="global" view="Default view">ab3919331dc94f73a80cad6a29c13a80</sys_ui_section>
+      <sys_user/>
+      <type>.begin_split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>number</element>
+      <position>1</position>
+      <sys_id>d3a09bfdda704178a6867bf31923192e</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_defect" sys_domain="global" view="Default view">ab3919331dc94f73a80cad6a29c13a80</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>engagement</element>
+      <position>2</position>
+      <sys_id>5d54b90e052c495ba5a3e2970814a110</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_defect" sys_domain="global" view="Default view">ab3919331dc94f73a80cad6a29c13a80</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>title</element>
+      <position>3</position>
+      <sys_id>9e3d8055ad824db5b7e7303a72c618b4</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_defect" sys_domain="global" view="Default view">ab3919331dc94f73a80cad6a29c13a80</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>test</element>
+      <position>4</position>
+      <sys_id>02c36b4cc124452388875cd3b0c366c0</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_defect" sys_domain="global" view="Default view">ab3919331dc94f73a80cad6a29c13a80</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>requirement</element>
+      <position>5</position>
+      <sys_id>edea67b0672a4c8db004d586aa793198</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_defect" sys_domain="global" view="Default view">ab3919331dc94f73a80cad6a29c13a80</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.split</element>
+      <position>6</position>
+      <sys_id>b98a3a871fab41cb811f3b8df1f86a68</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_defect" sys_domain="global" view="Default view">ab3919331dc94f73a80cad6a29c13a80</sys_ui_section>
+      <sys_user/>
+      <type>.split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>component</element>
+      <position>7</position>
+      <sys_id>a02c26d78834439fb77143f68425c019</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_defect" sys_domain="global" view="Default view">ab3919331dc94f73a80cad6a29c13a80</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>severity</element>
+      <position>8</position>
+      <sys_id>9a0f737d9c8447c887bfc808638f4c3e</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_defect" sys_domain="global" view="Default view">ab3919331dc94f73a80cad6a29c13a80</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>state</element>
+      <position>9</position>
+      <sys_id>8683e0d46b374aa09c6feca5565bae48</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_defect" sys_domain="global" view="Default view">ab3919331dc94f73a80cad6a29c13a80</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>known_error</element>
+      <position>10</position>
+      <sys_id>fef206236b0a4b27b571c15930e2877a</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_defect" sys_domain="global" view="Default view">ab3919331dc94f73a80cad6a29c13a80</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.end_split</element>
+      <position>11</position>
+      <sys_id>a0b760307ec34873b85ab4eb2b0f8d56</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_defect" sys_domain="global" view="Default view">ab3919331dc94f73a80cad6a29c13a80</sys_ui_section>
+      <sys_user/>
+      <type>.end_split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>workaround</element>
+      <position>12</position>
+      <sys_id>4f4aa460d8544bc3802346e947d51694</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_defect" sys_domain="global" view="Default view">ab3919331dc94f73a80cad6a29c13a80</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <caption>Details</caption>
+      <header>false</header>
+      <name>x_1577958_dsb_defect</name>
+      <roles/>
+      <sys_domain>global</sys_domain>
+      <sys_id>ab3919331dc94f73a80cad6a29c13a80</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <title>false</title>
+      <view_name/>
+      <view name="NULL" display_value="Default view">Default view</view>
+    </sys_ui_section>
+  </sys_ui_section>
+</record_update>

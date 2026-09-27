@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>9011220b9e514ec5b894eec57d41f48f</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_9011220b9e514ec5b894eec57d41f48f</sys_update_name>
+    <body>Given a new hire record is received from the HR system, When the onboarding lifecycle event starts, Then activity sets trigger in the agreed sequence relative to start date
+Given the hiring manager has pending onboarding to-dos, When they open Employee Center, Then the to-dos are listed with due dates</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>3</seq>
+    <title>Onboarding is orchestrated as a lifecycle event with tasks for HR, IT, facilities and the manager</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

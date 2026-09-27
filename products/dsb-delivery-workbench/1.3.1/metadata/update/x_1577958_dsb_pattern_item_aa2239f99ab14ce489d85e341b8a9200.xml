@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>aa2239f99ab14ce489d85e341b8a9200</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_aa2239f99ab14ce489d85e341b8a9200</sys_update_name>
+    <body>Incident categories (sys_choice), assignment rules, data lookup rules
+SLA definitions (contract_sla) and schedules
+Change models, risk assessment, CAB definitions
+Knowledge base workflow configuration
+Notifications</body>
+    <data>{"key": "PROC", "scope": "global"}</data>
+    <kind>update_set</kind>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>1</seq>
+    <title>ITSM_Process_&lt;client&gt;_v1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

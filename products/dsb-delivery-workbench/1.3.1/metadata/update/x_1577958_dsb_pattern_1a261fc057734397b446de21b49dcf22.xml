@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern">
+  <x_1577958_dsb_pattern action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>1a261fc057734397b446de21b49dcf22</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_1a261fc057734397b446de21b49dcf22</sys_update_name>
+    <active>true</active>
+    <exclude_terms>[]</exclude_terms>
+    <indicative_cases>79</indicative_cases>
+    <key>hrsd-foundation</key>
+    <library_version>1.5</library_version>
+    <licence_products>hrsd</licence_products>
+    <min_hits>2</min_hits>
+    <name>HR Service Delivery foundation and employee lifecycle</name>
+    <overview>Secure foundation, then services, then lifecycle. (1) Design contextual security first: HR roles by tier and COE, sensitive services restricted, no platform admin access to case data without an HR role; separation of duties documented. (2) Integrate the HR system of record (Workday, SuccessFactors or Oracle via the OOB spokes / Service Graph Connector) to populate users and HR profiles; employee number is the key. (3) Build the HR service catalogue from the OOB COE → topic category → topic detail → HR service model; configure, don't clone, case tables. (4) Route with matching rules and assignment by HR service and HR criteria (country, entity), with tiered transfer and SLAs. (5) Employee Center as the single front door: taxonomy, HR knowledge targeted with HR criteria, and to-dos. (6) Lifecycle Events for onboarding and offboarding, with IT/facilities fulfilment delegated to ITSM catalogue items, not re-created in HR. (7) Document templates and e-signature only where needed. (8) Report on volume, SLA, deflection and CSAT.</overview>
+    <pain>Employees email or phone HR because there is no single front door
+HR advisors triage from shared inboxes with no SLA or visibility
+Onboarding tasks across HR, IT, facilities and managers are chased manually; day-one readiness is inconsistent
+Sensitive employee matters are stored in email and spreadsheets
+HR data re-keyed between the HR system of record and service tools</pain>
+    <phase>1</phase>
+    <requires/>
+    <strong_terms>[{"re": "\\bHR\\b", "flags": ""}, {"re": "\\bHRSD\\b|HR service|human resources", "flags": "i"}, {"re": "onboard", "flags": "i"}]</strong_terms>
+    <summary>HR enquiries and employee lifecycle work run through email, shared inboxes and spreadsheets. Employees do not know where to go, HR advisors re-key data between the HR system of record and other tools, onboarding tasks for IT, facilities and managers are chased manually, and sensitive case data sits in insecure places. The pattern converges on OOB HR Service Delivery: an HR service catalogue with case and knowledge management, Employee Center as the single front door, Lifecycle Events for onboarding and offboarding, and HR profile data fed from the HR system of record — with contextual security designed first.</summary>
+    <triggers>[{"re": "\\bHR\\b|human resources", "flags": "i"}, {"re": "\\bHRSD\\b|HR service", "flags": "i"}, {"re": "employee (center|centre|experience|portal)", "flags": "i"}, {"re": "onboard|offboard|lifecycle|transfer|parental leave", "flags": "i"}, {"re": "payroll|benefits|leave", "flags": "i"}, {"re": "people (operations|team)", "flags": "i"}, {"re": "sensitive|confidential", "flags": "i"}, {"re": "\\bportal\\b", "flags": "i"}, {"re": "employee", "flags": "i"}, {"re": "\\brequests?\\b", "flags": "i"}, {"re": "new (starter|hire)s?", "flags": "i"}]</triggers>
+    <verified>false</verified>
+  </x_1577958_dsb_pattern>
+</record_update>

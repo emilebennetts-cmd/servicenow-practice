@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>5d5eb2c119e643558c57285cd12366eb</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_5d5eb2c119e643558c57285cd12366eb</sys_update_name>
+    <data>{"cat": "Data", "l": 4, "i": 4, "treat": "Knowledge remediation gate; start agent-facing; citations shown."}</data>
+    <kind>risk</kind>
+    <pattern>0516e578c5dd4dfda26e406e0d0f601d</pattern>
+    <seq>1</seq>
+    <title>Poor knowledge produces wrong answers to users</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

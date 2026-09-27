@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>f5abcd2fc7f34c07b162af204fe2b33d</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_f5abcd2fc7f34c07b162af204fe2b33d</sys_update_name>
+    <body>Activity sets triggered relative to start date; IT and facilities activities fulfilled by ITSM catalogue items.</body>
+    <data>{"type": "OOB application configuration", "cls": "Configuration", "req": [3], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>9</seq>
+    <title>Onboarding lifecycle event: activity sets and activities</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

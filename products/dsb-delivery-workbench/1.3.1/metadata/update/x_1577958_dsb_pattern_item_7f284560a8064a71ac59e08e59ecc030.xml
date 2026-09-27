@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>7f284560a8064a71ac59e08e59ecc030</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_7f284560a8064a71ac59e08e59ecc030</sys_update_name>
+    <body>IntegrationHub spoke (SAP, Oracle, Ariba, Coupa) or REST.</body>
+    <data>{"type": "Integration (REST/SOAP)", "cls": "Out of the box", "req": [1, 5], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>8d626f620b62477fb3d9517346e13cf8</pattern>
+    <seq>2</seq>
+    <title>ERP spoke / integration for requisitions, POs and suppliers</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

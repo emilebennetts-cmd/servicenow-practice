@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>2fc5d87a67af41e39f429837ee682e1d</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_2fc5d87a67af41e39f429837ee682e1d</sys_update_name>
+    <body>OOB HR Agent Workspace; list and record layouts via variants only.</body>
+    <data>{"type": "Workspace / portal page", "cls": "Out of the box", "req": [1], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>11</seq>
+    <title>HR Agent Workspace configuration</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

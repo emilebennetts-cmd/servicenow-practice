@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_section caption="Tests" section_id="d9a6d487de1a433f9f31fb2031758aa4" sys_domain="global" table="x_1577958_dsb_requirement" view="">
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>12M.x_1577958_dsb_requirement.x_1577958_dsb_test.requirement</element>
+      <position>0</position>
+      <sys_id>41a9a9be6c744af6b83b2d137f650532</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Tests" display_value="Tests" name="x_1577958_dsb_requirement" sys_domain="global" view="Default view">d9a6d487de1a433f9f31fb2031758aa4</sys_ui_section>
+      <sys_user/>
+      <type>list</type>
+    </sys_ui_element>
+    <sys_ui_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <caption>Tests</caption>
+      <header>false</header>
+      <name>x_1577958_dsb_requirement</name>
+      <roles/>
+      <sys_domain>global</sys_domain>
+      <sys_id>d9a6d487de1a433f9f31fb2031758aa4</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <title>false</title>
+      <view_name/>
+      <view name="NULL" display_value="Default view">Default view</view>
+    </sys_ui_section>
+  </sys_ui_section>
+</record_update>

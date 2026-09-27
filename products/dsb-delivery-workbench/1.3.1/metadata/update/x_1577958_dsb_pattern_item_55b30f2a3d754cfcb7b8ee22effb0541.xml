@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>55b30f2a3d754cfcb7b8ee22effb0541</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_55b30f2a3d754cfcb7b8ee22effb0541</sys_update_name>
+    <body>// DSB IMPLEMENTATION kb-retire-stale — DATA CHANGING. DRY RUN unless DRY_RUN = false.
+var DRY_RUN = true;
+var KB = '';                 // &lt;confirm&gt; kb_knowledge_base sys_id; blank = all KBs
+var QUERY = 'workflow_state=published^valid_to&lt;javascript:gs.daysAgoStart(0)';
+var stats = {would_retire: 0, retired: 0};
+var k = new GlideRecord('kb_knowledge'); k.addEncodedQuery(QUERY); if (KB) k.addQuery('kb_knowledge_base', KB); k.setLimit(1000); k.query();
+while (k.next()) {
+  stats.would_retire++;
+  gs.print((DRY_RUN ? '[DRY RUN] ' : '') + k.getValue('number') + ' (valid_to ' + k.getValue('valid_to') + ')');
+  if (!DRY_RUN) { k.setValue('workflow_state', 'retired'); k.update(); stats.retired++; }
+}
+gs.print('=== DSB-IMPL kb-retire-stale ===\n' + JSON.stringify(stats, null, 2));</body>
+    <data>{"kind": "script", "purpose": "Moves published articles past their valid-to date (or not updated in N days, if chosen) to retired, for owner-approved lists only.", "prereqs": "Knowledge owner approves the dry-run list. Use the KB workflow in production if your KB requires approval to retire.", "rollback": "Output lists sys_ids; republish via the knowledge workflow."}</data>
+    <kind>implementation</kind>
+    <modifies_data>true</modifies_data>
+    <pattern>0516e578c5dd4dfda26e406e0d0f601d</pattern>
+    <seq>1</seq>
+    <title>Stale knowledge retirement (DRY RUN by default)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

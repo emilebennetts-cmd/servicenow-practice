@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>1e71d602160545e8a9677bc0bf360021</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_1e71d602160545e8a9677bc0bf360021</sys_update_name>
+    <body>// DSB IMPLEMENTATION hr-profile-create — DATA CHANGING. DRY RUN unless DRY_RUN = false. Prints counts and record sys_ids only.
+var DRY_RUN = true;
+var LIMIT = 500;
+var stats = {would_create: 0, created: 0, created_profile_ids: []};
+var have = {}; var pa = new GlideAggregate('sn_hr_core_profile'); pa.addAggregate('COUNT'); pa.groupBy('user'); pa.query(); while (pa.next()) have[pa.getValue('user')] = true;
+var u = new GlideRecord('sys_user'); u.addActiveQuery(); u.addNotNullQuery('employee_number'); u.query();
+while (u.next() &amp;&amp; stats.would_create &lt; LIMIT) {
+  if (have[u.getUniqueValue()]) continue;
+  stats.would_create++;
+  if (!DRY_RUN) { var n = new GlideRecord('sn_hr_core_profile'); n.initialize(); n.setValue('user', u.getUniqueValue()); var id = n.insert(); if (id) { stats.created++; stats.created_profile_ids.push(id); } }
+}
+gs.print('=== DSB-IMPL hr-profile-create ' + (DRY_RUN ? '[DRY RUN]' : '') + ' ===\n' + JSON.stringify(stats, null, 2));</body>
+    <data>{"kind": "script", "purpose": "Fallback only when the HR integration cannot create profiles for existing users at go-live. Creates sn_hr_core_profile records linked to the user.", "prereqs": "Prefer the OOB HR profile creation from the HR integration. Sub-prod first; HR data owner approval.", "rollback": "Output lists created profile sys_ids (no personal identifiers); delete those records only if created in error (sub-prod)."}</data>
+    <kind>implementation</kind>
+    <modifies_data>true</modifies_data>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>2</seq>
+    <title>Create HR profiles for active employees (DRY RUN by default)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

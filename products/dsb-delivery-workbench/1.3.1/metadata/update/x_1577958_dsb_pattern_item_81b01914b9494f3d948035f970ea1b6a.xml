@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>81b01914b9494f3d948035f970ea1b6a</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_81b01914b9494f3d948035f970ea1b6a</sys_update_name>
+    <body>OOB workspace; list and record layouts via UI Builder variants only where needed.</body>
+    <data>{"type": "Workspace / portal page", "cls": "Configuration", "req": [9, 5], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>10</seq>
+    <title>Service Operations Workspace configuration</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_user_role">
+  <sys_user_role action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>70a8c5854d134c85afc7c13cf66a1459</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_user_role_70a8c5854d134c85afc7c13cf66a1459</sys_update_name>
+    <assignable_by/>
+    <can_delegate>true</can_delegate>
+    <description>DSB Workbench administrator: deletes engagements and library records.</description>
+    <elevated_privilege>false</elevated_privilege>
+    <grantable>true</grantable>
+    <name>x_1577958_dsb.admin</name>
+    <scoped_admin>true</scoped_admin>
+    <suffix>admin</suffix>
+    <sys_name>x_1577958_dsb.admin</sys_name>
+  </sys_user_role>
+</record_update>

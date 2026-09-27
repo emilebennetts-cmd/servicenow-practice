@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_choice_set action="INSERT_OR_UPDATE" field="kind" table="x_1577958_dsb_diag_script" version="3" apply_defaults="true">
+    <sys_choice_set action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>27afecdd86e74af1b6aa8a4775063f25</sys_id>
+      <element>kind</element>
+      <sys_update_name>sys_choice_x_1577958_dsb_diag_script_kind</sys_update_name>
+      <name>x_1577958_dsb_diag_script</name>
+      <sys_class_name>sys_choice_set</sys_class_name>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_package display_value="x_1577958_dsb" source="17aff6423fa94ebabea0896ca9bb2ea3">17aff6423fa94ebabea0896ca9bb2ea3</sys_package>
+      <sys_name>kind</sys_name>
+    </sys_choice_set>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>47896d78876e49a1b51a6a6249cee395</sys_id>
+      <name>x_1577958_dsb_diag_script</name>
+      <element>kind</element>
+      <label>Extract (read only)</label>
+      <value>extract</value>
+      <sequence>10</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>f880bcdcb7cf4f73a01170476a3c8e9b</sys_id>
+      <name>x_1577958_dsb_diag_script</name>
+      <element>kind</element>
+      <label>Audit or fix</label>
+      <value>fix</value>
+      <sequence>20</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+  </sys_choice_set>
+</record_update>

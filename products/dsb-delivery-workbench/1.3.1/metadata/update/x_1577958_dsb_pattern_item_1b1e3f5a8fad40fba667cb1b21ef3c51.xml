@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>1b1e3f5a8fad40fba667cb1b21ef3c51</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_1b1e3f5a8fad40fba667cb1b21ef3c51</sys_update_name>
+    <data>{"cat": "Delivery", "l": 3, "i": 3, "treat": "Early access requests; MID sizing from event rate."}</data>
+    <kind>risk</kind>
+    <pattern>27017c1f692149c79a16726ca19e8c2b</pattern>
+    <seq>3</seq>
+    <title>MID server capacity and network access delay connectors</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

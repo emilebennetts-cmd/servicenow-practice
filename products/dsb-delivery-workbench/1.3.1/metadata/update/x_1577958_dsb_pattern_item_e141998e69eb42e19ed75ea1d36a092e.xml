@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>e141998e69eb42e19ed75ea1d36a092e</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_e141998e69eb42e19ed75ea1d36a092e</sys_update_name>
+    <body>OOB create work order actions and field mapping.</body>
+    <data>{"type": "OOB application configuration", "cls": "Out of the box", "req": [0], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>5c6ec6aa57e140f986af5947553a8c3e</pattern>
+    <seq>1</seq>
+    <title>Work order creation from case, incident, asset</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_component_type">
+  <x_1577958_dsb_component_type action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>52fcbc49187445f69add03106bf1baa1</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_component_type_52fcbc49187445f69add03106bf1baa1</sys_update_name>
+    <base_hours>4</base_hours>
+    <build_order>8</build_order>
+    <build_phase>3. Server logic</build_phase>
+    <name>Script include</name>
+    <pvt_checks>Executes without error from a background script test call (sub-production)
+Returns expected output for a known input
+No log errors in syslog for the class</pvt_checks>
+  </x_1577958_dsb_component_type>
+</record_update>

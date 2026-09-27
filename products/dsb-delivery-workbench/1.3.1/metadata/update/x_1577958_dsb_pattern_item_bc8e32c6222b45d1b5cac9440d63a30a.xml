@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>bc8e32c6222b45d1b5cac9440d63a30a</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_bc8e32c6222b45d1b5cac9440d63a30a</sys_update_name>
+    <body>Platform admins or IT fulfillers see case content.</body>
+    <data>{"cat": "Security", "l": 3, "i": 5, "treat": "Security design first; negative ATF tests per role; HR data owner sign-off."}</data>
+    <kind>risk</kind>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>0</seq>
+    <title>Sensitive HR data exposed to non-HR roles</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

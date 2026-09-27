@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>7981d4f48fe24839b48822d5fea0b0c5</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_7981d4f48fe24839b48822d5fea0b0c5</sys_update_name>
+    <body>Remediation subflows and actions</body>
+    <data>{"key": "REM", "scope": "global / app scope"}</data>
+    <kind>update_set</kind>
+    <pattern>27017c1f692149c79a16726ca19e8c2b</pattern>
+    <seq>1</seq>
+    <title>ITOM_Remediation_&lt;client&gt;_v1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>f13b8ec61e044addaf94cb4c6ef5d2ed</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_f13b8ec61e044addaf94cb4c6ef5d2ed</sys_update_name>
+    <body>OOB issue lifecycle; overdue escalation to control owner manager.</body>
+    <data>{"type": "Notification", "cls": "Configuration", "req": [5], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>4b16aa07c3c5429a93a6f33c5ef138c0</pattern>
+    <seq>7</seq>
+    <title>Issue management: states, due dates, escalation notifications</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

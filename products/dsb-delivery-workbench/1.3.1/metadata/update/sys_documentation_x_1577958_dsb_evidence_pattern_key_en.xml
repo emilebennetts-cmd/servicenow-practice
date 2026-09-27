@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>409eb0bd4f294bf8932df62d1b2f8168</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_evidence_pattern_key_en</sys_update_name>
+    <element>pattern_key</element>
+    <help/>
+    <hint/>
+    <label>Seeded by pattern</label>
+    <language>en</language>
+    <name>x_1577958_dsb_evidence</name>
+    <plural>Seeded by patterns</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

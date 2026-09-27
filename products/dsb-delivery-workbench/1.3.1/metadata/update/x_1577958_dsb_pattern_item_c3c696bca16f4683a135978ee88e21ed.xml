@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>c3c696bca16f4683a135978ee88e21ed</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_c3c696bca16f4683a135978ee88e21ed</sys_update_name>
+    <body>External user licensing and security review.</body>
+    <data>{}</data>
+    <kind>decision</kind>
+    <pattern>8d626f620b62477fb3d9517346e13cf8</pattern>
+    <seq>2</seq>
+    <title>External supplier portal in scope</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

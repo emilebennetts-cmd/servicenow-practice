@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>a152a71d29ef49e0a65ac3a2469aa12c</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_a152a71d29ef49e0a65ac3a2469aa12c</sys_update_name>
+    <body>Run Server Side Script
+Log</body>
+    <data>{"req": 2, "note": null}</data>
+    <kind>atf</kind>
+    <pattern>93dbb3f9c9374c8b88cbf9fbbc6dee11</pattern>
+    <seq>1</seq>
+    <title>Reverted OOB script behaves as baseline</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

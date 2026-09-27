@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>3feec323f88942018a3a9a4e5332eedc</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_3feec323f88942018a3a9a4e5332eedc</sys_update_name>
+    <body>Ingestion design</body>
+    <data>{"validate": "Store app compatibility for the release"}</data>
+    <kind>assumption</kind>
+    <pattern>9502ffca8cf0439989ddf6b7b57dddea</pattern>
+    <seq>0</seq>
+    <title>SIEM/EDR vendor has a supported ServiceNow integration and API access</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

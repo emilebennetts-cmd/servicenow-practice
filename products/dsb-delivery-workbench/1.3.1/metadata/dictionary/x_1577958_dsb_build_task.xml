@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<database>
+  <element name="x_1577958_dsb_build_task" type="collection" label="UDW Build Task" is_extendable="false" text_index="false" read_only="false" audit="true" display="title" access="public" caller_access="0" ws_access="true" scriptable_table="false" attributes="">
+    <element name="number" type="string" active="true" array="false" audit="false" default_value="javascript:global.getNextObjNumberPadded();" unique="false" label="Number" mandatory="false" read_only="true" read_only_option="instance_configured" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Numbers"/>
+    <element name="engagement" type="reference" active="true" array="false" audit="false" unique="false" label="Engagement" mandatory="true" read_only="false" reference_cascade_rule="delete" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" reference="x_1577958_dsb_engagement" plural="Engagements"/>
+    <element name="component" type="reference" active="true" array="false" audit="false" unique="false" label="Component" mandatory="false" read_only="false" reference_cascade_rule="delete" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" reference="x_1577958_dsb_component" plural="Components"/>
+    <element name="title" type="string" active="true" array="false" audit="false" unique="false" label="Task" max_length="400" mandatory="true" read_only="false" choice="0" display="true" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Tasks"/>
+    <element name="phase" type="string" active="true" array="false" audit="false" unique="false" label="Build phase" max_length="60" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Build phases"/>
+    <element name="seq" type="integer" active="true" array="false" audit="false" unique="false" label="Order" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Orders"/>
+    <element name="owner_role" type="string" active="true" array="false" audit="false" unique="false" label="Owner (role)" max_length="100" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Owner (role)"/>
+    <element name="status" type="choice" active="true" array="false" audit="false" default_value="not_started" unique="false" label="Status" mandatory="false" read_only="false" choice="3" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Status">
+      <choice>
+        <element value="not_started" label="Not started" inactive="false" inactive_on_update="false" sequence="10" language="en"/>
+        <element value="in_progress" label="In progress" inactive="false" inactive_on_update="false" sequence="20" language="en"/>
+        <element value="done" label="Done" inactive="false" inactive_on_update="false" sequence="30" language="en"/>
+        <element value="blocked" label="Blocked" inactive="false" inactive_on_update="false" sequence="40" language="en"/>
+      </choice>
+    </element>
+  </element>
+</database>

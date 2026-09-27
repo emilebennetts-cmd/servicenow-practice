@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>5724c5fe3e094a2c81811ce5da3e8db4</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_5724c5fe3e094a2c81811ce5da3e8db4</sys_update_name>
+    <body>Record Insert
+Record Update
+Record Query
+Record Validation</body>
+    <data>{"req": 0, "note": null}</data>
+    <kind>atf</kind>
+    <pattern>f0c40ed7d7ac4c1a957aafe864f1f114</pattern>
+    <seq>0</seq>
+    <title>Retiring an asset retires the CI</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

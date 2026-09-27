@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>41220826b7d94bee99256f9f79e7cc5b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_41220826b7d94bee99256f9f79e7cc5b</sys_update_name>
+    <body>Record Insert
+Run Server Side Script
+Record Query
+Field Values Validation</body>
+    <data>{"req": 1, "note": null}</data>
+    <kind>atf</kind>
+    <pattern>9502ffca8cf0439989ddf6b7b57dddea</pattern>
+    <seq>1</seq>
+    <title>High-criticality CI raises severity</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

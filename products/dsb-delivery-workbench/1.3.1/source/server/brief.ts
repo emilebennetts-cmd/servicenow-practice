@@ -1,0 +1,193 @@
+import { T, gr, val, bool, each, count, getRecord, redact, logHistory } from './common.ts';
+import { estimate } from './estimate.ts';
+import { BRIEF_CONTRACT } from './libdata.ts';
+/*
+ * Build Brief round-trip with Claude (contract dsb-1.0, plus optional atfTests and updateSets).
+ * Export is blocked unless the client approved AI-assisted design (assessment DSB-05).
+ * Everything leaving the instance is redacted; import is validated row by row.
+ */
+export function exportBrief(engId) {
+    const e = getRecord(T.engagement, engId);
+    if (!e)
+        throw new Error('Engagement not found.');
+    if (val(e, 'ai_consent') !== 'approved' || !val(e, 'ai_consent_ref'))
+        throw new Error('Build Brief export is blocked: record the client approval for AI-assisted design and its reference on the engagement first.');
+    const L = [];
+    const q = `engagement=${engId}`;
+    L.push(`# Build Brief - ${val(e, 'name')}`, '', `Engagement ${val(e, 'number')} · generated ${new Date().toISOString().slice(0, 10)} by DSB Workbench (ServiceNow). Contract version dsb-1.0. AI consent reference: ${val(e, 'ai_consent_ref')}.`, '');
+    L.push('## Instructions for Claude', '', 'Act as a senior ServiceNow solution architect. Produce: (1) a solution design with options considered, OOB-first justification for every customisation, licensing/plugin/role requirements, CSDM/ITIL alignment and upgrade impact; (2) a component register linked to requirement numbers; (3) a Fluent SDK build (or update-set scripts where a scoped app is not appropriate) with read-only verification separate from data-changing scripts; (4) build tasks in ServiceNow build order; (5) UAT and PVT cases; (6) additional risks, assumptions, dependencies and decisions.', '', 'Rules: never include personal information (use roles). Do not invent table names, field names, sys_ids or plugin names; mark anything unverified as `<confirm>`. Prefer configuration over customisation. Do not add scope the client did not ask for. Return results as JSON matching the contract at the end.', '');
+    L.push('## Intake', '', `- Client: ${val(e, 'client')}`, `- Delivery path: ${val(e, 'delivery_path')}`, `- Target instance: ${val(e, 'instance_name') || '<confirm>'} (${val(e, 'family_release') || 'release <confirm>'})`, `- New scoped app: ${bool(e, 'greenfield') ? `yes - ${val(e, 'app_name')} (${val(e, 'app_scope')})` : 'no'}`, '', '### Problem', '', val(e, 'problem'), '');
+    if (val(e, 'scope_in'))
+        L.push('### In scope', '', val(e, 'scope_in'), '');
+    if (val(e, 'scope_out'))
+        L.push('### Out of scope', '', val(e, 'scope_out'), '');
+    if (val(e, 'constraints'))
+        L.push('### Constraints and standards', '', val(e, 'constraints'), '');
+    L.push('## Business outcomes', '');
+    each(T.outcome, q, (o) => L.push(`- ${val(o, 'number')} ${val(o, 'title')} - measure: ${val(o, 'measure') || '-'}; baseline ${val(o, 'baseline') || '-'}; target ${val(o, 'target') || '-'}`), 'number');
+    L.push('', '## Licensing', '');
+    each(T.entitlement, q, (x) => L.push(`- ${x.product ? String(x.product.label) : ''}: ${val(x, 'status')}${val(x, 'source') ? ` (${val(x, 'source')})` : ''}`));
+    L.push('', '## Requirements', '');
+    each(T.requirement, q, (r) => {
+        L.push(`### ${val(r, 'number')} ${val(r, 'title')}`, `Type ${val(r, 'req_type')} · ${val(r, 'moscow')} · persona ${val(r, 'persona') || '-'} · fit ${val(r, 'fit')} · licensing ${val(r, 'licensing')}${r.outcome ? ` · outcome ${String(r.outcome.number)}` : ''}`);
+        if (val(r, 'solution_note'))
+            L.push(`Solution note: ${val(r, 'solution_note')}`);
+        if (val(r, 'justification'))
+            L.push(`Customisation justification: ${val(r, 'justification')}`);
+        L.push('', val(r, 'acceptance_criteria'), '');
+    }, 'number');
+    L.push('## Risks, assumptions, dependencies', '');
+    each(T.rad, q + '^status!=closed', (x) => L.push(`- [${val(x, 'kind')}] ${val(x, 'number')} ${val(x, 'title')}${val(x, 'rag') ? ` (${val(x, 'rag')})` : ''}${val(x, 'treatment') ? ` - ${val(x, 'treatment')}` : ''}`), 'number');
+    L.push('', '## Decisions', '');
+    each(T.decision, q, (d) => L.push(`- ${val(d, 'number')} ${val(d, 'title')} (${val(d, 'status')})${val(d, 'outcome') ? `: ${val(d, 'outcome')}` : ''}`), 'number');
+    L.push('', '## Components (current register)', '');
+    each(T.component, q, (c) => L.push(`- ${val(c, 'number')} ${val(c, 'name')} · ${c.component_type ? String(c.component_type.name) : ''} · ${val(c, 'build_class')} · reqs ${reqNumbers(val(c, 'requirements'))}`), 'number');
+    L.push('', '## Update set plan', '');
+    each(T.updateSet, q, (u) => L.push(`- ${val(u, 'name')} (${val(u, 'target_scope')}) - ${val(u, 'status')}`), 'commit_order');
+    const est = estimate(engId);
+    L.push('', '## Estimate (hours, planning only - no rates)', '');
+    est.lines.forEach((l) => L.push(`- ${l.line}: ${l.hours} h (${l.basis})`));
+    L.push(`- Total: ${est.total} h`, '');
+    L.push('## Return contract (JSON)', '', '```json', JSON.stringify(Object.assign({}, BRIEF_CONTRACT, { engagementId: val(e, 'number') }), null, 1), '```', '');
+    logHistory(engId, 'Build Brief exported', `Consent reference ${val(e, 'ai_consent_ref')}`, T.engagement, val(e, 'number'), 'design');
+    return redact(L.join('\n'));
+}
+function reqNumbers(list) {
+    const ids = list.split(',').filter(Boolean);
+    if (!ids.length)
+        return '-';
+    const nums = [];
+    each(T.requirement, `sys_idIN${ids.join(',')}`, (r) => nums.push(val(r, 'number')));
+    return nums.join(', ');
+}
+const CLS = { 'Out of the box': 'oob', Configuration: 'configuration', Customisation: 'customisation' };
+const UPG = { Low: 'low', Medium: 'medium', High: 'high' };
+function byNumber(table, engId, number) {
+    if (!number)
+        return '';
+    const r = gr(table);
+    r.addQuery('engagement', engId);
+    r.addQuery('number', String(number).replace(/^([A-Z]+)-/, '$1'));
+    r.query();
+    return r.next() ? r.getUniqueValue() : '';
+}
+function typeId(name) {
+    const t = gr(T.componentType);
+    return t.get('name', name) ? t.getUniqueValue() : '';
+}
+function insert(table, fields) {
+    const r = gr(table);
+    r.initialize();
+    Object.keys(fields).forEach((k) => {
+        if (fields[k] !== undefined && fields[k] !== null && fields[k] !== '')
+            r.setValue(k, typeof fields[k] === 'string' ? redact(fields[k]) : fields[k]);
+    });
+    return r.insert() || '';
+}
+/** Validate and import Claude's dsb-1.0 JSON. Invalid rows are listed and not imported. */
+export function importBrief(engId, raw) {
+    const e = getRecord(T.engagement, engId);
+    if (!e)
+        throw new Error('Engagement not found.');
+    let o;
+    try {
+        o = JSON.parse(redact(raw));
+    }
+    catch (err) {
+        throw new Error('The returned brief is not valid JSON.');
+    }
+    if (!o || o.version !== 'dsb-1.0')
+        throw new Error('Unsupported contract version (expected dsb-1.0).');
+    const rejected = [];
+    const added = {};
+    const inc = (k) => (added[k] = (added[k] || 0) + 1);
+    const cmpNew = {};
+    (o.components || []).forEach((c, i) => {
+        const reason = !c.name ? 'name missing' : !typeId(c.type) ? `unknown component type "${c.type}"` : !CLS[c.cls] ? `unknown class "${c.cls}"` : c.scope && ['Application', 'Global'].indexOf(c.scope) < 0 ? `unknown scope "${c.scope}"` : c.cls === 'Customisation' && !c.justification ? 'customisation without justification' : '';
+        const reqIds = (c.reqs || []).map((n) => byNumber(T.requirement, engId, n));
+        if (!reason && reqIds.some((x) => !x))
+            return rejected.push({ section: 'components', row: i, reason: `unknown requirement in ${JSON.stringify(c.reqs)}` });
+        if (reason)
+            return rejected.push({ section: 'components', row: i, reason });
+        const existing = c.id ? byNumber(T.component, engId, c.id) : '';
+        if (existing) {
+            const r = getRecord(T.component, existing);
+            r.setValue('description', redact(c.desc || val(r, 'description')));
+            r.setValue('requirements', reqIds.join(','));
+            r.update();
+            inc('componentsUpdated');
+            return;
+        }
+        const id = insert(T.component, { engagement: engId, name: c.name, component_type: typeId(c.type), build_class: CLS[c.cls], target_scope: c.scope === 'Global' ? 'global' : 'application', description: c.desc, requirements: reqIds.join(','), upgrade_impact: UPG[c.upgrade] || 'low', justification: c.justification });
+        if (c.id)
+            cmpNew[c.id] = id;
+        inc('components');
+    });
+    (o.buildTasks || []).forEach((b, i) => {
+        const comp = b.component ? byNumber(T.component, engId, b.component) || cmpNew[b.component] || '' : '';
+        if (!b.title)
+            return rejected.push({ section: 'buildTasks', row: i, reason: 'title missing' });
+        if (b.component && !comp)
+            return rejected.push({ section: 'buildTasks', row: i, reason: `unknown component ${b.component}` });
+        insert(T.buildTask, { engagement: engId, title: b.title, phase: b.phase, component: comp, status: 'not_started' });
+        inc('buildTasks');
+    });
+    (o.testCases || []).forEach((t, i) => {
+        const kind = String(t.kind || '').toLowerCase();
+        const req = t.req ? byNumber(T.requirement, engId, t.req) : '';
+        const comp = t.component ? byNumber(T.component, engId, t.component) || cmpNew[t.component] || '' : '';
+        if (['uat', 'pvt'].indexOf(kind) < 0)
+            return rejected.push({ section: 'testCases', row: i, reason: `unknown kind "${t.kind}"` });
+        if ((t.req && !req) || (t.component && !comp))
+            return rejected.push({ section: 'testCases', row: i, reason: 'unknown requirement or component' });
+        insert(T.test, { engagement: engId, kind, title: t.title, requirement: req, component: comp, steps: (t.pre ? `Pre: ${t.pre}\n` : '') + (t.steps || []).join('\n'), expected: t.expected, environment: kind === 'uat' ? 'uat' : 'test', result: 'not_run' });
+        inc('tests');
+    });
+    (o.risks || []).forEach((r, i) => {
+        if (!r.title || !(r.l >= 1 && r.l <= 5) || !(r.i >= 1 && r.i <= 5))
+            return rejected.push({ section: 'risks', row: i, reason: 'title missing or likelihood/impact outside 1-5' });
+        insert(T.rad, { engagement: engId, kind: 'risk', title: r.title, description: r.desc, category: String(r.cat || '').toLowerCase(), likelihood: r.l, impact: r.i, treatment: r.treat, status: 'open' });
+        inc('risks');
+    });
+    (o.assumptions || []).forEach((a, i) => {
+        if (!a.title)
+            return rejected.push({ section: 'assumptions', row: i, reason: 'title missing' });
+        insert(T.rad, { engagement: engId, kind: 'assumption', title: a.title, description: a.basis, treatment: a.validate, status: 'open' });
+        inc('assumptions');
+    });
+    (o.dependencies || []).forEach((d, i) => {
+        if (!d.title || ['Client', 'Third party', 'Internal', 'Platform'].indexOf(d.type) < 0)
+            return rejected.push({ section: 'dependencies', row: i, reason: 'title missing or unknown type' });
+        insert(T.rad, { engagement: engId, kind: 'dependency', title: d.title, category: d.type.toLowerCase().replace(' ', '_'), status: 'open' });
+        inc('dependencies');
+    });
+    (o.decisions || []).forEach((d, i) => {
+        if (!d.title)
+            return rejected.push({ section: 'decisions', row: i, reason: 'title missing' });
+        insert(T.decision, { engagement: engId, title: d.title, outcome: [d.decision, d.rationale].filter(Boolean).join('\n\n'), status: 'proposed' });
+        inc('decisions');
+    });
+    (o.atfTests || []).forEach((a, i) => {
+        const req = a.req ? byNumber(T.requirement, engId, a.req) : '';
+        if (!a.title || (a.req && !req))
+            return rejected.push({ section: 'atfTests', row: i, reason: 'title missing or unknown requirement' });
+        insert(T.test, { engagement: engId, kind: 'atf', title: a.title, requirement: req, steps: (a.steps || []).join('\n'), expected: [a.suite ? `Suite: ${a.suite}` : '', a.note || ''].filter(Boolean).join('\n'), atf_status: 'not_built', environment: 'test' });
+        inc('atfTests');
+    });
+    (o.updateSets || []).forEach((u, i) => {
+        if (!u.name || !/^(global|sn_[a-z0-9_]+|x_[a-z0-9_]+)$/.test(u.scope || ''))
+            return rejected.push({ section: 'updateSets', row: i, reason: 'name missing or scope not global / sn_ / x_' });
+        if (count(T.updateSet, `engagement=${engId}^name=${u.name}`) > 0)
+            return rejected.push({ section: 'updateSets', row: i, reason: 'an update set with this name already exists' });
+        insert(T.updateSet, { engagement: engId, name: u.name, target_scope: u.scope, contents: u.desc, status: 'planned' });
+        inc('updateSets');
+    });
+    if (o.designNotes) {
+        const notes = val(e, 'design_notes');
+        e.setValue('design_notes', redact((notes ? notes + '\n\n---\n\n' : '') + `Imported ${new Date().toISOString().slice(0, 10)}:\n` + o.designNotes).slice(0, 64000));
+        e.update();
+        inc('designNotes');
+    }
+    logHistory(engId, 'Build Brief imported', `Added ${JSON.stringify(added)}; rejected ${rejected.length} row(s).`, T.engagement, val(e, 'number'), 'design');
+    return { added, rejected };
+}

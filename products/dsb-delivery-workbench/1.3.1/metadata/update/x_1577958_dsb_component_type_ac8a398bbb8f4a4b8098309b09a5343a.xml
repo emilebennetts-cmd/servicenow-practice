@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_component_type">
+  <x_1577958_dsb_component_type action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>ac8a398bbb8f4a4b8098309b09a5343a</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_component_type_ac8a398bbb8f4a4b8098309b09a5343a</sys_update_name>
+    <base_hours>2</base_hours>
+    <build_order>13</build_order>
+    <build_phase>4. Automation</build_phase>
+    <name>Scheduled job</name>
+    <pvt_checks>Job scheduled at the designed interval and time zone
+Execute Now runs successfully and logs a summary
+Runs within the agreed window at expected volume</pvt_checks>
+  </x_1577958_dsb_component_type>
+</record_update>

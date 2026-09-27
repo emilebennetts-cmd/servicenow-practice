@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>dd55bca1d1394c6986fb7e93995642a7</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_dd55bca1d1394c6986fb7e93995642a7</sys_update_name>
+    <body>Review and, where needed, adjust priority so serial_number is first, then name+fqdn. Global scope — capture in its own update set; test with a dry-run IRE payload in sub-prod.</body>
+    <data>{"type": "CMDB / IRE rule", "cls": "Configuration", "req": [1], "justification": null, "upgrade": "Medium", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>9ad6efafe3d645c1bce9ff6b75af7152</pattern>
+    <seq>1</seq>
+    <share_key>cmp.ire</share_key>
+    <title>Identification rule entries for computer/hardware classes (cmdb_identifier_entry)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

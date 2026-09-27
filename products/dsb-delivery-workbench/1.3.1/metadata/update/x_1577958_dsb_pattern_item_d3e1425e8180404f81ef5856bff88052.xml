@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>d3e1425e8180404f81ef5856bff88052</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_d3e1425e8180404f81ef5856bff88052</sys_update_name>
+    <body>From application portfolio / service catalogue owners; coalesce on number or name + owner.</body>
+    <data>{"type": "Data load / reference data", "cls": "Configuration", "req": [2, 3], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>031fd78c2b3742d38dc20450125b3992</pattern>
+    <seq>7</seq>
+    <title>CSDM data load: business applications, business services, offerings</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

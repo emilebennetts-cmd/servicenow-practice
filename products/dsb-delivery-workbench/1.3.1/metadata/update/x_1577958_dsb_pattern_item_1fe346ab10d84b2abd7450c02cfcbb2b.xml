@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>1fe346ab10d84b2abd7450c02cfcbb2b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_1fe346ab10d84b2abd7450c02cfcbb2b</sys_update_name>
+    <body>Contacts could see other accounts' cases if roles or relationships are wrong.</body>
+    <data>{"cat": "Security", "l": 3, "i": 5, "treat": "Negative ATF tests per persona; privacy review."}</data>
+    <kind>risk</kind>
+    <pattern>4874dc995cad4b3cb3bda8c29e4e0be8</pattern>
+    <seq>1</seq>
+    <title>Portal identity and customer data privacy</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

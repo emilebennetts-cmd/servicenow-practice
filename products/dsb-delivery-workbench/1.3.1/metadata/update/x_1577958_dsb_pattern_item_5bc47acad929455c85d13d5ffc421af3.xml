@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>5bc47acad929455c85d13d5ffc421af3</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_5bc47acad929455c85d13d5ffc421af3</sys_update_name>
+    <body>Record Insert
+Run Server Side Script
+Record Query
+Field Values Validation</body>
+    <data>{"req": 0, "note": null}</data>
+    <kind>atf</kind>
+    <pattern>9ad6efafe3d645c1bce9ff6b75af7152</pattern>
+    <seq>0</seq>
+    <title>Tenable-style discovered item matches a CI by serial number</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

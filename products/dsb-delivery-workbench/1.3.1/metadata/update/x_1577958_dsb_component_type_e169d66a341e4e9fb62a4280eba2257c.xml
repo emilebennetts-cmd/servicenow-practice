@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_component_type">
+  <x_1577958_dsb_component_type action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>e169d66a341e4e9fb62a4280eba2257c</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_component_type_e169d66a341e4e9fb62a4280eba2257c</sys_update_name>
+    <base_hours>0.5</base_hours>
+    <build_order>2</build_order>
+    <build_phase>1. Data model</build_phase>
+    <name>Field</name>
+    <pvt_checks>Field exists with correct type, length and reference/choice target
+Mandatory, read-only and default behaviour matches design
+Field appears on the intended form section/view</pvt_checks>
+  </x_1577958_dsb_component_type>
+</record_update>

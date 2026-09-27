@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>84f1998cfbe34e91a62667cf4d7f067d</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_84f1998cfbe34e91a62667cf4d7f067d</sys_update_name>
+    <body>Given an article is submitted, When the knowledge base workflow runs, Then it requires approval before publishing
+Given an agent opens an incident, When the short description matches article content, Then related articles are suggested in Agent Workspace</body>
+    <data>{"type": "Process", "moscow": "Should", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>5</seq>
+    <title>Knowledge articles are governed and suggested to agents and users</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

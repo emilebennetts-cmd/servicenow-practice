@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>5bb2e58d6e354288b030b16fe970b63a</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_5bb2e58d6e354288b030b16fe970b63a</sys_update_name>
+    <body>Given fields classified as personal, When a clone is made, Then those fields are masked or anonymised
+Given sensitive fields, When viewed by users without the role, Then they are hidden or encrypted</body>
+    <data>{"type": "Security / Access", "moscow": "Must", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>a828e5429bda4f57b75d7e4a3331f23f</pattern>
+    <seq>4</seq>
+    <title>Personal information on the platform is classified, protected and masked outside production</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

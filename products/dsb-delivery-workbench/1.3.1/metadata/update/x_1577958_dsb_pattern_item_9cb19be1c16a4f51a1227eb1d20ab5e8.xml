@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>9cb19be1c16a4f51a1227eb1d20ab5e8</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_9cb19be1c16a4f51a1227eb1d20ab5e8</sys_update_name>
+    <body>Security Incident Response workspace and reports.</body>
+    <data>{"type": "Report / dashboard", "cls": "Configuration", "req": [7], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>9502ffca8cf0439989ddf6b7b57dddea</pattern>
+    <seq>10</seq>
+    <title>SOC dashboard (volume, MTTC, MTTR, SLA)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

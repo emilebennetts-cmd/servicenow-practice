@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>db683cc3a6bd4d0daa386893a3b9df8a</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_db683cc3a6bd4d0daa386893a3b9df8a</sys_update_name>
+    <body>Serial / object ID first; name as last resort. Global change — own update set; sub-prod IRE payload test.</body>
+    <data>{"type": "CMDB / IRE rule", "cls": "Configuration", "req": [0], "justification": null, "upgrade": "Medium", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>031fd78c2b3742d38dc20450125b3992</pattern>
+    <seq>5</seq>
+    <share_key>cmp.ire</share_key>
+    <title>Identification rule entries per in-scope class</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

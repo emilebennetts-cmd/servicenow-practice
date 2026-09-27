@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<database>
+  <element name="x_1577958_dsb_pattern_item" type="collection" label="UDW Pattern Item" is_extendable="false" text_index="false" read_only="false" audit="true" display="title" access="public" caller_access="0" ws_access="true" scriptable_table="false" attributes="">
+    <element name="pattern" type="reference" active="true" array="false" audit="false" unique="false" label="Pattern" mandatory="true" read_only="false" reference_cascade_rule="delete" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" reference="x_1577958_dsb_pattern" plural="Patterns"/>
+    <element name="kind" type="choice" active="true" array="false" audit="false" unique="false" label="Kind" mandatory="true" read_only="false" choice="3" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Kinds">
+      <choice>
+        <element value="requirement" label="Requirement" inactive="false" inactive_on_update="false" sequence="10" language="en"/>
+        <element value="evidence_script" label="Evidence script (read only)" inactive="false" inactive_on_update="false" sequence="20" language="en"/>
+        <element value="component" label="Component" inactive="false" inactive_on_update="false" sequence="30" language="en"/>
+        <element value="decision" label="Decision" inactive="false" inactive_on_update="false" sequence="40" language="en"/>
+        <element value="risk" label="Risk" inactive="false" inactive_on_update="false" sequence="50" language="en"/>
+        <element value="assumption" label="Assumption" inactive="false" inactive_on_update="false" sequence="60" language="en"/>
+        <element value="dependency" label="Dependency" inactive="false" inactive_on_update="false" sequence="70" language="en"/>
+        <element value="implementation" label="Implementation asset" inactive="false" inactive_on_update="false" sequence="80" language="en"/>
+        <element value="update_set" label="Update set template" inactive="false" inactive_on_update="false" sequence="90" language="en"/>
+        <element value="atf" label="ATF outline" inactive="false" inactive_on_update="false" sequence="100" language="en"/>
+      </choice>
+    </element>
+    <element name="seq" type="integer" active="true" array="false" audit="false" unique="false" label="Order" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Orders"/>
+    <element name="title" type="string" active="true" array="false" audit="false" unique="false" label="Title" max_length="400" mandatory="true" read_only="false" choice="0" display="true" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Titles"/>
+    <element name="share_key" type="string" active="true" array="false" audit="false" unique="false" label="Shared key (merges across patterns)" max_length="60" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Shared key (merges across patterns)"/>
+    <element name="modifies_data" type="boolean" active="true" array="false" audit="false" default_value="false" unique="false" label="Modifies data" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Modifies data"/>
+    <element name="body" type="multi_two_lines" active="true" array="false" audit="false" unique="false" label="Body (script or text)" max_length="65000" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Body (script or text)"/>
+    <element name="data" type="multi_two_lines" active="true" array="false" audit="false" unique="false" label="Structured data (JSON)" max_length="65000" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Structured data (JSON)"/>
+  </element>
+</database>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>055a78aa7aa14d3fa37e608eb85f76dd</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_055a78aa7aa14d3fa37e608eb85f76dd</sys_update_name>
+    <body>Configure VR assignment rules to use the CI support group; no scripted assignment.</body>
+    <data>{"type": "Assignment / matching rule", "cls": "Configuration", "req": [4], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>9ad6efafe3d645c1bce9ff6b75af7152</pattern>
+    <seq>7</seq>
+    <title>VR assignment from CI support group (OOB assignment rules)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

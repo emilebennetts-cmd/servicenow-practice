@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>5f3d7f7c6d114940a642de2091cb33e5</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_5f3d7f7c6d114940a642de2091cb33e5</sys_update_name>
+    <body>Given resource plans are requested, When the resource manager confirms, Then allocations show against group capacity and over-allocation is highlighted</body>
+    <data>{"type": "Process", "moscow": "Should", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>009e981159a14b74a82d20a26b9752a8</pattern>
+    <seq>4</seq>
+    <title>Resource plans and capacity are managed against demand</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

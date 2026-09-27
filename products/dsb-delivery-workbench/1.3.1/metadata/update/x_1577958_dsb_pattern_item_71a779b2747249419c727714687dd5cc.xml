@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>71a779b2747249419c727714687dd5cc</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_71a779b2747249419c727714687dd5cc</sys_update_name>
+    <data>{"type": "Internal"}</data>
+    <kind>dependency</kind>
+    <pattern>0e998cd6afca4efe958b07af4c028893</pattern>
+    <seq>2</seq>
+    <title>HAM and VR foundations (see HAM/SAM and Tenable/VR patterns)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

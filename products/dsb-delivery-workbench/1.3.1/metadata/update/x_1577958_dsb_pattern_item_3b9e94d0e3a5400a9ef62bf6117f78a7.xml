@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>3b9e94d0e3a5400a9ef62bf6117f78a7</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_3b9e94d0e3a5400a9ef62bf6117f78a7</sys_update_name>
+    <body>Portfolio Planning, Goals and advanced resource features depend on the tier.</body>
+    <data>{}</data>
+    <kind>decision</kind>
+    <pattern>009e981159a14b74a82d20a26b9752a8</pattern>
+    <seq>0</seq>
+    <title>SPM package tier and which workspaces are in scope</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

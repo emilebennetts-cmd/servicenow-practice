@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>af06274e3daa433a99d8577294f6e1bd</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_af06274e3daa433a99d8577294f6e1bd</sys_update_name>
+    <body>Given reconciliation rules, When a lower-precedence source presents a different OS value, Then the authoritative value is kept</body>
+    <data>{"type": "Data", "moscow": "Must", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>031fd78c2b3742d38dc20450125b3992</pattern>
+    <seq>1</seq>
+    <share_key>cmdb.recon</share_key>
+    <title>Authoritative sources and reconciliation precedence are defined per class</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

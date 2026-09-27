@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>01a752fb09d942f8851afaa553d8a38e</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_01a752fb09d942f8851afaa553d8a38e</sys_update_name>
+    <data>{"type": "Third party"}</data>
+    <kind>dependency</kind>
+    <pattern>4874dc995cad4b3cb3bda8c29e4e0be8</pattern>
+    <seq>2</seq>
+    <title>Telephony vendor engagement for CTI</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

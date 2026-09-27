@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>f3b5778b90d34351977dee54f9338298</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_update_set_contents_en</sys_update_name>
+    <element>contents</element>
+    <help/>
+    <hint/>
+    <label>Planned contents</label>
+    <language>en</language>
+    <name>x_1577958_dsb_update_set</name>
+    <plural>Planned contents</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

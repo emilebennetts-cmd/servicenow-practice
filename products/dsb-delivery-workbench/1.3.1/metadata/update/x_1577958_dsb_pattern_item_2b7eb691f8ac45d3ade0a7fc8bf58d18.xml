@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>2b7eb691f8ac45d3ade0a7fc8bf58d18</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_2b7eb691f8ac45d3ade0a7fc8bf58d18</sys_update_name>
+    <body>Entitlement load</body>
+    <data>{"validate": "Sample data per publisher"}</data>
+    <kind>assumption</kind>
+    <pattern>f0c40ed7d7ac4c1a957aafe864f1f114</pattern>
+    <seq>1</seq>
+    <title>Procurement can supply contract and PO data for priority publishers</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

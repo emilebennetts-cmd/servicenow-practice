@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>3ef4e7aa5b9a44aeb742e8560ff67cab</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_3ef4e7aa5b9a44aeb742e8560ff67cab</sys_update_name>
+    <body>Drives integration and training.</body>
+    <data>{}</data>
+    <kind>decision</kind>
+    <pattern>5c6ec6aa57e140f986af5947553a8c3e</pattern>
+    <seq>2</seq>
+    <title>Work order sources in scope (CSM, ITSM, assets, maintenance)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

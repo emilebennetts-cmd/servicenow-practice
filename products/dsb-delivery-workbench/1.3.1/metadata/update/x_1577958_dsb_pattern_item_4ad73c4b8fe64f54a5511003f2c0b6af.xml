@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4ad73c4b8fe64f54a5511003f2c0b6af</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_4ad73c4b8fe64f54a5511003f2c0b6af</sys_update_name>
+    <body>Statements × entities → controls; owner from entity owner unless overridden.</body>
+    <data>{"type": "Assignment / matching rule", "cls": "Out of the box", "req": [2, 3], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>4b16aa07c3c5429a93a6f33c5ef138c0</pattern>
+    <seq>3</seq>
+    <title>Control generation and control owner assignment</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

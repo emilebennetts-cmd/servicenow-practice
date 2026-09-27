@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>214787bced9d47528cb5c847a377d2e1</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_214787bced9d47528cb5c847a377d2e1</sys_update_name>
+    <body>Archive/destroy rules, data policies</body>
+    <data>{"key": "REC", "scope": "global"}</data>
+    <kind>update_set</kind>
+    <pattern>628bf2891d554853993138856ccb4ef2</pattern>
+    <seq>1</seq>
+    <title>PS_Records_&lt;client&gt;_v1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

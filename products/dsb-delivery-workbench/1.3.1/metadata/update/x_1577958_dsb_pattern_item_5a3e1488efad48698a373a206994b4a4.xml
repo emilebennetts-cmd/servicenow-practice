@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>5a3e1488efad48698a373a206994b4a4</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_5a3e1488efad48698a373a206994b4a4</sys_update_name>
+    <data>{"type": "Third party"}</data>
+    <kind>dependency</kind>
+    <pattern>4b16aa07c3c5429a93a6f33c5ef138c0</pattern>
+    <seq>2</seq>
+    <title>UCF content access (if licensed)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

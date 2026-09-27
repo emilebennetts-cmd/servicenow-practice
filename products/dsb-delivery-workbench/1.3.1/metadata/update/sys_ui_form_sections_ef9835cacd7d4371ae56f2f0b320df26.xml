@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_form_sections form_id="ef9835cacd7d4371ae56f2f0b320df26" sys_domain="global" table="x_1577958_dsb_requirement">
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>0</position>
+      <sys_id>82697c3a60bf4ec9b177a5b56336fbb1</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_requirement" name="x_1577958_dsb_requirement" sys_domain="global" view="Default view">ef9835cacd7d4371ae56f2f0b320df26</sys_ui_form>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_requirement" sys_domain="global" view="Default view">07ab2824d69a47b9b80ff15d9111e0ab</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>1</position>
+      <sys_id>baaa2bf3ea83417d98b85b5bd994bc37</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_requirement" name="x_1577958_dsb_requirement" sys_domain="global" view="Default view">ef9835cacd7d4371ae56f2f0b320df26</sys_ui_form>
+      <sys_ui_section caption="Tests" display_value="Tests" name="x_1577958_dsb_requirement" sys_domain="global" view="Default view">d9a6d487de1a433f9f31fb2031758aa4</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <position>2</position>
+      <sys_id>59c9df04e5884262928ac8aa90a87cd9</sys_id>
+      <sys_ui_form display_value="x_1577958_dsb_requirement" name="x_1577958_dsb_requirement" sys_domain="global" view="Default view">ef9835cacd7d4371ae56f2f0b320df26</sys_ui_form>
+      <sys_ui_section caption="Defects" display_value="Defects" name="x_1577958_dsb_requirement" sys_domain="global" view="Default view">00dec0fec6554d5394e763a74e16673e</sys_ui_section>
+    </sys_ui_form_section>
+    <sys_ui_form action="INSERT_OR_UPDATE" apply_defaults="true">
+      <name>x_1577958_dsb_requirement</name>
+      <roles/>
+      <sys_id>ef9835cacd7d4371ae56f2f0b320df26</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <view name="NULL" display_value="Default view">Default view</view>
+      <view_name/>
+    </sys_ui_form>
+  </sys_ui_form_sections>
+</record_update>

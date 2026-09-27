@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_section caption="Details" section_id="25848e84dc7049d18724a64cb1d42919" sys_domain="global" table="x_1577958_dsb_build_task" view="">
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.begin_split</element>
+      <position>0</position>
+      <sys_id>7b6d92bf3799402fbad6f1505e73ec17</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_build_task" sys_domain="global" view="Default view">25848e84dc7049d18724a64cb1d42919</sys_ui_section>
+      <sys_user/>
+      <type>.begin_split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>number</element>
+      <position>1</position>
+      <sys_id>d2c6f332c8c1499e88c1136338177a58</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_build_task" sys_domain="global" view="Default view">25848e84dc7049d18724a64cb1d42919</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>engagement</element>
+      <position>2</position>
+      <sys_id>81dbb9d0457a40d4a8c35449a2ecf6b3</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_build_task" sys_domain="global" view="Default view">25848e84dc7049d18724a64cb1d42919</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>component</element>
+      <position>3</position>
+      <sys_id>e45c5d9cb40c40f5b698dcf130d84579</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_build_task" sys_domain="global" view="Default view">25848e84dc7049d18724a64cb1d42919</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>title</element>
+      <position>4</position>
+      <sys_id>6f667bdaf3e34f51aaba1d4ac4c3f79e</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_build_task" sys_domain="global" view="Default view">25848e84dc7049d18724a64cb1d42919</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.split</element>
+      <position>5</position>
+      <sys_id>f6a33774c4f140618992194042a0948b</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_build_task" sys_domain="global" view="Default view">25848e84dc7049d18724a64cb1d42919</sys_ui_section>
+      <sys_user/>
+      <type>.split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>phase</element>
+      <position>6</position>
+      <sys_id>8d3d8925152d47b1a802b5bf5a8496b8</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_build_task" sys_domain="global" view="Default view">25848e84dc7049d18724a64cb1d42919</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>seq</element>
+      <position>7</position>
+      <sys_id>4c05673426ce4479a4061ab7f9d78aec</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_build_task" sys_domain="global" view="Default view">25848e84dc7049d18724a64cb1d42919</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>owner_role</element>
+      <position>8</position>
+      <sys_id>76b28d0e6cc9440fa18f70c0d42ba50a</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_build_task" sys_domain="global" view="Default view">25848e84dc7049d18724a64cb1d42919</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>status</element>
+      <position>9</position>
+      <sys_id>2cad3ed46093482bbb93678945b44411</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_build_task" sys_domain="global" view="Default view">25848e84dc7049d18724a64cb1d42919</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.end_split</element>
+      <position>10</position>
+      <sys_id>257ffd0486734e7086fd7b1e49c8b8a2</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_build_task" sys_domain="global" view="Default view">25848e84dc7049d18724a64cb1d42919</sys_ui_section>
+      <sys_user/>
+      <type>.end_split</type>
+    </sys_ui_element>
+    <sys_ui_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <caption>Details</caption>
+      <header>false</header>
+      <name>x_1577958_dsb_build_task</name>
+      <roles/>
+      <sys_domain>global</sys_domain>
+      <sys_id>25848e84dc7049d18724a64cb1d42919</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <title>false</title>
+      <view_name/>
+      <view name="NULL" display_value="Default view">Default view</view>
+    </sys_ui_section>
+  </sys_ui_section>
+</record_update>

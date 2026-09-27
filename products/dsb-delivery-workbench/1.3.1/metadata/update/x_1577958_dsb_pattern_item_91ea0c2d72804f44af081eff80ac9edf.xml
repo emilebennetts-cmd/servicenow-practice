@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>91ea0c2d72804f44af081eff80ac9edf</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_91ea0c2d72804f44af081eff80ac9edf</sys_update_name>
+    <body>// DSB EVIDENCE ops.delivery — READ ONLY.
+// --- DSB helper prelude (read only; no personal information is printed) ---
+var DSB_NOTES = [];
+function _tbl(t){ return gs.tableExists(t); }
+function _fieldOk(t, path){ var gr = new GlideRecord(t); var parts = path.split('.'); for (var i = 0; i &lt; parts.length; i++) { if (!gr.isValidField(parts[i])) return false; if (i &lt; parts.length - 1) { var ref = gr.getElement(parts[i]).getReferenceTable(); if (!ref) return false; gr = new GlideRecord(ref); } } return true; }
+function _badField(t, q){ if (!q) return ''; var conds = String(q).split(/\^NQ|\^OR|\^/); for (var i = 0; i &lt; conds.length; i++) { var m = conds[i].match(/^([a-z0-9_.]+)/); if (!m) continue; var f = m[1].replace(/\.$/, ''); if (f === 'sys_id') continue; if (!_fieldOk(t, f)) return f; } return ''; }
+function count(t, q){ if (!_tbl(t)) return 'table not found'; var bad = _badField(t, q); if (bad) { DSB_NOTES.push(t + ': field not found ' + bad); return 'field not found: ' + bad; } var ga = new GlideAggregate(t); if (q) ga.addEncodedQuery(q); ga.addAggregate('COUNT'); ga.query(); return ga.next() ? parseInt(ga.getAggregate('COUNT'), 10) : 0; }
+function groupCount(t, f, q, lim){ if (!_tbl(t)) return 'table not found'; var bad = _badField(t, q) || (_fieldOk(t, f) ? '' : f); if (bad) { DSB_NOTES.push(t + ': field not found ' + bad); return 'field not found: ' + bad; } var rows = []; var ga = new GlideAggregate(t); if (q) ga.addEncodedQuery(q); ga.addAggregate('COUNT'); ga.groupBy(f); ga.query(); var guard = 0; while (ga.next() &amp;&amp; guard++ &lt; 5000) rows.push([ga.getDisplayValue(f) || '(empty)', parseInt(ga.getAggregate('COUNT'), 10)]); rows.sort(function(a, b){ return b[1] - a[1]; }); var o = {}; rows.slice(0, lim || 50).forEach(function(r){ o[r[0]] = r[1]; }); if (rows.length &gt; (lim || 50)) o['(other groups)'] = rows.length - (lim || 50); return o; }
+function groupSet(t, f, q){ var o = {}; if (!_tbl(t) || !_fieldOk(t, f) || _badField(t, q)) return o; var ga = new GlideAggregate(t); if (q) ga.addEncodedQuery(q); ga.addAggregate('COUNT'); ga.groupBy(f); ga.query(); while (ga.next()) o[ga.getValue(f)] = parseInt(ga.getAggregate('COUNT'), 10); return o; }
+function isNum(x){ return typeof x === 'number' &amp;&amp; !isNaN(x); }
+function diff(a, b){ return (isNum(a) &amp;&amp; isNum(b)) ? a - b : 'n/a'; }
+function pct(t, q, base){ var b = count(t, base); if (!isNum(b) || !b) return isNum(b) ? 0 : b; var c = count(t, base ? base + '^' + q : q); return isNum(c) ? Math.round(100 * c / b) : c; }
+function hasField(t, f){ return _tbl(t) &amp;&amp; _fieldOk(t, f); }
+function dsbPrint(key, out){ if (DSB_NOTES.length) out.dsb_notes = DSB_NOTES; var LIM = 60000; var s = JSON.stringify(out, null, 1); if (s.length &gt; LIM) s = JSON.stringify(out); var cut = [], loops = 0; while (s.length &gt; LIM &amp;&amp; loops++ &lt; 60) { var bigK = null, bigL = 0; for (var k in out) { if (k === 'key' || k === 'dsb_truncated' || !out[k] || typeof out[k] !== 'object') continue; var l = JSON.stringify(out[k]).length; if (l &gt; bigL) { bigL = l; bigK = k; } } if (!bigK) break; var v = out[bigK]; if (Object.prototype.toString.call(v) === '[object Array]' &amp;&amp; v.length &gt; 10) { out[bigK] = v.slice(0, Math.floor(v.length / 2)); cut.push(bigK + ' kept ' + out[bigK].length + ' of ' + v.length); } else { out[bigK] = 'omitted: ' + bigL + ' characters'; cut.push(bigK + ' omitted'); } out.dsb_truncated = cut; s = JSON.stringify(out); } gs.print('=== DSB-EVIDENCE ' + key + ' ===\n' + s); }
+var MAX_ROWS = 5000;
+var LAST90 = 'sys_created_onRELATIVEGT@dayofweek@ago@90';
+var Y = 'sys_created_onRELATIVEGT@month@ago@12';
+var out = {key:'ops.delivery'};
+out.update_sets_completed_12m = count('sys_update_set', Y + '^state=complete');
+out.update_sets_in_progress = count('sys_update_set', 'state=in progress');
+out.update_sets_in_progress_older_90d = count('sys_update_set', 'state=in progress^sys_created_onRELATIVELT@dayofweek@ago@90');
+out.remote_update_sets_12m = count('sys_remote_update_set', Y);
+out.atf_runs_12m = count('sys_atf_test_suite_result', Y);
+out.clones_12m = count('clone_instance', Y);
+out.enhancements_open = count('rm_enhancement', 'active=true');
+out.demands_open = count('dmn_demand', 'active=true');
+out.platform_changes_12m = count('change_request', Y + '^short_descriptionLIKEServiceNow^ORcmdb_ci.nameLIKEServiceNow');
+out.admins_active = count('sys_user_has_role', 'role.name=admin^user.active=true');
+dsbPrint('ops.delivery', out);</body>
+    <data>{"key": "ops.delivery", "why": "Shows current release discipline and backlog size", "unblocks": "Release and backlog design"}</data>
+    <kind>evidence_script</kind>
+    <pattern>8d97fa25f5114eb4b6ee61ef9fdc7882</pattern>
+    <seq>2</seq>
+    <title>Delivery practice: update-set throughput, change records for the platform, ATF runs, clones, backlog records</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

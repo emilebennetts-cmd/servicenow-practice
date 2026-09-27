@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>ecac51bfc0734975b0cecb8a52547ccc</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_ecac51bfc0734975b0cecb8a52547ccc</sys_update_name>
+    <body>Impact rules on modelled application services (depends on CSDM pattern).</body>
+    <data>{"type": "OOB application configuration", "cls": "Out of the box", "req": [5], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>27017c1f692149c79a16726ca19e8c2b</pattern>
+    <seq>7</seq>
+    <title>Service health / impact for critical application services</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>a05d5dc2dde745a6bcc8d40e16f6eb1a</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_a05d5dc2dde745a6bcc8d40e16f6eb1a</sys_update_name>
+    <body>Given a network event on a resource, When correlated, Then impacted customer services and accounts are listed on the network incident</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>e96633990a4b4bd0a7aa9de3d4f7fa00</pattern>
+    <seq>1</seq>
+    <title>Network events create or link to network incidents and identify impacted customer services</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

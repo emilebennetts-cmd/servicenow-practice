@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>de5b3dd2005d4a86b457ed1ee335823b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_de5b3dd2005d4a86b457ed1ee335823b</sys_update_name>
+    <body>Update set 1: ITSM_Foundation_&lt;client&gt;_v1 (global)
+  - Transform maps, data sources and scheduled imports (users, groups, locations, departments)
+  - Group types
+Update set 2: ITSM_Process_&lt;client&gt;_v1 (global)
+  - Incident categories, assignment rules, data lookups, on-hold reasons
+  - SLA definitions and schedules
+  - Change models, risk assessment, CAB definitions, standard change templates
+  - Knowledge base configuration and workflow
+  - Notifications
+Update set 3: ITSM_Catalog_&lt;client&gt;_v1 (global or app scope)
+  - Catalogue items, variables, variable sets, categories
+  - Flows and subflows
+Update set 4: ITSM_Experience_&lt;client&gt;_v1 (global)
+  - Portal theme, workspace variants, list/form layouts, reports and dashboards
+Data (not update sets): users, groups and members, CSDM services/offerings, open-ticket migration — loaded by import set in each environment.</body>
+    <data>{"kind": "checklist", "purpose": "Configuration captured in four update sets so foundation, process, catalogue and experience can be reviewed and promoted independently.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>0</seq>
+    <title>Update set plan — ITSM consolidation</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>6662e5bdcb894f90b93fbcf70b6771db</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_6662e5bdcb894f90b93fbcf70b6771db</sys_update_name>
+    <body>OOB check suites plus client-specific checks; scheduled full scan and point scans on update sets.</body>
+    <data>{"type": "Scheduled job", "cls": "Out of the box", "req": [3, 7], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>93dbb3f9c9374c8b88cbf9fbbc6dee11</pattern>
+    <seq>2</seq>
+    <title>Instance Scan suites and schedule</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

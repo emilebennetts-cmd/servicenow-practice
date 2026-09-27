@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_component_type">
+  <x_1577958_dsb_component_type action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4714a2a4e21d42719307bfb2c3dce84d</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_component_type_4714a2a4e21d42719307bfb2c3dce84d</sys_update_name>
+    <base_hours>2</base_hours>
+    <build_order>11.7</build_order>
+    <build_phase>4. Automation</build_phase>
+    <name>Assessment / survey</name>
+    <pvt_checks>Assessment or survey is issued to the intended recipients on trigger
+Responses are recorded against the source record
+Scoring or follow-up action fires as designed</pvt_checks>
+  </x_1577958_dsb_component_type>
+</record_update>

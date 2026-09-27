@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_section caption="Pattern items" section_id="d15f1e2addb445ea8fea8adcbf91d5db" sys_domain="global" table="x_1577958_dsb_pattern" view="">
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>12M.x_1577958_dsb_pattern.x_1577958_dsb_pattern_item.pattern</element>
+      <position>0</position>
+      <sys_id>d4c62007c4614fa38fbe27d1c46040d2</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Pattern items" display_value="Pattern items" name="x_1577958_dsb_pattern" sys_domain="global" view="Default view">d15f1e2addb445ea8fea8adcbf91d5db</sys_ui_section>
+      <sys_user/>
+      <type>list</type>
+    </sys_ui_element>
+    <sys_ui_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <caption>Pattern items</caption>
+      <header>false</header>
+      <name>x_1577958_dsb_pattern</name>
+      <roles/>
+      <sys_domain>global</sys_domain>
+      <sys_id>d15f1e2addb445ea8fea8adcbf91d5db</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <title>false</title>
+      <view_name/>
+      <view name="NULL" display_value="Default view">Default view</view>
+    </sys_ui_section>
+  </sys_ui_section>
+</record_update>

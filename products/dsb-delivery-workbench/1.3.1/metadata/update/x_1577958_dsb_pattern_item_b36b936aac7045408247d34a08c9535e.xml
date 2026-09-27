@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>b36b936aac7045408247d34a08c9535e</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_b36b936aac7045408247d34a08c9535e</sys_update_name>
+    <body>OOB workspace; variants only where needed.</body>
+    <data>{"type": "Workspace / portal page", "cls": "Out of the box", "req": [7], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>4874dc995cad4b3cb3bda8c29e4e0be8</pattern>
+    <seq>10</seq>
+    <title>CSM Configurable Workspace record page and supervisor view</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

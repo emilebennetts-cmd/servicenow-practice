@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_component_type">
+  <x_1577958_dsb_component_type action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>dfafff6baf49468ea1472c61f3d2f545</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_component_type_dfafff6baf49468ea1472c61f3d2f545</sys_update_name>
+    <base_hours>3</base_hours>
+    <build_order>1</build_order>
+    <build_phase>1. Data model</build_phase>
+    <name>Table</name>
+    <pvt_checks>Table exists in the application scope with the correct label and parent (extends configured table)
+Number prefix configured and auto-numbering works on record insert
+Table auditing set as designed</pvt_checks>
+  </x_1577958_dsb_component_type>
+</record_update>

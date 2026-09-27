@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_licence_product">
+  <x_1577958_dsb_licence_product action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>795b875d81ca4055baaf297e5a686cf4</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_licence_product_795b875d81ca4055baaf297e5a686cf4</sys_update_name>
+    <key>psds</key>
+    <label>Public Sector Digital Services</label>
+  </x_1577958_dsb_licence_product>
+</record_update>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>76e46085d5934266b73157abe1e9f3ff</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_engagement_ai_consent_en</sys_update_name>
+    <element>ai_consent</element>
+    <help/>
+    <hint/>
+    <label>AI-assisted design approved by client</label>
+    <language>en</language>
+    <name>x_1577958_dsb_engagement</name>
+    <plural>AI-assisted design approved by clients</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

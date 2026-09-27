@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<database>
+  <element name="x_1577958_dsb_defect" type="collection" label="UDW Defect" is_extendable="false" text_index="false" read_only="false" audit="true" display="title" access="public" caller_access="0" ws_access="true" scriptable_table="false" attributes="">
+    <element name="number" type="string" active="true" array="false" audit="false" default_value="javascript:global.getNextObjNumberPadded();" unique="false" label="Number" mandatory="false" read_only="true" read_only_option="instance_configured" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Numbers"/>
+    <element name="engagement" type="reference" active="true" array="false" audit="false" unique="false" label="Engagement" mandatory="true" read_only="false" reference_cascade_rule="delete" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" reference="x_1577958_dsb_engagement" plural="Engagements"/>
+    <element name="title" type="string" active="true" array="false" audit="false" unique="false" label="Defect" max_length="400" mandatory="true" read_only="false" choice="0" display="true" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Defects"/>
+    <element name="test" type="reference" active="true" array="false" audit="false" unique="false" label="Found by test" mandatory="false" read_only="false" reference_cascade_rule="clear" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" reference="x_1577958_dsb_test" plural="Found by tests"/>
+    <element name="requirement" type="reference" active="true" array="false" audit="false" unique="false" label="Requirement" mandatory="false" read_only="false" reference_cascade_rule="clear" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" reference="x_1577958_dsb_requirement" plural="Requirements"/>
+    <element name="component" type="reference" active="true" array="false" audit="false" unique="false" label="Component" mandatory="false" read_only="false" reference_cascade_rule="clear" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" reference="x_1577958_dsb_component" plural="Components"/>
+    <element name="severity" type="choice" active="true" array="false" audit="false" default_value="3" unique="false" label="Severity" mandatory="false" read_only="false" choice="3" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Severities">
+      <choice>
+        <element value="1" label="1 - Critical" inactive="false" inactive_on_update="false" sequence="10" language="en"/>
+        <element value="2" label="2 - High" inactive="false" inactive_on_update="false" sequence="20" language="en"/>
+        <element value="3" label="3 - Moderate" inactive="false" inactive_on_update="false" sequence="30" language="en"/>
+        <element value="4" label="4 - Low" inactive="false" inactive_on_update="false" sequence="40" language="en"/>
+      </choice>
+    </element>
+    <element name="state" type="choice" active="true" array="false" audit="false" default_value="open" unique="false" label="State" mandatory="false" read_only="false" choice="3" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="States">
+      <choice>
+        <element value="open" label="Open" inactive="false" inactive_on_update="false" sequence="10" language="en"/>
+        <element value="in_progress" label="In progress" inactive="false" inactive_on_update="false" sequence="20" language="en"/>
+        <element value="fixed" label="Fixed" inactive="false" inactive_on_update="false" sequence="30" language="en"/>
+        <element value="verified" label="Verified" inactive="false" inactive_on_update="false" sequence="40" language="en"/>
+        <element value="closed" label="Closed" inactive="false" inactive_on_update="false" sequence="50" language="en"/>
+        <element value="deferred" label="Deferred (known error)" inactive="false" inactive_on_update="false" sequence="60" language="en"/>
+      </choice>
+    </element>
+    <element name="known_error" type="boolean" active="true" array="false" audit="false" default_value="false" unique="false" label="Publish as known error" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Publish as known errors"/>
+    <element name="workaround" type="multi_two_lines" active="true" array="false" audit="false" unique="false" label="Workaround" max_length="4000" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Workarounds"/>
+  </element>
+</database>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>f56c33f076044193828e078c3e203dbb</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_pattern_item_modifies_data_en</sys_update_name>
+    <element>modifies_data</element>
+    <help/>
+    <hint/>
+    <label>Modifies data</label>
+    <language>en</language>
+    <name>x_1577958_dsb_pattern_item</name>
+    <plural>Modifies data</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>1bdbad68c9bb4d63b55cf6a6c355339e</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_1bdbad68c9bb4d63b55cf6a6c355339e</sys_update_name>
+    <body>// DSB IMPLEMENTATION priv-field-finder — READ ONLY. Heuristic; review every result.
+var PATTERNS = ['birth','dob','medicare','passport','licence','license','tax','tfn','address','phone','mobile','email','gender','salary','bank','account_number','health','diagnos'];
+var out = {};
+PATTERNS.forEach(function(p){
+  var d = new GlideRecord('sys_dictionary'); d.addEncodedQuery('elementLIKE' + p + '^internal_type!=collection^nameNOT LIKEsys_^nameNOT LIKEv_'); d.setLimit(200); d.query();
+  while (d.next()) { var k = d.getValue('name') + '.' + d.getValue('element'); out[k] = d.getValue('internal_type'); }
+});
+gs.print('=== DSB-IMPL priv-field-finder ===\n' + JSON.stringify({count: Object.keys(out).length, fields: out}, null, 2));</body>
+    <data>{"kind": "script", "purpose": "Lists fields whose names suggest personal information, to seed data classification.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>a828e5429bda4f57b75d7e4a3331f23f</pattern>
+    <seq>0</seq>
+    <title>Personal-information field finder (READ ONLY)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

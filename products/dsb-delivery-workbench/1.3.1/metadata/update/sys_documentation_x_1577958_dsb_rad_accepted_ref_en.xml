@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>8e9d2778397d45c799632b7493da45cd</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_rad_accepted_ref_en</sys_update_name>
+    <element>accepted_ref</element>
+    <help/>
+    <hint/>
+    <label>Acceptance reference</label>
+    <language>en</language>
+    <name>x_1577958_dsb_rad</name>
+    <plural>Acceptance references</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

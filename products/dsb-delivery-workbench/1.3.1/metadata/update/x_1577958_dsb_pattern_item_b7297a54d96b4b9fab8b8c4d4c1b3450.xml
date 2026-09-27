@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>b7297a54d96b4b9fab8b8c4d4c1b3450</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_b7297a54d96b4b9fab8b8c4d4c1b3450</sys_update_name>
+    <body>Create a User
+Impersonate
+Open an Existing Record
+Field State Validation</body>
+    <data>{"req": 4, "note": null}</data>
+    <kind>atf</kind>
+    <pattern>a828e5429bda4f57b75d7e4a3331f23f</pattern>
+    <seq>0</seq>
+    <title>User without role cannot read classified field</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

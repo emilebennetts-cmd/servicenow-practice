@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_evidence_tmpl">
+  <x_1577958_dsb_evidence_tmpl action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>946d86fea9fa46078fd2b4fdf056b5c6</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_evidence_tmpl_946d86fea9fa46078fd2b4fdf056b5c6</sys_update_name>
+    <applies_to>all</applies_to>
+    <how>Client project lead</how>
+    <item>Stakeholders: sponsor, process owner, approvers, UAT testers and availability</item>
+    <key>ev.people</key>
+    <script>// DSB EVIDENCE ev.people - READ ONLY. Prints counts, sys_ids and configuration names; no personal information.
+// --- DSB helper prelude (read only; no personal information is printed) ---
+var DSB_NOTES = [];
+function _tbl(t){ return gs.tableExists(t); }
+function _fieldOk(t, path){ var gr = new GlideRecord(t); var parts = path.split('.'); for (var i = 0; i &lt; parts.length; i++) { if (!gr.isValidField(parts[i])) return false; if (i &lt; parts.length - 1) { var ref = gr.getElement(parts[i]).getReferenceTable(); if (!ref) return false; gr = new GlideRecord(ref); } } return true; }
+function _badField(t, q){ if (!q) return ''; var conds = String(q).split(/\^NQ|\^OR|\^/); for (var i = 0; i &lt; conds.length; i++) { var m = conds[i].match(/^([a-z0-9_.]+)/); if (!m) continue; var f = m[1].replace(/\.$/, ''); if (f === 'sys_id') continue; if (!_fieldOk(t, f)) return f; } return ''; }
+function count(t, q){ if (!_tbl(t)) return 'table not found'; var bad = _badField(t, q); if (bad) { DSB_NOTES.push(t + ': field not found ' + bad); return 'field not found: ' + bad; } var ga = new GlideAggregate(t); if (q) ga.addEncodedQuery(q); ga.addAggregate('COUNT'); ga.query(); return ga.next() ? parseInt(ga.getAggregate('COUNT'), 10) : 0; }
+function groupCount(t, f, q, lim){ if (!_tbl(t)) return 'table not found'; var bad = _badField(t, q) || (_fieldOk(t, f) ? '' : f); if (bad) { DSB_NOTES.push(t + ': field not found ' + bad); return 'field not found: ' + bad; } var rows = []; var ga = new GlideAggregate(t); if (q) ga.addEncodedQuery(q); ga.addAggregate('COUNT'); ga.groupBy(f); ga.query(); var guard = 0; while (ga.next() &amp;&amp; guard++ &lt; 5000) rows.push([ga.getDisplayValue(f) || '(empty)', parseInt(ga.getAggregate('COUNT'), 10)]); rows.sort(function(a, b){ return b[1] - a[1]; }); var o = {}; rows.slice(0, lim || 50).forEach(function(r){ o[r[0]] = r[1]; }); if (rows.length &gt; (lim || 50)) o['(other groups)'] = rows.length - (lim || 50); return o; }
+function groupSet(t, f, q){ var o = {}; if (!_tbl(t) || !_fieldOk(t, f) || _badField(t, q)) return o; var ga = new GlideAggregate(t); if (q) ga.addEncodedQuery(q); ga.addAggregate('COUNT'); ga.groupBy(f); ga.query(); while (ga.next()) o[ga.getValue(f)] = parseInt(ga.getAggregate('COUNT'), 10); return o; }
+function isNum(x){ return typeof x === 'number' &amp;&amp; !isNaN(x); }
+function diff(a, b){ return (isNum(a) &amp;&amp; isNum(b)) ? a - b : 'n/a'; }
+function pct(t, q, base){ var b = count(t, base); if (!isNum(b) || !b) return isNum(b) ? 0 : b; var c = count(t, base ? base + '^' + q : q); return isNum(c) ? Math.round(100 * c / b) : c; }
+function hasField(t, f){ return _tbl(t) &amp;&amp; _fieldOk(t, f); }
+function dsbPrint(key, out){ if (DSB_NOTES.length) out.dsb_notes = DSB_NOTES; var LIM = 60000; var s = JSON.stringify(out, null, 1); if (s.length &gt; LIM) s = JSON.stringify(out); var cut = [], loops = 0; while (s.length &gt; LIM &amp;&amp; loops++ &lt; 60) { var bigK = null, bigL = 0; for (var k in out) { if (k === 'key' || k === 'dsb_truncated' || !out[k] || typeof out[k] !== 'object') continue; var l = JSON.stringify(out[k]).length; if (l &gt; bigL) { bigL = l; bigK = k; } } if (!bigK) break; var v = out[bigK]; if (Object.prototype.toString.call(v) === '[object Array]' &amp;&amp; v.length &gt; 10) { out[bigK] = v.slice(0, Math.floor(v.length / 2)); cut.push(bigK + ' kept ' + out[bigK].length + ' of ' + v.length); } else { out[bigK] = 'omitted: ' + bigL + ' characters'; cut.push(bigK + ' omitted'); } out.dsb_truncated = cut; s = JSON.stringify(out); } gs.print('=== DSB-EVIDENCE ' + key + ' ===\n' + s); }
+var MAX_ROWS = 5000;
+var LAST90 = 'sys_created_onRELATIVEGT@dayofweek@ago@90';
+// --- DSB template helpers (read only) ---
+function prop(n){ var v = gs.getProperty(n); return v === null || v === undefined ? 'not set' : String(v); }
+function listRows(t, q, fields, lim, order){ if (!_tbl(t)) return 'table not found'; var bad = _badField(t, q); if (bad) { DSB_NOTES.push(t + ': field not found ' + bad); return 'field not found: ' + bad; } var ok = fields.filter(function(f){ return _fieldOk(t, f); }); if (ok.length &lt; fields.length) DSB_NOTES.push(t + ': skipped missing field(s) ' + fields.filter(function(f){ return ok.indexOf(f) &lt; 0; }).join(',')); var rows = []; var gr = new GlideRecord(t); if (q) gr.addEncodedQuery(q); if (order) { if (order.charAt(0) === '-') gr.orderByDesc(order.slice(1)); else gr.orderBy(order); } gr.setLimit(lim || 200); gr.query(); while (gr.next()) { var r = {}; ok.forEach(function(f){ r[f] = gr.getElement(f).getDisplayValue() || gr.getValue(f) || ''; }); rows.push(r); } return rows; }
+function ages(t, q){ return {total: count(t, q), last_30d: count(t, (q ? q + '^' : '') + 'sys_created_onRELATIVEGT@dayofweek@ago@30'), last_90d: count(t, (q ? q + '^' : '') + LAST90), last_365d: count(t, (q ? q + '^' : '') + 'sys_created_onRELATIVEGT@dayofweek@ago@365')}; }
+function pluginActive(id){ try { if (new GlidePluginManager().isActive(id)) return 1; } catch (e) {} if (_tbl('sys_plugins')) { var p = new GlideRecord('sys_plugins'); p.addQuery('source', id); p.addQuery('active', true); p.query(); if (p.hasNext()) return 1; } var a = new GlideRecord('sys_store_app'); if (a.isValid()) { a.addQuery('scope', id); a.addQuery('active', true); a.query(); if (a.hasNext()) return 1; } return 0; }
+function userHasRole(name){ return count('sys_user_has_role', 'user=' + gs.getUserID() + '^role.name=' + name) &gt; 0; }
+// Counts only. Names, availability and responsibilities come from the client project lead (the Workbench stores roles, not people).
+var out = {key: 'ev.people'};
+out.active_users = count('sys_user', 'active=true');
+out.active_users_with_any_role = 0;
+var ga = new GlideAggregate('sys_user_has_role'); ga.addQuery('user.active', true); ga.addAggregate('COUNT'); ga.groupBy('user'); ga.query(); while (ga.next()) out.active_users_with_any_role++;
+out.approvers_approver_user_role = count('sys_user_has_role', 'role.name=approver_user^user.active=true');
+out.fulfillers_itil_role = count('sys_user_has_role', 'role.name=itil^user.active=true');
+out.admins = count('sys_user_has_role', 'role.name=admin^user.active=true');
+out.approvals_pending = count('sysapproval_approver', 'state=requested');
+out.approvals_pending_older_14d = count('sysapproval_approver', 'state=requested^sys_created_onRELATIVELT@dayofweek@ago@14');
+out.atf_testers_role = count('sys_user_has_role', 'role.name=atf_test_designer^user.active=true');
+out.note = 'Confirm the sponsor, process owner, approvers and UAT testers (as roles) and their availability with the client project lead.';
+dsbPrint('ev.people', out);
+</script>
+    <unblocks>UAT planning</unblocks>
+    <why>Sign-off path and test resourcing</why>
+  </x_1577958_dsb_evidence_tmpl>
+</record_update>

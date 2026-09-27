@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>3909256316db429999dcdd2d182c3b19</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_3909256316db429999dcdd2d182c3b19</sys_update_name>
+    <body>Application forms, status, information requests.</body>
+    <data>{"type": "Workspace / portal page", "cls": "Out of the box", "req": [0], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>628bf2891d554853993138856ccb4ef2</pattern>
+    <seq>4</seq>
+    <title>Citizen portal and record producers</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

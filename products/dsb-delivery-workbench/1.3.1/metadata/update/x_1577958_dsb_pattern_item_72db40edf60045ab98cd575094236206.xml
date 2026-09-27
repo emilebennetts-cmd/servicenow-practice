@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>72db40edf60045ab98cd575094236206</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_72db40edf60045ab98cd575094236206</sys_update_name>
+    <body>Response/resolution per service tier; country business-hour schedules.</body>
+    <data>{"type": "SLA definition", "cls": "Configuration", "req": [1], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>5</seq>
+    <title>HR SLA definitions and schedules by country</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2026-09-27 17:13:10">
+<sys_remote_update_set action="INSERT_OR_UPDATE">
+<application display_value="Global">global</application>
+<application_name>Global</application_name>
+<application_scope>global</application_scope>
+<collisions/>
+<commit_date/>
+<deleted/>
+<description>Bootstrap the x_1577958_dsb application scope so the reviewed 1.3.1 package can be installed on SWEP TEMP.</description>
+<inserted/>
+<name>DSB Unified Delivery Workbench 1.3.1 Scope Bootstrap</name>
+<origin_sys_id/>
+<parent display_value=""/>
+<release_date/>
+<remote_base_update_set display_value=""/>
+<remote_parent_id/>
+<remote_sys_id>536ed2c4547834031346d4ae19d5e1ce</remote_sys_id>
+<state>loaded</state>
+<summary/>
+<sys_class_name>sys_remote_update_set</sys_class_name>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-27 17:13:10</sys_created_on>
+<sys_id>536ed2c4547834031346d4ae19d5e1ce</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-27 17:13:10</sys_updated_on>
+<update_set display_value=""/>
+<update_source display_value=""/>
+<updated/>
+</sys_remote_update_set>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments>Application scope bootstrap for reviewed SDK package installation.</comments>
+<name>sys_app_17aff6423fa94ebabea0896ca9bb2ea3</name>
+<payload>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;record_update table=&quot;sys_app&quot;&gt;
+  &lt;sys_app action=&quot;INSERT_OR_UPDATE&quot; apply_defaults=&quot;true&quot;&gt;
+    &lt;sys_id&gt;17aff6423fa94ebabea0896ca9bb2ea3&lt;/sys_id&gt;
+    &lt;sys_scope display_value=&quot;x_1577958_dsb&quot;&gt;17aff6423fa94ebabea0896ca9bb2ea3&lt;/sys_scope&gt;
+    &lt;sys_update_name&gt;sys_app_17aff6423fa94ebabea0896ca9bb2ea3&lt;/sys_update_name&gt;
+    &lt;active&gt;true&lt;/active&gt;
+    &lt;can_edit_in_studio&gt;true&lt;/can_edit_in_studio&gt;
+    &lt;enforce_license&gt;log&lt;/enforce_license&gt;
+    &lt;guided_setup_guid/&gt;
+    &lt;hide_on_ui&gt;false&lt;/hide_on_ui&gt;
+    &lt;ide_created/&gt;
+    &lt;installed_as_dependency&gt;false&lt;/installed_as_dependency&gt;
+    &lt;js_level&gt;es_latest&lt;/js_level&gt;
+    &lt;licensable&gt;true&lt;/licensable&gt;
+    &lt;license_category&gt;none&lt;/license_category&gt;
+    &lt;license_model&gt;none&lt;/license_model&gt;
+    &lt;logo/&gt;
+    &lt;menu/&gt;
+    &lt;name&gt;Unified Delivery Workbench&lt;/name&gt;
+    &lt;package_json&gt;x_1577958_dsb/dsb-workbench/1.3.1/package.json&lt;/package_json&gt;
+    &lt;package_resolver_version&gt;1.0.0&lt;/package_resolver_version&gt;
+    &lt;private&gt;false&lt;/private&gt;
+    &lt;restrict_table_access&gt;false&lt;/restrict_table_access&gt;
+    &lt;runtime_access_tracking&gt;permissive&lt;/runtime_access_tracking&gt;
+    &lt;scope&gt;x_1577958_dsb&lt;/scope&gt;
+    &lt;scoped_administration&gt;false&lt;/scoped_administration&gt;
+    &lt;short_description/&gt;
+    &lt;source&gt;x_1577958_dsb&lt;/source&gt;
+    &lt;subscription_entitlement/&gt;
+    &lt;sys_code/&gt;
+    &lt;trackable&gt;true&lt;/trackable&gt;
+    &lt;uninstall_blocked&gt;false&lt;/uninstall_blocked&gt;
+    &lt;user_role/&gt;
+    &lt;version&gt;1.3.1&lt;/version&gt;
+  &lt;/sys_app&gt;
+&lt;/record_update&gt;</payload>
+<remote_update_set display_value="DSB Unified Delivery Workbench 1.3.1 Scope Bootstrap">536ed2c4547834031346d4ae19d5e1ce</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2026-09-27 17:13:10</sys_created_on>
+<sys_id>10ff7ea52c21405b1d2ca36db17354b0</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2026-09-27 17:13:10</sys_updated_on>
+<table>sys_app</table>
+<target_name>Unified Delivery Workbench</target_name>
+<type>Application</type>
+<update_domain>global</update_domain>
+<update_set display_value=""/>
+</sys_update_xml>
+</unload>

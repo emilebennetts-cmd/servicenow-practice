@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>649ddfbe9f3749dc97e3583361598abd</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_649ddfbe9f3749dc97e3583361598abd</sys_update_name>
+    <body>1. Select test group (crisis team + volunteers across sites)
+2. Send scenario template "TEST — please respond"
+3. Confirm delivery per channel (email, SMS, mobile, Teams)
+4. Check responses recorded and dashboard counts
+5. Confirm need-help task and non-responder reminder fired
+6. Record issues; fix contact data exceptions
+7. Close outreach; confirm retention rule applies</body>
+    <data>{"kind": "checklist", "purpose": "Quarterly rehearsal to prove channels and follow-up.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>feb9570f3df64d249bd135c8a0a1bfa2</pattern>
+    <seq>0</seq>
+    <title>Test outreach runbook</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

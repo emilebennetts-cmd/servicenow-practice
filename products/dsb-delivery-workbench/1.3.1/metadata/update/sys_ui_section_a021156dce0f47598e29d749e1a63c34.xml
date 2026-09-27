@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_section caption="Details" section_id="a021156dce0f47598e29d749e1a63c34" sys_domain="global" table="x_1577958_dsb_gate" view="">
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.begin_split</element>
+      <position>0</position>
+      <sys_id>ba6be63450494a8b8d57b9949b819230</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_gate" sys_domain="global" view="Default view">a021156dce0f47598e29d749e1a63c34</sys_ui_section>
+      <sys_user/>
+      <type>.begin_split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>engagement</element>
+      <position>1</position>
+      <sys_id>4442d8ee2ad840b9966130c30d65db90</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_gate" sys_domain="global" view="Default view">a021156dce0f47598e29d749e1a63c34</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>gate</element>
+      <position>2</position>
+      <sys_id>ebbf0b3698f84b8888a82d3d86fdd8f1</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_gate" sys_domain="global" view="Default view">a021156dce0f47598e29d749e1a63c34</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>status</element>
+      <position>3</position>
+      <sys_id>bc0ce5be96324f2aa632430b8124ea8f</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_gate" sys_domain="global" view="Default view">a021156dce0f47598e29d749e1a63c34</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>approver_role</element>
+      <position>4</position>
+      <sys_id>872ef38badc5425884b10af86e57fcdf</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_gate" sys_domain="global" view="Default view">a021156dce0f47598e29d749e1a63c34</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.split</element>
+      <position>5</position>
+      <sys_id>6a0a609262254e2fb815fd6ef54fbb6d</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_gate" sys_domain="global" view="Default view">a021156dce0f47598e29d749e1a63c34</sys_ui_section>
+      <sys_user/>
+      <type>.split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>approval_ref</element>
+      <position>6</position>
+      <sys_id>92bc02ab60f44e949c1501545b313559</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_gate" sys_domain="global" view="Default view">a021156dce0f47598e29d749e1a63c34</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>decided_on</element>
+      <position>7</position>
+      <sys_id>2b5ae1f1544d4d7ea5b0ae7b1a7d28a1</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_gate" sys_domain="global" view="Default view">a021156dce0f47598e29d749e1a63c34</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>waiver_expiry</element>
+      <position>8</position>
+      <sys_id>efef9803b21f434e856f047a26c5717c</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_gate" sys_domain="global" view="Default view">a021156dce0f47598e29d749e1a63c34</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.end_split</element>
+      <position>9</position>
+      <sys_id>efb7193dec7445179874de040a733424</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_gate" sys_domain="global" view="Default view">a021156dce0f47598e29d749e1a63c34</sys_ui_section>
+      <sys_user/>
+      <type>.end_split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>waiver_reason</element>
+      <position>10</position>
+      <sys_id>713fb2f3a3ad45e6a3ce1cd64764b1ef</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_gate" sys_domain="global" view="Default view">a021156dce0f47598e29d749e1a63c34</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>blockers_at_decision</element>
+      <position>11</position>
+      <sys_id>849afcc89e064440bde065c547292820</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_gate" sys_domain="global" view="Default view">a021156dce0f47598e29d749e1a63c34</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <caption>Details</caption>
+      <header>false</header>
+      <name>x_1577958_dsb_gate</name>
+      <roles/>
+      <sys_domain>global</sys_domain>
+      <sys_id>a021156dce0f47598e29d749e1a63c34</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <title>false</title>
+      <view_name/>
+      <view name="NULL" display_value="Default view">Default view</view>
+    </sys_ui_section>
+  </sys_ui_section>
+</record_update>

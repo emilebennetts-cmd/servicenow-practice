@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>08cf7f8362d74c5da554088434067820</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_08cf7f8362d74c5da554088434067820</sys_update_name>
+    <body>Given the governance model, When reviewed, Then CMDB owner, class owners, data stewards, change process for the data model and review cadence are named</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>031fd78c2b3742d38dc20450125b3992</pattern>
+    <seq>8</seq>
+    <title>CMDB governance is documented and operating</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

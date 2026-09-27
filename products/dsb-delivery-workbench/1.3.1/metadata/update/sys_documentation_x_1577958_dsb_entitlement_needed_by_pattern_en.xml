@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>b7aca08195c347c19490ad9e9a7c2776</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_entitlement_needed_by_pattern_en</sys_update_name>
+    <element>needed_by_pattern</element>
+    <help/>
+    <hint/>
+    <label>Needed by an applied pattern</label>
+    <language>en</language>
+    <name>x_1577958_dsb_entitlement</name>
+    <plural>Needed by an applied patterns</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

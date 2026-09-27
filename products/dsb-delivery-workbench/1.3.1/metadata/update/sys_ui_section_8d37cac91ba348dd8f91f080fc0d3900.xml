@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_section caption="Details" section_id="8d37cac91ba348dd8f91f080fc0d3900" sys_domain="global" table="x_1577958_dsb_evidence_tmpl" view="">
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.begin_split</element>
+      <position>0</position>
+      <sys_id>870f725108e344c2a38eb18bfcd6f39d</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_evidence_tmpl" sys_domain="global" view="Default view">8d37cac91ba348dd8f91f080fc0d3900</sys_ui_section>
+      <sys_user/>
+      <type>.begin_split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>key</element>
+      <position>1</position>
+      <sys_id>b9b4c209511f41e4a50cd032c7072b22</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_evidence_tmpl" sys_domain="global" view="Default view">8d37cac91ba348dd8f91f080fc0d3900</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>applies_to</element>
+      <position>2</position>
+      <sys_id>495eef06403a466a98838a51ff9bed96</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_evidence_tmpl" sys_domain="global" view="Default view">8d37cac91ba348dd8f91f080fc0d3900</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>item</element>
+      <position>3</position>
+      <sys_id>f74d163eb40e4f209024d22450335cb1</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_evidence_tmpl" sys_domain="global" view="Default view">8d37cac91ba348dd8f91f080fc0d3900</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.split</element>
+      <position>4</position>
+      <sys_id>a80ef389e72843afa6fc1f4c54c88f3a</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_evidence_tmpl" sys_domain="global" view="Default view">8d37cac91ba348dd8f91f080fc0d3900</sys_ui_section>
+      <sys_user/>
+      <type>.split</type>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>why</element>
+      <position>5</position>
+      <sys_id>0f19d29b43fd44aa8d27e392038a2a97</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_evidence_tmpl" sys_domain="global" view="Default view">8d37cac91ba348dd8f91f080fc0d3900</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>how</element>
+      <position>6</position>
+      <sys_id>4bc9142ba1804152b5391b47c83cd056</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_evidence_tmpl" sys_domain="global" view="Default view">8d37cac91ba348dd8f91f080fc0d3900</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>unblocks</element>
+      <position>7</position>
+      <sys_id>3f2cf32ebcff4a6f95c0035bd1f455df</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_evidence_tmpl" sys_domain="global" view="Default view">8d37cac91ba348dd8f91f080fc0d3900</sys_ui_section>
+      <sys_user/>
+      <type/>
+    </sys_ui_element>
+    <sys_ui_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <element>.end_split</element>
+      <position>8</position>
+      <sys_id>0867e1615f914d9696248a48ed9512d2</sys_id>
+      <sys_ui_formatter/>
+      <sys_ui_section caption="Details" display_value="Details" name="x_1577958_dsb_evidence_tmpl" sys_domain="global" view="Default view">8d37cac91ba348dd8f91f080fc0d3900</sys_ui_section>
+      <sys_user/>
+      <type>.end_split</type>
+    </sys_ui_element>
+    <sys_ui_section action="INSERT_OR_UPDATE" apply_defaults="true">
+      <caption>Details</caption>
+      <header>false</header>
+      <name>x_1577958_dsb_evidence_tmpl</name>
+      <roles/>
+      <sys_domain>global</sys_domain>
+      <sys_id>8d37cac91ba348dd8f91f080fc0d3900</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_user/>
+      <title>false</title>
+      <view_name/>
+      <view name="NULL" display_value="Default view">Default view</view>
+    </sys_ui_section>
+  </sys_ui_section>
+</record_update>

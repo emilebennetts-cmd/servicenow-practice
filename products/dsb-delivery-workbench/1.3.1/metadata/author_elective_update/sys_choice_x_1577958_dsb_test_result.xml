@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_choice_set action="INSERT_OR_UPDATE" field="result" table="x_1577958_dsb_test" version="3" apply_defaults="true">
+    <sys_choice_set action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>5db7175ad5e54e55adfd32592ed2b270</sys_id>
+      <element>result</element>
+      <sys_update_name>sys_choice_x_1577958_dsb_test_result</sys_update_name>
+      <name>x_1577958_dsb_test</name>
+      <sys_class_name>sys_choice_set</sys_class_name>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_package display_value="x_1577958_dsb" source="17aff6423fa94ebabea0896ca9bb2ea3">17aff6423fa94ebabea0896ca9bb2ea3</sys_package>
+      <sys_name>result</sys_name>
+    </sys_choice_set>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>de88e071b3cc4cf68dc85bd8b329289d</sys_id>
+      <name>x_1577958_dsb_test</name>
+      <element>result</element>
+      <label>Not run</label>
+      <value>not_run</value>
+      <sequence>10</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>d33df84cea34497fa883c07a16b6b78e</sys_id>
+      <name>x_1577958_dsb_test</name>
+      <element>result</element>
+      <label>Pass</label>
+      <value>pass</value>
+      <sequence>20</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>ae6ab5b57371446e951140c199c0f49c</sys_id>
+      <name>x_1577958_dsb_test</name>
+      <element>result</element>
+      <label>Fail</label>
+      <value>fail</value>
+      <sequence>30</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>288aacad760544bd97b1c90ba27469a1</sys_id>
+      <name>x_1577958_dsb_test</name>
+      <element>result</element>
+      <label>Blocked</label>
+      <value>blocked</value>
+      <sequence>40</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+  </sys_choice_set>
+</record_update>

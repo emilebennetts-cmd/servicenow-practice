@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_licence_product">
+  <x_1577958_dsb_licence_product action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4d7f23d4ee5a4185a03127878a1f637b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_licence_product_4d7f23d4ee5a4185a03127878a1f637b</sys_update_name>
+    <key>hls</key>
+    <label>Healthcare and Life Sciences</label>
+  </x_1577958_dsb_licence_product>
+</record_update>

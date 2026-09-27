@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>5a48f76610254305b215b76b7ae21f6b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_5a48f76610254305b215b76b7ae21f6b</sys_update_name>
+    <body>Model categories mapping to asset and CI classes; risk class choice.</body>
+    <data>{"type": "Data load / reference data", "cls": "Configuration", "req": [0], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>0e998cd6afca4efe958b07af4c028893</pattern>
+    <seq>0</seq>
+    <title>Medical device model categories and clinical risk class</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

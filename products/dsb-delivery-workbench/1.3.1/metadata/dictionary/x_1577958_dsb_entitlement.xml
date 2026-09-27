@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<database>
+  <element name="x_1577958_dsb_entitlement" type="collection" label="UDW Licensing Entitlement" is_extendable="false" text_index="false" read_only="false" audit="true" display="product" access="public" caller_access="0" ws_access="true" scriptable_table="false" attributes="">
+    <element name="engagement" type="reference" active="true" array="false" audit="false" unique="false" label="Engagement" mandatory="true" read_only="false" reference_cascade_rule="delete" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" reference="x_1577958_dsb_engagement" plural="Engagements"/>
+    <element name="product" type="reference" active="true" array="false" audit="false" unique="false" label="Product" mandatory="true" read_only="false" choice="0" display="true" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" reference="x_1577958_dsb_licence_product" plural="Products"/>
+    <element name="status" type="choice" active="true" array="false" audit="false" default_value="unknown" unique="false" label="Entitlement" mandatory="false" read_only="false" choice="3" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Entitlements">
+      <choice>
+        <element value="unknown" label="Unknown" inactive="false" inactive_on_update="false" sequence="10" language="en"/>
+        <element value="entitled" label="Entitled" inactive="false" inactive_on_update="false" sequence="20" language="en"/>
+        <element value="not_entitled" label="Not entitled" inactive="false" inactive_on_update="false" sequence="30" language="en"/>
+      </choice>
+    </element>
+    <element name="source" type="string" active="true" array="false" audit="false" unique="false" label="Confirmation source" max_length="300" mandatory="false" read_only="false" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Confirmation sources"/>
+    <element name="needed_by_pattern" type="boolean" active="true" array="false" audit="false" default_value="false" unique="false" label="Needed by an applied pattern" mandatory="false" read_only="true" read_only_option="instance_configured" choice="0" display="false" function_field="false" attributes="" spell_check="false" xml_view="false" table_reference="false" text_index="false" element_reference="false" primary="false" plural="Needed by an applied patterns"/>
+  </element>
+</database>

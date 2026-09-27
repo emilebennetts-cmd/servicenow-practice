@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>c55f521d3c2c4718b0c05267cd1faf5c</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_c55f521d3c2c4718b0c05267cd1faf5c</sys_update_name>
+    <body>OOB portal with branding via theme only.</body>
+    <data>{"type": "Workspace / portal page", "cls": "Out of the box", "req": [1, 0], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>11</seq>
+    <title>Service Portal / Employee Center for requests and incidents</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

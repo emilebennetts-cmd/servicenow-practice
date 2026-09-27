@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>672dafb052bd4c3dbc4f4d89cb4c02e5</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_672dafb052bd4c3dbc4f4d89cb4c02e5</sys_update_name>
+    <body>Given a requester submits an idea or demand, When it is created, Then it is routed to the demand manager with required business case fields
+Given a demand is assessed, When scoring completes, Then value, risk and effort scores are stored and it appears on the prioritisation view</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "End user"}</data>
+    <kind>requirement</kind>
+    <pattern>009e981159a14b74a82d20a26b9752a8</pattern>
+    <seq>0</seq>
+    <title>All new work enters through a single demand intake with a standard assessment</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

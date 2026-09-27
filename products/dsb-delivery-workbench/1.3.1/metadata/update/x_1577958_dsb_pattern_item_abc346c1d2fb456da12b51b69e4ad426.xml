@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>abc346c1d2fb456da12b51b69e4ad426</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_abc346c1d2fb456da12b51b69e4ad426</sys_update_name>
+    <body>Start with top critical applications; relate to business applications and infrastructure.</body>
+    <data>{"type": "OOB application configuration", "cls": "Out of the box", "req": [2, 7], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>031fd78c2b3742d38dc20450125b3992</pattern>
+    <seq>8</seq>
+    <title>Application service modelling (manual, tag-based or Service Mapping)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

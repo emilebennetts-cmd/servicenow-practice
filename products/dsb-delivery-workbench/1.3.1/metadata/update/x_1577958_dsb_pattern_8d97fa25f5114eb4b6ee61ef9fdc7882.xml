@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern">
+  <x_1577958_dsb_pattern action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>8d97fa25f5114eb4b6ee61ef9fdc7882</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_8d97fa25f5114eb4b6ee61ef9fdc7882</sys_update_name>
+    <active>true</active>
+    <exclude_terms>[]</exclude_terms>
+    <indicative_cases>51</indicative_cases>
+    <key>managed-service-ops</key>
+    <library_version>1.5</library_version>
+    <licence_products/>
+    <min_hits>2</min_hits>
+    <name>Platform managed service and continual improvement</name>
+    <overview>Run the platform as a product. (1) Operating model: platform owner, product owners per workflow, platform team and managed-service partner with a RACI and monthly governance forum. (2) One backlog: an enhancement/defect intake (record producer to SPM demand, Agile stories or rm_enhancement) with value/effort scoring. (3) Release cadence (e.g. fortnightly minor, quarterly major) with quality gates: peer review, Instance Scan, ATF suite, change approval, and batched update sets. (4) Proactive health monitoring: a scheduled read-only health check with thresholds raising incidents to the platform team; integration and job failure alerts; use Instance Observer / performance dashboards where available. (5) Environment management: clone calendar, exclusion/preserver lists and post-clone cleanup. (6) Managed-service SLAs and a monthly report pack. (7) Continual improvement register fed by adoption and value metrics. Everything uses OOB records; the only custom element is the scheduled health check script, justified because it aggregates signals no single OOB job reports.</overview>
+    <pain>Enhancement requests arrive by email with no prioritisation or visibility
+Platform issues found by users, not by monitoring
+Releases are irregular and risky; no release calendar
+Specialist knowledge sits with one person or a departed partner
+Leaders cannot see platform value or adoption trends</pain>
+    <phase>2</phase>
+    <requires>platform-upgrade-debt</requires>
+    <strong_terms>[{"re": "managed service|after go.live|\\bBAU\\b|platform health", "flags": "i"}]</strong_terms>
+    <summary>After go-live the client lacks specialist capacity to run, upgrade and improve ServiceNow. Enhancement requests pile up in email, platform health (performance, errors, stuck jobs, integrations) is checked only when users complain, and releases are ad hoc. The pattern converges on a platform operating model: a governed demand/enhancement backlog, release cadence with update-set and ATF gates, proactive platform health monitoring with thresholds, a managed-service SLA and reporting pack, and a continual-improvement register tied to adoption and value.</summary>
+    <triggers>[{"re": "managed service|as.a.service|\\bAMS\\b|run (and|&amp;) (optimi|improve)|\\bBAU\\b", "flags": "i"}, {"re": "ongoing support|post.go.live|hypercare|after go.live", "flags": "i"}, {"re": "platform (owner|team|operations|health)|instance health", "flags": "i"}, {"re": "backlog|enhancement|continual (service )?improvement|\\bCSI\\b", "flags": "i"}, {"re": "performance|slow|queue|scheduled job|errors?", "flags": "i"}, {"re": "capacity|specialist|skills? gap|contractor", "flags": "i"}, {"re": "governance|release cadence|clone", "flags": "i"}]</triggers>
+    <verified>false</verified>
+  </x_1577958_dsb_pattern>
+</record_update>

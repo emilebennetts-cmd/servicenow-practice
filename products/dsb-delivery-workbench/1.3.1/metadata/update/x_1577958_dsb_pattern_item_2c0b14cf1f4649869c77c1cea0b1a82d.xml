@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>2c0b14cf1f4649869c77c1cea0b1a82d</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_2c0b14cf1f4649869c77c1cea0b1a82d</sys_update_name>
+    <body>Impersonate
+Open a Record Producer (SP)
+Set Variable Values (SP)
+Submit Record Producer (SP)
+Record Query
+Record Validation</body>
+    <data>{"req": 0, "note": null}</data>
+    <kind>atf</kind>
+    <pattern>1a261fc057734397b446de21b49dcf22</pattern>
+    <seq>1</seq>
+    <title>HR record producer creates case on the correct service</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

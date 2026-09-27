@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>e946b181f05b4ce591f8439a3f698304</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_e946b181f05b4ce591f8439a3f698304</sys_update_name>
+    <body>Health check scheduled script and properties (thresholds)
+Intake record producer, notifications, dashboards
+Platform KB configuration</body>
+    <data>{"key": "OPS", "scope": "x_&lt;prefix&gt;_plat_ops (scoped app) + global"}</data>
+    <kind>update_set</kind>
+    <pattern>8d97fa25f5114eb4b6ee61ef9fdc7882</pattern>
+    <seq>0</seq>
+    <title>PLAT_Operations_&lt;client&gt;_v1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

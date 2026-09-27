@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>9a2f5968c6254c28a70b77fac0643eb1</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_9a2f5968c6254c28a70b77fac0643eb1</sys_update_name>
+    <body>Suites per application; scheduled runs in the upgrade clone; parameterised tests where possible.</body>
+    <data>{"type": "Discovery / connector schedule", "cls": "Out of the box", "req": [4], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>93dbb3f9c9374c8b88cbf9fbbc6dee11</pattern>
+    <seq>3</seq>
+    <title>ATF regression suites for critical journeys</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

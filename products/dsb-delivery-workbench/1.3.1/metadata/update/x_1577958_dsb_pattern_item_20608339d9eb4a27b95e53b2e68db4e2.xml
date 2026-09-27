@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>20608339d9eb4a27b95e53b2e68db4e2</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_20608339d9eb4a27b95e53b2e68db4e2</sys_update_name>
+    <body>Baselines and progress.</body>
+    <data>{"type": "OOB application configuration", "cls": "Out of the box", "req": [3], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>708c573d6514412a95254bedf01bfc4a</pattern>
+    <seq>5</seq>
+    <title>Targets, goals and initiatives</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

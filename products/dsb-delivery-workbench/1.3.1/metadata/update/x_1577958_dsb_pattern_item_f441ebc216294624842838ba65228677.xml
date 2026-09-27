@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>f441ebc216294624842838ba65228677</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_f441ebc216294624842838ba65228677</sys_update_name>
+    <body>Given a computer CI with a serial number, When a second source presents the same serial with a different name, Then the IRE updates the existing CI rather than creating a duplicate
+Given identification rules are reviewed, When the entries are listed, Then serial number is the highest priority identifier for hardware and computer classes</body>
+    <data>{"type": "Data", "moscow": "Must", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>9ad6efafe3d645c1bce9ff6b75af7152</pattern>
+    <seq>1</seq>
+    <share_key>cmdb.ire</share_key>
+    <title>Identification rules for in-scope classes use serial number before name, FQDN or IP</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

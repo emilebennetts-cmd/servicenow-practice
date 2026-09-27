@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_component_type">
+  <x_1577958_dsb_component_type action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>782ee61840b740b3b65b3d08e17af82e</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_component_type_782ee61840b740b3b65b3d08e17af82e</sys_update_name>
+    <base_hours>1.5</base_hours>
+    <build_order>20</build_order>
+    <build_phase>6. Experience</build_phase>
+    <name>Report / dashboard</name>
+    <pvt_checks>Report returns expected data for a known dataset
+Shared with the correct groups/roles only</pvt_checks>
+  </x_1577958_dsb_component_type>
+</record_update>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>c0baeeb65d714462b9a0199159583e18</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_c0baeeb65d714462b9a0199159583e18</sys_update_name>
+    <body>Given the disclosure report, When an assurer selects a figure, Then the underlying values, owners, approvals and evidence are traceable</body>
+    <data>{"type": "Reporting", "moscow": "Must", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>708c573d6514412a95254bedf01bfc4a</pattern>
+    <seq>5</seq>
+    <title>Disclosure reports are produced with a traceable audit trail</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

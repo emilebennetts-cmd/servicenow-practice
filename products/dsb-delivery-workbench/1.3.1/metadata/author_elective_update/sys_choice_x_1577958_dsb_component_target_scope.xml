@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_choice_set action="INSERT_OR_UPDATE" field="target_scope" table="x_1577958_dsb_component" version="3" apply_defaults="true">
+    <sys_choice_set action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>8d12e2dd3b7943f899e52718e6e7788f</sys_id>
+      <element>target_scope</element>
+      <sys_update_name>sys_choice_x_1577958_dsb_component_target_scope</sys_update_name>
+      <name>x_1577958_dsb_component</name>
+      <sys_class_name>sys_choice_set</sys_class_name>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_package display_value="x_1577958_dsb" source="17aff6423fa94ebabea0896ca9bb2ea3">17aff6423fa94ebabea0896ca9bb2ea3</sys_package>
+      <sys_name>target_scope</sys_name>
+    </sys_choice_set>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>ca5df628e88947f4b47a207aa422efc2</sys_id>
+      <name>x_1577958_dsb_component</name>
+      <element>target_scope</element>
+      <label>Application</label>
+      <value>application</value>
+      <sequence>10</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>cc0a231492814049898d4e65dede4e48</sys_id>
+      <name>x_1577958_dsb_component</name>
+      <element>target_scope</element>
+      <label>Global</label>
+      <value>global</value>
+      <sequence>20</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+  </sys_choice_set>
+</record_update>

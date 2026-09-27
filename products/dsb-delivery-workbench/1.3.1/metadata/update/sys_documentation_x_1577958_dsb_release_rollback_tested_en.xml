@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>7ab6060370054b47a3fb021c69a554ef</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_release_rollback_tested_en</sys_update_name>
+    <element>rollback_tested</element>
+    <help/>
+    <hint/>
+    <label>Rollback tested in test</label>
+    <language>en</language>
+    <name>x_1577958_dsb_release</name>
+    <plural>Rollback tested in tests</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

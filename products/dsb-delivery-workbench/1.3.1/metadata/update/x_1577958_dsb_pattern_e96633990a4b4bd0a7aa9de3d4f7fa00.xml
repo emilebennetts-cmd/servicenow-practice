@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern">
+  <x_1577958_dsb_pattern action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>e96633990a4b4bd0a7aa9de3d4f7fa00</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_e96633990a4b4bd0a7aa9de3d4f7fa00</sys_update_name>
+    <active>true</active>
+    <exclude_terms>[]</exclude_terms>
+    <indicative_cases>18</indicative_cases>
+    <key>telecom-tsm</key>
+    <library_version>1.5</library_version>
+    <licence_products>telecom,csm</licence_products>
+    <min_hits>2</min_hits>
+    <name>Telecommunications service and order management</name>
+    <overview>Inventory, assurance, then orders. (1) CSM foundation for accounts, contacts, sites and sold products. (2) Service inventory (customer-facing services) related to network inventory — populated from OSS/inventory systems via Service Graph / IntegrationHub, not manual entry. (3) Network events into Event Management; network incidents with impacted services and accounts calculated from inventory relationships. (4) Proactive notification and case linkage for impacted accounts. (5) Product catalogue and Order Management: product offerings, specifications, order decomposition and orchestration to OSS/BSS. (6) eBonding with partners using OOB/IntegrationHub patterns. (7) Assurance and order dashboards. Table names for the telecom apps vary by release — confirm with evidence tel.apps before configuration.</overview>
+    <pain>Agents cannot see which customer services are affected by a network fault
+Orders stall across OSS/BSS hand-offs
+B2B customers learn of outages before the provider tells them
+Duplicate product definitions in several systems
+Manual ticket exchange with wholesale partners</pain>
+    <phase>3</phase>
+    <requires>csm-case-foundation,itom-aiops-event</requires>
+    <strong_terms>[{"re": "telco|telecom|network outage|\\bOSS\\b|\\bBSS\\b", "flags": "i"}]</strong_terms>
+    <summary>A telecommunications provider runs customer service, order fulfilment and network assurance in separate OSS/BSS tools. Agents cannot see network impact on a customer's services, orders stall between systems, and B2B customers receive late outage information. The pattern converges on ServiceNow Telecommunications Service Management and Order Management (where licensed) on the CSM foundation: a product and service catalogue, customer-facing service inventory linked to network inventory, order decomposition and orchestration to OSS, and proactive service impact from network events to customer cases.</summary>
+    <triggers>[{"re": "telco|telecom|carrier|network operator|\\bISP\\b|mobile operator|\\bNBN\\b", "flags": "i"}, {"re": "\\bTSM\\b|telecommunications service", "flags": "i"}, {"re": "order management|\\bOMT\\b|product catalog(ue)?|service order|fulfil(l)?ment", "flags": "i"}, {"re": "network inventory|\\bTNI\\b|service inventory|\\bOSS\\b|\\bBSS\\b", "flags": "i"}, {"re": "outage|network event|service impact|fault", "flags": "i"}, {"re": "enterprise customer|B2B customer|bond|eBonding", "flags": "i"}]</triggers>
+    <verified>false</verified>
+  </x_1577958_dsb_pattern>
+</record_update>

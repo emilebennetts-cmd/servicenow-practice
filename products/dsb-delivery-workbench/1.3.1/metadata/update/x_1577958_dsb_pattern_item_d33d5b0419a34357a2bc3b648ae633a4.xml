@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>d33d5b0419a34357a2bc3b648ae633a4</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_d33d5b0419a34357a2bc3b648ae633a4</sys_update_name>
+    <body>Given a CI not discovered for the staleness window, When the CMDB Data Manager policy runs, Then an attestation or retirement task is created for its owner
+Given duplicates by identifier exist, When de-duplication runs, Then remediation tasks are created and closed within the agreed cadence</body>
+    <data>{"type": "Process", "moscow": "Should", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>031fd78c2b3742d38dc20450125b3992</pattern>
+    <seq>4</seq>
+    <share_key>cmdb.dupes</share_key>
+    <title>Stale and duplicate CIs are detected and remediated through governed tasks</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>380e17a7829244e89b51acfc2a73e73a</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_380e17a7829244e89b51acfc2a73e73a</sys_update_name>
+    <body>Given an inbound API, When called without a valid OAuth token or from an unapproved IP, Then it is rejected and logged</body>
+    <data>{"type": "Security / Access", "moscow": "Must", "persona": "Administrator"}</data>
+    <kind>requirement</kind>
+    <pattern>034d05e2e2bc499f95be7ad7aa17f020</pattern>
+    <seq>4</seq>
+    <title>Inbound integrations are secured and rate-limited</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

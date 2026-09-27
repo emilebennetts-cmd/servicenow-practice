@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>743dc8e59d514dbe8b4c2ae39a77ed22</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_743dc8e59d514dbe8b4c2ae39a77ed22</sys_update_name>
+    <body>Licensing.</body>
+    <data>{}</data>
+    <kind>decision</kind>
+    <pattern>a828e5429bda4f57b75d7e4a3331f23f</pattern>
+    <seq>0</seq>
+    <title>Privacy Management app or IRM assessments + catalogue approach</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

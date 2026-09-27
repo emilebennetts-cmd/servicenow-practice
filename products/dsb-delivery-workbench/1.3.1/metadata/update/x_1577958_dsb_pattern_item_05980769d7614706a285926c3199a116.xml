@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>05980769d7614706a285926c3199a116</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_05980769d7614706a285926c3199a116</sys_update_name>
+    <body>Lookup rules depend on it</body>
+    <data>{"validate": "Evidence vr.discovered unmatched_sample"}</data>
+    <kind>assumption</kind>
+    <pattern>9ad6efafe3d645c1bce9ff6b75af7152</pattern>
+    <seq>1</seq>
+    <title>Tenable asset data carries hostname/FQDN and serial for managed endpoints</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

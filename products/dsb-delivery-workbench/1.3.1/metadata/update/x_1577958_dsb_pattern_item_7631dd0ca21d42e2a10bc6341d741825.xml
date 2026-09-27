@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>7631dd0ca21d42e2a10bc6341d741825</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_7631dd0ca21d42e2a10bc6341d741825</sys_update_name>
+    <body>Model category config, risk choices, maintenance plan config, recall config, request items, dashboards</body>
+    <data>{"key": "HC", "scope": "global / healthcare app scope"}</data>
+    <kind>update_set</kind>
+    <pattern>0e998cd6afca4efe958b07af4c028893</pattern>
+    <seq>0</seq>
+    <title>HC_ClinicalDevices_&lt;client&gt;_v1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

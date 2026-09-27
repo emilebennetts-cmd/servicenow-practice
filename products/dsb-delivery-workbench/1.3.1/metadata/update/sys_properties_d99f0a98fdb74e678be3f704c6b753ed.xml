@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<record_update table="sys_properties">
+  <sys_properties action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>d99f0a98fdb74e678be3f704c6b753ed</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_properties_d99f0a98fdb74e678be3f704c6b753ed</sys_update_name>
+    <choices/>
+    <description>Contingency for the Complex path.</description>
+    <ignore_cache>false</ignore_cache>
+    <is_private>false</is_private>
+    <name>x_1577958_dsb.effort.pct_contingency_complex</name>
+    <read_roles>x_1577958_dsb.user</read_roles>
+    <suffix>effort.pct_contingency_complex</suffix>
+    <type>string</type>
+    <value>0.20</value>
+    <write_roles>x_1577958_dsb.admin</write_roles>
+  </sys_properties>
+</record_update>

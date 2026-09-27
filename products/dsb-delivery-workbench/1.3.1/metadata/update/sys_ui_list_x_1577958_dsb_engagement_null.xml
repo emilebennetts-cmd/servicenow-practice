@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_ui_list table="x_1577958_dsb_engagement" parent="" relationship="" sys_domain="global" view="">
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>92470eb6935b4cb68937d196171bc6cd</sys_id>
+      <list_id display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">9271c0e32d484933b1045d7b2cbf9558</list_id>
+      <element>number</element>
+      <position>0</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>3ef067fe51784048afc39d3e8a238505</sys_id>
+      <list_id display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">9271c0e32d484933b1045d7b2cbf9558</list_id>
+      <element>name</element>
+      <position>1</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>83abb07eecd94368aa7c37994afa020f</sys_id>
+      <list_id display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">9271c0e32d484933b1045d7b2cbf9558</list_id>
+      <element>client</element>
+      <position>2</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>75ec1cd13dda4cd3877617e3228c1135</sys_id>
+      <list_id display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">9271c0e32d484933b1045d7b2cbf9558</list_id>
+      <element>delivery_path</element>
+      <position>3</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>b5beb5df7ce14a73987f14c8bf1fd31c</sys_id>
+      <list_id display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">9271c0e32d484933b1045d7b2cbf9558</list_id>
+      <element>lifecycle_state</element>
+      <position>4</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>818134af3e2646a0b0a26e068d2cda3b</sys_id>
+      <list_id display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">9271c0e32d484933b1045d7b2cbf9558</list_id>
+      <element>readiness</element>
+      <position>5</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>cece9e0dd2bf4458affe2c566906c2f3</sys_id>
+      <list_id display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">9271c0e32d484933b1045d7b2cbf9558</list_id>
+      <element>high_blockers</element>
+      <position>6</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>cf8e891dc07143aa8843ea1b6ebc7af4</sys_id>
+      <list_id display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">9271c0e32d484933b1045d7b2cbf9558</list_id>
+      <element>estimate_hours</element>
+      <position>7</position>
+    </sys_ui_list_element>
+    <sys_ui_list_element action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>4642e0bc00bb41a495a612cd6176fce4</sys_id>
+      <list_id display_value="x_1577958_dsb_engagement" name="x_1577958_dsb_engagement" view="Default view" sys_domain="global" element="NULL" relationship="NULL" parent="NULL">9271c0e32d484933b1045d7b2cbf9558</list_id>
+      <element>next_action</element>
+      <position>8</position>
+    </sys_ui_list_element>
+    <sys_ui_list action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>9271c0e32d484933b1045d7b2cbf9558</sys_id>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <view name="NULL">Default view</view>
+      <name>x_1577958_dsb_engagement</name>
+      <sys_domain>global</sys_domain>
+    </sys_ui_list>
+  </sys_ui_list>
+</record_update>

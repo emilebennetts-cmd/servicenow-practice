@@ -1,0 +1,342 @@
+<?xml version="1.0"?>
+<record_update table="sys_module">
+  <sys_module action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>7a26354355894c4185232d0bba0adbc9</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_module_7a26354355894c4185232d0bba0adbc9</sys_update_name>
+    <content><![CDATA[import { gs } from '@servicenow/glide';
+import { T, gr, val, num, bool, each, getRecord, redact, hasRole, logHistory } from './common.ts';
+import { cockpit, evaluate } from './gate.ts';
+import { estimate } from './estimate.ts';
+import { detect, applyPattern, removePattern, patternDetail } from './patterns.ts';
+import { generateEvidence, generateBuildPlan, generateUat, generatePvt, generateAtf, evidenceScript, evidenceAllScript, importEvidenceOutput, implementationScript, updateSetScripts, traceability, handover } from './generate.ts';
+import { exportBrief, importBrief } from './brief.ts';
+import { checkGateDecision } from './rules.ts';
+import { canCollect, collectableItems, collectEvidence } from './collectors.ts';
+import { customerProfile, profileGaps, listDiagScripts, diagScript, importDiagRun, generateGuideEvidence, listDiagRuns } from './diagnostics.ts';
+/* Scripted REST handlers for the DSB Workbench cockpit: /api/x_1577958_dsb/workbench/... */
+function run(response, fn, status = 200) {
+    try {
+        const body = fn();
+        response.setStatus(status);
+        response.setBody(body === undefined ? { ok: true } : body);
+    }
+    catch (e) {
+        response.setStatus(e && e.status ? e.status : 400);
+        response.setBody({ error: String((e && e.message) || e) });
+    }
+}
+function fail(message, status = 400) {
+    const err = new Error(message);
+    err.status = status;
+    throw err;
+}
+function body(request) {
+    try {
+        return request.body && request.body.data ? request.body.data : {};
+    }
+    catch (e) {
+        return {};
+    }
+}
+function engOr404(id) {
+    const e = getRecord(T.engagement, id);
+    if (!e)
+        fail('Engagement not found.', 404);
+    return e;
+}
+export function listEngagements(request, response) {
+    run(response, () => {
+        const out = [];
+        each(T.engagement, 'lifecycle_state!=closed', (e) => {
+            out.push({ sysId: e.getUniqueValue(), number: val(e, 'number'), name: val(e, 'name'), client: val(e, 'client'), path: val(e, 'delivery_path'), lifecycle: val(e, 'lifecycle_state'), readiness: num(e, 'readiness'), highBlockers: num(e, 'high_blockers'), next: val(e, 'next_action'), updated: val(e, 'sys_updated_on') });
+        }, 'number');
+        return { result: out.reverse(), canWaive: hasRole('delivery_lead') || gs.hasRole('admin'), isArchitect: hasRole('architect') || gs.hasRole('admin') };
+    });
+}
+export function createEngagement(request, response) {
+    run(response, () => {
+        const b = body(request);
+        if (!b.name || !b.client || !b.problem)
+            fail('Engagement name, client and problem statement are required.');
+        const e = gr(T.engagement);
+        e.initialize();
+        ['name', 'client', 'problem', 'engagement_type', 'delivery_path', 'instance_name', 'family_release', 'application_name'].forEach((f) => {
+            if (b[f])
+                e.setValue(f, redact(String(b[f])));
+        });
+        if (b.greenfield)
+            e.setValue('greenfield', true);
+        if (b.diagnostic_assessment)
+            e.setValue('diagnostic_assessment', true);
+        const id = e.insert();
+        if (!id)
+            fail('The engagement could not be created. Check your DSB role.');
+        return { sysId: id };
+    }, 201);
+}
+export function getCockpit(request, response) {
+    run(response, () => {
+        engOr404(request.pathParams.id);
+        return cockpit(request.pathParams.id, true);
+    });
+}
+export function detectPatterns(request, response) {
+    run(response, () => {
+        const e = engOr404(request.pathParams.id);
+        const b = body(request);
+        const applied = [];
+        each(T.appliedPattern, `engagement=${request.pathParams.id}`, (a) => applied.push(a.pattern ? String(a.pattern.key) : ''));
+        return { suggestions: detect(b.text || val(e, 'problem')), applied };
+    });
+}
+export function getPattern(request, response) {
+    run(response, () => patternDetail(request.pathParams.key) || fail('Pattern not found.', 404));
+}
+export function listPatterns(request, response) {
+    run(response, () => {
+        const out = [];
+        each(T.pattern, 'active=true', (p) => out.push({ key: val(p, 'key'), name: val(p, 'name'), summary: val(p, 'summary'), phase: num(p, 'phase'), licence: val(p, 'licence_products'), requires: val(p, 'requires'), verified: bool(p, 'verified'), indicativeCases: num(p, 'indicative_cases') }), 'phase');
+        return { result: out };
+    });
+}
+export function applyPatternRoute(request, response) {
+    run(response, () => {
+        engOr404(request.pathParams.id);
+        const b = body(request);
+        const selected = Array.isArray(b.selected) ? b.selected.map((x) => parseInt(x, 10)) : null;
+        return applyPattern(request.pathParams.id, request.pathParams.key, selected);
+    });
+}
+export function removePatternRoute(request, response) {
+    run(response, () => {
+        engOr404(request.pathParams.id);
+        return removePattern(request.pathParams.id, request.pathParams.key);
+    });
+}
+export function generateRoute(request, response) {
+    run(response, () => {
+        const id = request.pathParams.id;
+        engOr404(id);
+        const what = request.pathParams.what;
+        const fns = { evidence: generateEvidence, buildplan: generateBuildPlan, uat: generateUat, pvt: generatePvt, atf: generateAtf };
+        if (!fns[what])
+            fail(`Unknown generator "${what}".`);
+        const added = fns[what](id) + (what === 'evidence' ? generateGuideEvidence(id) : 0);
+        return { added };
+    });
+}
+export function estimateRoute(request, response) {
+    run(response, () => {
+        engOr404(request.pathParams.id);
+        return estimate(request.pathParams.id);
+    });
+}
+export function traceRoute(request, response) {
+    run(response, () => {
+        engOr404(request.pathParams.id);
+        return { result: traceability(request.pathParams.id) };
+    });
+}
+export function handoverRoute(request, response) {
+    run(response, () => {
+        engOr404(request.pathParams.id);
+        return handover(request.pathParams.id);
+    });
+}
+export function appliedRoute(request, response) {
+    run(response, () => {
+        engOr404(request.pathParams.id);
+        const out = [];
+        each(T.appliedPattern, `engagement=${request.pathParams.id}`, (a) => {
+            const key = a.pattern ? String(a.pattern.key) : '';
+            const impl = [];
+            each(T.patternItem, `pattern=${val(a, 'pattern')}^kind=implementation`, (i) => impl.push({ sysId: i.getUniqueValue(), title: val(i, 'title'), modifies: bool(i, 'modifies_data'), data: i.getValue('data') ? JSON.parse(val(i, 'data')) : {} }), 'seq');
+            out.push({ key, name: a.pattern ? String(a.pattern.name) : '', version: val(a, 'library_version'), verified: bool(a, 'pattern_verified'), records: num(a, 'records_created'), implementation: impl });
+        });
+        return { result: out };
+    });
+}
+export function evidenceScriptRoute(request, response) {
+    run(response, () => ({ script: evidenceScript(request.pathParams.evidence) }));
+}
+export function evidenceAllRoute(request, response) {
+    run(response, () => {
+        engOr404(request.pathParams.id);
+        return evidenceAllScript(request.pathParams.id);
+    });
+}
+export function evidenceOutputRoute(request, response) {
+    run(response, () => {
+        engOr404(request.pathParams.id);
+        const b = body(request);
+        if (!b.output || typeof b.output !== 'string')
+            fail('Paste the script output first.');
+        return importEvidenceOutput(request.pathParams.id, b.output);
+    });
+}
+export function diagScriptsRoute(request, response) {
+    run(response, () => ({ result: listDiagScripts() }));
+}
+export function diagProfileRoute(request, response) {
+    run(response, () => {
+        engOr404(request.pathParams.id);
+        const profile = customerProfile(request.pathParams.id);
+        return { profile, gaps: profileGaps(profile), runs: listDiagRuns(request.pathParams.id) };
+    });
+}
+export function diagScriptRoute(request, response) {
+    run(response, () => {
+        engOr404(request.pathParams.id);
+        return diagScript(request.pathParams.id, request.pathParams.script);
+    });
+}
+export function diagImportRoute(request, response) {
+    run(response, () => {
+        engOr404(request.pathParams.id);
+        const b = body(request);
+        if (!b.text || typeof b.text !== 'string')
+            fail('Choose the JSON result file first.');
+        if (b.text.length > 5000000)
+            fail('The file is larger than 5 MB. Import the per-script result files separately.');
+        return importDiagRun(request.pathParams.id, String(b.fileName || ''), b.text);
+    }, 201);
+}
+export function collectStatusRoute(request, response) {
+    run(response, () => {
+        engOr404(request.pathParams.id);
+        return { ...canCollect(request.pathParams.id), items: collectableItems(request.pathParams.id) };
+    });
+}
+export function collectRoute(request, response) {
+    run(response, () => {
+        engOr404(request.pathParams.id);
+        return collectEvidence(request.pathParams.id, request.pathParams.evidence);
+    });
+}
+export function implementationRoute(request, response) {
+    run(response, () => {
+        engOr404(request.pathParams.id);
+        return { script: implementationScript(request.pathParams.id, request.pathParams.item) };
+    });
+}
+export function updateSetScriptsRoute(request, response) {
+    run(response, () => {
+        engOr404(request.pathParams.id);
+        return updateSetScripts(request.pathParams.id);
+    });
+}
+export function gateDecisionRoute(request, response) {
+    run(response, () => {
+        const id = request.pathParams.id;
+        engOr404(id);
+        const gate = request.pathParams.gate;
+        const b = body(request);
+        const status = String(b.status || '');
+        if (['approved', 'waived', 'rejected', 'requested', 'revoked'].indexOf(status) < 0)
+            fail('Status must be requested, approved, rejected, waived or revoked.');
+        if (status === 'revoked') {
+            const g = gr(T.gate);
+            g.addEncodedQuery(`engagement=${id}^gate=${gate}^statusINapproved,waived`);
+            g.query();
+            if (!g.next())
+                fail('There is no approved or waived decision to revoke.');
+            g.setValue('status', 'revoked');
+            g.setValue('waiver_reason', redact(String(b.waiver_reason || 'Revoked')));
+            g.update();
+            return { sysId: g.getUniqueValue() };
+        }
+        const err = checkGateDecision(id, gate, status, b);
+        if (err) {
+            logHistory(id, 'Gate refused', `${gate.toUpperCase()} ${status} refused: ${err}`, T.gate, gate.toUpperCase(), 'gates');
+            fail(err, 409);
+        }
+        const g = gr(T.gate);
+        g.initialize();
+        g.setValue('engagement', id);
+        g.setValue('gate', gate);
+        g.setValue('status', status);
+        ['approval_ref', 'approver_role', 'waiver_reason', 'waiver_expiry'].forEach((f) => {
+            if (b[f])
+                g.setValue(f, redact(String(b[f])));
+        });
+        const sysId = g.insert();
+        if (!sysId)
+            fail('The decision was not recorded (blocked by a gate rule).', 409);
+        return { sysId };
+    }, 201);
+}
+export function briefExportRoute(request, response) {
+    run(response, () => {
+        engOr404(request.pathParams.id);
+        try {
+            return { markdown: exportBrief(request.pathParams.id) };
+        }
+        catch (e) {
+            fail(String(e.message || e), 403);
+        }
+    });
+}
+export function briefImportRoute(request, response) {
+    run(response, () => {
+        engOr404(request.pathParams.id);
+        const b = body(request);
+        return importBrief(request.pathParams.id, typeof b.json === 'string' ? b.json : JSON.stringify(b.json || {}));
+    });
+}
+export function historyRoute(request, response) {
+    run(response, () => {
+        engOr404(request.pathParams.id);
+        const out = [];
+        const h = gr(T.history);
+        h.addQuery('engagement', request.pathParams.id);
+        h.orderByDesc('sys_created_on');
+        h.setLimit(60);
+        h.query();
+        while (h.next())
+            out.push({ on: val(h, 'sys_created_on'), action: val(h, 'action'), record: val(h, 'record_number'), detail: val(h, 'detail'), state: val(h, 'lifecycle_state') });
+        return { result: out };
+    });
+}
+export function findingsRoute(request, response) {
+    run(response, () => {
+        engOr404(request.pathParams.id);
+        return { result: evaluate(request.pathParams.id) };
+    });
+}
+/** Full JSON export of the delivery record (redacted), for archive or hand-off. */
+export function exportRoute(request, response) {
+    run(response, () => {
+        const id = request.pathParams.id;
+        const e = engOr404(id);
+        const dump = (table, fields) => {
+            const rows = [];
+            each(table, `engagement=${id}`, (r) => {
+                const o = {};
+                fields.forEach((f) => (o[f] = val(r, f)));
+                rows.push(o);
+            });
+            return rows;
+        };
+        const engFields = ['number', 'name', 'client', 'engagement_type', 'delivery_path', 'lifecycle_state', 'instance_name', 'family_release', 'problem', 'scope_in', 'scope_out', 'constraints', 'ai_consent', 'ai_consent_ref', 'estimate_hours', 'actual_hours', 'design_notes', 'library_version'];
+        const out = { contract: 'dsb-record-1.0', exportedOn: new Date().toISOString(), engagement: {} };
+        engFields.forEach((f) => (out.engagement[f] = val(e, f)));
+        out.outcomes = dump(T.outcome, ['number', 'title', 'measure', 'baseline', 'target', 'achieved']);
+        out.requirements = dump(T.requirement, ['number', 'title', 'req_type', 'moscow', 'persona', 'acceptance_criteria', 'fit', 'licensing', 'justification', 'acceptance', 'acceptance_ref', 'pattern_key']);
+        out.raid = dump(T.rad, ['number', 'kind', 'title', 'description', 'likelihood', 'impact', 'rag', 'treatment', 'owner_role', 'status']);
+        out.decisions = dump(T.decision, ['number', 'title', 'context', 'options', 'outcome', 'decided_by_role', 'decided_on', 'status']);
+        out.components = dump(T.component, ['number', 'name', 'build_class', 'target_scope', 'description', 'justification', 'upgrade_impact', 'capture', 'hours', 'build_status', 'review_ref']);
+        out.updateSets = dump(T.updateSet, ['number', 'name', 'target_scope', 'status', 'commit_order']);
+        out.tests = dump(T.test, ['number', 'kind', 'title', 'environment', 'result', 'atf_status']);
+        out.defects = dump(T.defect, ['number', 'title', 'severity', 'state', 'known_error', 'workaround']);
+        out.releases = dump(T.release, ['number', 'name', 'change_ref', 'cab_ref', 'uat_ref', 'status', 'rollback_tested']);
+        out.gates = dump(T.gate, ['gate', 'status', 'approver_role', 'approval_ref', 'decided_on', 'waiver_reason', 'waiver_expiry']);
+        return JSON.parse(redact(JSON.stringify(out)));
+    });
+}
+]]></content>
+    <external_source>false</external_source>
+    <path>x_1577958_dsb/dsb-workbench/1.3.1/src/server/api.ts</path>
+    <sys_name>x_1577958_dsb/dsb-workbench/1.3.1/src/server/api.ts</sys_name>
+  </sys_module>
+</record_update>

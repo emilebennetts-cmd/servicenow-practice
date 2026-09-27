@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>5002cfd2c7624a28a5e1444ef05dcbdc</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_5002cfd2c7624a28a5e1444ef05dcbdc</sys_update_name>
+    <body>Given the app dashboard, When the owner opens it, Then volume, backlog, cycle time and approvals outstanding are shown</body>
+    <data>{"type": "Reporting", "moscow": "Should", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>7b4d65824e3147e0ab19ef6bd011d80c</pattern>
+    <seq>8</seq>
+    <title>Operational reporting is available for the process owner</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

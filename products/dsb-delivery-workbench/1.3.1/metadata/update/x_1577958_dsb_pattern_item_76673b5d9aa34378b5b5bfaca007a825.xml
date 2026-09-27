@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>76673b5d9aa34378b5b5bfaca007a825</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_76673b5d9aa34378b5b5bfaca007a825</sys_update_name>
+    <body>VA topics and topic blocks (published versions)
+Flows called by topics
+PI solution definitions (training runs per environment)</body>
+    <data>{"key": "VA", "scope": "global / VA scope"}</data>
+    <kind>update_set</kind>
+    <pattern>0516e578c5dd4dfda26e406e0d0f601d</pattern>
+    <seq>1</seq>
+    <title>AI_VirtualAgent_&lt;client&gt;_v1</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

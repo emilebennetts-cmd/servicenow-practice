@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>8bf1ffe6bca9483583272621ae774f50</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_8bf1ffe6bca9483583272621ae774f50</sys_update_name>
+    <body>Plans per model/risk class generating work orders.</body>
+    <data>{"type": "Scheduled job", "cls": "Out of the box", "req": [1], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>0e998cd6afca4efe958b07af4c028893</pattern>
+    <seq>2</seq>
+    <title>Maintenance and calibration plans</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

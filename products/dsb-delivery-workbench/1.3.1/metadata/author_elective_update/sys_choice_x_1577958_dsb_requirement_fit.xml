@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<record_update>
+  <sys_choice_set action="INSERT_OR_UPDATE" field="fit" table="x_1577958_dsb_requirement" version="3" apply_defaults="true">
+    <sys_choice_set action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>8948b18da5fe49229b65060893b3acbd</sys_id>
+      <element>fit</element>
+      <sys_update_name>sys_choice_x_1577958_dsb_requirement_fit</sys_update_name>
+      <name>x_1577958_dsb_requirement</name>
+      <sys_class_name>sys_choice_set</sys_class_name>
+      <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+      <sys_package display_value="x_1577958_dsb" source="17aff6423fa94ebabea0896ca9bb2ea3">17aff6423fa94ebabea0896ca9bb2ea3</sys_package>
+      <sys_name>fit</sys_name>
+    </sys_choice_set>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>45a2c4c779e64504a2d51a779310df16</sys_id>
+      <name>x_1577958_dsb_requirement</name>
+      <element>fit</element>
+      <label>Unassessed</label>
+      <value>unassessed</value>
+      <sequence>10</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>9d6837767cde4086a1ea332038b0da2e</sys_id>
+      <name>x_1577958_dsb_requirement</name>
+      <element>fit</element>
+      <label>Out of the box</label>
+      <value>oob</value>
+      <sequence>20</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>49da9405fc3c4fb2b3dc4379f51629f7</sys_id>
+      <name>x_1577958_dsb_requirement</name>
+      <element>fit</element>
+      <label>Configuration</label>
+      <value>configuration</value>
+      <sequence>30</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>d254ca2efe124836a9633a2dae4baa44</sys_id>
+      <name>x_1577958_dsb_requirement</name>
+      <element>fit</element>
+      <label>Customisation</label>
+      <value>customisation</value>
+      <sequence>40</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>7c12d22ed4584d0eaffc15840def631c</sys_id>
+      <name>x_1577958_dsb_requirement</name>
+      <element>fit</element>
+      <label>Integration</label>
+      <value>integration</value>
+      <sequence>50</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+    <sys_choice action="INSERT_OR_UPDATE" apply_defaults="true">
+      <sys_id>8d4b0233c24e4b569f07f409d9d6a3bd</sys_id>
+      <name>x_1577958_dsb_requirement</name>
+      <element>fit</element>
+      <label>Not feasible</label>
+      <value>not_feasible</value>
+      <sequence>60</sequence>
+      <inactive>false</inactive>
+      <inactive_on_update>false</inactive_on_update>
+      <language>en</language>
+    </sys_choice>
+  </sys_choice_set>
+</record_update>

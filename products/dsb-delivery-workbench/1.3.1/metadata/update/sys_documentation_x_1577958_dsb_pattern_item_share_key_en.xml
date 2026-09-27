@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<record_update table="sys_documentation">
+  <sys_documentation action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>fbac21a7b6eb4885a148424b697c70e4</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>sys_documentation_x_1577958_dsb_pattern_item_share_key_en</sys_update_name>
+    <element>share_key</element>
+    <help/>
+    <hint/>
+    <label>Shared key (merges across patterns)</label>
+    <language>en</language>
+    <name>x_1577958_dsb_pattern_item</name>
+    <plural>Shared key (merges across patterns)</plural>
+    <url/>
+    <url_target/>
+  </sys_documentation>
+</record_update>

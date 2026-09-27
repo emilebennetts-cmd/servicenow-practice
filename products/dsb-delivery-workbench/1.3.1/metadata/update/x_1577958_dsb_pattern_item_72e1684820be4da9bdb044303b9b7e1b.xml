@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>72e1684820be4da9bdb044303b9b7e1b</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_72e1684820be4da9bdb044303b9b7e1b</sys_update_name>
+    <body>Given an incident on a CI with high business criticality, When the severity calculator runs, Then the business impact and priority are raised per the agreed matrix</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>9502ffca8cf0439989ddf6b7b57dddea</pattern>
+    <seq>1</seq>
+    <title>Severity and priority are calculated from business impact and CMDB context</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

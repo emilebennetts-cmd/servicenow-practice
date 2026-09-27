@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>b8cb315e091f47a8be20df6e7f4788d4</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_b8cb315e091f47a8be20df6e7f4788d4</sys_update_name>
+    <body>Given a case needs on-site work, When the agent creates a work order, Then customer, location, asset and problem details carry over
+Given a maintenance plan is due, When the schedule runs, Then a work order is created for the asset</body>
+    <data>{"type": "Process", "moscow": "Must", "persona": "Fulfiller"}</data>
+    <kind>requirement</kind>
+    <pattern>5c6ec6aa57e140f986af5947553a8c3e</pattern>
+    <seq>0</seq>
+    <title>Work orders are created from cases, incidents, assets or maintenance plans</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

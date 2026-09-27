@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>88470b9879ac4ecba700a7076c477cb1</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_88470b9879ac4ecba700a7076c477cb1</sys_update_name>
+    <body>// DSB IMPLEMENTATION int-retire-imports — DATA CHANGING. DRY RUN unless DRY_RUN = false. Prints counts and record sys_ids only.
+// --- DSB helper prelude (read only; no personal information is printed) ---
+var DSB_NOTES = [];
+function _tbl(t){ return gs.tableExists(t); }
+function _fieldOk(t, path){ var gr = new GlideRecord(t); var parts = path.split('.'); for (var i = 0; i &lt; parts.length; i++) { if (!gr.isValidField(parts[i])) return false; if (i &lt; parts.length - 1) { var ref = gr.getElement(parts[i]).getReferenceTable(); if (!ref) return false; gr = new GlideRecord(ref); } } return true; }
+function _badField(t, q){ if (!q) return ''; var conds = String(q).split(/\^NQ|\^OR|\^/); for (var i = 0; i &lt; conds.length; i++) { var m = conds[i].match(/^([a-z0-9_.]+)/); if (!m) continue; var f = m[1].replace(/\.$/, ''); if (f === 'sys_id') continue; if (!_fieldOk(t, f)) return f; } return ''; }
+function count(t, q){ if (!_tbl(t)) return 'table not found'; var bad = _badField(t, q); if (bad) { DSB_NOTES.push(t + ': field not found ' + bad); return 'field not found: ' + bad; } var ga = new GlideAggregate(t); if (q) ga.addEncodedQuery(q); ga.addAggregate('COUNT'); ga.query(); return ga.next() ? parseInt(ga.getAggregate('COUNT'), 10) : 0; }
+function groupCount(t, f, q, lim){ if (!_tbl(t)) return 'table not found'; var bad = _badField(t, q) || (_fieldOk(t, f) ? '' : f); if (bad) { DSB_NOTES.push(t + ': field not found ' + bad); return 'field not found: ' + bad; } var rows = []; var ga = new GlideAggregate(t); if (q) ga.addEncodedQuery(q); ga.addAggregate('COUNT'); ga.groupBy(f); ga.query(); var guard = 0; while (ga.next() &amp;&amp; guard++ &lt; 5000) rows.push([ga.getDisplayValue(f) || '(empty)', parseInt(ga.getAggregate('COUNT'), 10)]); rows.sort(function(a, b){ return b[1] - a[1]; }); var o = {}; rows.slice(0, lim || 50).forEach(function(r){ o[r[0]] = r[1]; }); if (rows.length &gt; (lim || 50)) o['(other groups)'] = rows.length - (lim || 50); return o; }
+function groupSet(t, f, q){ var o = {}; if (!_tbl(t) || !_fieldOk(t, f) || _badField(t, q)) return o; var ga = new GlideAggregate(t); if (q) ga.addEncodedQuery(q); ga.addAggregate('COUNT'); ga.groupBy(f); ga.query(); while (ga.next()) o[ga.getValue(f)] = parseInt(ga.getAggregate('COUNT'), 10); return o; }
+function isNum(x){ return typeof x === 'number' &amp;&amp; !isNaN(x); }
+function diff(a, b){ return (isNum(a) &amp;&amp; isNum(b)) ? a - b : 'n/a'; }
+function pct(t, q, base){ var b = count(t, base); if (!isNum(b) || !b) return isNum(b) ? 0 : b; var c = count(t, base ? base + '^' + q : q); return isNum(c) ? Math.round(100 * c / b) : c; }
+function hasField(t, f){ return _tbl(t) &amp;&amp; _fieldOk(t, f); }
+function dsbPrint(key, out){ if (DSB_NOTES.length) out.dsb_notes = DSB_NOTES; var LIM = 60000; var s = JSON.stringify(out, null, 1); if (s.length &gt; LIM) s = JSON.stringify(out); var cut = [], loops = 0; while (s.length &gt; LIM &amp;&amp; loops++ &lt; 60) { var bigK = null, bigL = 0; for (var k in out) { if (k === 'key' || k === 'dsb_truncated' || !out[k] || typeof out[k] !== 'object') continue; var l = JSON.stringify(out[k]).length; if (l &gt; bigL) { bigL = l; bigK = k; } } if (!bigK) break; var v = out[bigK]; if (Object.prototype.toString.call(v) === '[object Array]' &amp;&amp; v.length &gt; 10) { out[bigK] = v.slice(0, Math.floor(v.length / 2)); cut.push(bigK + ' kept ' + out[bigK].length + ' of ' + v.length); } else { out[bigK] = 'omitted: ' + bigL + ' characters'; cut.push(bigK + ' omitted'); } out.dsb_truncated = cut; s = JSON.stringify(out); } gs.print('=== DSB-EVIDENCE ' + key + ' ===\n' + s); }
+var MAX_ROWS = 5000;
+var LAST90 = 'sys_created_onRELATIVEGT@dayofweek@ago@90';
+var DRY_RUN = true;   // set to false only after the dry-run output is approved
+var STATS = {checked: 0, would_change: 0, changed: 0, skipped: [], changed_ids: []};
+// Set FIELD on records in TABLE matched by KEY_FIELD, using MAP {keyValue: newValue}. Reference values are resolved by display value in REF_TABLE (optional).
+function backfill(TABLE, KEY_FIELD, FIELD, MAP, REF_TABLE, EXTRA_QUERY){
+  var refCache = {};
+  Object.keys(MAP).forEach(function(k){
+    var v = MAP[k];
+    if (REF_TABLE) { if (refCache[v] === undefined) { var r = new GlideRecord(REF_TABLE); refCache[v] = r.get(r.getDisplayName(), v) ? r.getUniqueValue() : null; } if (!refCache[v]) { STATS.skipped.push('reference not found for key ' + k); return; } v = refCache[v]; }
+    var gr = new GlideRecord(TABLE); gr.addQuery(KEY_FIELD, k); if (EXTRA_QUERY) gr.addEncodedQuery(EXTRA_QUERY); gr.setLimit(MAX_ROWS); gr.query();
+    while (gr.next()) { STATS.checked++; if (gr.getValue(FIELD) == v) continue; STATS.would_change++;
+      if (!DRY_RUN) { gr.setValue(FIELD, v); gr.update(); STATS.changed++; STATS.changed_ids.push(gr.getUniqueValue()); } }
+  });
+}
+// Insert ROWS into TABLE when no record matches all MATCH_FIELDS.
+function seed(TABLE, MATCH_FIELDS, ROWS){
+  ROWS.forEach(function(row){
+    var gr = new GlideRecord(TABLE); MATCH_FIELDS.forEach(function(f){ gr.addQuery(f, row[f]); }); gr.setLimit(1); gr.query();
+    STATS.checked++; if (gr.hasNext()) return; STATS.would_change++;
+    if (!DRY_RUN) { var n = new GlideRecord(TABLE); n.initialize(); Object.keys(row).forEach(function(f){ n.setValue(f, row[f]); }); var id = n.insert(); if (id) { STATS.changed++; STATS.changed_ids.push(id); } }
+  });
+}
+function report(name){ gs.print('=== DSB-IMPL ' + name + (DRY_RUN ? ' [DRY RUN]' : '') + ' ===\n' + JSON.stringify(STATS, null, 2)); }
+var MAP = { /* 'Legacy HR import': 'false' */ };   // scheduled import name : false
+backfill('scheduled_import_set', 'name', 'active', MAP);
+report('int-retire-imports');</body>
+    <data>{"kind": "script", "purpose": "Deactivates scheduled data imports named in the approved retirement list.", "prereqs": "Sub-production first. Fill the map/list from the client-approved source. Review the dry-run counts before switching DRY_RUN off.", "rollback": "The output lists changed_ids; reverse from an XML export taken beforehand or by re-running with the previous values."}</data>
+    <kind>implementation</kind>
+    <modifies_data>true</modifies_data>
+    <pattern>034d05e2e2bc499f95be7ad7aa17f020</pattern>
+    <seq>2</seq>
+    <title>Deactivate retired scheduled imports (DRY RUN by default)</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

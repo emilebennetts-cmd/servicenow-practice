@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>227475fdee2f4dc5857790c4dfb0398d</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_227475fdee2f4dc5857790c4dfb0398d</sys_update_name>
+    <body>Period-based task generation; mandatory evidence.</body>
+    <data>{"type": "Scheduled job", "cls": "Out of the box", "req": [1], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>708c573d6514412a95254bedf01bfc4a</pattern>
+    <seq>2</seq>
+    <title>Data collection schedules and owner tasks with evidence</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

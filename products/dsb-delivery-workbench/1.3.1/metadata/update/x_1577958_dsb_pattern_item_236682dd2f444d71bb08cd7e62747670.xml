@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>236682dd2f444d71bb08cd7e62747670</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_236682dd2f444d71bb08cd7e62747670</sys_update_name>
+    <body>Stakeholders ask for the old tool's behaviour field-for-field.</body>
+    <data>{"cat": "Scope", "l": 4, "i": 3, "treat": "Fit-to-standard workshops; every deviation logged as a customisation with justification."}</data>
+    <kind>risk</kind>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>0</seq>
+    <title>Scope creep into re-creating legacy customisations</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

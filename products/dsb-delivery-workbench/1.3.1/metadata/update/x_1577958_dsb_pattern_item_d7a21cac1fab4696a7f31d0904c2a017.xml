@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>d7a21cac1fab4696a7f31d0904c2a017</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_d7a21cac1fab4696a7f31d0904c2a017</sys_update_name>
+    <body>Given an incident is closed with severity 1, When closure is attempted, Then a post-incident review is required
+Given personal information is involved, When the assessment is completed, Then the notifiable data breach decision and date are recorded</body>
+    <data>{"type": "Process", "moscow": "Should", "persona": "Manager"}</data>
+    <kind>requirement</kind>
+    <pattern>9502ffca8cf0439989ddf6b7b57dddea</pattern>
+    <seq>6</seq>
+    <title>Major security incidents, post-incident reviews and breach notifications are recorded</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

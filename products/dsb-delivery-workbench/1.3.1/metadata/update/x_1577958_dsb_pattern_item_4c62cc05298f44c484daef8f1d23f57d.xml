@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>4c62cc05298f44c484daef8f1d23f57d</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_4c62cc05298f44c484daef8f1d23f57d</sys_update_name>
+    <body>Search profile limited to governed knowledge bases and catalogue; Genius Results / Q&amp;A enabled.</body>
+    <data>{"type": "Knowledge base / content", "cls": "Out of the box", "req": [2], "justification": null, "upgrade": "Low", "scope": "Global"}</data>
+    <kind>component</kind>
+    <pattern>0516e578c5dd4dfda26e406e0d0f601d</pattern>
+    <seq>4</seq>
+    <title>AI Search profile and search sources for portal and VA</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

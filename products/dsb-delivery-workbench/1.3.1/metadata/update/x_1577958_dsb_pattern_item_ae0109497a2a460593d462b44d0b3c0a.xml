@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>ae0109497a2a460593d462b44d0b3c0a</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_ae0109497a2a460593d462b44d0b3c0a</sys_update_name>
+    <body>Workspace is the strategic UI; training and layout effort move earlier if chosen.</body>
+    <data>{}</data>
+    <kind>decision</kind>
+    <pattern>7663f4d384ef408a8ba3062e8c27a96c</pattern>
+    <seq>2</seq>
+    <title>Agent interface: Service Operations Workspace from go-live or classic UI first</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>52f7a8c0024246fc8413b90c3a8952dd</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_52f7a8c0024246fc8413b90c3a8952dd</sys_update_name>
+    <body>Update set 1: ITAM_HAM_&lt;client&gt;_v1
+  - Model category mappings, stock rules, lifecycle config, catalogue items, flows, dashboards
+Update set 2: ITAM_SAM_&lt;client&gt;_v1 (SAM scope)
+  - Reconciliation/reclamation schedules and rules, notifications, entitlement import set
+Data (not update sets): stockrooms, models, entitlements, contracts, asset records, finance variance load.
+Environment-specific: Content Service connection and credentials; store app versions must match.</body>
+    <data>{"kind": "checklist", "purpose": "Asset configuration spans global and the HAM/SAM app scopes; reference data travels as data.", "prereqs": null, "rollback": null}</data>
+    <kind>implementation</kind>
+    <pattern>f0c40ed7d7ac4c1a957aafe864f1f114</pattern>
+    <seq>0</seq>
+    <title>Update set plan — HAM / SAM</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<record_update table="x_1577958_dsb_pattern_item">
+  <x_1577958_dsb_pattern_item action="INSERT_OR_UPDATE" apply_defaults="true">
+    <sys_id>a3f6ade02fc34f9fb96c10fa7400c1bb</sys_id>
+    <sys_scope display_value="x_1577958_dsb">17aff6423fa94ebabea0896ca9bb2ea3</sys_scope>
+    <sys_update_name>x_1577958_dsb_pattern_item_a3f6ade02fc34f9fb96c10fa7400c1bb</sys_update_name>
+    <body>Supplier setup, invoice query; approvals by amount.</body>
+    <data>{"type": "Flow / subflow", "cls": "Configuration", "req": [4], "justification": null, "upgrade": "Low", "scope": null}</data>
+    <kind>component</kind>
+    <pattern>f57c6db779734f4ea34b1ec5d8dedf38</pattern>
+    <seq>8</seq>
+    <title>Finance operations request flows with approvals</title>
+  </x_1577958_dsb_pattern_item>
+</record_update>
